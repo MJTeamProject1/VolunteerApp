@@ -5,7 +5,7 @@
     android:layout_height="120dp">
 
     <TextView
-        android:id="@+id/mRV_itemText"
+        android:id="@+id/mRV_itemText_home"
         android:text="Item Text"
         android:textSize="20sp"
         android:layout_margin="20dp"

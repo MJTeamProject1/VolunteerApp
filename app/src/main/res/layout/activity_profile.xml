@@ -42,28 +42,37 @@
         android:id="@+id/timeCircleView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/MyVolunListView"
+        app:layout_constraintBottom_toTopOf="@id/mRecyclerViewProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileView">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/PieChartMyVolune"
+        <Button
+            android:text="123"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="20dp"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <!--        <com.github.mikephil.charting.charts.PieChart-->
+        <!--            android:id="@+id/PieChartMyVolune"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            android:layout_margin="20dp"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MyVolunListView"
+        android:id="@+id/mRecyclerViewProfile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         app:layout_constraintTop_toBottomOf="@id/timeCircleView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

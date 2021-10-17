@@ -1,8 +1,6 @@
 package com.team1.volunteerapp
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +21,7 @@ class ProfileActivity : AppCompatActivity() {
         items.add("Test Input 7")
 
         //RecyclerView Adapter 연결
-        val profile_rv = findViewById<RecyclerView>(R.id.MyVolunListView)
+        val profile_rv = findViewById<RecyclerView>(R.id.mRecyclerViewProfile)
         val profile_rvAdapter = ProfileRVAdapter(items)
 
         profile_rv.adapter = profile_rvAdapter

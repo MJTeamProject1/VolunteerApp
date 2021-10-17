@@ -39,9 +39,10 @@ class HomeRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter<Hom
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private var rv_text : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText)
+        private val rv_text : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home)
 
         fun bindItems(item : String){
+            //val rv_text = itemView.findViewById<TextView>(R.id.mRV_itemText)
             rv_text.text = item
 
         }

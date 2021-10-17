@@ -1,8 +1,11 @@
 package com.team1.volunteerapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +39,19 @@ class HomeActivity : AppCompatActivity() {
             }
 
         }
+
+        val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
+        testAboutViewBtn.setOnClickListener {
+            val intent = Intent(this, AboutViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
+        testProfileBtn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }

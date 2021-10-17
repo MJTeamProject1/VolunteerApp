@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
@@ -37,6 +36,7 @@
             app:layout_constraintVertical_bias="0.0"></TextView>
 
         <ImageButton
+            android:id="@+id/mProfileBtn"
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -66,8 +66,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_weight="1"
                 android:id="@+id/mRecyclerViewHome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -83,14 +88,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <Button
+            android:text="Test AboutView"
+            android:id="@+id/mAboutViewTestBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:text="Test GroupView"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

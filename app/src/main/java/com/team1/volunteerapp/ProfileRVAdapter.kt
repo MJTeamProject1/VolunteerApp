@@ -22,7 +22,7 @@ class ProfileRVAdapter (val items : MutableList<String> ): RecyclerView.Adapter<
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private var rv_text : TextView = itemView.findViewById<TextView>(R.id.myVolunRV_itemText)
+        private var rv_text : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_profile)
 
         fun bindItems(item : String){
             rv_text.text = item
