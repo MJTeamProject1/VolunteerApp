@@ -20,24 +20,24 @@ class SplashActivity : AppCompatActivity() {
         auth = Firebase.auth
 
 
-       Handler().postDelayed({
-           startActivity(Intent(this,HomeActivity::class.java))
-           finish()
-       },3000)
+        /*Handler().postDelayed({
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
+        },3000)*/
 
-//        if(auth.currentUser?.uid == null){
-//            // 회원가입이 안되있으므로 JoinActivity
-//            Handler().postDelayed({
-//                startActivity(Intent(this,JoinActivity::class.java))
-//                finish()
-//            },3000)
-//        }else{
-//            // 회원가입이 되어있으므로 HomeActivity
-//
-//            Handler().postDelayed({
-//                startActivity(Intent(this,HomeActivity::class.java))
-//                finish()
-//            },3000)
-//        }
+        if (auth.currentUser?.uid == null) {
+            // 회원가입이 안되있으므로 JoinActivity
+            Handler().postDelayed({
+                startActivity(Intent(this, JoinActivity::class.java))
+                finish()
+            }, 3000)
+        } else {
+            // 회원가입이 되어있으므로 HomeActivity
+
+            Handler().postDelayed({
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            }, 3000)
+        }
     }
 }
