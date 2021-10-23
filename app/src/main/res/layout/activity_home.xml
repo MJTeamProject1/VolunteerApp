@@ -28,7 +28,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
-            android:text="text 1231234"
+            android:gravity="center"
+            android:text="Welcome Text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:text="Test GroupView"
+            android:text="Test CommunityView"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
