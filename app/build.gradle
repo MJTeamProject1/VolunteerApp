@@ -48,4 +48,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
+    //API 관련(코루틴 추가)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
 }
