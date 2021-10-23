@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
+class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeRVAdapter.ViewHolder {
@@ -39,11 +39,17 @@ class HomeRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter<Hom
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val rv_text : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home)
+        private val vol_area : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home2)
+        private val vol_context : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home)
+        private val vol_start : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home3)
+        private val vol_end : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home4)
 
-        fun bindItems(item : String){
-            //val rv_text = itemView.findViewById<TextView>(R.id.mRV_itemText)
-            rv_text.text = item
+        fun bindItems(item : VolunteerModel){
+
+            vol_area.text = item.nanmmbyNm
+            vol_context.text = item.progrmSj
+            vol_start.text = item.progrmBgnde
+            vol_end.text = item.progrmEndde
 
         }
     }
