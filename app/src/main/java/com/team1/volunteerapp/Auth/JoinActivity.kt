@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
@@ -16,12 +17,14 @@ import com.team1.volunteerapp.R
 class JoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
         auth = Firebase.auth
+
 
         val email = findViewById<EditText>(R.id.emailEditArea)
         val password = findViewById<EditText>(R.id.passwordEditArea)
@@ -30,6 +33,8 @@ class JoinActivity : AppCompatActivity() {
         val username= findViewById<EditText>(R.id.nameEditArea)
         val phonenumber = findViewById<EditText>(R.id.phonenumberEditArea)
         val nickname = findViewById<EditText>(R.id.nicknameEditArea)
+
+
 
         joinbtn.setOnClickListener {
             var isGoToJoin = true
@@ -40,6 +45,14 @@ class JoinActivity : AppCompatActivity() {
             val username_db= username.text.toString()
             val phonenumber_db = phonenumber.text.toString()
             val nickname_db = nickname.text.toString()
+
+            val userauth : HashMap<String, String> = hashMapOf(
+                "email" to inputemail,
+                "passworld" to inputpassword,
+                "username" to username_db,
+                "phonenumber" to phonenumber_db,
+                "nickname" to nickname_db
+            )
 
             if(inputemail.isEmpty()){
                 Toast.makeText(this,"이메일을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
@@ -77,6 +90,18 @@ class JoinActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
+
+                                // Firebase Firestore db에 넣기
+                                db.collection("UserData")
+                                    .add(userauth)
+                                    .addOnSuccessListener { documentReference ->
+                                        Log.d("TAGMESSAGE", "DocumentSnapshot added with ID: ${documentReference.id}")
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w("TAGMESSAGE", "Error adding document", e)
+                                    }
+
+
                                 val Intent = Intent(this, HomeActivity::class.java)
                                 startActivity(Intent)
                                 finish()
