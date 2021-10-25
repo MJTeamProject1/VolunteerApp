@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerApp">
         <activity
-            android:name=".JoinActivity"
+            android:name=".Auth.JoinActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

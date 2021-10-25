@@ -7,6 +7,7 @@ import android.os.Handler
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Auth.JoinActivity
 
 
 class SplashActivity : AppCompatActivity() {
