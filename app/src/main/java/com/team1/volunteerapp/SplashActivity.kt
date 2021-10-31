@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         auth = Firebase.auth
-
+        // println("================================="+auth.currentUser?.uid)
         if (auth.currentUser?.uid == null) {
             // 회원가입이 안되있으므로 JoinActivity
             Handler().postDelayed({

@@ -45,7 +45,17 @@ class JoinActivity : AppCompatActivity() {
             val username_db= username.text.toString()
             val phonenumber_db = phonenumber.text.toString()
             val nickname_db = nickname.text.toString()
+//            val uid = auth.currentUser?.uid
+//            print("============================="+uid)
 
+//            val uidauth = hashMapOf(
+//                //"uid" to uid,
+//                "email" to inputemail,
+//                "passworld" to inputpassword,
+//                "username" to username_db,
+//                "phonenumber" to phonenumber_db,
+//                "nickname" to nickname_db
+//            )
             val userauth : HashMap<String, String> = hashMapOf(
                 "email" to inputemail,
                 "passworld" to inputpassword,
@@ -100,6 +110,8 @@ class JoinActivity : AppCompatActivity() {
                                     .addOnFailureListener { e ->
                                         Log.w("TAGMESSAGE", "Error adding document", e)
                                     }
+
+
 
 
                                 val Intent = Intent(this, HomeActivity::class.java)
