@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.team1.volunteerapp.Community.CommActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -126,6 +127,12 @@ class HomeActivity : AppCompatActivity() {
         val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
         testProfileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        val testCommunityBtn = findViewById<Button>(R.id.commbtn)
+        testCommunityBtn.setOnClickListener {
+            val intent = Intent(this, CommActivity::class.java)
             startActivity(intent)
         }
 
