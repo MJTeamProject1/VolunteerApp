@@ -7,7 +7,7 @@ import android.os.Handler
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.team1.volunteerapp.Auth.JoinActivity
+import com.team1.volunteerapp.Auth.IntroActivity
 
 
 class SplashActivity : AppCompatActivity() {
@@ -19,16 +19,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         auth = Firebase.auth
-        // println("================================="+auth.currentUser?.uid)
+         println("================================="+auth.currentUser?.uid)
         if (auth.currentUser?.uid == null) {
-            // 회원가입이 안되있으므로 JoinActivity
+            // 회원가입이 안되있으므로 IntroActivity
             Handler().postDelayed({
-                startActivity(Intent(this, JoinActivity::class.java))
+                startActivity(Intent(this, IntroActivity::class.java))
                 finish()
             }, 3000)
         } else {
             // 회원가입이 되어있으므로 HomeActivity
-
             Handler().postDelayed({
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
