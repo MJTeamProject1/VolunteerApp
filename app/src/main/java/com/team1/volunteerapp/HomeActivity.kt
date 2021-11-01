@@ -39,6 +39,7 @@ class HomeActivity : AppCompatActivity() {
         var stringArray2 = Array(10, { item -> "" })
         var stringArray3 = Array(10, { item -> "" })
         var stringArray4 = Array(10, { item -> "" })
+        var stringArray5 = Array(10, { item -> "" })
 
         // Coroutine을 이용한 API 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {
@@ -74,12 +75,14 @@ class HomeActivity : AppCompatActivity() {
                     val vol_context = elem.getElementsByTagName("progrmSj").item(0).textContent
                     val vol_start = elem.getElementsByTagName("progrmBgnde").item(0).textContent
                     val vol_end = elem.getElementsByTagName("progrmEndde").item(0).textContent
+                    val vol_num = elem.getElementsByTagName("progrmRegistNo").item(0).textContent
 
                     // 배열에 삽입
                     stringArray.set(i,vol_area)
                     stringArray2.set(i,vol_context)
                     stringArray3.set(i,vol_start)
                     stringArray4.set(i,vol_end)
+                    stringArray5.set(i,vol_num)
                 }
             }
         }
@@ -94,7 +97,8 @@ class HomeActivity : AppCompatActivity() {
             var vol_context = stringArray2[i]
             var vol_start = stringArray3[i]
             var vol_end = stringArray4[i]
-            items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end))
+            var vol_num = stringArray5[i]
+            items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num))
         }
 
         //ViewPager연결
@@ -110,12 +114,13 @@ class HomeActivity : AppCompatActivity() {
         home_rv.layoutManager = LinearLayoutManager(this)
 
         // RecyclerView item을 클릭 시
+        /*
         home_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(baseContext, AboutViewActivity::class.java)
                 startActivity(intent)
             }
-        }
+        }*/
 
 
         val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)

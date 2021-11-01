@@ -3,6 +3,7 @@ package com.team1.volunteerapp
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,10 @@ class AboutViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutview)
+
+        val num = intent.getStringExtra("num")
+        val volunteerTitle : TextView = findViewById(R.id.volunteerTitle)
+        volunteerTitle.setText(num)
 
         // Coroutine을 이용한 API 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {

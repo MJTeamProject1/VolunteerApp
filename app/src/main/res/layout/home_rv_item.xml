@@ -42,6 +42,12 @@
             android:layout_width="100dp"
             android:layout_height="20dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vol_num"
+            android:visibility="invisible"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

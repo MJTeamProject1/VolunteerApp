@@ -1,9 +1,12 @@
 package com.team1.volunteerapp
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
@@ -18,11 +21,13 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: HomeRVAdapter.ViewHolder, position: Int) {
 
         // 클릭 시
+        /*
         if(itemClick != null){
             holder.itemView.setOnClickListener { view->
-                itemClick?.onClick(view,position)
+                val intent = Intent(holder.itemView?.context, AboutViewActivity::class.java)
+                ContextCompat.startActivity(holder.itemView.context, intent, null)
             }
-        }
+        }*/
 
         holder.bindItems(items[position])
     }
@@ -43,14 +48,23 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
         private val vol_context : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home)
         private val vol_start : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home3)
         private val vol_end : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home4)
-
+        private val vol_num :TextView = itemView.findViewById<TextView>(R.id.vol_num)
         fun bindItems(item : VolunteerModel){
 
             vol_area.text = item.nanmmbyNm
             vol_context.text = item.progrmSj
             vol_start.text = item.progrmBgnde
             vol_end.text = item.progrmEndde
+            vol_num.text = item.progrmRegistNo
+        }
 
+        init {
+            itemView.setOnClickListener {
+
+                val intent = Intent(itemView.context, AboutViewActivity::class.java)
+                intent.putExtra("num", vol_num.text.toString())
+                ContextCompat.startActivity(itemView.context, intent, null)
+            }
         }
     }
 
