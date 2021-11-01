@@ -17,9 +17,14 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Auth.IntroActivity
 
 class ProfileActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var pieChart: PieChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +33,7 @@ class ProfileActivity : AppCompatActivity() {
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
         val profileButton = findViewById<ImageButton>(R.id.profileButton)
 
-
+        auth = Firebase.auth
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         initPieChart()
@@ -76,6 +81,9 @@ class ProfileActivity : AppCompatActivity() {
                 )
             builder.setPositiveButton("확인",
                 {dialogInterface: DialogInterface?, i : Int ->
+                    Firebase.auth.signOut()
+                    startActivity(Intent(this, IntroActivity::class.java))
+                    finish()
                     Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT ).show()
                 }
             )
