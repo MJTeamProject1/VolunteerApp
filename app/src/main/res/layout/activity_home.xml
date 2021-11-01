@@ -99,6 +99,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/commbtn"
             android:text="Test CommunityView"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
