@@ -57,8 +57,8 @@ class ProfileActivity : AppCompatActivity() {
         profile_rv.adapter = profile_rvAdapter
         profile_rv.layoutManager = LinearLayoutManager(this)
 
-        // RecyclerView item을 클릭 시
-//        profile_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
+        //RecyclerView item을 클릭 시
+//        profile_rvAdapter.itemClick = object : HomeRVAdapter.ItemClick {
 //            override fun onClick(view: View, position: Int) {
 //                Toast.makeText(baseContext, items[position], Toast.LENGTH_LONG).show()
 //            }
@@ -75,16 +75,16 @@ class ProfileActivity : AppCompatActivity() {
             builder.setTitle("로그아웃")
             builder.setMessage("정말로 로그아웃 하시겠습니까?")
             builder.setNegativeButton("취소",
-                {dialogInterface: DialogInterface?, i : Int ->
+                { dialogInterface: DialogInterface?, i: Int ->
                     //아무런 동작도 하지 않음
                 }
-                )
+            )
             builder.setPositiveButton("확인",
-                {dialogInterface: DialogInterface?, i : Int ->
+                { dialogInterface: DialogInterface?, i: Int ->
                     Firebase.auth.signOut()
                     startActivity(Intent(this, IntroActivity::class.java))
                     finish()
-                    Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT ).show()
+                    Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 }
             )
             builder.show()
@@ -93,7 +93,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-   //Pie Chart 생성
+    //Pie Chart 생성
     private fun initPieChart() {
         pieChart.setUsePercentValues(true)
         pieChart.description.text = "봉사시간 현황"

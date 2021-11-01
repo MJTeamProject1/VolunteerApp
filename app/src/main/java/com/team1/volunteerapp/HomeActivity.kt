@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.team1.volunteerapp.Community.CommActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -120,12 +120,6 @@ class HomeActivity : AppCompatActivity() {
         val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
         testProfileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
-
-        val testCommBtn = findViewById<Button>(R.id.commbtn)
-        testCommBtn.setOnClickListener {
-            val intent = Intent(this, CommActivity::class.java)
             startActivity(intent)
         }
 
