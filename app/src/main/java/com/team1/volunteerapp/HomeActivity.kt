@@ -21,6 +21,7 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
 
+
 class HomeActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -104,10 +105,11 @@ class HomeActivity : AppCompatActivity() {
         // RecyclerView item을 클릭 시
         home_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
-//                Toast.makeText(baseContext, items_home[position], Toast.LENGTH_LONG).show()
+                val intent = Intent(baseContext, AboutViewActivity::class.java)
+                startActivity(intent)
             }
-
         }
+
 
         val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
         testAboutViewBtn.setOnClickListener {

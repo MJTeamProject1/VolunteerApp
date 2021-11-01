@@ -1,9 +1,12 @@
 package com.team1.volunteerapp
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +26,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
+        val profileButton = findViewById<ImageButton>(R.id.profileButton)
 
 
         pieChart = findViewById(R.id.PieChartMyVolune)
@@ -56,9 +60,26 @@ class ProfileActivity : AppCompatActivity() {
 //
 //        }
 
-        homeButton.setOnClickListener {
+        homeButton.setOnClickListener { // 홈으로 돌아가기
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        profileButton.setOnClickListener { // 프로필 버튼 클릭시 로그아웃 팝업창
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("로그아웃")
+            builder.setMessage("정말로 로그아웃 하시겠습니까?")
+            builder.setNegativeButton("취소",
+                {dialogInterface: DialogInterface?, i : Int ->
+                    //아무런 동작도 하지 않음
+                }
+                )
+            builder.setPositiveButton("확인",
+                {dialogInterface: DialogInterface?, i : Int ->
+                    Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT ).show()
+                }
+            )
+            builder.show()
         }
 
     }
