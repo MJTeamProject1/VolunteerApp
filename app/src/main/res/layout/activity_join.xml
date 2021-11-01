@@ -12,7 +12,7 @@
     <LinearLayout
         android:background="#ff9f40"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="50dp">
 
         <TextView
             android:text="Join"
