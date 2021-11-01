@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -94,6 +96,10 @@ class HomeActivity : AppCompatActivity() {
             items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end))
         }
 
+        //ViewPager연결
+        val viewPager = findViewById<ViewPager2>(R.id.adPager)
+        viewPager.adapter = ViewPagerAdapter(getBannerList())
+        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         //RecyclerView Adapter 연결
         val home_rv = findViewById<RecyclerView>(R.id.mRecyclerViewHome)
@@ -124,5 +130,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun getBannerList(): ArrayList<Int> {
+        return arrayListOf<Int>(R.drawable.pagerex, R.drawable.volunteersample)
     }
 }
