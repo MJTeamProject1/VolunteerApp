@@ -31,12 +31,13 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/voluteerDetail"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:text="봉사활동에 대한 상세정보"
+        android:layout_height="466dp"
         android:layout_margin="10dp"
-        android:textSize="18sp"
-        android:id="@+id/voluteerDetail"/>
+        android:text="봉사활동에 대한 상세정보"
+        android:scrollbars="vertical"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +55,6 @@
             android:text="전화하기" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mRecyclerViewAbout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 
 

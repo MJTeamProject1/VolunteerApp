@@ -28,7 +28,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
-            android:text="text 1231234"
+            android:gravity="center"
+            android:text="Welcome Text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,16 +67,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_weight="1"
                 android:id="@+id/mRecyclerViewHome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/adPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5" />
 
 
         </LinearLayout>
@@ -98,7 +100,8 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:text="Test GroupView"
+            android:id="@+id/commbtn"
+            android:text="Test CommunityView"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
