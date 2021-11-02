@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
@@ -105,9 +106,22 @@ class AboutViewActivity : AppCompatActivity() {
             db.collection("UserData")
                 .get()
                 .addOnSuccessListener { result ->
-                    for(document in result){
-                        if(document["uid"] == auth.uid.toString()){
+                    for(doc in result){
+                        if(doc["uid"] == auth.uid.toString()){
+                            val num = vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
+                            val userauth : HashMap<String, Any> = hashMapOf(
+                                "vol_time" to num,
+                                "vol_title" to vol_title.toString()
+                            )
 
+                            if(doc["vol_time"] != null){
+                                userauth["vol_time"] = doc["vol_time"].toString().toInt() + num
+                            }
+                            if(doc["vol_title"] != null){
+                                userauth["vol_title"] = userauth["vol_title"].toString() + "@${vol_title.toString()}"
+                            }
+                            db.collection("UserData").document(doc.id.toString()).update(userauth)
+                            Toast.makeText(this,"신청완료!",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
