@@ -25,13 +25,25 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
         return ViewHolder(view1)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if(itemClick != null){
+            holder.itemView.setOnClickListener{v->
+                itemClick?.onClick(v, position)
+            }
+        }
         holder.bindItems(items[position])
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
+
+    interface ItemClick{
+        fun onClick(view:View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         @RequiresApi(Build.VERSION_CODES.N)
         fun bindItems(item : String){

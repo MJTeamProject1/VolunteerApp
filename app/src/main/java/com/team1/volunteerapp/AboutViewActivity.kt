@@ -141,7 +141,9 @@ class AboutViewActivity : AppCompatActivity() {
                     .child(FBAuth.getUid())
                     .child(num)
                     .setValue(FavoriteModel(true))
+                Toast.makeText(this, "즐겨찾기 추가완료!", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 }
