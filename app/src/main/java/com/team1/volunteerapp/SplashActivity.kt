@@ -50,6 +50,7 @@ class SplashActivity : AppCompatActivity() {
             Handler().postDelayed({
 //                val Intent = Intent(this, HomeActivity::class.java)
                 val dataintent = Intent(this, LoadingActivity::class.java)
+                dataintent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 dataintent.putExtra("sido",sido)
                 dataintent.putExtra("gugun",gugun)
 
@@ -58,4 +59,10 @@ class SplashActivity : AppCompatActivity() {
             }, 3000)
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0)
+    }
+
 }
