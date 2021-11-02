@@ -52,10 +52,7 @@ class HomeActivity : AppCompatActivity() {
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
 
-        println("7777777777777777777777"+sido)
-        println("7777777777777777777777"+ gugun)
 
-        //db에서 데이터 받아오기
         // RecyclerView 데이터 삽입할 배열 선언
         var stringArray = Array(10, { item -> "" })
         var stringArray2 = Array(10, { item -> "" })
@@ -173,6 +170,12 @@ class HomeActivity : AppCompatActivity() {
         val testCommunityBtn = findViewById<Button>(R.id.commbtn)
         testCommunityBtn.setOnClickListener {
             val intent = Intent(this, CommActivity::class.java)
+            startActivity(intent)
+        }
+
+        val testFavoriteBtn = findViewById<ImageButton>(R.id.favoriteBtn_main)
+        testFavoriteBtn.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
             startActivity(intent)
         }
 

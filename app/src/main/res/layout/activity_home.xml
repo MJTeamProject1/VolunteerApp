@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
+            android:id="@+id/favoriteBtn_main"
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"

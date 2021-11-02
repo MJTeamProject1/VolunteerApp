@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -40,6 +41,7 @@ class AboutViewActivity : AppCompatActivity() {
         val volunteerTitle: TextView = findViewById(R.id.volunteerTitle)
         val volunteerDetail: TextView = findViewById(R.id.voluteerDetail)
         val applyButton: AppCompatButton = findViewById(R.id.applyButton)
+        val favoriteButton = findViewById<Button>(R.id.favoriteBtn)
 
         var vol_detail: String? = null
         var vol_starttime: String? = null
@@ -127,6 +129,10 @@ class AboutViewActivity : AppCompatActivity() {
                         }
                     }
                 }
+        }
+
+        favoriteButton.setOnClickListener {
+
         }
     }
 }
