@@ -48,6 +48,7 @@
             android:id="@+id/applyButton"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
+
             android:text="신청하기" />
 
         <androidx.appcompat.widget.AppCompatButton

@@ -9,7 +9,7 @@
     tools:context=".Auth.LoginActivity">
 
     <LinearLayout
-        android:background="#ff9f40"
+        android:background="@color/maincolor"
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
@@ -56,10 +56,13 @@
     <Button
         android:id="@+id/loginBtn"
         android:text="Login"
-        android:textSize="20sp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/button_background"
         android:layout_margin="20dp"/>
 
 </LinearLayout>
