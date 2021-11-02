@@ -37,16 +37,16 @@ class AboutViewActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val num = intent.getStringExtra("num")
-        val volunteerTitle : TextView = findViewById(R.id.volunteerTitle)
-        val volunteerDetail : TextView = findViewById(R.id.voluteerDetail)
-        val applyButton : AppCompatButton = findViewById(R.id.applyButton)
+        val volunteerTitle: TextView = findViewById(R.id.volunteerTitle)
+        val volunteerDetail: TextView = findViewById(R.id.voluteerDetail)
+        val applyButton: AppCompatButton = findViewById(R.id.applyButton)
 
-        var vol_detail:String? = null
-        var vol_starttime :String? = null
-        var vol_endtime :String? = null
-        var vol_telnum :String? = null
-        var vol_title :String? = null
-        var vol_email:String? = null
+        var vol_detail: String? = null
+        var vol_starttime: String? = null
+        var vol_endtime: String? = null
+        var vol_telnum: String? = null
+        var vol_title: String? = null
+        var vol_email: String? = null
 
         volunteerDetail.setMovementMethod(ScrollingMovementMethod())
         volunteerTitle.setText(num)
@@ -106,22 +106,24 @@ class AboutViewActivity : AppCompatActivity() {
             db.collection("UserData")
                 .get()
                 .addOnSuccessListener { result ->
-                    for(doc in result){
-                        if(doc["uid"] == auth.uid.toString()){
-                            val num = vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
-                            val userauth : HashMap<String, Any> = hashMapOf(
+                    for (doc in result) {
+                        if (doc["uid"] == auth.uid.toString()) {
+                            val num =
+                                vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
+                            val userauth: HashMap<String, Any> = hashMapOf(
                                 "vol_time" to num,
                                 "vol_title" to vol_title.toString()
                             )
 
-                            if(doc["vol_time"] != null){
+                            if (doc["vol_time"] != null) {
                                 userauth["vol_time"] = doc["vol_time"].toString().toInt() + num
                             }
-                            if(doc["vol_title"] != null){
-                                userauth["vol_title"] = userauth["vol_title"].toString() + "@${vol_title.toString()}"
+                            if (doc["vol_title"] != null) {
+                                userauth["vol_title"] = vol_title.toString() + "@${doc["vol_title"].toString()}"
                             }
-                            db.collection("UserData").document(doc.id.toString()).update(userauth)
-                            Toast.makeText(this,"신청완료!",Toast.LENGTH_SHORT).show()
+                            db.collection("UserData").document(doc.id.toString())
+                                .update(userauth)
+                            Toast.makeText(this, "신청완료!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

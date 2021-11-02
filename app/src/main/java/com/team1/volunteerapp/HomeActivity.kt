@@ -32,6 +32,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
+    var vol_time: String? = null
+    var vol_title: String? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -40,25 +42,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        var vol_time: Int? = null
-        var vol_title: String? = null
+
         auth = Firebase.auth
         //db에서 데이터 받아오기
-        db.collection("UserData")
-            .get()
-            .addOnSuccessListener { result ->
-                for (doc in result) {
-                    if (doc["uid"] == auth.uid.toString()) {
-
-                        if (doc["vol_time"] != null) {
-                            vol_time = doc["vol_time"].toString().toInt()
-                        }
-                        if (doc["vol_title"] != null) {
-                            vol_title = doc["vol_title"].toString()
-                        }
-                    }
-                }
-            }
         // RecyclerView 데이터 삽입할 배열 선언
         var stringArray = Array(10, { item -> "" })
         var stringArray2 = Array(10, { item -> "" })
@@ -157,6 +143,12 @@ class HomeActivity : AppCompatActivity() {
         val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
         testProfileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            if(vol_time == null){
+                vol_time = ""
+            }
+            if(vol_title == null){
+                vol_title = ""
+            }
             intent.putExtra("time", vol_time.toString())
             intent.putExtra("title", vol_title)
             startActivity(intent)
@@ -170,6 +162,26 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("onresume 호출되었다")
+        db.collection("UserData")
+            .get()
+            .addOnSuccessListener { result ->
+                for (doc in result) {
+                    if (doc["uid"] == auth.uid.toString()) {
+
+                        if (doc["vol_time"] != null) {
+                            vol_time = doc["vol_time"].toString()
+                        }
+                        if (doc["vol_title"] != null) {
+                            vol_title = doc["vol_title"].toString()
+                        }
+                    }
+                }
+            }
     }
 
     private fun getBannerList(): ArrayList<Int> {

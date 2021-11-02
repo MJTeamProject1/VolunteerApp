@@ -9,10 +9,9 @@
         android:id="@+id/mRV_itemText_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         android:text="Item Text"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </LinearLayout>

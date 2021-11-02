@@ -38,23 +38,27 @@ class ProfileActivity : AppCompatActivity() {
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
         val profileButton = findViewById<ImageButton>(R.id.profileButton)
 
-        if(intent.hasExtra("time") || intent.hasExtra("title")){
+        if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
             voltitle = intent.getStringExtra("title")
         }
+        else{
+            voltime = ""
+            voltitle = ""
+        }
         pieChart = findViewById(R.id.PieChartMyVolune)
 
+        val items = mutableListOf<String>()
 
         initPieChart()
         setDataToPieChart()
-
-        val volarray = voltitle.toString().split("@")
-
-        // RecyclerView 임시 테스트 데이터 삽입
-        val items = mutableListOf<String>()
-        for(i in volarray){
-            items.add(i)
+        if(voltitle != ""){
+            val volarray = voltitle.toString().split("@")
+            for(i in volarray){
+                items.add(i)
+            }
         }
+
 
 
         //RecyclerView Adapter 연결
@@ -118,7 +122,12 @@ class ProfileActivity : AppCompatActivity() {
     private fun setDataToPieChart() {
         pieChart.setUsePercentValues(true)
         val dataEntries = ArrayList<PieEntry>()
-        dataEntries.add(PieEntry(100f, "봉사시간"))
+        if(voltime == ""){
+            dataEntries.add(PieEntry(0f, "봉사시간"))
+        }
+        else{
+            dataEntries.add(PieEntry(voltime!!.toFloat(), "봉사시간"))
+        }
         dataEntries.add(PieEntry(5f, "남은시간")) // 입력된 목표 봉사시간에서 -하기
 
         val colors: ArrayList<Int> = ArrayList() // 각 영역의 색상
