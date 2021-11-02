@@ -19,13 +19,18 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ProfileActivity : AppCompatActivity() {
-
-    private lateinit var auth: FirebaseAuth
     private lateinit var pieChart: PieChart
+    var voltime :String? = null
+    var voltitle : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,22 +38,24 @@ class ProfileActivity : AppCompatActivity() {
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
         val profileButton = findViewById<ImageButton>(R.id.profileButton)
 
-        auth = Firebase.auth
+        if(intent.hasExtra("time") || intent.hasExtra("title")){
+            voltime = intent.getStringExtra("time")
+            voltitle = intent.getStringExtra("title")
+        }
         pieChart = findViewById(R.id.PieChartMyVolune)
 
-        initPieChart()
 
+        initPieChart()
         setDataToPieChart()
+
+        val volarray = voltitle.toString().split("@")
 
         // RecyclerView 임시 테스트 데이터 삽입
         val items = mutableListOf<String>()
-        items.add("Test Input 1")
-        items.add("Test Input 2")
-        items.add("Test Input 3")
-        items.add("Test Input 4")
-        items.add("Test Input 5")
-        items.add("Test Input 6")
-        items.add("Test Input 7")
+        for(i in volarray){
+            items.add(i)
+        }
+
 
         //RecyclerView Adapter 연결
         val profile_rv = findViewById<RecyclerView>(R.id.mRecyclerViewProfile)
@@ -139,7 +146,7 @@ class ProfileActivity : AppCompatActivity() {
 
         //빈 공간에 텍스트
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "봉사시간 : XXX시간"
+        pieChart.centerText = "봉사시간 : ${voltime}시간"
 
 
 

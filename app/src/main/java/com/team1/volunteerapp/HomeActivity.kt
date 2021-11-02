@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Community.CommActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +30,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    val db = FirebaseFirestore.getInstance()
 
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -36,7 +40,25 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        var vol_time: Int? = null
+        var vol_title: String? = null
+        auth = Firebase.auth
+        //db에서 데이터 받아오기
+        db.collection("UserData")
+            .get()
+            .addOnSuccessListener { result ->
+                for (doc in result) {
+                    if (doc["uid"] == auth.uid.toString()) {
 
+                        if (doc["vol_time"] != null) {
+                            vol_time = doc["vol_time"].toString().toInt()
+                        }
+                        if (doc["vol_title"] != null) {
+                            vol_title = doc["vol_title"].toString()
+                        }
+                    }
+                }
+            }
         // RecyclerView 데이터 삽입할 배열 선언
         var stringArray = Array(10, { item -> "" })
         var stringArray2 = Array(10, { item -> "" })
@@ -81,11 +103,11 @@ class HomeActivity : AppCompatActivity() {
                     val vol_num = elem.getElementsByTagName("progrmRegistNo").item(0).textContent
 
                     // 배열에 삽입
-                    stringArray.set(i,vol_area)
-                    stringArray2.set(i,vol_context)
-                    stringArray3.set(i,vol_start)
-                    stringArray4.set(i,vol_end)
-                    stringArray5.set(i,vol_num)
+                    stringArray.set(i, vol_area)
+                    stringArray2.set(i, vol_context)
+                    stringArray3.set(i, vol_start)
+                    stringArray4.set(i, vol_end)
+                    stringArray5.set(i, vol_num)
                 }
             }
         }
@@ -95,7 +117,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // item에 추가
-        for(i in 0..9){
+        for (i in 0..9) {
             var vol_area = stringArray[i]
             var vol_context = stringArray2[i]
             var vol_start = stringArray3[i]
@@ -135,7 +157,10 @@ class HomeActivity : AppCompatActivity() {
         val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
         testProfileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("time", vol_time.toString())
+            intent.putExtra("title", vol_title)
             startActivity(intent)
+
         }
 
         val testCommunityBtn = findViewById<Button>(R.id.commbtn)
