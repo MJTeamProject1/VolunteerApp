@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Favorite.FavoriteModel
+import com.team1.volunteerapp.utils.FBAuth
+import com.team1.volunteerapp.utils.FBRef
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -131,8 +134,14 @@ class AboutViewActivity : AppCompatActivity() {
                 }
         }
 
+        // 봉사번호를 즐겨찾기에 추가하기
         favoriteButton.setOnClickListener {
-
+            if (num != null) {
+                FBRef.favoriteRef
+                    .child(FBAuth.getUid())
+                    .child(num)
+                    .setValue(FavoriteModel(true))
+            }
         }
     }
 }

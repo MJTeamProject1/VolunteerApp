@@ -14,7 +14,7 @@
         android:theme="@style/Theme.VolunteerApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".Favorite.FavoritesActivity"
             android:exported="false" />
         <activity
             android:name=".LoadingActivity"

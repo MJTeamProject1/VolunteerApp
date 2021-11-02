@@ -59,6 +59,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation "io.grpc:grpc-okhttp:1.32.2"
+    implementation 'com.google.firebase:firebase-database-ktx'
+    
 
     //PieChart 관련
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
