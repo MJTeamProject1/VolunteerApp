@@ -230,7 +230,8 @@ class JoinActivity : AppCompatActivity() {
                 "nickname" to nickname_db,
                 "sidodata" to sidodatadb,
                 "gugundata" to gugundatadb,
-                "timedata" to settimedb
+                "timedata" to settimedb,
+                "uid" to auth.uid.toString()
             )
 
             if(inputemail.isEmpty()){
@@ -269,7 +270,7 @@ class JoinActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
-
+                                userauth["uid"] = auth.uid.toString()
                                 // Firebase Firestore db에 넣기
                                 db.collection("UserData")
                                     .add(userauth)

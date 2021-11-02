@@ -3,10 +3,14 @@ package com.team1.volunteerapp
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,19 +33,23 @@ class AboutViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutview)
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
+
         val num = intent.getStringExtra("num")
         val volunteerTitle : TextView = findViewById(R.id.volunteerTitle)
         val volunteerDetail : TextView = findViewById(R.id.voluteerDetail)
+        val applyButton : AppCompatButton = findViewById(R.id.applyButton)
+
+        var vol_detail:String? = null
+        var vol_starttime :String? = null
+        var vol_endtime :String? = null
+        var vol_telnum :String? = null
+        var vol_title :String? = null
+        var vol_email:String? = null
+
+        volunteerDetail.setMovementMethod(ScrollingMovementMethod())
         volunteerTitle.setText(num)
 
-        //배열 선언
-        var stringArray = Array(10, { item -> "" })
-        var stringArray2 = Array(10, { item -> "" })
-        var stringArray3 = Array(10, { item -> "" })
-        var stringArray4 = Array(10, { item -> "" })
-        var stringArray5 = Array(10, { item -> "" })
-        var stringArray6 = Array(10, { item -> "" })
 
         // Coroutine을 이용한 API 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {
@@ -75,20 +83,13 @@ class AboutViewActivity : AppCompatActivity() {
                         )
                     }
 
-                    val vol_detail = elem.getElementsByTagName("progrmCn").item(0).textContent
-                    val vol_starttime = elem.getElementsByTagName("actBeginTm").item(0).textContent
-                    val vol_endtime = elem.getElementsByTagName("actEndTm").item(0).textContent
-                    val vol_telnum = elem.getElementsByTagName("telno").item(0).textContent
-                    val vol_title = elem.getElementsByTagName("progrmSj").item(0).textContent
-                    val vol_email = elem.getElementsByTagName("email").item(0).textContent
+                    vol_detail = elem.getElementsByTagName("progrmCn").item(0).textContent
+                    vol_starttime = elem.getElementsByTagName("actBeginTm").item(0).textContent
+                    vol_endtime = elem.getElementsByTagName("actEndTm").item(0).textContent
+                    vol_telnum = elem.getElementsByTagName("telno").item(0).textContent
+                    vol_title = elem.getElementsByTagName("progrmSj").item(0).textContent
+                    vol_email = elem.getElementsByTagName("email").item(0).textContent
 
-                    // 배열에 삽입
-                    stringArray.set(i,vol_detail)
-                    stringArray2.set(i,vol_starttime)
-                    stringArray3.set(i,vol_endtime)
-                    stringArray4.set(i,vol_telnum)
-                    stringArray5.set(i,vol_title)
-                    stringArray6.set(i,vol_email)
 
                 }
             }
@@ -97,7 +98,19 @@ class AboutViewActivity : AppCompatActivity() {
             job.join() //suspend에서만 작동하기때문에 runblocking안에 넣는다
             //join() 함수가 끝날때까지 runblocking이 지속
         }
-        volunteerTitle.setText(stringArray5[0])
-        volunteerDetail.setText(stringArray[0])
+        volunteerTitle.setText(vol_title)
+        volunteerDetail.setText(vol_detail)
+
+        applyButton.setOnClickListener {
+            db.collection("UserData")
+                .get()
+                .addOnSuccessListener { result ->
+                    for(document in result){
+                        if(document["uid"] == auth.uid.toString()){
+
+                        }
+                    }
+                }
+        }
     }
 }
