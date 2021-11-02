@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,7 +32,181 @@ class JoinActivity : AppCompatActivity() {
         val username= findViewById<EditText>(R.id.nameEditArea)
         val phonenumber = findViewById<EditText>(R.id.phonenumberEditArea)
         val nickname = findViewById<EditText>(R.id.nicknameEditArea)
+        val spinner1 = findViewById<Spinner>(R.id.spinner1)
+        val spinner2 = findViewById<Spinner>(R.id.spinner2)
+        val settime = findViewById<EditText>(R.id.volsetTimeArea)
 
+        var sidodata : String = ""
+        var gugundata : String = ""
+
+        // spinner 관련
+        var sido = resources.getStringArray(R.array.spinner_region)
+        var gugun1 = resources.getStringArray(R.array.spinner_region_seoul)
+        var gugun2 = resources.getStringArray(R.array.spinner_region_busan)
+        var gugun3 = resources.getStringArray(R.array.spinner_region_incheon)
+        var gugun4 = resources.getStringArray(R.array.spinner_region_daegu)
+        var gugun5 = resources.getStringArray(R.array.spinner_region_gwangju)
+        var gugun6 = resources.getStringArray(R.array.spinner_region_daejeon)
+        var gugun7 = resources.getStringArray(R.array.spinner_region_ulsan)
+        var gugun8 = resources.getStringArray(R.array.spinner_region_sejong)
+        var gugun9 = resources.getStringArray(R.array.spinner_region_gyeonggi)
+        var gugun10 = resources.getStringArray(R.array.spinner_region_gangwon)
+        var gugun11 = resources.getStringArray(R.array.spinner_region_chung_buk)
+        var gugun12 = resources.getStringArray(R.array.spinner_region_chung_nam)
+        var gugun13 = resources.getStringArray(R.array.spinner_region_gyeong_buk)
+        var gugun14 = resources.getStringArray(R.array.spinner_region_gyeong_nam)
+        var gugun15 = resources.getStringArray(R.array.spinner_region_jeon_buk)
+        var gugun16 = resources.getStringArray(R.array.spinner_region_jeon_nam)
+        var gugun17 = resources.getStringArray(R.array.spinner_region_jeju)
+
+
+        val sidoadapter = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, sido)
+        val gugunadapter1 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun1)
+        val gugunadapter2 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun2)
+        val gugunadapter3 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun3)
+        val gugunadapter4 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun4)
+        val gugunadapter5 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun5)
+        val gugunadapter6 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun6)
+        val gugunadapter7 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun7)
+        val gugunadapter8 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun8)
+        val gugunadapter9 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun9)
+        val gugunadapter10 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun10)
+        val gugunadapter11 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun11)
+        val gugunadapter12 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun12)
+        val gugunadapter13 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun13)
+        val gugunadapter14 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun14)
+        val gugunadapter15 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun15)
+        val gugunadapter16 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun16)
+        val gugunadapter17 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun17)
+
+        spinner1.adapter = sidoadapter
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long
+            ) {
+                when (position) {
+                    0 -> {
+                        spinner2.adapter = gugunadapter1
+                        println("==========="+sido[position])
+                        sidodata = "서울특별시"
+                    }
+                    1 -> { spinner2.adapter = gugunadapter2
+                        sidodata = "부산광역시"}
+                    2 -> {spinner2.adapter = gugunadapter3
+                        sidodata = "대구광역시"}
+                    3 -> {spinner2.adapter = gugunadapter4
+                        sidodata = "인천광역시"}
+                    4 -> {spinner2.adapter = gugunadapter5
+                        sidodata = "광주광역시"}
+                    5 -> {spinner2.adapter = gugunadapter6
+                        sidodata = "대전광역시"}
+                    6 -> {spinner2.adapter = gugunadapter7
+                        sidodata = "울산광역시"}
+                    7 -> {spinner2.adapter = gugunadapter8
+                        sidodata = "세종특별자치시"}
+                    8 -> {spinner2.adapter = gugunadapter9
+                        sidodata = "경기도"}
+                    9 ->{spinner2.adapter = gugunadapter10
+                        sidodata = "강원도"}
+                    10 -> {spinner2.adapter = gugunadapter11
+                        sidodata = "충청북도"}
+                    11 -> {spinner2.adapter = gugunadapter12
+                        sidodata = "충청남도"}
+                    12 -> {spinner2.adapter = gugunadapter13
+                        sidodata = "전라북도"}
+                    13 -> {spinner2.adapter = gugunadapter14
+                        sidodata = "전라남도"}
+                    14 -> {spinner2.adapter = gugunadapter15
+                        sidodata = "경상북도"}
+                    15 -> {spinner2.adapter = gugunadapter16
+                        sidodata = "경상남도"}
+                    16 -> {spinner2.adapter = gugunadapter17
+                        sidodata = "제주특별자치도"}
+
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+
+        }
+
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long
+            ) {
+                if(sidodata == "서울특별시"){
+                    gugundata = gugun1[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "부산광역시"){
+                    gugundata = gugun2[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "대구광역시"){
+                    gugundata = gugun3[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "인천광역시"){
+                    gugundata = gugun4[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "광주광역시"){
+                    gugundata = gugun5[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "대전광역시"){
+                    gugundata = gugun6[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "울산광역시"){
+                    gugundata = gugun7[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "세종특별자치시"){
+                    gugundata = gugun8[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "경기도"){
+                    gugundata = gugun9[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "강원도"){
+                    gugundata = gugun10[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "충청북도"){
+                    gugundata = gugun11[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "충청남도"){
+                    gugundata = gugun12[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "전라북도"){
+                    gugundata = gugun13[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "전라남도"){
+                    gugundata = gugun14[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "경상북도"){
+                    gugundata = gugun15[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "경상남도"){
+                    gugundata = gugun16[position]
+                    println("============"+gugundata)
+                }
+                else if(sidodata == "제주특별자치도"){
+                    gugundata = gugun17[position]
+                    println("============"+gugundata)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
 
 
         joinbtn.setOnClickListener {
@@ -45,13 +218,19 @@ class JoinActivity : AppCompatActivity() {
             val username_db= username.text.toString()
             val phonenumber_db = phonenumber.text.toString()
             val nickname_db = nickname.text.toString()
+            val sidodatadb = sidodata
+            val gugundatadb = gugundata
+            val settimedb = settime.text.toString()
 
             val userauth : HashMap<String, String> = hashMapOf(
                 "email" to inputemail,
                 "passworld" to inputpassword,
                 "username" to username_db,
                 "phonenumber" to phonenumber_db,
-                "nickname" to nickname_db
+                "nickname" to nickname_db,
+                "sidodata" to sidodatadb,
+                "gugundata" to gugundatadb,
+                "timedata" to settimedb
             )
 
             if(inputemail.isEmpty()){
