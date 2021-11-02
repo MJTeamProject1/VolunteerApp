@@ -54,10 +54,6 @@
             android:text="전화하기" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mRecyclerViewAbout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 
 
