@@ -11,6 +11,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.SplashActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(this,"성공", Toast.LENGTH_LONG).show()
 
-                        val intent = Intent(this, HomeActivity::class.java)
+                        val intent = Intent(this, SplashActivity::class.java)
                         // 기존 엑티비티를 다 날림
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)

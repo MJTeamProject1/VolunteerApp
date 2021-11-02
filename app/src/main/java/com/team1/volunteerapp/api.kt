@@ -13,13 +13,13 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
-
 class api : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var stringArray = Array(10, { item -> "" })
         println("=========1쓰레드 밖${stringArray.get(0)}")
+
         val job = CoroutineScope(IO).launch {
             val key: String =
                 "onftKf775WKPZ9Hb+EEq96Lt12k3+cdCgp6y5+py2jelojI4mxiQLdahxxURolwnY29rJpoX1kSW6WcgUoSWSw=="

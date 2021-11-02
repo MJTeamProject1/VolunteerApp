@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.SplashActivity
 
 class JoinActivity : AppCompatActivity() {
 
@@ -284,7 +285,7 @@ class JoinActivity : AppCompatActivity() {
 
 
 
-                                val Intent = Intent(this, HomeActivity::class.java)
+                                val Intent = Intent(this, SplashActivity::class.java)
                                 startActivity(Intent)
                                 finish()
                             } else {

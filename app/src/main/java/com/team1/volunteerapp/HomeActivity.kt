@@ -36,6 +36,9 @@ class HomeActivity : AppCompatActivity() {
     var vol_title: String? = null
     var vol_goaltime: String? = null
 
+    var sido : String? = null
+    var gugun : String? = null
+
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
 
@@ -45,6 +48,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         auth = Firebase.auth
+
+        sido = intent.getStringExtra("sido")
+        gugun = intent.getStringExtra("gugun")
+
+        println("7777777777777777777777"+sido)
+        println("7777777777777777777777"+ gugun)
+
         //db에서 데이터 받아오기
         // RecyclerView 데이터 삽입할 배열 선언
         var stringArray = Array(10, { item -> "" })
@@ -53,13 +63,16 @@ class HomeActivity : AppCompatActivity() {
         var stringArray4 = Array(10, { item -> "" })
         var stringArray5 = Array(10, { item -> "" })
 
+
+
         // Coroutine을 이용한 API 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {
+
             val key: String =
                 "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
             var url: String =
                 //지역 정보는 현재 고정 추후 수정할 예정
-                "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrAreaList?schSido=6110000&serviceKey=$key"
+                "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrAreaList?schSido=${sido}&schSign1=${gugun}&serviceKey=$key"
 
             val xml: Document =
                 DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url)
