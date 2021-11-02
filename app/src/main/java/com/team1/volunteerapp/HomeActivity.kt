@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
     val db = FirebaseFirestore.getInstance()
     var vol_time: String? = null
     var vol_title: String? = null
+    var vol_goaltime: String? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -151,6 +152,7 @@ class HomeActivity : AppCompatActivity() {
             }
             intent.putExtra("time", vol_time.toString())
             intent.putExtra("title", vol_title)
+            intent.putExtra("goaltime", vol_goaltime)
             startActivity(intent)
 
         }
@@ -178,6 +180,9 @@ class HomeActivity : AppCompatActivity() {
                         }
                         if (doc["vol_title"] != null) {
                             vol_title = doc["vol_title"].toString()
+                        }
+                        if (doc["timedata"] != null) {
+                            vol_goaltime = doc["timedata"].toString()
                         }
                     }
                 }

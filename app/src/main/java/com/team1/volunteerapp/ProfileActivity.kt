@@ -31,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var pieChart: PieChart
     var voltime :String? = null
     var voltitle : String? = null
+    var volgoaltime : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,7 @@ class ProfileActivity : AppCompatActivity() {
             voltime = ""
             voltitle = ""
         }
+        volgoaltime = intent.getStringExtra("goaltime")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         val items = mutableListOf<String>()
@@ -120,15 +122,23 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setDataToPieChart() {
+        var timepercent : Float = 0F
+        var goalpercent : Float = 0F
         pieChart.setUsePercentValues(true)
         val dataEntries = ArrayList<PieEntry>()
         if(voltime == ""){
             dataEntries.add(PieEntry(0f, "봉사시간"))
         }
         else{
-            dataEntries.add(PieEntry(voltime!!.toFloat(), "봉사시간"))
+            timepercent = (voltime.toString().toFloat() / volgoaltime.toString().toFloat() * 100)
+            goalpercent = 100 - timepercent
+            if(goalpercent < 0){
+                timepercent = 100F
+                goalpercent = 0F
+            }
+            dataEntries.add(PieEntry(timepercent, "봉사시간"))
         }
-        dataEntries.add(PieEntry(5f, "남은시간")) // 입력된 목표 봉사시간에서 -하기
+        dataEntries.add(PieEntry(goalpercent, "남은시간")) // 입력된 목표 봉사시간에서 -하기
 
         val colors: ArrayList<Int> = ArrayList() // 각 영역의 색상
         colors.add(Color.parseColor("#4DD0E1"))
