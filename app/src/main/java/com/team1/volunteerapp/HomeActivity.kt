@@ -13,6 +13,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.team1.volunteerapp.Community.CommActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 
 class HomeActivity : AppCompatActivity() {
+
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
 

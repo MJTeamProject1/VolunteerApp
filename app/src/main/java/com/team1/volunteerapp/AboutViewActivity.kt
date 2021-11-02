@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,6 +18,9 @@ import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
 
 class AboutViewActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    val db = FirebaseFirestore.getInstance()
+
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_about = mutableListOf<VolunteerModel>()
 
@@ -24,7 +29,7 @@ class AboutViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutview)
-
+        auth = FirebaseAuth.getInstance()
         val num = intent.getStringExtra("num")
         val volunteerTitle : TextView = findViewById(R.id.volunteerTitle)
         val volunteerDetail : TextView = findViewById(R.id.voluteerDetail)
@@ -85,37 +90,6 @@ class AboutViewActivity : AppCompatActivity() {
                     stringArray5.set(i,vol_title)
                     stringArray6.set(i,vol_email)
 
-                    println(
-                        "[1]. 봉사내용 : ${
-                            elem.getElementsByTagName("progrmCn").item(0).textContent
-                        }"
-                    )
-
-                    println(
-                        "[2]. 봉사시간 : ${
-                            elem.getElementsByTagName("actBeginTm").item(0).textContent
-                        }시 ~ ${
-                            elem.getElementsByTagName("actEndTm").item(0).textContent
-                        }시"
-                    )
-
-                    println(
-                        "[3]. 담당자번호 : ${
-                            elem.getElementsByTagName("telno").item(0).textContent
-                        }"
-                    )
-
-                    println(
-                        "[4]. 봉사제목 : ${
-                            elem.getElementsByTagName("progrmSj").item(0).textContent
-                        }"
-                    )
-
-                    println(
-                        "[5]. 담당자이메일 : ${
-                            elem.getElementsByTagName("email").item(0).textContent
-                        }"
-                    )
                 }
             }
         }
