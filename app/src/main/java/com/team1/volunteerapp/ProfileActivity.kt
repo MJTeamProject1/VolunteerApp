@@ -35,6 +35,8 @@ class ProfileActivity : AppCompatActivity() {
     var voltitle : String? = null
     var volgoaltime : String? = null
     var usernickname : String? = null
+    var sido : String? = null
+    var gugun : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,9 @@ class ProfileActivity : AppCompatActivity() {
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
         val profileButton = findViewById<ImageButton>(R.id.profileButton)
         val profileInfo = findViewById<TextView>(R.id.profileInfo)
+
+        sido = intent.getStringExtra("sido")
+        gugun = intent.getStringExtra("gugun")
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -94,6 +99,8 @@ class ProfileActivity : AppCompatActivity() {
 
         homeButton.setOnClickListener { // 홈으로 돌아가기
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("sido",sido)
+            intent.putExtra("gugun",gugun)
             startActivity(intent)
         }
 

@@ -162,6 +162,8 @@ class HomeActivity : AppCompatActivity() {
             if(vol_title == null){
                 vol_title = ""
             }
+            intent.putExtra("sido",sido)
+            intent.putExtra("gugun",gugun)
             intent.putExtra("time", vol_time.toString())
             intent.putExtra("title", vol_title)
             intent.putExtra("goaltime", vol_goaltime)
@@ -173,6 +175,8 @@ class HomeActivity : AppCompatActivity() {
         val testCommunityBtn = findViewById<Button>(R.id.commbtn)
         testCommunityBtn.setOnClickListener {
             val intent = Intent(this, CommActivity::class.java)
+            intent.putExtra("sido",sido)
+            intent.putExtra("gugun",gugun)
             startActivity(intent)
         }
 

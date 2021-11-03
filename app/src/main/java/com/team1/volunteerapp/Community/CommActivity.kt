@@ -17,9 +17,16 @@ import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
 
 class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    var sido : String? = null
+    var gugun : String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
+
+        sido = intent.getStringExtra("sido")
+        gugun = intent.getStringExtra("gugun")
 
         val CommList = arrayListOf(
             CUser("그룹1", 1, "안녕하세요"),
@@ -47,6 +54,8 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val homeCommButton = findViewById<ImageButton>(R.id.homeButtonComm)
         homeCommButton.setOnClickListener { // 홈으로 돌아가기
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("sido",sido)
+            intent.putExtra("gugun",gugun)
             startActivity(intent)
         }
 
@@ -57,9 +66,6 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
     }
-
-
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentc = Intent(this, CommActivity::class.java)
