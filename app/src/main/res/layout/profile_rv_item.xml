@@ -3,7 +3,7 @@
     android:id="@+id/LinearTextOut"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="60dp">
 
     <TextView
         android:id="@+id/mRV_itemText_profile"
@@ -12,6 +12,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:text="Item Text"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
 </LinearLayout>

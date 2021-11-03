@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.animation.Easing
@@ -69,6 +70,12 @@ class ProfileActivity : AppCompatActivity() {
 
         profile_rv.adapter = profile_rvAdapter
         profile_rv.layoutManager = LinearLayoutManager(this)
+
+        //구분선 넣기
+        val dividerItemDecoration =
+            DividerItemDecoration(profile_rv.context, LinearLayoutManager(this).orientation)
+
+        profile_rv.addItemDecoration(dividerItemDecoration)
 
         //RecyclerView item을 클릭 시
 //        profile_rvAdapter.itemClick = object : HomeRVAdapter.ItemClick {

@@ -33,7 +33,7 @@
     <TextView
         android:id="@+id/voluteerDetail"
         android:layout_width="match_parent"
-        android:layout_height="383dp"
+        android:layout_height="333dp"
         android:layout_margin="10dp"
         android:scrollbars="vertical"
         android:text="봉사활동에 대한 상세정보"
