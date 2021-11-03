@@ -1,4 +1,4 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Profile
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -19,15 +19,11 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.team1.volunteerapp.HomeActivity
+import com.team1.volunteerapp.R
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var pieChart: PieChart

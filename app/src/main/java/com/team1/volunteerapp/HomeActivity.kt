@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -17,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
+import com.team1.volunteerapp.Profile.ProfileActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
