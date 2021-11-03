@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -33,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
     var vol_time: String? = null
     var vol_title: String? = null
     var vol_goaltime: String? = null
+    var vol_user: String? = null
 
     var sido : String? = null
     var gugun : String? = null
@@ -133,6 +135,8 @@ class HomeActivity : AppCompatActivity() {
         home_rv.adapter = home_rvAdapter
         home_rv.layoutManager = LinearLayoutManager(this)
 
+
+
         // RecyclerView item을 클릭 시
         /*
         home_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
@@ -161,6 +165,7 @@ class HomeActivity : AppCompatActivity() {
             intent.putExtra("time", vol_time.toString())
             intent.putExtra("title", vol_title)
             intent.putExtra("goaltime", vol_goaltime)
+            intent.putExtra("nickname", vol_user)
             startActivity(intent)
 
         }
@@ -197,6 +202,9 @@ class HomeActivity : AppCompatActivity() {
                         }
                         if (doc["timedata"] != null) {
                             vol_goaltime = doc["timedata"].toString()
+                        }
+                        if (doc["nickname"] != null) {
+                            vol_user = doc["nickname"].toString()
                         }
                     }
                 }

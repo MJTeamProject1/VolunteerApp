@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -33,12 +34,14 @@ class ProfileActivity : AppCompatActivity() {
     var voltime :String? = null
     var voltitle : String? = null
     var volgoaltime : String? = null
+    var usernickname : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val homeButton = findViewById<ImageButton>(R.id.homeButton)
         val profileButton = findViewById<ImageButton>(R.id.profileButton)
+        val profileInfo = findViewById<TextView>(R.id.profileInfo)
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -49,7 +52,11 @@ class ProfileActivity : AppCompatActivity() {
             voltitle = ""
         }
         volgoaltime = intent.getStringExtra("goaltime")
+        usernickname = intent.getStringExtra("nickname")
         pieChart = findViewById(R.id.PieChartMyVolune)
+
+        //닉네임 설정
+        profileInfo.setText(usernickname)
 
         val items = mutableListOf<String>()
 
