@@ -23,6 +23,9 @@
             android:name=".LodingActivity"
             android:exported="false" />
         <activity android:name=".Community.CommActivity" />
+        <activity android:name=".Community.WriteCommActivity"/>
+        <activity android:name=".Community.ReviewActivity"/>
+        <activity android:name=".Community.WriteReviewActivity"/>
         <activity
             android:name=".Auth.IntroActivity"
             android:exported="false" />
