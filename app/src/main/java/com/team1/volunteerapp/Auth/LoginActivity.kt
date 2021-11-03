@@ -48,9 +48,9 @@ class LoginActivity : AppCompatActivity() {
 
                                 val intent = Intent(this, SplashActivity::class.java)
                                 // 기존 엑티비티를 다 날림
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                finishAffinity()
                                 startActivity(intent)
+                                finish()
 
                             } else {
                                 // If sign in fails, display a message to the user.

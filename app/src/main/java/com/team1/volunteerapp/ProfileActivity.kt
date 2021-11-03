@@ -101,7 +101,9 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("sido",sido)
             intent.putExtra("gugun",gugun)
+            finishAffinity()
             startActivity(intent)
+            finish()
         }
 
         profileButton.setOnClickListener { // 프로필 버튼 클릭시 로그아웃 팝업창
@@ -116,7 +118,9 @@ class ProfileActivity : AppCompatActivity() {
             builder.setPositiveButton("확인",
                 { dialogInterface: DialogInterface?, i: Int ->
                     Firebase.auth.signOut()
-                    startActivity(Intent(this, IntroActivity::class.java))
+                    val intent = Intent(this, IntroActivity::class.java)
+                    finishAffinity()
+                    startActivity(intent)
                     finish()
                     Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 }

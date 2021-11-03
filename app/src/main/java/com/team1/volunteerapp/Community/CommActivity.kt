@@ -56,7 +56,9 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("sido",sido)
             intent.putExtra("gugun",gugun)
+            finishAffinity()
             startActivity(intent)
+            finish()
         }
 
         val btnWriteComm = findViewById<Button>(R.id.btnWriteComm)

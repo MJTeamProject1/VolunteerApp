@@ -280,11 +280,9 @@ class JoinActivity : AppCompatActivity() {
                                     .addOnFailureListener { e ->
                                         Log.w("TAGMESSAGE", "Error adding document", e)
                                     }
-
-
-
-
                                 val Intent = Intent(this, SplashActivity::class.java)
+                                // 기존 엑티비티를 다 날림
+                                finishAffinity()
                                 startActivity(Intent)
                                 finish()
                             } else {
