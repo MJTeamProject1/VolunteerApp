@@ -1,4 +1,4 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Profile
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -19,15 +19,11 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.team1.volunteerapp.HomeActivity
+import com.team1.volunteerapp.R
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var pieChart: PieChart
@@ -101,7 +97,9 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("sido",sido)
             intent.putExtra("gugun",gugun)
+            finishAffinity()
             startActivity(intent)
+            finish()
         }
 
         profileButton.setOnClickListener { // 프로필 버튼 클릭시 로그아웃 팝업창
@@ -116,7 +114,9 @@ class ProfileActivity : AppCompatActivity() {
             builder.setPositiveButton("확인",
                 { dialogInterface: DialogInterface?, i: Int ->
                     Firebase.auth.signOut()
-                    startActivity(Intent(this, IntroActivity::class.java))
+                    val intent = Intent(this, IntroActivity::class.java)
+                    finishAffinity()
+                    startActivity(intent)
                     finish()
                     Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 }

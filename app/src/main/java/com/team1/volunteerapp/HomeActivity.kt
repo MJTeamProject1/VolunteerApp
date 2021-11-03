@@ -4,19 +4,22 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
+import com.team1.volunteerapp.Profile.ProfileActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,9 +38,11 @@ class HomeActivity : AppCompatActivity() {
     var vol_title: String? = null
     var vol_goaltime: String? = null
     var vol_user: String? = null
-
     var sido : String? = null
     var gugun : String? = null
+
+    //뒤로가기 연속 클릭 대기 시간
+    var mBackWait:Long = 0
 
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -217,5 +222,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getBannerList(): ArrayList<Int> {
         return arrayListOf<Int>(R.drawable.pagerex, R.drawable.volunteersample)
+    }
+
+    override fun onBackPressed() {
+        // 뒤로가기 버튼 클릭
+        if(System.currentTimeMillis() - mBackWait >= 1500){ mBackWait = System.currentTimeMillis()
+            Toast.makeText(this,"'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",Toast.LENGTH_LONG).show()
+        } else { finish() }
     }
 }
