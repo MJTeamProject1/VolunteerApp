@@ -15,121 +15,154 @@
         android:layout_height="50dp">
 
         <TextView
-            android:text="Join"
-            android:textSize="20sp"
+            android:text="회원 가입"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sd6"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/emailEditArea"
-        android:hint="Email"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField1"
 
-    <LinearLayout
-        android:background="#999999"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Email">
 
-    <EditText
-        android:id="@+id/passwordEditArea"
-        android:hint="Password"
-        android:inputType="textPassword"
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField2"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Password">
 
-    <LinearLayout
-        android:background="#999999"
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditArea"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField3"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Password check">
 
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password2EditArea"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/password2EditArea"
-        android:hint="Password check"
-        android:inputType="textPassword"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField4"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
 
-    <LinearLayout
-        android:background="#999999"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Name">
 
-    <EditText
-        android:id="@+id/nameEditArea"
-        android:hint="Name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameEditArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:background="#999999"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/phonenumberEditArea"
-        android:hint="Phone number"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField5"
 
-    <LinearLayout
-        android:background="#999999"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Phone number">
 
-    <EditText
-        android:id="@+id/nicknameEditArea"
-        android:hint="nickname"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phonenumberEditArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:background="#999999"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/volsetTimeArea"
-        android:hint="목표 봉사 시간 (숫자 입력)"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField6"
 
-    <LinearLayout
-        android:background="#999999"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="nickname">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nicknameEditArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField7"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="목표 봉사 시간 (숫자 입력)">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/volsetTimeArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -152,7 +185,8 @@
 
     <Button
         android:id="@+id/joinBtn"
-        android:text="Join"
+        android:text="회원 가입"
+        android:fontFamily="@font/sd6"
         android:textSize="20sp"
         android:gravity="center"
         android:textColor="@color/white"

@@ -14,10 +14,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            android:fontFamily="@font/sd6"
             android:gravity="center"
-            android:textColor="@color/white"
             android:text="봉사활동\n APP"
+            android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold" />
 

@@ -14,48 +14,62 @@
         android:layout_height="200dp">
 
         <TextView
-            android:text="Login"
-            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="로그인"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sd6"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/emailEditArea_login"
-        android:hint="Email"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField1"
 
-    <LinearLayout
-        android:background="#999999"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
-    <EditText
-        android:id="@+id/passwordEditArea_login"
-        android:hint="Password"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/AuthEditText"/>
 
-    <LinearLayout
-        android:background="#999999"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Email">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditArea_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField2"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Password">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditArea_login"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/loginBtn"
-        android:text="Login"
+        android:text="로그인"
+        android:fontFamily="@font/sd6"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -63,6 +77,8 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:background="@drawable/button_background"
-        android:layout_margin="20dp"/>
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"/>/>
 
 </LinearLayout>

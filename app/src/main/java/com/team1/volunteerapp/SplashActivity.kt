@@ -46,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }, 3000)
         } else {
-            // 회원가입이 되어있으므로 HomeActivity
+            // 회원가입이 되어있으므로 LoadingActivity
             Handler().postDelayed({
 //                val Intent = Intent(this, HomeActivity::class.java)
                 val dataintent = Intent(this, LoadingActivity::class.java)

@@ -27,23 +27,38 @@ class LoginActivity : AppCompatActivity() {
         loginbtn.setOnClickListener {
             val inputemail = email.text.toString()
             val inputpassword = password.text.toString()
+            var isGoToJoin = true
 
-            auth.signInWithEmailAndPassword(inputemail, inputpassword)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(this,"성공", Toast.LENGTH_LONG).show()
+            if(inputemail.isEmpty()){
+                Toast.makeText(this,"이메일을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
 
-                        val intent = Intent(this, SplashActivity::class.java)
-                        // 기존 엑티비티를 다 날림
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        startActivity(intent)
+            else if(inputpassword.isEmpty()){
+                Toast.makeText(this,"비밀번호를 입력하지 않았습니다",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
+            else {
+                if (isGoToJoin) {
+                    auth.signInWithEmailAndPassword(inputemail, inputpassword)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
 
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(this,"실패", Toast.LENGTH_LONG).show()
-                    }
+                                val intent = Intent(this, SplashActivity::class.java)
+                                // 기존 엑티비티를 다 날림
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                startActivity(intent)
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(this, "실패", Toast.LENGTH_LONG).show()
+                            }
+                        }
                 }
+            }
         }
 
     }
