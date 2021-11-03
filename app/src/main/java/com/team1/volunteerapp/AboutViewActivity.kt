@@ -1,5 +1,7 @@
 package com.team1.volunteerapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -44,6 +46,7 @@ class AboutViewActivity : AppCompatActivity() {
         val volunteerTitle: TextView = findViewById(R.id.volunteerTitle)
         val volunteerDetail: TextView = findViewById(R.id.voluteerDetail)
         val applyButton: AppCompatButton = findViewById(R.id.applyButton)
+        val callButton: AppCompatButton = findViewById(R.id.callButton)
         val favoriteButton = findViewById<Button>(R.id.favoriteBtn)
 
         var vol_detail: String? = null
@@ -132,6 +135,13 @@ class AboutViewActivity : AppCompatActivity() {
                         }
                     }
                 }
+        }
+
+        callButton.setOnClickListener {
+            var intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:${vol_telnum}")
+            startActivity(intent)
+
         }
 
         // 봉사번호를 즐겨찾기에 추가하기
