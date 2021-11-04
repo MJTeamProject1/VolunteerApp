@@ -68,7 +68,8 @@
         android:id="@+id/mRecyclerViewProfile"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="65dp"
         android:background="@drawable/edge"
         app:layout_constraintBottom_toBottomOf="parent"

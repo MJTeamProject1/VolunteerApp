@@ -44,7 +44,7 @@ class ProfileActivity : AppCompatActivity() {
             @SuppressLint("NewApi")
             override fun onHidden(fab: FloatingActionButton?) {
                 super.onHidden(fab)
-                fab?.show()
+//                fab?.show()
             }
         }
     private lateinit var pieChart: PieChart
@@ -109,11 +109,11 @@ class ProfileActivity : AppCompatActivity() {
         homeButton.setOnClickListener { // 홈으로 돌아가기
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("sido",sido)
-                intent.putExtra("gugun",gugun)
-                finishAffinity()
-                startActivity(intent)
+//                val intent = Intent(this, HomeActivity::class.java)
+//                intent.putExtra("sido",sido)
+//                intent.putExtra("gugun",gugun)
+//                finishAffinity()
+//                startActivity(intent)
                 finish()
             }, 150)
         }
