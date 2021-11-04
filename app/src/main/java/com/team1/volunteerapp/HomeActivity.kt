@@ -135,9 +135,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         //ViewPager연결
-        val viewPager = findViewById<ViewPager2>(R.id.adPager)
-        viewPager.adapter = ViewPagerAdapter(getBannerList())
-        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+//        val viewPager = findViewById<ViewPager2>(R.id.adPager)
+//        viewPager.adapter = ViewPagerAdapter(getBannerList())
+//        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         //RecyclerView Adapter 연결
         val home_rv = findViewById<RecyclerView>(R.id.mRecyclerViewHome)
