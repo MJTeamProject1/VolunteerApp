@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,13 +10,14 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <include layout="@layout/content_home" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="@color/maincolor2"
         app:fabAlignmentMode="center"
-        >
+        app:navigationIcon="@drawable/baseline_menu_white_24dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -28,6 +28,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_forum_24"
-        app:layout_anchor="@id/bar" />
+        app:layout_anchor="@id/bottomAppBar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

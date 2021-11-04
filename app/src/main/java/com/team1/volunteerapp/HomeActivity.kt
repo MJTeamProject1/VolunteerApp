@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -21,6 +24,7 @@ import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,6 +56,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        setSupportActionBar(bottomAppBar)
 
         auth = Firebase.auth
 
@@ -230,5 +235,24 @@ class HomeActivity : AppCompatActivity() {
         if(System.currentTimeMillis() - mBackWait >= 1500){ mBackWait = System.currentTimeMillis()
             Toast.makeText(this,"'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",Toast.LENGTH_LONG).show()
         } else { finish() }
+    }
+
+
+
+    // 화면 아래 메뉴 바
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> BottomNavDrawerFragment().show(supportFragmentManager,
+                BottomNavDrawerFragment().tag)
+            R.id.app_bar_fav -> Log.d("abc","Fav menu item is clicked!")
+            R.id.app_bar_search ->  Log.d("abc","Search menu item is clicked!")
+            R.id.app_bar_settings ->  Log.d("abc","Settings item is clicked!")
+        }
+        return true
     }
 }
