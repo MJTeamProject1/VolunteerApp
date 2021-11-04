@@ -23,7 +23,7 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
 
-class FavoriteRVAdapter (val items : MutableList<String>, val keyList :ArrayList<String>) : RecyclerView.Adapter<FavoriteRVAdapter.ViewHolder>(){
+class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter<FavoriteRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view1 = LayoutInflater.from(parent.context).inflate(R.layout.favorite_rv_item, parent, false)
 
@@ -37,7 +37,7 @@ class FavoriteRVAdapter (val items : MutableList<String>, val keyList :ArrayList
                 itemClick?.onClick(v, position)
             }
         }
-        holder.bindItems(items[position], keyList[position])
+        holder.bindItems(items[position])
     }
 
     override fun getItemCount(): Int {
@@ -51,16 +51,16 @@ class FavoriteRVAdapter (val items : MutableList<String>, val keyList :ArrayList
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         @RequiresApi(Build.VERSION_CODES.N)
-        fun bindItems(item : String, key : String){
+        fun bindItems(item : String){
 
             val del = itemView.findViewById<ImageView>(R.id.delBtn)
             del.setOnClickListener{
-                Log.d("---------------" , key)
-                if(keyList.contains(key)){
+                Log.d("---------------" , item)
+                if(items.contains(item)){
                     //즐겨찾기 삭제
                     FBRef.favoriteRef
                         .child(FBAuth.getUid())
-                        .child(key)
+                        .child(item)
                         .removeValue()
                 }
             }

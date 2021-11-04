@@ -30,7 +30,7 @@ class FavoritesActivity : AppCompatActivity() {
         //RecyclerView Adapter 연결
         val favorite_rv = findViewById<RecyclerView>(R.id.mRecyclerViewFavorite)
 
-        favorite_rvAdapter = FavoriteRVAdapter(favorite_items, itemkeyList)
+        favorite_rvAdapter = FavoriteRVAdapter(favorite_items)
 
         favorite_rv.adapter = favorite_rvAdapter
         favorite_rv.layoutManager = LinearLayoutManager(this)
@@ -64,7 +64,6 @@ class FavoritesActivity : AppCompatActivity() {
 
                 for(dataModel in snapshot.children){
                     favorite_items.add(dataModel.key.toString())
-                    itemkeyList.add(dataModel.key.toString())
                 }
                 favorite_rvAdapter.notifyDataSetChanged()
             }
