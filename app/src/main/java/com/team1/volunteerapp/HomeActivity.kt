@@ -51,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
             @SuppressLint("NewApi")
             override fun onHidden(fab: FloatingActionButton?) {
                 super.onHidden(fab)
-                fab?.show()
+//                fab?.show()
             }
         }
     private lateinit var auth: FirebaseAuth
@@ -190,6 +190,14 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
+    }
+
     override fun onResume() {
         super.onResume()
         println("onresume 호출되었다")
@@ -263,4 +271,5 @@ class HomeActivity : AppCompatActivity() {
         }
         return true
     }
+
 }
