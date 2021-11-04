@@ -18,7 +18,6 @@
             android:id="@+id/profileInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/edge"
             android:gravity="center"
             android:text="프로필 정보"
             android:textSize="30sp"
