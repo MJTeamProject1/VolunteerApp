@@ -1,9 +1,13 @@
 package com.team1.volunteerapp.Profile
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
+import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -19,13 +23,30 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
+import com.team1.volunteerapp.BottomNavDrawerFragment
+import com.team1.volunteerapp.Community.CommActivity
+import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import kotlinx.android.synthetic.main.activity_home.*
 
 class ProfileActivity : AppCompatActivity() {
+    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
+        object : FloatingActionButton.OnVisibilityChangedListener() {
+            override fun onShown(fab: FloatingActionButton?) {
+                super.onShown(fab)
+            }
+
+            @SuppressLint("NewApi")
+            override fun onHidden(fab: FloatingActionButton?) {
+                super.onHidden(fab)
+                fab?.show()
+            }
+        }
     private lateinit var pieChart: PieChart
     var voltime :String? = null
     var voltitle : String? = null
@@ -37,8 +58,9 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        val homeButton = findViewById<ImageButton>(R.id.homeButton)
-        val profileButton = findViewById<ImageButton>(R.id.profileButton)
+        setSupportActionBar(bottomAppBar)
+
+        val homeButton = findViewById<FloatingActionButton>(R.id.fab)
         val profileInfo = findViewById<TextView>(R.id.profileInfo)
 
         sido = intent.getStringExtra("sido")
@@ -71,7 +93,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
 
-
         //RecyclerView Adapter 연결
         val profile_rv = findViewById<RecyclerView>(R.id.mRecyclerViewProfile)
         val profile_rvAdapter = ProfileRVAdapter(items)
@@ -85,45 +106,17 @@ class ProfileActivity : AppCompatActivity() {
 
         profile_rv.addItemDecoration(dividerItemDecoration)
 
-        //RecyclerView item을 클릭 시
-//        profile_rvAdapter.itemClick = object : HomeRVAdapter.ItemClick {
-//            override fun onClick(view: View, position: Int) {
-//                Toast.makeText(baseContext, items[position], Toast.LENGTH_LONG).show()
-//            }
-//
-//        }
-
         homeButton.setOnClickListener { // 홈으로 돌아가기
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("sido",sido)
-            intent.putExtra("gugun",gugun)
-            finishAffinity()
-            startActivity(intent)
-            finish()
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("sido",sido)
+                intent.putExtra("gugun",gugun)
+                finishAffinity()
+                startActivity(intent)
+                finish()
+            }, 150)
         }
-
-        profileButton.setOnClickListener { // 프로필 버튼 클릭시 로그아웃 팝업창
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("로그아웃")
-            builder.setMessage("정말로 로그아웃 하시겠습니까?")
-            builder.setNegativeButton("취소",
-                { dialogInterface: DialogInterface?, i: Int ->
-                    //아무런 동작도 하지 않음
-                }
-            )
-            builder.setPositiveButton("확인",
-                { dialogInterface: DialogInterface?, i: Int ->
-                    Firebase.auth.signOut()
-                    val intent = Intent(this, IntroActivity::class.java)
-                    finishAffinity()
-                    startActivity(intent)
-                    finish()
-                    Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-                }
-            )
-            builder.show()
-        }
-
     }
 
 
@@ -194,4 +187,33 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
+    //bottom bar
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("로그아웃")
+                builder.setMessage("정말로 로그아웃 하시겠습니까?")
+                builder.setNegativeButton("취소",
+                    { dialogInterface: DialogInterface?, i: Int ->
+                        //아무런 동작도 하지 않음
+                    }
+                )
+                builder.setPositiveButton("확인",
+                    { dialogInterface: DialogInterface?, i: Int ->
+                        Firebase.auth.signOut()
+                        val intent = Intent(this, IntroActivity::class.java)
+                        finishAffinity()
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                )
+                builder.show()
+                }
+            }
+
+        return true
+    }
 }
