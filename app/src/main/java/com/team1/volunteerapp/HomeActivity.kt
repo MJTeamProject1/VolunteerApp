@@ -164,24 +164,24 @@ class HomeActivity : AppCompatActivity() {
 //            startActivity(intent)
 //        }
 
-        val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
-        testProfileBtn.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            if(vol_time == null){
-                vol_time = ""
-            }
-            if(vol_title == null){
-                vol_title = ""
-            }
-            intent.putExtra("sido",sido)
-            intent.putExtra("gugun",gugun)
-            intent.putExtra("time", vol_time.toString())
-            intent.putExtra("title", vol_title)
-            intent.putExtra("goaltime", vol_goaltime)
-            intent.putExtra("nickname", vol_user)
-            startActivity(intent)
-
-        }
+//        val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
+//        testProfileBtn.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            if(vol_time == null){
+//                vol_time = ""
+//            }
+//            if(vol_title == null){
+//                vol_title = ""
+//            }
+//            intent.putExtra("sido",sido)
+//            intent.putExtra("gugun",gugun)
+//            intent.putExtra("time", vol_time.toString())
+//            intent.putExtra("title", vol_title)
+//            intent.putExtra("goaltime", vol_goaltime)
+//            intent.putExtra("nickname", vol_user)
+//            startActivity(intent)
+//
+//        }
 
         val testCommunityBtn = findViewById<FloatingActionButton>(R.id.commbtn)
         testCommunityBtn.setOnClickListener {
@@ -191,11 +191,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val testFavoriteBtn = findViewById<ImageButton>(R.id.favoriteBtn_main)
-        testFavoriteBtn.setOnClickListener {
-            val intent = Intent(this, FavoritesActivity::class.java)
-            startActivity(intent)
-        }
+//        val testFavoriteBtn = findViewById<ImageButton>(R.id.favoriteBtn_main)
+//        testFavoriteBtn.setOnClickListener {
+//            val intent = Intent(this, FavoritesActivity::class.java)
+//            startActivity(intent)
+//        }
 
 
     }
@@ -249,9 +249,27 @@ class HomeActivity : AppCompatActivity() {
         when (item?.itemId) {
             android.R.id.home -> BottomNavDrawerFragment().show(supportFragmentManager,
                 BottomNavDrawerFragment().tag)
-            R.id.app_bar_fav -> Log.d("abc","Fav menu item is clicked!")
-            R.id.app_bar_search ->  Log.d("abc","Search menu item is clicked!")
-            R.id.app_bar_settings ->  Log.d("abc","Settings item is clicked!")
+            R.id.app_bar_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                if(vol_time == null){
+                    vol_time = ""
+                }
+                if(vol_title == null){
+                    vol_title = ""
+                }
+                intent.putExtra("sido",sido)
+                intent.putExtra("gugun",gugun)
+                intent.putExtra("time", vol_time.toString())
+                intent.putExtra("title", vol_title)
+                intent.putExtra("goaltime", vol_goaltime)
+                intent.putExtra("nickname", vol_user)
+                startActivity(intent)
+
+            }
+            R.id.app_bar_fav -> {
+                val intent = Intent(this, FavoritesActivity::class.java)
+                startActivity(intent)
+            }
         }
         return true
     }

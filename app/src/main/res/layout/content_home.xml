@@ -14,20 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/favoriteBtn_main"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/favoriteicon"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.991"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"></ImageButton>
 
         <TextView
             android:id="@+id/textView2"
@@ -40,29 +26,11 @@
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"></TextView>
 
-        <ImageButton
-            android:id="@+id/mProfileBtn"
-            android:src="@drawable/profileicon"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintEnd_toStartOf="@+id/favoriteBtn_main"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-        </ImageButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
