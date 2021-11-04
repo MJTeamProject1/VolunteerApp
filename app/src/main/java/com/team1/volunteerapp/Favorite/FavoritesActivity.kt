@@ -3,7 +3,9 @@ package com.team1.volunteerapp.Favorite
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +20,7 @@ import com.team1.volunteerapp.utils.FBRef
 
 class FavoritesActivity : AppCompatActivity() {
     val favorite_items = mutableListOf<String>()
+    val itemkeyList = ArrayList<String>()
 
     lateinit var favorite_rvAdapter : FavoriteRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +30,7 @@ class FavoritesActivity : AppCompatActivity() {
         //RecyclerView Adapter 연결
         val favorite_rv = findViewById<RecyclerView>(R.id.mRecyclerViewFavorite)
 
-        favorite_rvAdapter = FavoriteRVAdapter(favorite_items)
+        favorite_rvAdapter = FavoriteRVAdapter(favorite_items, itemkeyList)
 
         favorite_rv.adapter = favorite_rvAdapter
         favorite_rv.layoutManager = LinearLayoutManager(this)
@@ -38,7 +41,11 @@ class FavoritesActivity : AppCompatActivity() {
 
         favorite_rv.addItemDecoration(dividerItemDecoration)
 
+
+
+
         //realtimeDB에서 즐겨찾기된 부분 가져오기
+        itemkeyList.clear()
         getfavoriteData()
 
         favorite_rvAdapter.itemClick = object : FavoriteRVAdapter.ItemClick{
@@ -47,16 +54,18 @@ class FavoritesActivity : AppCompatActivity() {
                 Toast.makeText(baseContext,"testmessage",Toast.LENGTH_LONG).show()
             }
         }
+
     }
 
-    private fun getfavoriteData(){
 
+    private fun getfavoriteData(){
         val postListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 for(dataModel in snapshot.children){
                     favorite_items.add(dataModel.key.toString())
+                    itemkeyList.add(dataModel.key.toString())
                 }
-                println("---------------" + favorite_items.toString())
                 favorite_rvAdapter.notifyDataSetChanged()
             }
 
@@ -67,6 +76,5 @@ class FavoritesActivity : AppCompatActivity() {
         }
         //key 값만 가져옴
         FBRef.favoriteRef.child(FBAuth.getUid()).addValueEventListener(postListener)
-
     }
 }

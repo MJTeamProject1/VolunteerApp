@@ -1,13 +1,18 @@
 package com.team1.volunteerapp.Favorite
 
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.FBAuth
+import com.team1.volunteerapp.utils.FBRef
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,7 +23,7 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
 
-class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter<FavoriteRVAdapter.ViewHolder>(){
+class FavoriteRVAdapter (val items : MutableList<String>, val keyList :ArrayList<String>) : RecyclerView.Adapter<FavoriteRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view1 = LayoutInflater.from(parent.context).inflate(R.layout.favorite_rv_item, parent, false)
 
@@ -32,7 +37,7 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
                 itemClick?.onClick(v, position)
             }
         }
-        holder.bindItems(items[position])
+        holder.bindItems(items[position], keyList[position])
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +51,20 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         @RequiresApi(Build.VERSION_CODES.N)
-        fun bindItems(item : String){
+        fun bindItems(item : String, key : String){
+
+            val del = itemView.findViewById<ImageView>(R.id.delBtn)
+            del.setOnClickListener{
+                Log.d("---------------" , key)
+                if(keyList.contains(key)){
+                    //즐겨찾기 삭제
+                    FBRef.favoriteRef
+                        .child(FBAuth.getUid())
+                        .child(key)
+                        .removeValue()
+                }
+            }
+
             // Coroutine을 이용한 API 불러오기
             val job = CoroutineScope(Dispatchers.IO).launch {
 
@@ -100,6 +118,9 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
                 job.join() //suspend에서만 작동하기때문에 runblocking안에 넣는다
                 //join() 함수가 끝날때까지 runblocking이 지속
             }
+
+
+
         }
     }
 }
