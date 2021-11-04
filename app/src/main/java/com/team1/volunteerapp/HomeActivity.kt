@@ -1,9 +1,11 @@
 package com.team1.volunteerapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -15,12 +17,14 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
@@ -37,6 +41,19 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 
 class HomeActivity : AppCompatActivity() {
+
+    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
+        object : FloatingActionButton.OnVisibilityChangedListener() {
+            override fun onShown(fab: FloatingActionButton?) {
+                super.onShown(fab)
+            }
+
+            @SuppressLint("NewApi")
+            override fun onHidden(fab: FloatingActionButton?) {
+                super.onHidden(fab)
+                fab?.show()
+            }
+        }
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
     var vol_time: String? = null
@@ -158,44 +175,17 @@ class HomeActivity : AppCompatActivity() {
         }*/
 
 
-//        val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
-//        testAboutViewBtn.setOnClickListener {
-//            val intent = Intent(this, AboutViewActivity::class.java)
-//            startActivity(intent)
-//        }
-
-//        val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
-//        testProfileBtn.setOnClickListener {
-//            val intent = Intent(this, ProfileActivity::class.java)
-//            if(vol_time == null){
-//                vol_time = ""
-//            }
-//            if(vol_title == null){
-//                vol_title = ""
-//            }
-//            intent.putExtra("sido",sido)
-//            intent.putExtra("gugun",gugun)
-//            intent.putExtra("time", vol_time.toString())
-//            intent.putExtra("title", vol_title)
-//            intent.putExtra("goaltime", vol_goaltime)
-//            intent.putExtra("nickname", vol_user)
-//            startActivity(intent)
-//
-//        }
-
-        val testCommunityBtn = findViewById<FloatingActionButton>(R.id.commbtn)
+        // 커뮤니티 버튼
+        val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
         testCommunityBtn.setOnClickListener {
-            val intent = Intent(this, CommActivity::class.java)
-            intent.putExtra("sido",sido)
-            intent.putExtra("gugun",gugun)
-            startActivity(intent)
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                val intent = Intent(this, CommActivity::class.java)
+                intent.putExtra("sido",sido)
+                intent.putExtra("gugun",gugun)
+                startActivity(intent)
+            }, 150)
         }
-
-//        val testFavoriteBtn = findViewById<ImageButton>(R.id.favoriteBtn_main)
-//        testFavoriteBtn.setOnClickListener {
-//            val intent = Intent(this, FavoritesActivity::class.java)
-//            startActivity(intent)
-//        }
 
 
     }

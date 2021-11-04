@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:fontFamily="@font/sd7"
             android:gravity="center"
             android:text="우리 동네 봉사활동"
@@ -37,7 +37,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
@@ -56,14 +56,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1" />
-
-<!--            <androidx.viewpager2.widget.ViewPager2-->
-<!--                android:id="@+id/adPager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="4" />-->
-
-
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
