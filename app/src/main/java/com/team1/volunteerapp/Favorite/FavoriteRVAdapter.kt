@@ -40,6 +40,8 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
         holder.bindItems(items[position])
     }
 
+
+
     override fun getItemCount(): Int {
         return items.size
     }

@@ -4,14 +4,14 @@
         <item
             android:id="@+id/nav1"
             android:icon="@drawable/profileicon"
-            android:title="nav_item1" />
+            android:title="프로필 정보 수정" />
         <item
             android:id="@+id/nav2"
-            android:icon="@drawable/ic_baseline_comment_24"
-            android:title="nav_item2" />
+            android:icon="@drawable/baseline_web_black_48"
+            android:title="1365 홈페이지 이동" />
         <item
             android:id="@+id/nav3"
-            android:icon="@drawable/ic_baseline_forum_24"
-            android:title="nav_item3" />
+            android:icon="@drawable/baseline_attach_email_black_48"
+            android:title="개발자 Email 보내기" />
     </group>
 </menu>
