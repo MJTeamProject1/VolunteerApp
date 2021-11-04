@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -152,11 +153,11 @@ class HomeActivity : AppCompatActivity() {
         }*/
 
 
-        val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
-        testAboutViewBtn.setOnClickListener {
-            val intent = Intent(this, AboutViewActivity::class.java)
-            startActivity(intent)
-        }
+//        val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
+//        testAboutViewBtn.setOnClickListener {
+//            val intent = Intent(this, AboutViewActivity::class.java)
+//            startActivity(intent)
+//        }
 
         val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
         testProfileBtn.setOnClickListener {
@@ -177,7 +178,7 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
-        val testCommunityBtn = findViewById<Button>(R.id.commbtn)
+        val testCommunityBtn = findViewById<FloatingActionButton>(R.id.commbtn)
         testCommunityBtn.setOnClickListener {
             val intent = Intent(this, CommActivity::class.java)
             intent.putExtra("sido",sido)
