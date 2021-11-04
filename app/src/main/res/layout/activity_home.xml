@@ -18,6 +18,10 @@
             android:id="@+id/favoriteBtn_main"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:src="@drawable/favoriteicon"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.991"
@@ -43,6 +47,10 @@
 
         <ImageButton
             android:id="@+id/mProfileBtn"
+            android:src="@drawable/profileicon"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"

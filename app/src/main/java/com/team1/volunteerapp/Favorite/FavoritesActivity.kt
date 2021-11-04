@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +31,12 @@ class FavoritesActivity : AppCompatActivity() {
 
         favorite_rv.adapter = favorite_rvAdapter
         favorite_rv.layoutManager = LinearLayoutManager(this)
+
+        //구분선 넣기
+        val dividerItemDecoration =
+            DividerItemDecoration(favorite_rv.context, LinearLayoutManager(this).orientation)
+
+        favorite_rv.addItemDecoration(dividerItemDecoration)
 
         //realtimeDB에서 즐겨찾기된 부분 가져오기
         getfavoriteData()
