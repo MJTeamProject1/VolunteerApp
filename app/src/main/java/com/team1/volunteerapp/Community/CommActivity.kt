@@ -7,12 +7,12 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
 
@@ -20,26 +20,34 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var sido : String? = null
     var gugun : String? = null
+//    private lateinit var dbref : DatabaseReference
+//    private lateinit var userRecyclerView: RecyclerView
+//    private lateinit var userArrayList: ArrayList<CUser>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
 
+
+
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
 
+//        userArrayList = arrayListOf<CUser>()
+//        getUserData()
+
         val CommList = arrayListOf(
-            CUser("그룹1", 1, "안녕하세요"),
-            CUser("그룹2", 2, "안녕하세요"),
-            CUser("그룹3", 3, "안녕하세요"),
-            CUser("그룹4", 4, "안녕하세요"),
-            CUser("그룹5", 5, "안녕하세요")
+            CUser("제목1",  "이름1", "내용1"),
+            CUser("제목2",  "이름2", "내용1"),
+            CUser("제목3",  "이름3", "내용1"),
+            CUser("제목4",  "이름4", "내용1"),
+            CUser("제목5",  "이름5", "내용1")
         )
         val Comm_rv = findViewById<RecyclerView>(R.id.rvComm)
-        val Comm_rvAdapter = CommAdapter(CommList)
-
         Comm_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         Comm_rv.setHasFixedSize(true)
+
+        val Comm_rvAdapter = CommAdapter(CommList)
         Comm_rv.adapter = Comm_rvAdapter
 
         val btnNaviComm = findViewById<ImageView>(R.id.btnNaviComm)
@@ -69,6 +77,31 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+//    private fun getUserData() {
+//        dbref = FirebaseDatabase.getInstance().getReference("Community_list")
+//
+//        dbref.addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                if(snapshot.exists()){
+//                    for(userSnapshot in snapshot.children) {
+//
+//                        val user = userSnapshot.getValue(CUser::class.java)
+//                        userArrayList.add(user!!)
+//
+//                    }
+//                    userRecyclerView.adapter = CommAdapter(userArrayList)
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+//            }
+//
+//        })
+//
+//    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentc = Intent(this, CommActivity::class.java)
         val intentr = Intent(this, ReviewActivity::class.java)
@@ -78,7 +111,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.community -> startActivity(intentc)
             R.id.review -> startActivity(intentr)
         }
-
+        finish()
         val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
         layoutDrawerComm.closeDrawers() //네비게이션 뷰 닫기
         return false

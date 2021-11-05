@@ -1,3 +1,3 @@
 package com.team1.volunteerapp.Community
 
-data class CUser (val name: String, val index: Int, val greet: String)
+data class CUser(var Title: String ?= null, var Nickname: String ?= null, var Contents: String ?= null)

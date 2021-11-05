@@ -11,14 +11,15 @@ class CommAdapter(val CommList: ArrayList<CUser>) : RecyclerView.Adapter<CommAda
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.community_rv_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.comm_card_rv_item, parent, false)
         return CustomViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.name.text = CommList.get(position).name
-        holder.greet.text = CommList.get(position).greet
-        holder.index.text = CommList.get(position).index.toString()
+        holder.title.text = CommList.get(position).Title
+        holder.nickname.text = CommList.get(position).Nickname
+        holder.contents.text = CommList.get(position).Contents
+
     }
 
     override fun getItemCount(): Int {
@@ -26,8 +27,9 @@ class CommAdapter(val CommList: ArrayList<CUser>) : RecyclerView.Adapter<CommAda
     }
 
     class CustomViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        val name = itemView.findViewById<TextView>(R.id.tvName)
-        val greet = itemView.findViewById<TextView>(R.id.tvGreet)
-        val index = itemView.findViewById<TextView>(R.id.tvIndex)
+        val title = itemView.findViewById<TextView>(R.id.tvTitle)
+        val nickname = itemView.findViewById<TextView>(R.id.tvNickName)
+        val contents = itemView.findViewById<TextView>(R.id.tvContents)
+
     }
 }

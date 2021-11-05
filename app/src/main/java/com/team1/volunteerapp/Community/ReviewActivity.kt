@@ -21,11 +21,11 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         setContentView(R.layout.activity_review)
 
         val CommList = arrayListOf(
-            CUser("그룹1", 1, "안녕하세요"),
-            CUser("그룹2", 2, "안녕하세요"),
-            CUser("그룹3", 3, "안녕하세요"),
-            CUser("그룹4", 4, "안녕하세요"),
-            CUser("그룹5", 5, "안녕하세요")
+            CUser("제목1",  "이름1", "내용1"),
+            CUser("제목2",  "이름2", "내용1"),
+            CUser("제목3",  "이름3", "내용1"),
+            CUser("제목4",  "이름4", "내용1"),
+            CUser("제목5",  "이름5", "내용1")
         )
         val Rev_rv = findViewById<RecyclerView>(R.id.rvReview)
         val Rev_rvAdapter = CommAdapter(CommList)
@@ -76,6 +76,7 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onBackPressed() {
+
 
         val layoutDrawerRev = findViewById<DrawerLayout>(R.id.layout_drawer_review)
         if(layoutDrawerRev.isDrawerOpen(GravityCompat.START)){

@@ -23,7 +23,7 @@
         android:layout_width="63dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:text="내용"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
