@@ -1,13 +1,19 @@
 package com.team1.volunteerapp.Favorite
 
+import android.content.Intent
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.FBAuth
+import com.team1.volunteerapp.utils.FBRef
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +29,7 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
         val view1 = LayoutInflater.from(parent.context).inflate(R.layout.favorite_rv_item, parent, false)
 
         return ViewHolder(view1)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -33,10 +40,18 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
             }
         }
         holder.bindItems(items[position])
+
     }
+
+
 
     override fun getItemCount(): Int {
         return items.size
+        notifyDataSetChanged()
+    }
+
+    fun refresh(){
+        notifyDataSetChanged()
     }
 
     interface ItemClick{
@@ -47,6 +62,21 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         @RequiresApi(Build.VERSION_CODES.N)
         fun bindItems(item : String){
+
+            val del = itemView.findViewById<ImageView>(R.id.delBtn)
+            del.setOnClickListener{
+                Log.d("---------------" , item)
+                if(items.contains(item)){
+                    //즐겨찾기 삭제
+                    FBRef.favoriteRef
+                        .child(FBAuth.getUid())
+                        .child(item)
+                        .removeValue()
+                    items.clear()
+                    notifyDataSetChanged()
+                }
+            }
+
             // Coroutine을 이용한 API 불러오기
             val job = CoroutineScope(Dispatchers.IO).launch {
 
@@ -100,6 +130,9 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
                 job.join() //suspend에서만 작동하기때문에 runblocking안에 넣는다
                 //join() 함수가 끝날때까지 runblocking이 지속
             }
+
+
+
         }
     }
 }

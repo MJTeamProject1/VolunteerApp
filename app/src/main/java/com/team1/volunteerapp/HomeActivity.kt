@@ -1,9 +1,14 @@
 package com.team1.volunteerapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -12,14 +17,18 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +41,19 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 
 class HomeActivity : AppCompatActivity() {
+
+    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
+        object : FloatingActionButton.OnVisibilityChangedListener() {
+            override fun onShown(fab: FloatingActionButton?) {
+                super.onShown(fab)
+            }
+
+            @SuppressLint("NewApi")
+            override fun onHidden(fab: FloatingActionButton?) {
+                super.onHidden(fab)
+//                fab?.show()
+            }
+        }
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
     var vol_time: String? = null
@@ -51,6 +73,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        setSupportActionBar(bottomAppBar)
 
         auth = Firebase.auth
 
@@ -129,9 +152,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         //ViewPager연결
-        val viewPager = findViewById<ViewPager2>(R.id.adPager)
-        viewPager.adapter = ViewPagerAdapter(getBannerList())
-        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+//        val viewPager = findViewById<ViewPager2>(R.id.adPager)
+//        viewPager.adapter = ViewPagerAdapter(getBannerList())
+//        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         //RecyclerView Adapter 연결
         val home_rv = findViewById<RecyclerView>(R.id.mRecyclerViewHome)
@@ -152,46 +175,27 @@ class HomeActivity : AppCompatActivity() {
         }*/
 
 
-        val testAboutViewBtn = findViewById<Button>(R.id.mAboutViewTestBtn)
-        testAboutViewBtn.setOnClickListener {
-            val intent = Intent(this, AboutViewActivity::class.java)
-            startActivity(intent)
-        }
-
-        val testProfileBtn = findViewById<ImageButton>(R.id.mProfileBtn)
-        testProfileBtn.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            if(vol_time == null){
-                vol_time = ""
-            }
-            if(vol_title == null){
-                vol_title = ""
-            }
-            intent.putExtra("sido",sido)
-            intent.putExtra("gugun",gugun)
-            intent.putExtra("time", vol_time.toString())
-            intent.putExtra("title", vol_title)
-            intent.putExtra("goaltime", vol_goaltime)
-            intent.putExtra("nickname", vol_user)
-            startActivity(intent)
-
-        }
-
-        val testCommunityBtn = findViewById<Button>(R.id.commbtn)
+        // 커뮤니티 버튼
+        val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
         testCommunityBtn.setOnClickListener {
-            val intent = Intent(this, CommActivity::class.java)
-            intent.putExtra("sido",sido)
-            intent.putExtra("gugun",gugun)
-            startActivity(intent)
-        }
-
-        val testFavoriteBtn = findViewById<ImageButton>(R.id.favoriteBtn_main)
-        testFavoriteBtn.setOnClickListener {
-            val intent = Intent(this, FavoritesActivity::class.java)
-            startActivity(intent)
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                val intent = Intent(this, CommActivity::class.java)
+                intent.putExtra("sido",sido)
+                intent.putExtra("gugun",gugun)
+                startActivity(intent)
+            }, 150)
         }
 
 
+    }
+
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
     }
 
     override fun onResume() {
@@ -230,4 +234,49 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this,"'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",Toast.LENGTH_LONG).show()
         } else { finish() }
     }
+
+
+
+    // 화면 아래 메뉴 바
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> BottomNavDrawerFragment().show(supportFragmentManager,
+                BottomNavDrawerFragment().tag)
+            R.id.app_bar_profile -> {
+                fab.hide(addVisibilityChanged)
+                val intent = Intent(this, ProfileActivity::class.java)
+                if(vol_time == null){
+                    vol_time = ""
+                }
+                if(vol_title == null){
+                    vol_title = ""
+                }
+                intent.putExtra("sido",sido)
+                intent.putExtra("gugun",gugun)
+                intent.putExtra("time", vol_time.toString())
+                intent.putExtra("title", vol_title)
+                intent.putExtra("goaltime", vol_goaltime)
+                intent.putExtra("nickname", vol_user)
+
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 300)
+
+            }
+            R.id.app_bar_fav -> {
+                fab.hide(addVisibilityChanged)
+                val intent = Intent(this, FavoritesActivity::class.java)
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 300)
+            }
+        }
+        return true
+    }
+
 }

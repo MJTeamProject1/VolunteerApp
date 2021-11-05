@@ -144,9 +144,12 @@ class AboutViewActivity : AppCompatActivity() {
 
         }
 
+
+
         // 봉사번호를 즐겨찾기에 추가하기
         favoriteButton.setOnClickListener {
             if (num != null) {
+
                 FBRef.favoriteRef
                     .child(FBAuth.getUid())
                     .child(num)
