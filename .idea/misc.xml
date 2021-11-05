@@ -3,49 +3,42 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable-v24/baseline_grade_24.xml" value="0.5651041666666666" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/button_background.xml" value="0.33697916666666666" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/edge.xml" value="0.561025641025641" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/radius.xml" value="0.3203125" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/font/font.xml" value="0.3296875" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.2536231884057971" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.33" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_api.xml" value="0.24037487335359675" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm.xml" value="0.32708333333333334" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.378125" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_favorites.xml" value="0.3765625" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.33" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_intro.xml" value="0.307518115942029" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.33" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_loading.xml" value="0.33229166666666665" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_loding.xml" value="0.24037487335359675" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_login.xml" value="0.30344202898550726" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.2536231884057971" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.2536231884057971" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.253125" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.3845108695652174" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/arrays.xml" value="0.32083333333333336" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.3765625" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/community_rv_item.xml" value="0.3765625" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.3765625" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.67" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.2536231884057971" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navi_menu.xml" value="0.378125" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.1296875" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.264" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_favorites.xml" value="0.12604166666666666" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.1296875" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_review.xml" value="0.2" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_comm.xml" value="0.264" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_review.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.12604166666666666" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/comm_card_rv_item.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/community_rv_item.xml" value="0.264" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_bottom_nav_drawer.xml" value="0.1296875" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.1296875" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.1296875" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navi_menu.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/gray_ellipse.xml" value="0.209375" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.196875" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.17502532928064843" />
-        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.196875" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.196875" />
-        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_login.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.196875" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.17502532928064843" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.196875" />
-        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_review.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.19322916666666667" />
-        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/community_rv_item.xml" value="0.35989583333333336" />
-        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_pager.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.196875" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.35989583333333336" />
@@ -63,7 +56,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
