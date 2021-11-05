@@ -12,18 +12,25 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.3845108695652174" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.2536231884057971" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.1296875" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm_info.xml" value="0.176" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.264" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_favorites.xml" value="0.12604166666666666" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.1296875" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_rev_info.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_review.xml" value="0.2" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_setting.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_comm.xml" value="0.264" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_review.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.12604166666666666" />
-        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/comm_card_rv_item.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/comm_card_rv_item.xml" value="0.2" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/community_rv_item.xml" value="0.264" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.12239583333333333" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_profile.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_bottom_nav_drawer.xml" value="0.1296875" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.1296875" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.1296875" />

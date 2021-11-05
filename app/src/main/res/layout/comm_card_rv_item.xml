@@ -39,12 +39,14 @@
 
         <TextView
             android:id="@+id/tvContents"
-            android:layout_width="276dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="263dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="내용"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvTitle"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

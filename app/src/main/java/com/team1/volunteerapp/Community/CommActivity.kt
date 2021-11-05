@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +25,9 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var sido : String? = null
     var gugun : String? = null
-    private lateinit var userRecyclerView: RecyclerView
+//    private lateinit var userRecyclerView: RecyclerView
+
+
     val userArrayList = arrayListOf<CUser>()
     lateinit var Comm_rvAdapter : CommAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +47,8 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // DB에서 데이터 받아오기기
        getUserData()
+
+
 
         val btnNaviComm = findViewById<ImageView>(R.id.btnNaviComm)
         val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
@@ -70,6 +75,12 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
         }
 
+
+
+
+
+
+
     }
 
     var dbref = FirebaseDatabase.getInstance().getReference("Community_list")
@@ -91,6 +102,21 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         //key 값만 가져옴
         dbref.addValueEventListener(postListener)
+        //추가
+        Comm_rvAdapter.setonItemClickListener(object : CommAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+//                Toast.makeText(this@CommActivity,"2",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@CommActivity, InfoActivity::class.java)
+                intent.putExtra("maketitle", userArrayList[position].Title)
+                intent.putExtra("makenick", userArrayList[position].Nickname)
+                intent.putExtra("makecont", userArrayList[position].Contents)
+                startActivity(intent)
+
+            }
+
+        })
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
@@ -103,6 +129,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.review -> startActivity(intentr)
         }
         finish()
+
         val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
         layoutDrawerComm.closeDrawers() //네비게이션 뷰 닫기
         return false

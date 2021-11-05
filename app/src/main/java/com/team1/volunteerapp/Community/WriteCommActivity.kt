@@ -30,7 +30,6 @@ class WriteCommActivity : AppCompatActivity() {
         binding.btnCommOpinion.setOnClickListener {
 
             val c_title = binding.editTextCommTitle.text.toString()
-//            val usernickname = usernickname.toString()//닉네임관련
             val c_contents = binding.editTextCommContents.text.toString()
             val c_nickname = binding.editTextCommNick.text.toString()
 
@@ -39,9 +38,9 @@ class WriteCommActivity : AppCompatActivity() {
             if(c_title.isEmpty()){
                 Toast.makeText(this,"제목을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
             }
-//            else if(c_nickname.isEmpty()) {
-//                Toast.makeText(this, "닉네임을 입력하지 않았습니다", Toast.LENGTH_SHORT).show()
-//            }
+            else if(c_nickname.isEmpty()) {
+                Toast.makeText(this, "닉네임을 입력하지 않았습니다", Toast.LENGTH_SHORT).show()
+            }
             else if(c_contents.isEmpty()){
                 Toast.makeText(this,"내용을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
             }

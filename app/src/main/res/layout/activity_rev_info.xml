@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvInfoTitleRev"
+        android:layout_width="108dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:text="봉사이름"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInfoNickRev"
+        android:layout_width="108dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:text="별명"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoTitleRev" />
+
+    <TextView
+        android:id="@+id/tvInfoContRev"
+        android:layout_width="108dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:text="내용"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoNickRev" />
+
+    <TextView
+        android:id="@+id/tvInfoMakeTitleRev"
+        android:layout_width="234dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:text="입력받은 제목"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvInfoTitleRev"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInfoMakeNickRev"
+        android:layout_width="234dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:text="입력받은 별명"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvInfoNickRev"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoMakeTitleRev" />
+
+    <TextView
+        android:id="@+id/tvInfoMakeContRev"
+        android:layout_width="376dp"
+        android:layout_height="393dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scrollbars="vertical"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoContRev"
+        tools:text="입력받은 내용" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
