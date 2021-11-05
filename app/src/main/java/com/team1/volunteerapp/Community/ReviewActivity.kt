@@ -1,17 +1,22 @@
 package com.team1.volunteerapp.Community
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,18 +24,33 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import kotlinx.android.synthetic.main.activity_home.*
 
 class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
+        object : FloatingActionButton.OnVisibilityChangedListener() {
+            override fun onShown(fab: FloatingActionButton?) {
+                super.onShown(fab)
+            }
+
+            @SuppressLint("NewApi")
+            override fun onHidden(fab: FloatingActionButton?) {
+                super.onHidden(fab)
+//                fab?.show()
+            }
+        }
+
     var sido : String? = null
     var gugun : String? = null
-
+    var setDrawr = false
     val userArrayList = arrayListOf<CUser>()
     lateinit var Rev_rvAdapter : CommAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
+        setSupportActionBar(bottomAppBar)
 
 //        val CommList = arrayListOf(
 //            CUser("제목1",  "이름1", "내용1"),
@@ -51,25 +71,18 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         getUserData()
 
-        val btnNaviReview = findViewById<ImageView>(R.id.btnNaviRev)
-        val layoutDrawerRev = findViewById<DrawerLayout>(R.id.layout_drawer_review)
-        btnNaviReview.setOnClickListener {
-            layoutDrawerRev.openDrawer(GravityCompat.START)
-        }
-
         val naviViewRev = findViewById<NavigationView>(R.id.naviViewRev)
         naviViewRev.setNavigationItemSelectedListener(this)
 
-        val homeRevButton = findViewById<ImageButton>(R.id.homeButtonRev)
-        homeRevButton.setOnClickListener { // 홈으로 돌아가기
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
-
-        val btnWriteReview = findViewById<Button>(R.id.btnWriteReview)
+        // 글쓰기 부분
+        val btnWriteReview = findViewById<FloatingActionButton>(R.id.fab)
         btnWriteReview.setOnClickListener {
-            val intent = Intent(this, WriteReviewActivity::class.java)
-            startActivity(intent)
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                val intent = Intent(this, WriteReviewActivity::class.java)
+                startActivity(intent)
+            }, 300)
+
         }
 
     }
@@ -111,14 +124,20 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentc = Intent(this, CommActivity::class.java)
-        val intentr = Intent(this, ReviewActivity::class.java)
 
         when(item.itemId)
         {
-            R.id.community -> startActivity(intentc)
-            R.id.review -> startActivity(intentr)
+            R.id.community -> {
+                fab.hide(addVisibilityChanged)
+                Handler().postDelayed({
+                    startActivity(intentc)
+                    finish()
+                }, 150)
+            }
+            R.id.review -> {
+                Toast.makeText(this,"이미 후기 입니다.", Toast.LENGTH_LONG).show()
+            }
         }
-        finish()
 
         val layoutDrawerRev = findViewById<DrawerLayout>(R.id.layout_drawer_review)
         layoutDrawerRev.closeDrawers() //네비게이션 뷰 닫기
@@ -135,5 +154,40 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         else {
             super.onBackPressed()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> { // 홈으로 돌아가기
+                fab.hide(addVisibilityChanged)
+                Handler().postDelayed({
+                    finish()
+                }, 300)
+            }
+            R.id.app_bar_community_list ->{
+                val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_review)
+                if(setDrawr){
+                    layoutDrawerComm.closeDrawer(GravityCompat.START)
+                    setDrawr = false
+                }else{
+                    layoutDrawerComm.openDrawer(GravityCompat.START)
+                    setDrawr = true
+                }
+            }
+        }
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu_community, menu)
+        return true
+    }
+
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
     }
 }
