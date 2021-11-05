@@ -43,6 +43,8 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
 
     }
 
+
+
     override fun getItemCount(): Int {
         return items.size
         notifyDataSetChanged()

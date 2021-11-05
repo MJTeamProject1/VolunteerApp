@@ -1,8 +1,10 @@
 package com.team1.volunteerapp.Favorite
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -10,17 +12,31 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.team1.volunteerapp.AboutViewActivity
+import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
+import kotlinx.android.synthetic.main.activity_home.*
 
 class FavoritesActivity : AppCompatActivity() {
+    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
+        object : FloatingActionButton.OnVisibilityChangedListener() {
+            override fun onShown(fab: FloatingActionButton?) {
+                super.onShown(fab)
+            }
+
+            @SuppressLint("NewApi")
+            override fun onHidden(fab: FloatingActionButton?) {
+                super.onHidden(fab)
+//                fab?.show()
+            }
+        }
     val favorite_items = mutableListOf<String>()
-    val itemkeyList = ArrayList<String>()
 
     lateinit var favorite_rvAdapter : FavoriteRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,17 +57,27 @@ class FavoritesActivity : AppCompatActivity() {
 
         favorite_rv.addItemDecoration(dividerItemDecoration)
 
-
+        //홈으로 가기
+        val homeButton = findViewById<FloatingActionButton>(R.id.fab)
+        homeButton.setOnClickListener { // 홈으로 돌아가기
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                finish()
+            }, 150)
+        }
 
 
         //realtimeDB에서 즐겨찾기된 부분 가져오기
-        itemkeyList.clear()
+        favorite_items.clear()
         getfavoriteData()
 
         favorite_rvAdapter.itemClick = object : FavoriteRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
                 //눌렀을때 어떻게 할지
                 Toast.makeText(baseContext,"testmessage",Toast.LENGTH_LONG).show()
+                FBRef.favoriteRef
+                    .child(FBAuth.getUid())
+                    .removeValue()
             }
         }
 
