@@ -121,8 +121,8 @@ class FavoritesActivity : AppCompatActivity() {
                 BottomNavDrawerFragment().tag)
             R.id.app_bar_all_delete -> {
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("전부 삭제")
-                    builder.setMessage("정말로 전부 삭제 하시겠습니까?")
+                    builder.setTitle("모두 삭제")
+                    builder.setMessage("정말로 모두 삭제 하시겠습니까?")
                     builder.setNegativeButton("취소",
                         { dialogInterface: DialogInterface?, i: Int ->
                             //아무런 동작도 하지 않음
