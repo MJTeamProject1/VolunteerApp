@@ -23,7 +23,8 @@ class BottomNavDrawerFragment : BottomSheetDialogFragment() {
             dismiss()
             when (it.itemId) {
                 R.id.nav1 -> {
-                    //세팅 엑티비티 연결시켜야 됨
+                    val intent = Intent(getActivity(),SettingActivity::class.java)
+                    startActivity(intent)
                 }
                 R.id.nav2 -> {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.1365.go.kr/vols/main.do"))
