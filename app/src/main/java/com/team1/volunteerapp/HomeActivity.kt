@@ -248,6 +248,7 @@ class HomeActivity : AppCompatActivity() {
             android.R.id.home -> BottomNavDrawerFragment().show(supportFragmentManager,
                 BottomNavDrawerFragment().tag)
             R.id.app_bar_profile -> {
+                fab.hide(addVisibilityChanged)
                 val intent = Intent(this, ProfileActivity::class.java)
                 if(vol_time == null){
                     vol_time = ""
@@ -261,12 +262,18 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("title", vol_title)
                 intent.putExtra("goaltime", vol_goaltime)
                 intent.putExtra("nickname", vol_user)
-                startActivity(intent)
+
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 300)
 
             }
             R.id.app_bar_fav -> {
+                fab.hide(addVisibilityChanged)
                 val intent = Intent(this, FavoritesActivity::class.java)
-                startActivity(intent)
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 300)
             }
         }
         return true

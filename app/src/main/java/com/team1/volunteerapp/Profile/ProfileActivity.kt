@@ -115,7 +115,7 @@ class ProfileActivity : AppCompatActivity() {
 //                finishAffinity()
 //                startActivity(intent)
                 finish()
-            }, 150)
+            }, 300)
         }
     }
 

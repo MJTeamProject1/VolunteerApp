@@ -73,7 +73,7 @@ class FavoritesActivity : AppCompatActivity() {
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
                 finish()
-            }, 150)
+            }, 300)
         }
 
 
