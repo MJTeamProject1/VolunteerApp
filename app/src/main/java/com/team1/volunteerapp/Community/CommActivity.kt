@@ -3,6 +3,7 @@ package com.team1.volunteerapp.Community
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
@@ -13,42 +14,36 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
+import com.team1.volunteerapp.Favorite.FavoriteRVAdapter
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.FBAuth
+import com.team1.volunteerapp.utils.FBRef
 
 class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var sido : String? = null
     var gugun : String? = null
-//    private lateinit var dbref : DatabaseReference
-//    private lateinit var userRecyclerView: RecyclerView
-//    private lateinit var userArrayList: ArrayList<CUser>
-
+    private lateinit var userRecyclerView: RecyclerView
+    val userArrayList = arrayListOf<CUser>()
+    lateinit var Comm_rvAdapter : CommAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
 
-
-
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
 
-//        userArrayList = arrayListOf<CUser>()
-//        getUserData()
+        //Recycler view 연결
+        val Comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
+        Comm_rvAdapter = CommAdapter(userArrayList)
+        Comm_rv.adapter = Comm_rvAdapter
 
-        val CommList = arrayListOf(
-            CUser("제목1",  "이름1", "내용1"),
-            CUser("제목2",  "이름2", "내용1"),
-            CUser("제목3",  "이름3", "내용1"),
-            CUser("제목4",  "이름4", "내용1"),
-            CUser("제목5",  "이름5", "내용1")
-        )
-        val Comm_rv = findViewById<RecyclerView>(R.id.rvComm)
         Comm_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         Comm_rv.setHasFixedSize(true)
 
-        val Comm_rvAdapter = CommAdapter(CommList)
-        Comm_rv.adapter = Comm_rvAdapter
+        // DB에서 데이터 받아오기기
+       getUserData()
 
         val btnNaviComm = findViewById<ImageView>(R.id.btnNaviComm)
         val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
@@ -77,30 +72,26 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-//    private fun getUserData() {
-//        dbref = FirebaseDatabase.getInstance().getReference("Community_list")
-//
-//        dbref.addValueEventListener(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                if(snapshot.exists()){
-//                    for(userSnapshot in snapshot.children) {
-//
-//                        val user = userSnapshot.getValue(CUser::class.java)
-//                        userArrayList.add(user!!)
-//
-//                    }
-//                    userRecyclerView.adapter = CommAdapter(userArrayList)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
-//
-//    }
+    var dbref = FirebaseDatabase.getInstance().getReference("Community_list")
+
+    private fun getUserData(){
+        val postListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for(dataModel in snapshot.children){
+                    Log.d("cascascasac",dataModel.toString())
+                    userArrayList.add(dataModel.getValue(CUser::class.java)!!)
+                }
+                Comm_rvAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        //key 값만 가져옴
+        dbref.addValueEventListener(postListener)
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentc = Intent(this, CommActivity::class.java)
@@ -128,3 +119,5 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 }
+
+
