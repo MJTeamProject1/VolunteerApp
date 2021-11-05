@@ -1,5 +1,6 @@
 package com.team1.volunteerapp.Favorite
 
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
         val view1 = LayoutInflater.from(parent.context).inflate(R.layout.favorite_rv_item, parent, false)
 
         return ViewHolder(view1)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -38,10 +40,16 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
             }
         }
         holder.bindItems(items[position])
+
     }
 
     override fun getItemCount(): Int {
         return items.size
+        notifyDataSetChanged()
+    }
+
+    fun refresh(){
+        notifyDataSetChanged()
     }
 
     interface ItemClick{
@@ -62,6 +70,8 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
                         .child(FBAuth.getUid())
                         .child(item)
                         .removeValue()
+                    items.clear()
+                    notifyDataSetChanged()
                 }
             }
 
