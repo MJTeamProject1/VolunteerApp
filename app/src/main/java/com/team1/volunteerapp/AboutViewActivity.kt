@@ -11,6 +11,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -75,6 +76,7 @@ class AboutViewActivity : AppCompatActivity() {
         val applyButton: AppCompatButton = findViewById(R.id.applyButton)
 //        val callButton: AppCompatButton = findViewById(R.id.callButton)
 //        val favoriteButton = findViewById<Button>(R.id.favoriteBtn)
+        val voluteerImage = findViewById<ImageView>(R.id.voluteerImage)
 
         // 기본 정보
         val textprogrmSttusSe = findViewById<TextView>(R.id.textprogrmSttusSe)
@@ -213,6 +215,41 @@ class AboutViewActivity : AppCompatActivity() {
         textnanmmbyNmAdmn.setText(vol_nanmmbyNmAdmn)
         texttelno.setText(vol_telnum)
         textpostAdres.setText(vol_adress)
+
+        // 이미지 설정
+        if(vol_srvcClCode?.contains("문화") == true) {
+            voluteerImage.setImageResource(R.drawable.world_book_day)
+        }
+        else if(vol_srvcClCode?.contains("주거") == true){
+            voluteerImage.setImageResource(R.drawable.home)
+        }
+        else if(vol_srvcClCode?.contains("상담") == true){
+            voluteerImage.setImageResource(R.drawable.consulting)
+        }
+        else if(vol_srvcClCode?.contains("교육") == true){
+            voluteerImage.setImageResource(R.drawable.book)
+        }
+        else if(vol_srvcClCode?.contains("의료") == true){
+            voluteerImage.setImageResource(R.drawable.first_aid_kit)
+        }
+        else if(vol_srvcClCode?.contains("농어촌") == true){
+            voluteerImage.setImageResource(R.drawable.hill)
+        }
+        else if(vol_srvcClCode?.contains("환경") == true){
+            voluteerImage.setImageResource(R.drawable.environmental_protection)
+        }
+        else if(vol_srvcClCode?.contains("행정") == true){
+            voluteerImage.setImageResource(R.drawable.briefcase)
+        }
+        else if(vol_srvcClCode?.contains("안전") == true){
+            voluteerImage.setImageResource(R.drawable.prevention)
+        }
+        else if(vol_srvcClCode?.contains("공익") == true){
+            voluteerImage.setImageResource(R.drawable.healthcare)
+        }
+        else if(vol_srvcClCode?.contains("재난") == true){
+            voluteerImage.setImageResource(R.drawable.disaster)
+        }
 
 
         //홈으로 가기

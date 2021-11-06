@@ -39,11 +39,11 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/voluteerImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:padding="10dp"
-                        android:src="@drawable/vv"
-                        android:id="@+id/voluteerImage"/>
+                        android:src="@drawable/vv" />
 
                     <TextView
                         android:layout_width="wrap_content"
