@@ -83,12 +83,12 @@ class HomeActivity : AppCompatActivity() {
 
 
         // RecyclerView 데이터 삽입할 배열 선언
-        var stringArray = Array(20, { item -> "" })
-        var stringArray2 = Array(20, { item -> "" })
-        var stringArray3 = Array(20, { item -> "" })
-        var stringArray4 = Array(20, { item -> "" })
-        var stringArray5 = Array(20, { item -> "" })
-        var stringArray6 = Array(20, { item -> "" })
+        var stringArray = Array(10, { item -> "" })
+        var stringArray2 = Array(10, { item -> "" })
+        var stringArray3 = Array(10, { item -> "" })
+        var stringArray4 = Array(10, { item -> "" })
+        var stringArray5 = Array(10, { item -> "" })
+        var stringArray6 = Array(10, { item -> "" })
 
 
 
@@ -99,7 +99,7 @@ class HomeActivity : AppCompatActivity() {
                 "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
             var url: String =
                 //지역 정보는 현재 고정 추후 수정할 예정
-                "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrAreaList?schSido=${sido}&schSign1=${gugun}&serviceKey=$key&numOfRows=20"
+                "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrAreaList?schSido=${sido}&schSign1=${gugun}&serviceKey=$key"
 
             val xml: Document =
                 DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url)
@@ -186,7 +186,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // item에 추가
-        for (i in 0..19) {
+        for (i in 0..9) {
             var vol_area = stringArray[i]
             var vol_context = stringArray2[i]
             var vol_start = stringArray3[i]
