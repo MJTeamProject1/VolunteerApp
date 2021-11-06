@@ -22,4 +22,9 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="AboutText" parent="android:Widget.TextView">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

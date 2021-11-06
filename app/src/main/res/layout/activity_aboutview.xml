@@ -1,90 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AboutViewActivity"
-    android:layout_margin="12dp">
+    tools:context=".HomeActivity">
 
-    <LinearLayout
+    <include layout="@layout/content_aboutview" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/maincolor2"
+        app:fabAlignmentMode="end"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            android:src="@drawable/volunteersample"
-            android:id="@+id/voluteerImage"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="봉사활동의 제목 및 정보"
-            android:textSize="22sp"
-            android:id="@+id/volunteerTitle"/>
-    </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <TextView
-        android:id="@+id/voluteerDetail"
-        android:layout_width="match_parent"
-        android:layout_height="333dp"
-        android:layout_margin="10dp"
-        android:scrollbars="vertical"
-        android:text="봉사활동에 대한 상세정보"
-        android:textSize="18sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:src="@drawable/ic_reply_white_24dp"
+        app:layout_anchor="@id/bottomAppBar" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/applyButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@drawable/button_background"
-            android:text="신청하기" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/callButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="전화하기" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/favoriteBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="즐겨찾기 추가" />
-    </LinearLayout>
-
-
-
-
-
-
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
