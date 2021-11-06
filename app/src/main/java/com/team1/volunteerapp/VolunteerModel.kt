@@ -5,5 +5,6 @@ data class VolunteerModel(
     val progrmSj: String = "",
     val progrmBgnde: String = "",
     val progrmEndde: String = "",
-    val progrmRegistNo: String = ""
+    val progrmRegistNo: String = "",
+    val vol_srvcClCode : String = ""
 )

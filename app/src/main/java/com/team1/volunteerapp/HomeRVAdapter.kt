@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -51,6 +52,7 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
         private val vol_start : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home3)
         private val vol_end : TextView = itemView.findViewById<TextView>(R.id.mRV_itemText_home4)
         private val vol_num :TextView = itemView.findViewById<TextView>(R.id.vol_num)
+        private val vol_srvcClCode :ImageView = itemView.findViewById<ImageView>(R.id.image_vol)
         fun bindItems(item : VolunteerModel){
 
             vol_area.text = item.nanmmbyNm
@@ -58,6 +60,42 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
             vol_start.text = item.progrmBgnde
             vol_end.text = item.progrmEndde
             vol_num.text = item.progrmRegistNo
+
+            // 이미지 설정
+            if(item.vol_srvcClCode?.contains("문화") == true) {
+                vol_srvcClCode.setImageResource(R.drawable.world_book_day)
+            }
+            else if(item.vol_srvcClCode?.contains("주거") == true){
+                vol_srvcClCode.setImageResource(R.drawable.home)
+            }
+            else if(item.vol_srvcClCode?.contains("상담") == true){
+                vol_srvcClCode.setImageResource(R.drawable.consulting)
+            }
+            else if(item.vol_srvcClCode?.contains("교육") == true){
+                vol_srvcClCode.setImageResource(R.drawable.book)
+            }
+            else if(item.vol_srvcClCode?.contains("의료") == true){
+                vol_srvcClCode.setImageResource(R.drawable.first_aid_kit)
+            }
+            else if(item.vol_srvcClCode?.contains("농어촌") == true){
+                vol_srvcClCode.setImageResource(R.drawable.hill)
+            }
+            else if(item.vol_srvcClCode?.contains("환경") == true){
+                vol_srvcClCode.setImageResource(R.drawable.environmental_protection)
+            }
+            else if(item.vol_srvcClCode?.contains("행정") == true){
+                vol_srvcClCode.setImageResource(R.drawable.briefcase)
+            }
+            else if(item.vol_srvcClCode?.contains("안전") == true){
+                vol_srvcClCode.setImageResource(R.drawable.prevention)
+            }
+            else if(item.vol_srvcClCode?.contains("공익") == true){
+                vol_srvcClCode.setImageResource(R.drawable.healthcare)
+            }
+            else if(item.vol_srvcClCode?.contains("재난") == true){
+                vol_srvcClCode.setImageResource(R.drawable.disaster)
+            }
+
         }
 
         init {

@@ -63,6 +63,7 @@ class HomeActivity : AppCompatActivity() {
     var sido : String? = null
     var gugun : String? = null
 
+    var vol_srvcClCode : String? = null
     //뒤로가기 연속 클릭 대기 시간
     var mBackWait:Long = 0
 
@@ -87,6 +88,7 @@ class HomeActivity : AppCompatActivity() {
         var stringArray3 = Array(10, { item -> "" })
         var stringArray4 = Array(10, { item -> "" })
         var stringArray5 = Array(10, { item -> "" })
+        var stringArray6 = Array(10, { item -> "" })
 
 
 
@@ -127,12 +129,54 @@ class HomeActivity : AppCompatActivity() {
                     val vol_end = elem.getElementsByTagName("progrmEndde").item(0).textContent
                     val vol_num = elem.getElementsByTagName("progrmRegistNo").item(0).textContent
 
+                    val job = CoroutineScope(Dispatchers.IO).launch {
+                        val key1 : String =
+                            "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
+                        var url1 : String =
+                            //지역 정보는 현재 고정 추후 수정할 예정
+                            "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrPartcptnItem?progrmRegistNo=${vol_num}&serviceKey=$key1"
+                        //progrmRegistNo=2780545
+                        //2780545 프로그램 번호 수정
+
+                        val xml: Document =
+                            DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url1)
+
+                        xml.documentElement.normalize()
+                        println("Root element :" + xml.documentElement.nodeName)
+
+                        val list: NodeList = xml.getElementsByTagName("item")
+
+                        for (i in 0..list.length - 1) {
+                            var n: Node = list.item(i)
+                            if (n.getNodeType() == Node.ELEMENT_NODE) {
+                                val elem = n as Element
+                                val map = mutableMapOf<String, String>()
+
+                                for (j in 0..elem.attributes.length - 1) {
+
+                                    map.putIfAbsent(
+                                        elem.attributes.item(j).nodeName,
+                                        elem.attributes.item(j).nodeValue
+                                    )
+                                }
+
+                                vol_srvcClCode = elem.getElementsByTagName("srvcClCode").item(0).textContent
+
+                            }
+                        }
+                    }
+                    runBlocking {
+                        job.join() //suspend에서만 작동하기때문에 runblocking안에 넣는다
+                        //join() 함수가 끝날때까지 runblocking이 지속
+                    }
                     // 배열에 삽입
                     stringArray.set(i, vol_area)
                     stringArray2.set(i, vol_context)
                     stringArray3.set(i, vol_start)
                     stringArray4.set(i, vol_end)
                     stringArray5.set(i, vol_num)
+                    vol_srvcClCode?.let { stringArray6.set(i, it) }
+                    println("==========="+ vol_srvcClCode)
                 }
             }
         }
@@ -148,7 +192,8 @@ class HomeActivity : AppCompatActivity() {
             var vol_start = stringArray3[i]
             var vol_end = stringArray4[i]
             var vol_num = stringArray5[i]
-            items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num))
+            var vol_srvcClCode = stringArray6[i]
+            items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num, vol_srvcClCode))
         }
 
         //ViewPager연결
