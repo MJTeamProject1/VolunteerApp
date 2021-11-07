@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
+//                                Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
 
                                 val intent = Intent(this, SplashActivity::class.java)
                                 // 기존 엑티비티를 다 날림

@@ -161,7 +161,7 @@ class HomeActivity : AppCompatActivity() {
                                 }
 
                                 vol_srvcClCode = elem.getElementsByTagName("srvcClCode").item(0).textContent
-
+                                println(vol_srvcClCode)
                             }
                         }
                     }
