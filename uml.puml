@@ -1,0 +1,427 @@
+@@ -0,0 +1,281 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+SplashActivity --> IntroActivity
+SplashActivity --> LoadingActivity
+LoadingActivity --> HomeActivity
+IntroActivity --> LoginActivity
+IntroActivity --> JoinActivity
+LoginActivity --> SplashActivity
+JoinActivity --> SplashActivity
+HomeActivity --> ProfileActivity
+HomeActivity --> AboutViewActivity
+HomeActivity --> CommunityActivity
+HomeActivity ..> HomeRVAdapter
+ProfileActivity ..> ProfileRVAdapter
+ProfileRVAdapter ..|> ProfileAdapterinnerItemClick
+ProfileRVAdapter ..|> ProfileAdapterinnerViewHolder
+HomeRVAdapter ..|> HomeRVAdapterinnerItemClick
+HomeRVAdapter ..|> HomeRVAdapterinnerViewHolder
+HomeActivity --> FavoriteActivity
+FavoriteActivity ..> FavoriteRVAdapter
+FavoriteRVAdapter ..|> FavoriteAdapterinnerItemClick
+FavoriteRVAdapter ..|> FavoriteAdapterinnerViewHolder
+CommunityActivity ..> CommAdapter
+CommAdapter ..|> CommRVAdapterinnerItemClick
+CommAdapter ..|> CommRVAdapterinnerViewHolder
+CommunityActivity --> ReviewActivity
+ReviewActivity --> WriteReviewActivity
+class SplashActivity{
+    ~db : object
+    ~sido : String
+    ~gugun : String
+    -auth : object
+    onCreate(savedInstanceState : bundle) : void
+    setContentView() : void
+    isRegister() : boolean
+    startActivity() : void
+    finish() : void
+}
+class IntroActivity{
+    +login : objcet
+    +join : object
+    ~job : object
+    onCreate(savedInstanceState : bundle) : void
+    setContentView() : void
+    startActivity() : void
+}
+
+class LoadingActivity{
+    ~sido : String
+    ~gugun : String
+    ~sidocode : String
+    ~guguncode : String
+    ~stringArray : Array
+    onCreate(savedInstanceState : bundle) : void
+    setContentView() : void
+    startActivity() : void
+    join() : object
+    finish() : void
+}
+
+class LoginActivity{
+    -auth : object
+    +email : object
+    +password : object
+    +loginbbtn : object
+    ~inputemail : String
+    ~inputpassword : String
+    ~isGoToLogin : boolean
+    onCreate(savedInstanceState : bundle) : void
+    setContentView(R.layout.activity_splash) : void
+    startActivity() : void
+    finishAffinity() : void
+    finish() : void
+}
+
+
+
+class JoinActivity{
+    -auth : object
+        +email : object
+        +password : object
+        +joinbtn : object
+        +password_check : object
+        +username : object
+        +phonenumber : object
+        +nickname : object
+        +spinner1 : object
+        +spinner2 : object
+        +settime : object
+        ~sidodata : String
+        ~gugundata : String
+        ~inputemail : String
+        ~inputpassword : String
+        ~password_check_db : String
+        ~username_db : String
+        ~phonenumber_db : String
+        ~nickname_db : String
+        ~sidodatadb : String
+        ~gugundatadb : String
+        ~settimedb : String
+        ~userauth : HashMap<String, String>
+        ~isGoToJoin : boolean
+        onCreate(savedInstanceState : bundle) : void
+        setContentView() : void
+        startActivity() : void
+        finishAffinity() : void
+        finish() : void
+}
+
+class HomeActivity{
+    ~user_phone : String
+    ~user_sido : String
+    ~user_gugun : String
+    ~user_email : String
+    -addVisibilityChanged : object
+    -auth : object
+    ~db : object
+    ~vol_time : String
+    ~vol_title : String
+    ~vol_goaltime : String
+    ~vol_user : String
+    ~sido : String
+    ~gugun : String
+    ~vol_srvcClCode : String
+    ~mBackWait : String
+    -items_home : object
+    -stringArray : Array
+    -stringArray2 : Array
+    -stringArray3 : Array
+    -stringArray4 : Array
+    -stringArray5 : Array
+    -stringArray6 : Array
+    ~job : object
+    ~map : String
+    ~vol_area : object
+    ~vol_context : object
+    ~vol_start : object
+    ~vol_end : object
+    ~vol_num : object
+    -key : String
+    -url : String
+    ~vol_area : Array
+    ~vol_context : Array
+    ~vol_start : Array
+    ~vol_end : Array
+    ~vol_num : Array
+    ~vol_srvcClCode : Array
+    +communityBtn : object
+    +home_rv : object
+    +home_rvAdapter : object
+    onCreate((savedInstanceState : bundle) : void
+    Button.setOnclickListener() : void
+    startActivity(intent : object) : void
+    setIntent() : void
+    get() : object
+    app_bar_profile : object
+    app_bar_fav : object
+    onStart() : void
+    onResume() : void
+    onBackPressed() : void
+    onCreateOptionsMenu() : void
+    onOptionsItemSelected() : Boolean
+}
+
+class HomeRVAdapter{
+    -itemClick : object
+    onCreateViewHolder(parent:ViewGroup, viewType: Int) : HomeRVAdapter.ViewHolder
+    getItemCount() : int
+    onBindViewHolder(holder.HomeRVAdapter.ViewHolder, posiotion : Int) : void
+}
+
+class ProfileActivity{
+    ~items : String
+    ~voltime : String
+    ~voltitle : String
+    ~volgoaltime : String
+    ~usernickname : String
+    ~sido : String
+    ~gugun : String
+    +profile_rv : object
+    +selected_volun_data : object
+    +profileText : object
+    ~profile_rvAdapter : object
+    ~yValues : ArrayList
+    ~dataSet : object
+    ~pieData : object
+    ~des : object
+    ~sliceSpace : double
+    ~selectionShift : double
+    onCreate() : void
+    setContentView() : void
+    getUserName() : void
+    setUsePercentValues(boolean)  : void
+    setExtraOffsets(double, double, double, double) : object
+    setHoleColor(object) : void
+    setColors(object) : void
+    setValueTextSize(double) : object
+    setValueTextColor(object)  : void
+}
+
+class ProfileRVAdapter{
+    -itemClick : object
+    onCreateViewHolder(parent:ViewGroup, viewType: Int) : HomeRVAdapter.ViewHolder
+    getItemCount() : int
+    bindItems : object
+    onBindViewHolder(holder.HomeRVAdapter.ViewHolder, posiotion : Int) : void
+}
+
+class ProfileAdapterinnerItemClick{
+    onClick(view : View, posiotion : int)
+}
+
+
+class ProfileAdapterinnerViewHolder{
+    -rv_text : object
+    bindItems(item: String)
+}
+
+class AboutViewActivity{
+    +num : String
+    +volunteerTitle : object
+    +volunteerDetail : object
+    +applyButton : object
+    +voluteerImage : object
+    +textprogrmSttusSe : object
+    +textmnnstNm : object
+    +textnoticeBgnde : object
+    +textnoticeEndde : object
+    +textrcritNmpr : object
+    +textprogrmBgnde : object
+    +textprogrmEndde : object
+    +textactBeginTm : object
+    +textactEndTm : object
+    +textactPlace : object
+    +textsrvcClCode : object
+    +textnanmmbyNm : object
+    +textnanmmbyNmAdmn : object
+    +texttelno : object
+    +textpostAdres : object
+    ~vol_starttime
+    ~vol_endtime
+    ~volunTitle : String
+    ~volundetail : String
+    ~vol_progrmSttusSe : String
+    ~vol_mnnstNm : String
+    ~vol_noticeBgnde : String
+    ~vol_noticeEndde : String
+    ~vol_rcritNmpr : String
+    ~vol_progrmBgnde : String
+    ~vol_progrmEndde : String
+    ~vol_actBeginTm : String
+    ~vol_actEndTm : String
+    ~vol_actPlace : String
+    ~vol_srvcClCode : String
+    ~vol_nanmmbyNm : String
+    ~vol_nanmmbyNmAdmn : String
+    ~vol_telnum : String
+    ~vol_adress : String
+    ~vol_email : String
+    ~job : object
+    +homeButton : object
+    ~volunimage : object
+    ~itemlists : mutableList
+    ~applybtn : object
+    ~callbtn : object
+    ~favoritebtn : object
+    onCreate()  : void
+    setContentView()  : void
+    onCreateOptionsMenu() : boolean
+    onOptionsItemSelected() :boolean
+    onCreate() : void
+        setContentView() : void
+        startActivity() : void
+}
+
+
+class HomeRVAdapterinnerItemClick{
+    onClick(view: View, posiotion:Int)
+}
+
+class HomeRVAdapterinnerViewHolder{
+    -vol_area : object
+        -vol_context : object
+        -vol_start : object
+        -vol_end : object
+        -vol_num : object
+        -vol_srvcClCode : object
+    -rv_text : object
+    bindItems(item: String)
+}
+
+class FavoriteActivity{
+    -addVisibilityChanged : object
+    ~favorite_items : MutableList
+    ~dividerItemDecoration
+    ~homeButton : Button
+    onCreate()
+    getfavoriteData()
+    onCreateOptionsMenu(): Boolean
+    onOptionsItemSelected() : Boolean
+}
+
+class FavoriteRVAdapter{
+    ~del : ImageView
+    ~itemClick
+    ~map : MutableList
+    getItemCount(): Int
+    onBindViewHolder(holder: ViewHolder, position: Int)
+    onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+}
+
+class FavoriteAdapterinnerItemClick{
+    onClick(view : View, posiotion : int)
+}
+
+
+class FavoriteAdapterinnerViewHolder{
+    ~vol_area
+    ~vol_context
+    ~vol_start
+    ~vol_end
+    -rv_text : object
+    bindItems(item: String)
+}
+
+class CommunityActivity{
+    ~sido : String
+    ~gugun : String
+    ~setDrawr : boolean
+    ~userArrayList : Array
+    -Comm_rvAdapter : object
+    +Comm_rv : object
+    +Comm_rvAdapter : object
+    +naviViewComm : object
+    +btnWriteComm : object
+    ~dbref : object
+    +app_bar_community_list : object
+    +community : object
+    +review : object
+    +layoutDrawerComm : object
+    ~setDrawr : boolean
+    onStart() : void
+    onOptionsItemSelected() : boolean
+    onCreateOptionsMenu() : boolean
+    onBackPressed() : void
+    onNavigationItemSelected() : void
+    onItemClick() : void
+    getUserData() : void
+    onCreate() : void
+    setContentView() : void
+    startActivity() : void
+    finish() : void
+}
+
+class CommAdapter{
+~ CommList: ArrayList
+- mListener: onItemClickListener
+setonItemClickListener(listener: onItemClickListener) : object
+onCreateViewHolder(parent: ViewGroup, viewType: Int):  : object
+onBindViewHolder(holder: CustomViewHolder, position: Int) : object
+getItemCount(): Int
+onItemClickListener() : void
+
+}
+
+class CommRVAdapterinnerItemClick{
+    onClick(view: View, posiotion:Int)
+}
+
+class CommRVAdapterinnerViewHolder{
+    -title : object
+    -nickname : object
+    -contents : object
+    bindItems(item: String)
+}
+
+
+
+
+class ReviewActivity{
+~ addVisibilityChanged  : object
+~ userArrayList  : Array
+~ Rev_rvAdapter  : object
+~ Rev_rv  : object
+~ naviViewRev  : object
+~ btnWriteReview  : object
+~ dbref  : object
+
+OnVisibilityChangedListener() : void
+getUserData() : void
+onNavigationItemSelected(item: MenuItem): Boolean
+onBackPressed() : void
+onOptionsItemSelected(item: MenuItem): Boolean
+onCreateOptionsMenu(menu: Menu?): Boolean
+onStart() : void
+onCreate(savedInstanceState : bundle) : void
+setContentView() : void
+startActivity() : void
+finish() : void
+}
+
+
+
+
+class WriteReviewActivity{
+
+-database : object
+~ r_title : object
+~ r_contents : object
+~ r_nickname : object
+~ r_user : object
+~c_user : object
+setContentView() : void
+onCreate(savedInstanceState : bundle) : void
+setContentView() : void
+startActivity() : void
+finish() : void
+}
+
+
+
+
+
+
+@enduml
