@@ -62,7 +62,10 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
             vol_num.text = item.progrmRegistNo
 
             // 이미지 설정
-            if(item.vol_srvcClCode?.contains("문화") == true) {
+            if(item.vol_srvcClCode?.contains("편의") == true) {
+                vol_srvcClCode.setImageResource(R.drawable.vv)
+            }
+            else if(item.vol_srvcClCode?.contains("문화") == true) {
                 vol_srvcClCode.setImageResource(R.drawable.world_book_day)
             }
             else if(item.vol_srvcClCode?.contains("주거") == true){
