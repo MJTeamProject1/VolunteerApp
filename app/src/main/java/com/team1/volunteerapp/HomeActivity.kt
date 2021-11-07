@@ -42,6 +42,11 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class HomeActivity : AppCompatActivity() {
 
+    var user_phone : String? = null
+    var user_sido : String? = null
+    var user_gugun : String? = null
+    var user_email : String? = null
+
     private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
         object : FloatingActionButton.OnVisibilityChangedListener() {
             override fun onShown(fab: FloatingActionButton?) {
@@ -264,13 +269,21 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["nickname"] != null) {
                             vol_user = doc["nickname"].toString()
                         }
+                        if (doc["email"] != null) {
+                            user_email = doc["email"].toString()
+                        }
+                        if (doc["sidodata"] != null) {
+                            user_sido = doc["sidodata"].toString()
+                        }
+                        if (doc["gugundata"] != null) {
+                            user_gugun = doc["gugundata"].toString()
+                        }
+                        if (doc["phonenumber"] != null) {
+                            user_phone = doc["phonenumber"].toString()
+                        }
                     }
                 }
             }
-    }
-
-    private fun getBannerList(): ArrayList<Int> {
-        return arrayListOf<Int>(R.drawable.pagerex, R.drawable.volunteersample)
     }
 
     override fun onBackPressed() {
@@ -290,8 +303,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
-            android.R.id.home -> BottomNavDrawerFragment().show(supportFragmentManager,
-                BottomNavDrawerFragment().tag)
+            android.R.id.home -> {
+                BottomNavDrawerFragment().show(supportFragmentManager,
+                    BottomNavDrawerFragment().tag)
+                BottomNavDrawerFragment().setIntent(user_email, user_phone, vol_user, vol_goaltime, user_sido, user_gugun)
+            }
+
             R.id.app_bar_profile -> {
                 fab.hide(addVisibilityChanged)
                 val intent = Intent(this, ProfileActivity::class.java)

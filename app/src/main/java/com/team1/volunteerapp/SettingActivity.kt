@@ -35,7 +35,6 @@ class SettingActivity : AppCompatActivity() {
         nickname.setText(intent.getStringExtra("userNickname"))
         goaltime.setText(intent.getStringExtra("userGoal"))
 
-        email
 
         var sidodata: String? = intent.getStringExtra("userSido")
         var gugundata: String? = intent.getStringExtra("userGungu")

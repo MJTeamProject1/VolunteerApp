@@ -7,11 +7,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team1.volunteerapp.Auth.IntroActivity
 import kotlinx.android.synthetic.main.fragment_bottom_nav_drawer.*
 
 class BottomNavDrawerFragment : BottomSheetDialogFragment() {
+    var emai : String? = null
+    var phonen : String? = null
+    var nickn : String? = null
+    var goalt : String? = null
+    var sidod: String? = null
+    var gugund: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_bottom_nav_drawer, container, false)
@@ -24,6 +33,12 @@ class BottomNavDrawerFragment : BottomSheetDialogFragment() {
             when (it.itemId) {
                 R.id.nav1 -> {
                     val intent = Intent(getActivity(),SettingActivity::class.java)
+                    intent.putExtra("userEmail", emai)
+                    intent.putExtra("userPhone", phonen)
+                    intent.putExtra("userNickname", nickn)
+                    intent.putExtra("userGoal", goalt)
+                    intent.putExtra("userSido", sidod)
+                    intent.putExtra("userGungu", gugund)
                     startActivity(intent)
                 }
                 R.id.nav2 -> {
@@ -39,5 +54,13 @@ class BottomNavDrawerFragment : BottomSheetDialogFragment() {
             }
             true
         }
+    }
+
+    fun setIntent(email : String?, phonenumber : String?, nickname : String?, goaltime : String?, sidodata : String?, gugundata : String?){
+        emai = email
+        phonen = phonenumber
+        nickn = nickname
+        sidod = sidodata
+        gugund = gugundata
     }
 }
