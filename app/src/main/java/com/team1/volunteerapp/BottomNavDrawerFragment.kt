@@ -60,6 +60,7 @@ class BottomNavDrawerFragment : BottomSheetDialogFragment() {
         emai = email
         phonen = phonenumber
         nickn = nickname
+        goalt = goaltime
         sidod = sidodata
         gugund = gugundata
     }

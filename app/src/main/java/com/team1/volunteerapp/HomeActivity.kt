@@ -46,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
     var user_sido : String? = null
     var user_gugun : String? = null
     var user_email : String? = null
+    lateinit var bottomnavdrawerfragment : BottomNavDrawerFragment
 
     private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
         object : FloatingActionButton.OnVisibilityChangedListener() {
@@ -304,9 +305,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
-                BottomNavDrawerFragment().show(supportFragmentManager,
+                bottomnavdrawerfragment = BottomNavDrawerFragment()
+                bottomnavdrawerfragment.show(supportFragmentManager,
                     BottomNavDrawerFragment().tag)
-                BottomNavDrawerFragment().setIntent(user_email, user_phone, vol_user, vol_goaltime, user_sido, user_gugun)
+                bottomnavdrawerfragment.setIntent(user_email, user_phone, vol_user, vol_goaltime, user_sido, user_gugun)
             }
 
             R.id.app_bar_profile -> {
