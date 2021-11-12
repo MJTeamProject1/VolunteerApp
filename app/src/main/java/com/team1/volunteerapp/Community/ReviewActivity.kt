@@ -4,11 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -16,7 +23,7 @@ import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
-class ReviewActivity : AppCompatActivity() {
+class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
         object : FloatingActionButton.OnVisibilityChangedListener() {
             override fun onShown(fab: FloatingActionButton?) {
@@ -33,6 +40,7 @@ class ReviewActivity : AppCompatActivity() {
     private val boardDataList = mutableListOf<BoardModel>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var commRVAdapter: CommAdapter
+    var setDrawr = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +67,19 @@ class ReviewActivity : AppCompatActivity() {
         // DB에서 데이터 받아오기기
         getFBBoardData()
 
+        val naviViewComm = findViewById<NavigationView>(R.id.naviViewComm)
+        naviViewComm.setNavigationItemSelectedListener(this)
 
+        // 글 쓰기 버튼
+        val btnWriteComm = findViewById<FloatingActionButton>(R.id.fab)
+        btnWriteComm.setOnClickListener {
+            fab.hide(addVisibilityChanged)
+            Handler().postDelayed({
+                val intent = Intent(this, BoardWriteActivity::class.java)
+                startActivity(intent)
+            }, 300)
+
+        }
     }
     private fun getFBBoardData(){
         val postListener = object : ValueEventListener {
@@ -88,5 +108,72 @@ class ReviewActivity : AppCompatActivity() {
         }
         //key 값만 가져옴
         FBRef.reviewRef.addValueEventListener(postListener)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
+        val intentr = Intent(this, CommActivity::class.java)
+
+        when(item.itemId)
+        {
+            R.id.community -> {
+                fab.hide(addVisibilityChanged)
+                Handler().postDelayed({
+                    startActivity(intentr)
+                    finish()
+                }, 150)
+            }
+            R.id.review -> {
+                Toast.makeText(this,"이미 후기 입니다.", Toast.LENGTH_LONG).show()
+            }
+        }
+        val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
+        layoutDrawerComm.closeDrawers() //네비게이션 뷰 닫기
+        return false
+    }
+
+    override fun onBackPressed() {
+
+        val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
+        if(layoutDrawerComm.isDrawerOpen(GravityCompat.START)){
+            layoutDrawerComm.closeDrawers()
+        }
+        else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> { // 홈으로 돌아가기
+                fab.hide(addVisibilityChanged)
+                Handler().postDelayed({
+                    finish()
+                }, 300)
+            }
+            R.id.app_bar_community_list ->{
+                val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
+                if(setDrawr){
+                    layoutDrawerComm.closeDrawer(GravityCompat.START)
+                    setDrawr = false
+                }else{
+                    layoutDrawerComm.openDrawer(GravityCompat.START)
+                    setDrawr = true
+                }
+            }
+        }
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu_community, menu)
+        return true
+    }
+
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
     }
 }
