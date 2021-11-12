@@ -34,10 +34,14 @@ class BoardWriteActivity : AppCompatActivity() {
 //                fab?.show()
             }
         }
+    var nickname : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board_write)
         setSupportActionBar(bottomAppBar)
+
+        //putExtra 데이터 받기
+        nickname = intent.getStringExtra("nickname")
 
         val checkbox = findViewById<CheckBox>(R.id.checkreview)
         val writeBtn = findViewById<FloatingActionButton>(R.id.fab)
@@ -51,6 +55,7 @@ class BoardWriteActivity : AppCompatActivity() {
             val inputContents = contents.text.toString()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
+            val inputnickname = nickname.toString()
             var isGoToWrite = true
 
             if(inputTitle.isEmpty()){
@@ -67,7 +72,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(checkbox.isChecked){
                         FBRef.reviewRef
                             .push()
-                            .setValue(BoardModel(inputTitle,inputContents,uid,time))
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname))
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
@@ -79,7 +84,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     else{
                         FBRef.communityRef
                             .push()
-                            .setValue(BoardModel(inputTitle,inputContents,uid,time))
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname))
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 

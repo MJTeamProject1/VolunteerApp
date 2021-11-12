@@ -216,30 +216,16 @@ class HomeActivity : AppCompatActivity() {
         home_rv.layoutManager = LinearLayoutManager(this)
 
 
-
-        // RecyclerView item을 클릭 시
-        /*
-        home_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(baseContext, AboutViewActivity::class.java)
-                startActivity(intent)
-            }
-        }*/
-
-
         // 커뮤니티 버튼
         val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
         testCommunityBtn.setOnClickListener {
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
                 val intent = Intent(this, CommActivity::class.java)
-                intent.putExtra("sido",sido)
-                intent.putExtra("gugun",gugun)
+                intent.putExtra("nickname", vol_user)
                 startActivity(intent)
             }, 150)
         }
-
-
     }
 
     override fun onStart() {

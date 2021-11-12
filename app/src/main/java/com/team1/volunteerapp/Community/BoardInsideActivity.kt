@@ -51,7 +51,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     val dataModel = snapshot.getValue(BoardModel::class.java)
 
                     binding.titleArea.text = dataModel!!.title
-                    binding.uidArea.text = dataModel!!.uid
+                    binding.uidArea.text = dataModel!!.nickname
                     binding.contentArea.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
 

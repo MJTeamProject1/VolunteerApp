@@ -43,7 +43,7 @@ class CommAdapter(val items: MutableList<BoardModel>) : RecyclerView.Adapter<Com
         private val time = itemView.findViewById<TextView>(R.id.rvTime)
         fun bindItems(item: BoardModel){
             title.text = item.title
-            nickname.text = item.uid
+            nickname.text = item.nickname
             contents.text = item.content
             time.text=item.time
 
