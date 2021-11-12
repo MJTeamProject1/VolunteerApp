@@ -1,7 +1,6 @@
 package com.team1.volunteerapp.Community
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,25 +8,17 @@ import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.Favorite.FavoriteRVAdapter
-import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
-import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -45,11 +36,15 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                fab?.show()
             }
         }
+
+    private val boardDataList = mutableListOf<BoardModel>()
+    private val boardKeyList = mutableListOf<String>()
+    private lateinit var commRVAdapter: CommAdapter
+
     var sido : String? = null
     var gugun : String? = null
     var setDrawr = false
-    val userArrayList = arrayListOf<CUser>()
-    lateinit var Comm_rvAdapter : CommAdapter
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
@@ -59,21 +54,25 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         gugun = intent.getStringExtra("gugun")
 
         //Recycler view 연결
-        val Comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
-        Comm_rvAdapter = CommAdapter(userArrayList)
-        Comm_rv.adapter = Comm_rvAdapter
+        val comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
 
-        Comm_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        Comm_rv.setHasFixedSize(true)
+        commRVAdapter = CommAdapter(boardDataList)
+        comm_rv.adapter = commRVAdapter
+        comm_rv.layoutManager = LinearLayoutManager(this)
 
+        commRVAdapter.itemClick = object : CommAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                //눌렀을때 어떻게 할지
+                val intent = Intent(view.context,BoardInsideActivity::class.java)
+                intent.putExtra("key",boardKeyList[position])
+                startActivity(intent)
+            }
+        }
+
+
+        getFBBoardData()
         // DB에서 데이터 받아오기기
-       getUserData()
 
-//        val btnNaviComm = findViewById<ImageView>(R.id.btnNaviComm)
-//        val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
-//        btnNaviComm.setOnClickListener {
-//            layoutDrawerComm.openDrawer(GravityCompat.START)
-//        }
 
         val naviViewComm = findViewById<NavigationView>(R.id.naviViewComm)
         naviViewComm.setNavigationItemSelectedListener(this)
@@ -83,48 +82,42 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnWriteComm.setOnClickListener {
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
-                val intent = Intent(this, WriteCommActivity::class.java)
+                val intent = Intent(this, BoradWriteActivity::class.java)
                 startActivity(intent)
             }, 300)
 
         }
     }
 
-    var dbref = FirebaseDatabase.getInstance().getReference("Community_list")
-
-    private fun getUserData(){
+    private fun getFBBoardData(){
         val postListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                for(dataModel in snapshot.children){
-                    Log.d("cascascasac",dataModel.toString())
-                    userArrayList.add(dataModel.getValue(CUser::class.java)!!)
-                }
-                Comm_rvAdapter.notifyDataSetChanged()
-            }
+                boardDataList.clear()
 
+                for(dataModel in snapshot.children){
+                    Log.d("asvv",dataModel.toString())
+
+                    val item = dataModel.getValue(BoardModel::class.java)
+                    boardDataList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
+                }
+
+                boardDataList.reverse()
+                boardKeyList.reverse()
+                commRVAdapter.notifyDataSetChanged()
+                Log.d("asvv",boardDataList.toString())
+
+            }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
+
         }
         //key 값만 가져옴
-        dbref.addValueEventListener(postListener)
-        //추가
-        Comm_rvAdapter.setonItemClickListener(object : CommAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-//                Toast.makeText(this@CommActivity,"2",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@CommActivity, InfoActivity::class.java)
-                intent.putExtra("maketitle", userArrayList[position].Title)
-                intent.putExtra("makenick", userArrayList[position].Nickname)
-                intent.putExtra("makecont", userArrayList[position].Contents)
-                startActivity(intent)
-
-            }
-
-        })
-
-
+        FBRef.communityRef.addValueEventListener(postListener)
     }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentr = Intent(this, ReviewActivity::class.java)
@@ -193,11 +186,3 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }, 450)
     }
 }
-
-
-
-// 네비게이션
-//val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
-//layoutDrawerComm.openDrawer(GravityCompat.START)
-
-

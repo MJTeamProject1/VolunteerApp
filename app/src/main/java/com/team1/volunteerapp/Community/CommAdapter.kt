@@ -1,65 +1,52 @@
 package com.team1.volunteerapp.Community
 
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
-import com.team1.volunteerapp.utils.FBRef
 
-class CommAdapter(val CommList: ArrayList<CUser>) : RecyclerView.Adapter<CommAdapter.CustomViewHolder>() {
-    //추가
-    private lateinit var mListener : onItemClickListener
-
-    interface onItemClickListener{
-
-        fun onItemClick(position: Int)
-
-    }
-
-    fun setonItemClickListener(listener: onItemClickListener){
-
-        mListener = listener
-
-    }
-    //
-
+class CommAdapter(val items: MutableList<BoardModel>) : RecyclerView.Adapter<CommAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.comm_card_rv_item, parent, false)
-        return CustomViewHolder(view,mListener)//추가
+        return CustomViewHolder(view)//추가
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.title.text = CommList.get(position).Title
-        holder.nickname.text = CommList.get(position).Nickname
-        holder.contents.text = CommList.get(position).Contents
+        if(itemClick != null){
+            holder.itemView.setOnClickListener{v->
+                itemClick?.onClick(v, position)
+            }
+        }
+        holder.bindItems(items[position])
 
     }
 
     override fun getItemCount(): Int {
-        return CommList.size
+        return items.size
     }
 
+    interface ItemClick{
+        fun onClick(view:View, position: Int)
+    }
+    var itemClick : ItemClick? = null
 
+    inner class CustomViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+        private val title = itemView.findViewById<TextView>(R.id.rvTitle)
+        private val nickname = itemView.findViewById<TextView>(R.id.rvNickName)
+        private val contents = itemView.findViewById<TextView>(R.id.rvContents)
+        private val time = itemView.findViewById<TextView>(R.id.rvTime)
+        fun bindItems(item: BoardModel){
+            title.text = item.title
+            nickname.text = item.uid
+            contents.text = item.content
+            time.text=item.time
 
-    //listener 추가
-    class CustomViewHolder (itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
-        val title = itemView.findViewById<TextView>(R.id.tvTitle)
-        val nickname = itemView.findViewById<TextView>(R.id.tvNickName)
-        val contents = itemView.findViewById<TextView>(R.id.tvContents)
-
-        init {
-            itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-            }
         }
-
-
     }
 }

@@ -62,14 +62,14 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
 
-        val Rev_rv = findViewById<RecyclerView>(R.id.rvReview)
-        Rev_rvAdapter = CommAdapter(userArrayList)
-        Rev_rv.adapter = Rev_rvAdapter
-
-        Rev_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        Rev_rv.setHasFixedSize(true)
-
-        getUserData()
+//        val Rev_rv = findViewById<RecyclerView>(R.id.rvReview)
+//        Rev_rvAdapter = CommAdapter(userArrayList)
+//        Rev_rv.adapter = Rev_rvAdapter
+//
+//        Rev_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+//        Rev_rv.setHasFixedSize(true)
+//
+//        getUserData()
 
         val naviViewRev = findViewById<NavigationView>(R.id.naviViewRev)
         naviViewRev.setNavigationItemSelectedListener(this)
@@ -90,36 +90,36 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     var dbref = FirebaseDatabase.getInstance().getReference("Review_list")
 
-    private fun getUserData(){
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                for(dataModel in snapshot.children){
-                    Log.d("cascasdcasac",dataModel.toString())
-                    userArrayList.add(dataModel.getValue(CUser::class.java)!!)
-                }
-                Rev_rvAdapter.notifyDataSetChanged()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        }
-        //key 값만 가져옴
-        dbref.addValueEventListener(postListener)
-        //추가
-        Rev_rvAdapter.setonItemClickListener(object : CommAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-//                Toast.makeText(this@CommActivity,"2",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@ReviewActivity, InfoActivity2::class.java)
-                intent.putExtra("maketitler", userArrayList[position].Title)
-                intent.putExtra("makenickr", userArrayList[position].Nickname)
-                intent.putExtra("makecontr", userArrayList[position].Contents)
-                startActivity(intent)
-
-            }
-        })
-    }
+//    private fun getUserData(){
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                for(dataModel in snapshot.children){
+//                    Log.d("cascasdcasac",dataModel.toString())
+//                    userArrayList.add(dataModel.getValue(CUser::class.java)!!)
+//                }
+//                Rev_rvAdapter.notifyDataSetChanged()
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+//            }
+//        }
+//        //key 값만 가져옴
+//        dbref.addValueEventListener(postListener)
+//        //추가
+//        Rev_rvAdapter.setonItemClickListener(object : CommAdapter.onItemClickListener{
+//            override fun onItemClick(position: Int) {
+////                Toast.makeText(this@CommActivity,"2",Toast.LENGTH_SHORT).show()
+//                val intent = Intent(this@ReviewActivity, InfoActivity2::class.java)
+//                intent.putExtra("maketitler", userArrayList[position].Title)
+//                intent.putExtra("makenickr", userArrayList[position].Nickname)
+//                intent.putExtra("makecontr", userArrayList[position].Contents)
+//                startActivity(intent)
+//
+//            }
+//        })
+//    }
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
