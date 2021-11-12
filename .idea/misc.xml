@@ -64,6 +64,7 @@
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.196875" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.17502532928064843" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.196875" />
+        <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_web_map.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_aboutview.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_favorite.xml" value="0.18385416666666668" />
@@ -74,26 +75,13 @@
         <entry key="..\:/Users/rudtj/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/user/AndroidStudioProjects/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.13360507246376813" />
         <entry key="..\:/Users/user/AndroidStudioProjects/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.13360507246376813" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/drawable/edge.xml" value="0.26944444444444443" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/drawable/edge2.xml" value="0.15104166666666666" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.2957427536231884" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.2957427536231884" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_comm_info.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_favorites.xml" value="0.19746376811594202" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.17806484295845998" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_intro.xml" value="0.19746376811594202" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.2957427536231884" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_loading.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_login.xml" value="0.19746376811594202" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.17806484295845998" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.2957427536231884" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_rev_info.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_review.xml" value="0.19746376811594202" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.2957427536231884" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_aboutview.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.19746376811594202" />
-        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_profile.xml" value="0.25" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.2957427536231884" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.2957427536231884" />
       </map>

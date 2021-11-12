@@ -10,6 +10,8 @@ import android.os.Handler
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -251,6 +253,11 @@ class AboutViewActivity : AppCompatActivity() {
             voluteerImage.setImageResource(R.drawable.disaster)
         }
 
+        textpostAdres.setOnClickListener {
+            val intent = Intent(this, WebMapActivity::class.java)
+            intent.putExtra("adr", textpostAdres.text.toString())
+            startActivity(intent)
+        }
 
         //홈으로 가기
         val homeButton = findViewById<FloatingActionButton>(R.id.fab)
