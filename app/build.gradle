@@ -34,9 +34,7 @@ android {
         viewBinding true
     }
     buildFeatures {
-        dataBinding{
-            enabled = true
-        }
+        dataBinding = true
     }
 }
 apply plugin: 'com.google.gms.google-services'

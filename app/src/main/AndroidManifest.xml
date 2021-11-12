@@ -14,10 +14,10 @@
         android:theme="@style/Theme.VolunteerApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Community.BoardInsideActivity"
+            android:name=".Community.BoardWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".Community.BoardWriteActivity"
+            android:name=".Community.BoardInsideActivity"
             android:exported="false" />
         <activity
             android:name=".WebMapActivity"

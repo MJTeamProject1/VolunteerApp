@@ -44,7 +44,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var sido : String? = null
     var gugun : String? = null
     var setDrawr = false
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
@@ -82,7 +82,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         btnWriteComm.setOnClickListener {
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
-                val intent = Intent(this, BoradWriteActivity::class.java)
+                val intent = Intent(this, BoardWriteActivity::class.java)
                 startActivity(intent)
             }, 300)
 
@@ -120,7 +120,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
-        val intentr = Intent(this, ReviewActivity::class.java)
+//        val intentr = Intent(this, ReviewActivity::class.java)
 
         when(item.itemId)
         {
@@ -130,7 +130,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.review -> {
                 fab.hide(addVisibilityChanged)
                 Handler().postDelayed({
-                    startActivity(intentr)
+//                    startActivity(intentr)
                     finish()
                 }, 150)
             }

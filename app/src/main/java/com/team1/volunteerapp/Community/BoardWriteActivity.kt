@@ -5,20 +5,18 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.google.android.gms.common.util.DataUtils
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardWriteBinding
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 
-class BoradWriteActivity : AppCompatActivity() {
-
+class BoardWriteActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardWriteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_board_write)
 
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_board_write)
         binding.writeBtn.setOnClickListener {
 
             val title = binding.boardEditTitle.text.toString()
@@ -33,7 +31,7 @@ class BoradWriteActivity : AppCompatActivity() {
                 .push()
                 .setValue(BoardModel(title,contents,uid,time))
 
-            Toast.makeText(this, "입력 완료",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
             finish()
 
