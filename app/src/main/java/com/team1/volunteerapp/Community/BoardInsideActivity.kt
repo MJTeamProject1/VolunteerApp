@@ -1,20 +1,26 @@
 package com.team1.volunteerapp.Community
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.team1.volunteerapp.BottomNavDrawerFragment
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
+import kotlinx.android.synthetic.main.activity_home.*
 import java.lang.Exception
 
 class BoardInsideActivity : AppCompatActivity() {
@@ -70,6 +76,5 @@ class BoardInsideActivity : AppCompatActivity() {
         }
         //key 값만 가져옴
         FBRef.communityRef.child(key).addValueEventListener(postListener)
-
     }
 }
