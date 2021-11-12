@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.GravityCompat
@@ -38,7 +39,10 @@ class BoardWriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_board_write)
         setSupportActionBar(bottomAppBar)
 
+        val checkbox = findViewById<CheckBox>(R.id.checkreview)
         val writeBtn = findViewById<FloatingActionButton>(R.id.fab)
+
+        checkbox.setOnCheckedChangeListener { buttonView, isChecked ->   }
         writeBtn.setOnClickListener {
             val title = findViewById<EditText>(R.id.boardEditTitle)
             val contents = findViewById<EditText>(R.id.boardEditContents)
@@ -60,16 +64,30 @@ class BoardWriteActivity : AppCompatActivity() {
             }
             else{
                 if(isGoToWrite){
-                    FBRef.communityRef
-                        .push()
-                        .setValue(BoardModel(inputTitle,inputContents,uid,time))
+                    if(checkbox.isChecked){
+                        FBRef.reviewRef
+                            .push()
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time))
 
-                    Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
-                    fab.hide(addVisibilityChanged)
-                    Handler().postDelayed({
-                        finish()
-                    }, 300)
+                        fab.hide(addVisibilityChanged)
+                        Handler().postDelayed({
+                            finish()
+                        }, 300)
+                    }
+                    else{
+                        FBRef.communityRef
+                            .push()
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time))
+
+                        Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
+
+                        fab.hide(addVisibilityChanged)
+                        Handler().postDelayed({
+                            finish()
+                        }, 300)
+                    }
                 }
             }
         }

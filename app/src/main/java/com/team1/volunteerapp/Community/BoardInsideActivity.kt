@@ -1,26 +1,18 @@
 package com.team1.volunteerapp.Community
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.team1.volunteerapp.BottomNavDrawerFragment
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
-import kotlinx.android.synthetic.main.activity_board_inside.*
-import kotlinx.android.synthetic.main.activity_home.*
 import java.lang.Exception
 
 class BoardInsideActivity : AppCompatActivity() {
@@ -30,19 +22,29 @@ class BoardInsideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var isreview = false
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
 
         key = intent.getStringExtra("key").toString()
-        getBoardData(key)
+        isreview = intent.getBooleanExtra("review",false)
+
+        getBoardData(key,isreview)
 
         binding.boardDelBtn.setOnClickListener {
-            FBRef.communityRef.child(key).removeValue()
-            Toast.makeText(this,"삭제 완료", Toast.LENGTH_SHORT).show()
-            finish()
+            if(isreview){
+                FBRef.reviewRef.child(key).removeValue()
+                Toast.makeText(this,"삭제 완료", Toast.LENGTH_SHORT).show()
+                finish()
+            }else{
+                FBRef.communityRef.child(key).removeValue()
+                Toast.makeText(this,"삭제 완료", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
         }
     }
 
-    private fun getBoardData(key : String){
+    private fun getBoardData(key: String, isreview: Boolean){
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
@@ -75,6 +77,11 @@ class BoardInsideActivity : AppCompatActivity() {
 
         }
         //key 값만 가져옴
-        FBRef.communityRef.child(key).addValueEventListener(postListener)
+        if(isreview){
+            FBRef.reviewRef.child(key).addValueEventListener(postListener)
+        }
+        else {
+            FBRef.communityRef.child(key).addValueEventListener(postListener)
+        }
     }
 }

@@ -76,9 +76,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tvReviewContents" />
 
         <CheckBox
+            android:id="@+id/checkreview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textSize="20sp"
             android:text="후기"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

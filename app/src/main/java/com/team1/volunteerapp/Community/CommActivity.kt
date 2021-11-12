@@ -23,7 +23,6 @@ import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
 class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
     private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
         object : FloatingActionButton.OnVisibilityChangedListener() {
             override fun onShown(fab: FloatingActionButton?) {
@@ -40,18 +39,12 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val boardDataList = mutableListOf<BoardModel>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var commRVAdapter: CommAdapter
-
-    var sido : String? = null
-    var gugun : String? = null
     var setDrawr = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
         setSupportActionBar(bottomAppBar)
-
-        sido = intent.getStringExtra("sido")
-        gugun = intent.getStringExtra("gugun")
 
         //Recycler view 연결
         val comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
@@ -65,6 +58,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 //눌렀을때 어떻게 할지
                 val intent = Intent(view.context,BoardInsideActivity::class.java)
                 intent.putExtra("key",boardKeyList[position])
+                intent.putExtra("review",false)
                 startActivity(intent)
             }
         }
@@ -118,7 +112,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
-//        val intentr = Intent(this, ReviewActivity::class.java)
+        val intentr = Intent(this, ReviewActivity::class.java)
 
         when(item.itemId)
         {
@@ -128,7 +122,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.review -> {
                 fab.hide(addVisibilityChanged)
                 Handler().postDelayed({
-//                    startActivity(intentr)
+                    startActivity(intentr)
                     finish()
                 }, 150)
             }
