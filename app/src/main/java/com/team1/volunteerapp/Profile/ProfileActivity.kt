@@ -54,6 +54,9 @@ class ProfileActivity : AppCompatActivity() {
     var usernickname : String? = null
     var sido : String? = null
     var gugun : String? = null
+    var pnumber : String? = null
+    var name : String? = null
+    var email : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,9 @@ class ProfileActivity : AppCompatActivity() {
 
         val homeButton = findViewById<FloatingActionButton>(R.id.fab)
         val profileInfo = findViewById<TextView>(R.id.profileInfo)
+        val profileEmail = findViewById<TextView>(R.id.profileEmail)
+        val profileName = findViewById<TextView>(R.id.profileName)
+        val profileNumber = findViewById<TextView>(R.id.profileNumber)
 
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
@@ -76,10 +82,16 @@ class ProfileActivity : AppCompatActivity() {
         }
         volgoaltime = intent.getStringExtra("goaltime")
         usernickname = intent.getStringExtra("nickname")
+        pnumber = intent.getStringExtra("phone")
+        name = intent.getStringExtra("username")
+        email = intent.getStringExtra("email")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         //닉네임 설정
         profileInfo.setText(usernickname)
+        profileEmail.setText(email)
+        profileName.setText(name)
+        profileNumber.setText(pnumber)
 
         val items = mutableListOf<String>()
 

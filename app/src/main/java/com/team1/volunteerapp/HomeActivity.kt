@@ -68,6 +68,7 @@ class HomeActivity : AppCompatActivity() {
     var vol_user: String? = null
     var sido : String? = null
     var gugun : String? = null
+    var vol_name : String? = null
 
     var vol_srvcClCode : String? = null
     //뒤로가기 연속 클릭 대기 시간
@@ -273,6 +274,9 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["email"] != null) {
                             user_email = doc["email"].toString()
                         }
+                        if (doc["username"] != null) {
+                            vol_name = doc["username"].toString()
+                        }
                         if (doc["sidodata"] != null) {
                             user_sido = doc["sidodata"].toString()
                         }
@@ -326,6 +330,9 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("title", vol_title)
                 intent.putExtra("goaltime", vol_goaltime)
                 intent.putExtra("nickname", vol_user)
+                intent.putExtra("username", vol_name)
+                intent.putExtra("email", user_email)
+                intent.putExtra("phone", user_phone)
 
                 Handler().postDelayed({
                     startActivity(intent)
