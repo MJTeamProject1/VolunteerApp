@@ -196,8 +196,8 @@ class HomeActivity : AppCompatActivity() {
         for (i in 0..9) {
             var vol_area = stringArray[i]
             var vol_context = stringArray2[i]
-            var vol_start = stringArray3[i]
-            var vol_end = stringArray4[i]
+            var vol_start = stringArray3[i].toString().substring(0,4) + "." + stringArray3[i].toString().substring(4,6) +"." + stringArray3[i].toString().substring(6,8)
+            var vol_end = stringArray4[i].toString().substring(0,4) + "." + stringArray4[i].toString().substring(4,6) +"." + stringArray4[i].toString().substring(6,8)
             var vol_num = stringArray5[i]
             var vol_srvcClCode = stringArray6[i]
             items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num, vol_srvcClCode))

@@ -121,8 +121,8 @@ class FavoriteRVAdapter (val items : MutableList<String>) : RecyclerView.Adapter
 
                         rv_text1.text = vol_context
                         rv_text2.text = vol_area
-                        rv_text3.text = vol_start
-                        rv_text4.text = vol_end
+                        rv_text3.text = vol_start.toString().substring(0,4) + "." + vol_start.toString().substring(4,6) + "." + vol_start.toString().substring(6,8)
+                        rv_text4.text = vol_end.toString().substring(0,4) + "." + vol_end.toString().substring(4,6) + "." + vol_end.toString().substring(6,8)
                     }
                 }
             }
