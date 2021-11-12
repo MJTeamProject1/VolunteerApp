@@ -168,7 +168,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val colors: ArrayList<Int> = ArrayList() // 각 영역의 색상
         colors.add(Color.parseColor("#4DD0E1"))
-        colors.add(Color.parseColor("#FFF176"))
+        colors.add(Color.parseColor("#FFBC1A"))
 
         val dataSet = PieDataSet(dataEntries, "")
         val data = PieData(dataSet)

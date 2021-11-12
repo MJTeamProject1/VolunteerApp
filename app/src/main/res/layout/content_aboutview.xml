@@ -259,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:text="봉사 장소"
+                        android:text="봉사 장소 :"
                         style="@style/AboutText"
                         android:fontFamily="@font/sd6"
                         android:layout_width="match_parent"
