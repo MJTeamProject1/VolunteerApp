@@ -2,6 +2,7 @@ package com.team1.volunteerapp
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -253,6 +254,7 @@ class AboutViewActivity : AppCompatActivity() {
             voluteerImage.setImageResource(R.drawable.disaster)
         }
 
+        textpostAdres.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         textpostAdres.setOnClickListener {
             val intent = Intent(this, WebMapActivity::class.java)
             intent.putExtra("adr", textpostAdres.text.toString())
