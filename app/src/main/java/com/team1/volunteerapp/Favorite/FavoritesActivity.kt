@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -84,7 +85,9 @@ class FavoritesActivity : AppCompatActivity() {
         favorite_rvAdapter.itemClick = object : FavoriteRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
                 //눌렀을때 어떻게 할지
-
+                val intent = Intent(favorite_rv.context, AboutViewActivity::class.java)
+                intent.putExtra("num", favorite_items[position].toString())
+                ContextCompat.startActivity(favorite_rv.context, intent, null)
             }
         }
 
