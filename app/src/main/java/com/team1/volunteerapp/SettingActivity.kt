@@ -15,6 +15,7 @@ import com.team1.volunteerapp.Auth.IntroActivity
 class SettingActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
+    var count : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,7 @@ class SettingActivity : AppCompatActivity() {
 
         var sidodata: String? = intent.getStringExtra("userSido")
         var gugundata: String? = intent.getStringExtra("userGungu")
+        var gugunintent : String? = gugundata
 
         // spinner 관련
         var sido = resources.getStringArray(R.array.spinner_region)
@@ -252,62 +254,73 @@ class SettingActivity : AppCompatActivity() {
 
         }
 
-
         spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, id: Long) {
-                if (sidodata == "서울특별시") {
-                    gugundata = gugun1[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "부산광역시") {
-                    gugundata = gugun2[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "대구광역시") {
-                    gugundata = gugun3[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "인천광역시") {
-                    gugundata = gugun4[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "광주광역시") {
-                    gugundata = gugun5[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "대전광역시") {
-                    gugundata = gugun6[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "울산광역시") {
-                    gugundata = gugun7[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "세종특별자치시") {
-                    gugundata = gugun8[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "경기도") {
-                    gugundata = gugun9[p2]
-                    println("============" + gugundata)
+                if(count > 1) {
+                    if (sidodata == "서울특별시") {
+                        gugundata = gugun1[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "부산광역시") {
+                        gugundata = gugun2[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "대구광역시") {
+                        gugundata = gugun3[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "인천광역시") {
+                        gugundata = gugun4[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "광주광역시") {
+                        gugundata = gugun5[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "대전광역시") {
+                        gugundata = gugun6[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "울산광역시") {
+                        gugundata = gugun7[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "세종특별자치시") {
+                        gugundata = gugun8[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "경기도") {
+                        gugundata = gugun9[p2]
+                        println("============" + gugundata)
 
-                } else if (sidodata == "강원도") {
-                    gugundata = gugun10[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "충청북도") {
-                    gugundata = gugun11[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "충청남도") {
-                    gugundata = gugun12[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "전라북도") {
-                    gugundata = gugun13[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "전라남도") {
-                    gugundata = gugun14[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "경상북도") {
-                    gugundata = gugun15[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "경상남도") {
-                    gugundata = gugun16[p2]
-                    println("============" + gugundata)
-                } else if (sidodata == "제주특별자치도") {
-                    gugundata = gugun17[p2]
-                    println("============" + gugundata)
+                    } else if (sidodata == "강원도") {
+                        gugundata = gugun10[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "충청북도") {
+                        gugundata = gugun11[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "충청남도") {
+                        gugundata = gugun12[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "전라북도") {
+                        gugundata = gugun13[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "전라남도") {
+                        gugundata = gugun14[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "경상북도") {
+                        gugundata = gugun15[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "경상남도") {
+                        gugundata = gugun16[p2]
+                        println("============" + gugundata)
+                    } else if (sidodata == "제주특별자치도") {
+                        gugundata = gugun17[p2]
+                        println("============" + gugundata)
+                    }
                 }
+                else{
+                    for(i in 0..spinner2.count){
+                        if(gugunintent == spinner2.getItemAtPosition(i)){
+                            spinner2.setSelection(i)
+                            break
+                        }
+                    }
+                }
+
+                count += 1
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -315,6 +328,7 @@ class SettingActivity : AppCompatActivity() {
 
             }
         }
+
 
         rectifybtn.setOnClickListener {
             var isGoToJoin = true

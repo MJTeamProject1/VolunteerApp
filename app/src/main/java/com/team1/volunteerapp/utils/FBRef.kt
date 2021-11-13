@@ -8,5 +8,8 @@ class FBRef {
         private val database = Firebase.database
 
         val favoriteRef = database.getReference("favorite_list")
+
+        val communityRef = database.getReference("community_list")
+        val reviewRef = database.getReference("community_review_list")
     }
 }

@@ -14,6 +14,18 @@
         android:theme="@style/Theme.VolunteerApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Community.ReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Community.BoardWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Community.BoardInsideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebMapActivity"
+            android:exported="true" />
+        <activity
             android:name=".SettingActivity"
             android:exported="true" />
         <activity
@@ -27,10 +39,9 @@
             android:exported="false" />
         <activity android:name=".Community.CommActivity" />
         <activity android:name=".Community.WriteCommActivity" />
-        <activity android:name=".Community.ReviewActivity" />
         <activity android:name=".Community.WriteReviewActivity" />
-        <activity android:name=".Community.InfoActivity"/>
-        <activity android:name=".Community.InfoActivity2"/>
+        <activity android:name=".Community.InfoActivity" />
+        <activity android:name=".Community.InfoActivity2" />
         <activity
             android:name=".Auth.IntroActivity"
             android:exported="false" />

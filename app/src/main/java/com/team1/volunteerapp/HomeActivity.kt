@@ -46,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
     var user_sido : String? = null
     var user_gugun : String? = null
     var user_email : String? = null
+    lateinit var bottomnavdrawerfragment : BottomNavDrawerFragment
 
     private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
         object : FloatingActionButton.OnVisibilityChangedListener() {
@@ -67,6 +68,7 @@ class HomeActivity : AppCompatActivity() {
     var vol_user: String? = null
     var sido : String? = null
     var gugun : String? = null
+    var vol_name : String? = null
 
     var vol_srvcClCode : String? = null
     //뒤로가기 연속 클릭 대기 시간
@@ -194,8 +196,8 @@ class HomeActivity : AppCompatActivity() {
         for (i in 0..9) {
             var vol_area = stringArray[i]
             var vol_context = stringArray2[i]
-            var vol_start = stringArray3[i]
-            var vol_end = stringArray4[i]
+            var vol_start = stringArray3[i].toString().substring(0,4) + "." + stringArray3[i].toString().substring(4,6) +"." + stringArray3[i].toString().substring(6,8)
+            var vol_end = stringArray4[i].toString().substring(0,4) + "." + stringArray4[i].toString().substring(4,6) +"." + stringArray4[i].toString().substring(6,8)
             var vol_num = stringArray5[i]
             var vol_srvcClCode = stringArray6[i]
             items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num, vol_srvcClCode))
@@ -214,30 +216,16 @@ class HomeActivity : AppCompatActivity() {
         home_rv.layoutManager = LinearLayoutManager(this)
 
 
-
-        // RecyclerView item을 클릭 시
-        /*
-        home_rvAdapter.itemClick= object : HomeRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(baseContext, AboutViewActivity::class.java)
-                startActivity(intent)
-            }
-        }*/
-
-
         // 커뮤니티 버튼
         val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
         testCommunityBtn.setOnClickListener {
             fab.hide(addVisibilityChanged)
             Handler().postDelayed({
                 val intent = Intent(this, CommActivity::class.java)
-                intent.putExtra("sido",sido)
-                intent.putExtra("gugun",gugun)
+                intent.putExtra("nickname", vol_user)
                 startActivity(intent)
             }, 150)
         }
-
-
     }
 
     override fun onStart() {
@@ -272,6 +260,9 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["email"] != null) {
                             user_email = doc["email"].toString()
                         }
+                        if (doc["username"] != null) {
+                            vol_name = doc["username"].toString()
+                        }
                         if (doc["sidodata"] != null) {
                             user_sido = doc["sidodata"].toString()
                         }
@@ -304,9 +295,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
-                BottomNavDrawerFragment().show(supportFragmentManager,
+                bottomnavdrawerfragment = BottomNavDrawerFragment()
+                bottomnavdrawerfragment.show(supportFragmentManager,
                     BottomNavDrawerFragment().tag)
-                BottomNavDrawerFragment().setIntent(user_email, user_phone, vol_user, vol_goaltime, user_sido, user_gugun)
+                bottomnavdrawerfragment.setIntent(user_email, user_phone, vol_user, vol_goaltime, user_sido, user_gugun)
             }
 
             R.id.app_bar_profile -> {
@@ -324,6 +316,9 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("title", vol_title)
                 intent.putExtra("goaltime", vol_goaltime)
                 intent.putExtra("nickname", vol_user)
+                intent.putExtra("username", vol_name)
+                intent.putExtra("email", user_email)
+                intent.putExtra("phone", user_phone)
 
                 Handler().postDelayed({
                     startActivity(intent)

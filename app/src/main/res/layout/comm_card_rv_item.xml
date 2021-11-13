@@ -5,53 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/profileicon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
-            android:id="@+id/tvNickName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="안녕하세요"
-            android:textSize="17sp"
-            android:fontFamily="@font/nanumsquareround"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.899"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/rvTitle"
+            android:layout_width="337dp"
+            android:layout_height="30sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sd6"
+            android:text="제목"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="121dp"
-            android:layout_height="32dp"
+            android:id="@+id/rvTime"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/nanumsquareround"
-            android:text="커뮤니티"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.058"
+            android:text="시간"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/rvNickName" />
 
         <TextView
-            android:id="@+id/tvContents"
-            android:layout_width="263dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="48dp"
-            android:text="내용"
-            android:textSize="18dp"
-            android:fontFamily="@font/nanumsquareround"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.121"
+            android:id="@+id/rvNickName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:text="uid"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/rvTitle" />
+
+        <TextView
+            android:id="@+id/rvContents"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:text="내용"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvTime" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
