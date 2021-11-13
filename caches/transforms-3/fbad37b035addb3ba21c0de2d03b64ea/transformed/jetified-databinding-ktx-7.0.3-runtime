@@ -1,0 +1,6 @@
+androidx.databinding.ViewDataBindingKtx
+androidx.databinding.ViewDataBindingKtx$CREATE_STATE_FLOW_LISTENER$1
+androidx.databinding.ViewDataBindingKtx$StateFlowListener
+androidx.databinding.ViewDataBindingKtx$StateFlowListener$startCollection$1
+androidx.databinding.ViewDataBindingKtx$StateFlowListener$startCollection$1$invokeSuspend$$inlined$collect$1
+androidx.databinding.ktx.BuildConfig

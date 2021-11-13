@@ -11,7 +11,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:fontFamily="@font/sd7"
+            android:fontFamily="@font/nanumsquareround"
             android:gravity="center"
             android:text="글 작성"
             android:textSize="25sp"
@@ -32,6 +32,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="20sp"
+            android:fontFamily="@font/nanumsquareround"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +46,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="20sp"
+            android:fontFamily="@font/nanumsquareround"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +57,9 @@
             android:layout_height="56dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/maincolor2"
             android:ems="10"
+            android:fontFamily="@font/nanumsquareround"
             android:hint="제목을 입력하세요"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +74,8 @@
             android:hint="내용을 입력하세요"
             android:inputType="textMultiLine"
             android:textAlignment="viewStart"
+            android:fontFamily="@font/nanumsquareround"
+            android:backgroundTint="@color/maincolor2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +88,7 @@
             android:layout_marginTop="8dp"
             android:textSize="20sp"
             android:text="후기"
+            android:fontFamily="@font/nanumsquareround"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardEditContents" />
