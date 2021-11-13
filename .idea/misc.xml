@@ -36,6 +36,23 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navigation_menu.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navigation_menu_community.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navigation_menu_favorite.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/font/aclonica.xml" value="0.33487179487179486" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/font/aldrich.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/font/splash.xml" value="0.33487179487179486" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm_info.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.25" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_loading.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.17198581560283688" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_rev_info.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_review.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_setting.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_comm.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_write_review.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/comm_card_rv_item.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_community.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/kim/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_review.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.1296875" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_comm.xml" value="0.11510416666666666" />
         <entry key="..\:/Users/park/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.264" />
@@ -80,7 +97,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

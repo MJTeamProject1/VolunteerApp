@@ -16,6 +16,7 @@ class CommAdapter(val CommList: ArrayList<CUser>) : RecyclerView.Adapter<CommAda
     //추가
     private lateinit var mListener : onItemClickListener
 
+
     interface onItemClickListener{
 
         fun onItemClick(position: Int)

@@ -4,21 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/white"
     tools:context=".SplashActivity">
 
+
+    <ImageView
+        android:layout_width="292dp"
+        android:layout_height="289dp"
+        android:src="@drawable/splash_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963"
+        app:tint="#F3CB55" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="봉사활동\n APP"
-        android:fontFamily="@font/sd6"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:id="@+id/textView3"
+        android:layout_width="345dp"
+        android:layout_height="120dp"
+        android:fontFamily="@font/binggrae"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:text="심 봉 사"
+        android:textColor="#FFBF00"
+        android:textSize="65sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
