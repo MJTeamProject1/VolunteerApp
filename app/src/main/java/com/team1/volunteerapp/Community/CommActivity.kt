@@ -19,22 +19,11 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import com.team1.volunteerapp.Favorite.FavoriteRVAdapter
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
 class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
-
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
 
     private val boardDataList = mutableListOf<BoardModel>()
     private val boardKeyList = mutableListOf<String>()
@@ -78,7 +67,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // 글 쓰기 버튼
         val btnWriteComm = findViewById<FloatingActionButton>(R.id.fab)
         btnWriteComm.setOnClickListener {
-            fab.hide(addVisibilityChanged)
+            fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
                 val intent = Intent(this, BoardWriteActivity::class.java)
                 intent.putExtra("nickname", nickname)
@@ -127,7 +116,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"이미 커뮤니티 입니다.", Toast.LENGTH_LONG).show()
             }
             R.id.review -> {
-                fab.hide(addVisibilityChanged)
+                fab.hide(AnimationB.addVisibilityChanged)
                 Handler().postDelayed({
                     intentr.putExtra("nickname", nickname)
                     startActivity(intentr)
@@ -154,7 +143,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> { // 홈으로 돌아가기
-                fab.hide(addVisibilityChanged)
+                fab.hide(AnimationB.addVisibilityChanged)
                 Handler().postDelayed({
                     finish()
                 }, 300)

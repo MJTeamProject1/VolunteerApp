@@ -32,21 +32,11 @@ import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.AnimationB
 import kotlinx.android.synthetic.main.activity_home.*
 
 class ProfileActivity : AppCompatActivity() {
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
 
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
     private lateinit var pieChart: PieChart
     var voltime :String? = null
     var voltitle : String? = null
@@ -119,7 +109,7 @@ class ProfileActivity : AppCompatActivity() {
         profile_rv.addItemDecoration(dividerItemDecoration)
 
         homeButton.setOnClickListener { // 홈으로 돌아가기
-            fab.hide(addVisibilityChanged)
+            fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
 //                val intent = Intent(this, HomeActivity::class.java)
 //                intent.putExtra("sido",sido)

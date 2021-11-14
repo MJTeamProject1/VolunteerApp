@@ -29,23 +29,13 @@ import com.team1.volunteerapp.BottomNavDrawerFragment
 import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
 class FavoritesActivity : AppCompatActivity() {
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
 
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
     val favorite_items = mutableListOf<String>()
 
     lateinit var favorite_rvAdapter : FavoriteRVAdapter
@@ -71,7 +61,7 @@ class FavoritesActivity : AppCompatActivity() {
         //홈으로 가기
         val homeButton = findViewById<FloatingActionButton>(R.id.fab)
         homeButton.setOnClickListener { // 홈으로 돌아가기
-            fab.hide(addVisibilityChanged)
+            fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
                 finish()
             }, 300)

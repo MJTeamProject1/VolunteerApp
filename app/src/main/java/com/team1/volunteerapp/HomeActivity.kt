@@ -28,6 +28,7 @@ import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
+import com.team1.volunteerapp.utils.AnimationB
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,18 +49,6 @@ class HomeActivity : AppCompatActivity() {
     var user_email : String? = null
     lateinit var bottomnavdrawerfragment : BottomNavDrawerFragment
 
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
-
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
     var vol_time: String? = null
@@ -219,7 +208,7 @@ class HomeActivity : AppCompatActivity() {
         // 커뮤니티 버튼
         val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
         testCommunityBtn.setOnClickListener {
-            fab.hide(addVisibilityChanged)
+            fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
                 val intent = Intent(this, CommActivity::class.java)
                 intent.putExtra("nickname", vol_user)
@@ -302,7 +291,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             R.id.app_bar_profile -> {
-                fab.hide(addVisibilityChanged)
+                fab.hide(AnimationB.addVisibilityChanged)
                 val intent = Intent(this, ProfileActivity::class.java)
                 if(vol_time == null){
                     vol_time = ""
@@ -326,7 +315,7 @@ class HomeActivity : AppCompatActivity() {
 
             }
             R.id.app_bar_fav -> {
-                fab.hide(addVisibilityChanged)
+                fab.hide(AnimationB.addVisibilityChanged)
                 val intent = Intent(this, FavoritesActivity::class.java)
                 Handler().postDelayed({
                     startActivity(intent)

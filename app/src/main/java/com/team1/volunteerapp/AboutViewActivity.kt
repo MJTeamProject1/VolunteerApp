@@ -27,6 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Favorite.FavoriteModel
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
@@ -47,18 +48,7 @@ class AboutViewActivity : AppCompatActivity() {
     private var title1 : String = ""
     private var starttime1 : String = ""
     private var endtime1 : String = ""
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
 
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
     private lateinit var auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
 
@@ -264,7 +254,7 @@ class AboutViewActivity : AppCompatActivity() {
         //홈으로 가기
         val homeButton = findViewById<FloatingActionButton>(R.id.fab)
         homeButton.setOnClickListener { // 홈으로 돌아가기
-            fab.hide(addVisibilityChanged)
+            fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
                 finish()
             }, 300)

@@ -17,23 +17,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardWriteBinding
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 
 class BoardWriteActivity : AppCompatActivity() {
-    private val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener =
-        object : FloatingActionButton.OnVisibilityChangedListener() {
-            override fun onShown(fab: FloatingActionButton?) {
-                super.onShown(fab)
-            }
 
-            @SuppressLint("NewApi")
-            override fun onHidden(fab: FloatingActionButton?) {
-                super.onHidden(fab)
-//                fab?.show()
-            }
-        }
     var nickname : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +66,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
-                        fab.hide(addVisibilityChanged)
+                        fab.hide(AnimationB.addVisibilityChanged)
                         Handler().postDelayed({
                             finish()
                         }, 300)
@@ -88,7 +78,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
-                        fab.hide(addVisibilityChanged)
+                        fab.hide(AnimationB.addVisibilityChanged)
                         Handler().postDelayed({
                             finish()
                         }, 300)
@@ -101,7 +91,7 @@ class BoardWriteActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> { // 홈으로 돌아가기
-                fab.hide(addVisibilityChanged)
+                fab.hide(AnimationB.addVisibilityChanged)
                 Handler().postDelayed({
                     finish()
                 }, 300)
