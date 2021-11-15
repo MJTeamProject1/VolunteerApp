@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.963"
-        app:tint="#F3CB55" />
+        app:tint="#FFBF00" />
 
     <TextView
         android:id="@+id/textView3"
