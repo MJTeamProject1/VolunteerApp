@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/white"
     tools:context=".Auth.IntroActivity">
 
     <RelativeLayout
@@ -13,11 +13,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/sd6"
+            android:layout_height="400dp"
+            android:fontFamily="@font/binggrae"
             android:gravity="center"
-            android:text="봉사활동\n APP"
-            android:textColor="@color/white"
+            android:text="심 봉 사"
+            android:textColor="@color/maincolor2"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -34,6 +34,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="@font/nanumsquareround"
                 android:background="@drawable/button_background"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="@font/nanumsquareround"
                 android:background="@drawable/button_background"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"

@@ -98,17 +98,37 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.13360507246376813" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.2957427536231884" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.2957427536231884" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_board_inside.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_board_write.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_community.xml" value="0.17198581560283688" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_favorites.xml" value="0.3494791666666667" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.17806484295845998" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_intro.xml" value="0.3536458333333333" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.2957427536231884" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_loading.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_login.xml" value="0.3536458333333333" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.17806484295845998" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.2957427536231884" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_review.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_setting.xml" value="0.3536458333333333" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_splash.xml" value="0.2957427536231884" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/activity_web_map.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/banner_list_item.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_aboutview.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_boardwrite.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_community.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_favorite.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_profile.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/content_review.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.3536458333333333" />
+        <entry key="..\:/VolunteerApp/app/src/main/res/layout/fragment_bottom_nav_drawer.xml" value="0.3536458333333333" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.2957427536231884" />
         <entry key="..\:/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.2957427536231884" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
