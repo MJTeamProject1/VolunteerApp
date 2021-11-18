@@ -1,4 +1,4 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Loading
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import androidx.annotation.RequiresApi
+import com.team1.volunteerapp.Home.HomeActivity
+import com.team1.volunteerapp.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,19 +17,16 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
-var sido : String? = null
-var gugun : String? = null
-var sidocode : String? = null
-var guguncode : String? = null
-
 
 class LoadingActivity : AppCompatActivity() {
+    private var sido : String? = null
+    private var gugun : String? = null
+    private var sidocode : String? = null
+    private var guguncode : String? = null
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
-        var stringArray = Array(10, { item -> "" })
-        println("=========1쓰레드 밖${stringArray.get(0)}")
 
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
@@ -46,23 +45,17 @@ class LoadingActivity : AppCompatActivity() {
             println("Root element :" + xml.documentElement.nodeName)
 
             val list: NodeList = xml.getElementsByTagName("item")
-            for (i in 0..list.length - 1) {
-                var n: Node = list.item(i)
-                if (n.getNodeType() == Node.ELEMENT_NODE) {
+            for (i in 0 until list.length) {
+                val n: Node = list.item(i)
+                if (n.nodeType == Node.ELEMENT_NODE) {
                     val elem = n as Element
-
                     val map = mutableMapOf<String, String>()
-
-
-
-                    for (j in 0..elem.attributes.length - 1) {
+                    for (j in 0 until elem.attributes.length) {
                         map.putIfAbsent(
                             elem.attributes.item(j).nodeName,
                             elem.attributes.item(j).nodeValue
                         )
-
                     }
-
                     // 지역코드
                     sidocode = elem.getElementsByTagName("sidoCd").item(0).textContent
                     guguncode = elem.getElementsByTagName("gugunCd").item(0).textContent

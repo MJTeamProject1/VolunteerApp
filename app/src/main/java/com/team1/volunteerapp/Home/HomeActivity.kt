@@ -1,33 +1,27 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Home
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.team1.volunteerapp.Auth.IntroActivity
+import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.Community.CommActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
+import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
@@ -43,25 +37,24 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class HomeActivity : AppCompatActivity() {
 
-    var user_phone : String? = null
-    var user_sido : String? = null
-    var user_gugun : String? = null
-    var user_email : String? = null
-    lateinit var bottomnavdrawerfragment : BottomNavDrawerFragment
+    private var user_phone : String? = null
+    private var user_sido : String? = null
+    private var user_gugun : String? = null
+    private var user_email : String? = null
+    private lateinit var bottomnavdrawerfragment : BottomNavDrawerFragment
 
     private lateinit var auth: FirebaseAuth
-    val db = FirebaseFirestore.getInstance()
-    var vol_time: String? = null
-    var vol_title: String? = null
-    var vol_goaltime: String? = null
-    var vol_user: String? = null
-    var sido : String? = null
-    var gugun : String? = null
-    var vol_name : String? = null
-
-    var vol_srvcClCode : String? = null
+    private val db = FirebaseFirestore.getInstance()
+    private var vol_time: String? = null
+    private var vol_title: String? = null
+    private var vol_goaltime: String? = null
+    private var vol_user: String? = null
+    private var sido : String? = null
+    private var gugun : String? = null
+    private var vol_name : String? = null
+    private var vol_srvcClCode : String? = null
     //뒤로가기 연속 클릭 대기 시간
-    var mBackWait:Long = 0
+    private var mBackWait:Long = 0
 
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
@@ -79,22 +72,21 @@ class HomeActivity : AppCompatActivity() {
 
 
         // RecyclerView 데이터 삽입할 배열 선언
-        var stringArray = Array(10, { item -> "" })
-        var stringArray2 = Array(10, { item -> "" })
-        var stringArray3 = Array(10, { item -> "" })
-        var stringArray4 = Array(10, { item -> "" })
-        var stringArray5 = Array(10, { item -> "" })
-        var stringArray6 = Array(10, { item -> "" })
-
+        val stringArray = Array(10) { item -> "" }
+        val stringArray2 = Array(10) { item -> "" }
+        val stringArray3 = Array(10) { item -> "" }
+        val stringArray4 = Array(10) { item -> "" }
+        val stringArray5 = Array(10) { item -> "" }
+        val stringArray6 = Array(10) { item -> "" }
 
 
         // Coroutine을 이용한 API 불러오기
+        // 지역 정보를 통한 봉사 정보 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {
 
             val key: String =
                 "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
-            var url: String =
-                //지역 정보는 현재 고정 추후 수정할 예정
+            val url: String =
                 "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrAreaList?schSido=${sido}&schSign1=${gugun}&serviceKey=$key"
 
             val xml: Document =
@@ -105,13 +97,13 @@ class HomeActivity : AppCompatActivity() {
 
             val list: NodeList = xml.getElementsByTagName("item")
 
-            for (i in 0..list.length - 1) {
-                var n: Node = list.item(i)
-                if (n.getNodeType() == Node.ELEMENT_NODE) {
+            for (i in 0 until list.length) {
+                val n: Node = list.item(i)
+                if (n.nodeType == Node.ELEMENT_NODE) {
                     val elem = n as Element
                     val map = mutableMapOf<String, String>()
 
-                    for (j in 0..elem.attributes.length - 1) {
+                    for (j in 0 until elem.attributes.length) {
 
                         map.putIfAbsent(
                             elem.attributes.item(j).nodeName,
@@ -125,11 +117,11 @@ class HomeActivity : AppCompatActivity() {
                     val vol_end = elem.getElementsByTagName("progrmEndde").item(0).textContent
                     val vol_num = elem.getElementsByTagName("progrmRegistNo").item(0).textContent
 
+                    // 봉사 프로그램 번호 API 호출
                     val job = CoroutineScope(Dispatchers.IO).launch {
                         val key1 : String =
                             "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
-                        var url1 : String =
-                            //지역 정보는 현재 고정 추후 수정할 예정
+                        val url1 : String =
                             "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrPartcptnItem?progrmRegistNo=${vol_num}&serviceKey=$key1"
                         //progrmRegistNo=2780545
                         //2780545 프로그램 번호 수정
@@ -142,13 +134,13 @@ class HomeActivity : AppCompatActivity() {
 
                         val list: NodeList = xml.getElementsByTagName("item")
 
-                        for (i in 0..list.length - 1) {
-                            var n: Node = list.item(i)
-                            if (n.getNodeType() == Node.ELEMENT_NODE) {
+                        for (i in 0 until list.length) {
+                            val n: Node = list.item(i)
+                            if (n.nodeType == Node.ELEMENT_NODE) {
                                 val elem = n as Element
                                 val map = mutableMapOf<String, String>()
 
-                                for (j in 0..elem.attributes.length - 1) {
+                                for (j in 0 until elem.attributes.length) {
 
                                     map.putIfAbsent(
                                         elem.attributes.item(j).nodeName,
@@ -183,19 +175,14 @@ class HomeActivity : AppCompatActivity() {
 
         // item에 추가
         for (i in 0..9) {
-            var vol_area = stringArray[i]
-            var vol_context = stringArray2[i]
-            var vol_start = stringArray3[i].toString().substring(0,4) + "." + stringArray3[i].toString().substring(4,6) +"." + stringArray3[i].toString().substring(6,8)
-            var vol_end = stringArray4[i].toString().substring(0,4) + "." + stringArray4[i].toString().substring(4,6) +"." + stringArray4[i].toString().substring(6,8)
-            var vol_num = stringArray5[i]
-            var vol_srvcClCode = stringArray6[i]
+            val vol_area = stringArray[i]
+            val vol_context = stringArray2[i]
+            val vol_start = stringArray3[i].substring(0,4) + "." + stringArray3[i].substring(4,6) +"." + stringArray3[i].substring(6,8)
+            val vol_end = stringArray4[i].substring(0,4) + "." + stringArray4[i].substring(4,6) +"." + stringArray4[i].substring(6,8)
+            val vol_num = stringArray5[i]
+            val vol_srvcClCode = stringArray6[i]
             items_home.add(VolunteerModel(vol_area, vol_context, vol_start, vol_end, vol_num, vol_srvcClCode))
         }
-
-        //ViewPager연결
-//        val viewPager = findViewById<ViewPager2>(R.id.adPager)
-//        viewPager.adapter = ViewPagerAdapter(getBannerList())
-//        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         //RecyclerView Adapter 연결
         val home_rv = findViewById<RecyclerView>(R.id.mRecyclerViewHome)
@@ -273,8 +260,6 @@ class HomeActivity : AppCompatActivity() {
         } else { finish() }
     }
 
-
-
     // 화면 아래 메뉴 바
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.navigation_menu, menu)
@@ -299,8 +284,6 @@ class HomeActivity : AppCompatActivity() {
                 if(vol_title == null){
                     vol_title = ""
                 }
-                intent.putExtra("sido",sido)
-                intent.putExtra("gugun",gugun)
                 intent.putExtra("time", vol_time.toString())
                 intent.putExtra("title", vol_title)
                 intent.putExtra("goaltime", vol_goaltime)

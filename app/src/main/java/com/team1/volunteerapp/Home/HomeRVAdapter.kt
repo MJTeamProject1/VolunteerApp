@@ -1,6 +1,5 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,19 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_home.*
+import com.team1.volunteerapp.AboutViewActivity
+import com.team1.volunteerapp.R
 
-class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
+class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.home_rv_item, parent, false)
 
         return ViewHolder(inflatedView)
     }
 
-    override fun onBindViewHolder(holder: HomeRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         // 클릭 시
         /*
@@ -40,10 +39,10 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
     }
 
     // itemClick 인터페이스
-    interface ItemClick{
-        fun onClick(view : View, position: Int)
-    }
-    var itemClick : ItemClick? = null
+//    interface ItemClick{
+//        fun onClick(view : View, position: Int)
+//    }
+//    var itemClick : ItemClick? = null
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -62,40 +61,40 @@ class HomeRVAdapter (val items : MutableList<VolunteerModel>) : RecyclerView.Ada
             vol_num.text = item.progrmRegistNo
 
             // 이미지 설정
-            if(item.vol_srvcClCode?.contains("편의") == true) {
+            if(item.vol_srvcClCode?.contains("편의")) {
                 vol_srvcClCode.setImageResource(R.drawable.vv)
             }
-            else if(item.vol_srvcClCode?.contains("문화") == true) {
+            else if(item.vol_srvcClCode?.contains("문화")) {
                 vol_srvcClCode.setImageResource(R.drawable.world_book_day)
             }
-            else if(item.vol_srvcClCode?.contains("주거") == true){
+            else if(item.vol_srvcClCode?.contains("주거")){
                 vol_srvcClCode.setImageResource(R.drawable.home)
             }
-            else if(item.vol_srvcClCode?.contains("상담") == true){
+            else if(item.vol_srvcClCode?.contains("상담")){
                 vol_srvcClCode.setImageResource(R.drawable.consulting)
             }
-            else if(item.vol_srvcClCode?.contains("교육") == true){
+            else if(item.vol_srvcClCode?.contains("교육")){
                 vol_srvcClCode.setImageResource(R.drawable.book)
             }
-            else if(item.vol_srvcClCode?.contains("의료") == true){
+            else if(item.vol_srvcClCode?.contains("의료")){
                 vol_srvcClCode.setImageResource(R.drawable.first_aid_kit)
             }
-            else if(item.vol_srvcClCode?.contains("농어촌") == true){
+            else if(item.vol_srvcClCode?.contains("농어촌")){
                 vol_srvcClCode.setImageResource(R.drawable.hill)
             }
-            else if(item.vol_srvcClCode?.contains("환경") == true){
+            else if(item.vol_srvcClCode?.contains("환경")){
                 vol_srvcClCode.setImageResource(R.drawable.environmental_protection)
             }
-            else if(item.vol_srvcClCode?.contains("행정") == true){
+            else if(item.vol_srvcClCode?.contains("행정")){
                 vol_srvcClCode.setImageResource(R.drawable.briefcase)
             }
-            else if(item.vol_srvcClCode?.contains("안전") == true){
+            else if(item.vol_srvcClCode?.contains("안전")){
                 vol_srvcClCode.setImageResource(R.drawable.prevention)
             }
-            else if(item.vol_srvcClCode?.contains("공익") == true){
+            else if(item.vol_srvcClCode?.contains("공익")){
                 vol_srvcClCode.setImageResource(R.drawable.healthcare)
             }
-            else if(item.vol_srvcClCode?.contains("재난") == true){
+            else if(item.vol_srvcClCode?.contains("재난")){
                 vol_srvcClCode.setImageResource(R.drawable.disaster)
             }
 

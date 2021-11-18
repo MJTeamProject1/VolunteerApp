@@ -1,4 +1,4 @@
-package com.team1.volunteerapp
+package com.team1.volunteerapp.Loading
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,14 +9,16 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
+import com.team1.volunteerapp.Loading.LoadingActivity
+import com.team1.volunteerapp.R
 
 
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    val db = FirebaseFirestore.getInstance()
-    var sido : String? = null
-    var gugun : String? = null
+    private val db = FirebaseFirestore.getInstance()
+    private var sido : String? = null
+    private var gugun : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                println("++++++++++++++++++실패+++++++++")
+                println("+++++++++++실패+++++++++")
             }
 
         if (auth.currentUser?.uid == null) {
