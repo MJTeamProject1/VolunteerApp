@@ -6,17 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.text.isDigitsOnly
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.R
-import com.team1.volunteerapp.SplashActivity
+import com.team1.volunteerapp.Loading.SplashActivity
 
 class JoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class JoinActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-
+        // 회원가입 입력
         val email = findViewById<EditText>(R.id.emailEditArea)
         val password = findViewById<EditText>(R.id.passwordEditArea)
         val joinbtn = findViewById<Button>(R.id.joinBtn)
@@ -40,25 +41,24 @@ class JoinActivity : AppCompatActivity() {
         var gugundata : String = ""
 
         // spinner 관련
-        var sido = resources.getStringArray(R.array.spinner_region)
-        var gugun1 = resources.getStringArray(R.array.spinner_region_seoul)
-        var gugun2 = resources.getStringArray(R.array.spinner_region_busan)
-        var gugun3 = resources.getStringArray(R.array.spinner_region_incheon)
-        var gugun4 = resources.getStringArray(R.array.spinner_region_daegu)
-        var gugun5 = resources.getStringArray(R.array.spinner_region_gwangju)
-        var gugun6 = resources.getStringArray(R.array.spinner_region_daejeon)
-        var gugun7 = resources.getStringArray(R.array.spinner_region_ulsan)
-        var gugun8 = resources.getStringArray(R.array.spinner_region_sejong)
-        var gugun9 = resources.getStringArray(R.array.spinner_region_gyeonggi)
-        var gugun10 = resources.getStringArray(R.array.spinner_region_gangwon)
-        var gugun11 = resources.getStringArray(R.array.spinner_region_chung_buk)
-        var gugun12 = resources.getStringArray(R.array.spinner_region_chung_nam)
-        var gugun13 = resources.getStringArray(R.array.spinner_region_gyeong_buk)
-        var gugun14 = resources.getStringArray(R.array.spinner_region_gyeong_nam)
-        var gugun15 = resources.getStringArray(R.array.spinner_region_jeon_buk)
-        var gugun16 = resources.getStringArray(R.array.spinner_region_jeon_nam)
-        var gugun17 = resources.getStringArray(R.array.spinner_region_jeju)
-
+        val sido = resources.getStringArray(R.array.spinner_region)
+        val gugun1 = resources.getStringArray(R.array.spinner_region_seoul)
+        val gugun2 = resources.getStringArray(R.array.spinner_region_busan)
+        val gugun3 = resources.getStringArray(R.array.spinner_region_incheon)
+        val gugun4 = resources.getStringArray(R.array.spinner_region_daegu)
+        val gugun5 = resources.getStringArray(R.array.spinner_region_gwangju)
+        val gugun6 = resources.getStringArray(R.array.spinner_region_daejeon)
+        val gugun7 = resources.getStringArray(R.array.spinner_region_ulsan)
+        val gugun8 = resources.getStringArray(R.array.spinner_region_sejong)
+        val gugun9 = resources.getStringArray(R.array.spinner_region_gyeonggi)
+        val gugun10 = resources.getStringArray(R.array.spinner_region_gangwon)
+        val gugun11 = resources.getStringArray(R.array.spinner_region_chung_buk)
+        val gugun12 = resources.getStringArray(R.array.spinner_region_chung_nam)
+        val gugun13 = resources.getStringArray(R.array.spinner_region_gyeong_buk)
+        val gugun14 = resources.getStringArray(R.array.spinner_region_gyeong_nam)
+        val gugun15 = resources.getStringArray(R.array.spinner_region_jeon_buk)
+        val gugun16 = resources.getStringArray(R.array.spinner_region_jeon_nam)
+        val gugun17 = resources.getStringArray(R.array.spinner_region_jeju)
 
         val sidoadapter = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, sido)
         val gugunadapter1 = ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, gugun1)
@@ -135,71 +135,54 @@ class JoinActivity : AppCompatActivity() {
             ) {
                 if(sidodata == "서울특별시"){
                     gugundata = gugun1[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "부산광역시"){
                     gugundata = gugun2[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "대구광역시"){
                     gugundata = gugun3[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "인천광역시"){
                     gugundata = gugun4[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "광주광역시"){
                     gugundata = gugun5[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "대전광역시"){
                     gugundata = gugun6[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "울산광역시"){
                     gugundata = gugun7[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "세종특별자치시"){
                     gugundata = gugun8[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "경기도"){
                     gugundata = gugun9[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "강원도"){
                     gugundata = gugun10[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "충청북도"){
                     gugundata = gugun11[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "충청남도"){
                     gugundata = gugun12[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "전라북도"){
                     gugundata = gugun13[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "전라남도"){
                     gugundata = gugun14[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "경상북도"){
                     gugundata = gugun15[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "경상남도"){
                     gugundata = gugun16[position]
-                    println("============"+gugundata)
                 }
                 else if(sidodata == "제주특별자치도"){
                     gugundata = gugun17[position]
-                    println("============"+gugundata)
                 }
             }
 
@@ -207,7 +190,6 @@ class JoinActivity : AppCompatActivity() {
 
             }
         }
-
 
         joinbtn.setOnClickListener {
             var isGoToJoin = true
@@ -262,9 +244,12 @@ class JoinActivity : AppCompatActivity() {
                 Toast.makeText(this,"비밀번호를 6자리 이상 눌러주세요",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
+            else if(!settimedb.isDigitsOnly()){
+                Toast.makeText(this,"목표 봉사 시간에 숫자만 입력해주세요",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
             else {
                 if (isGoToJoin) {
-                    //Toast.makeText(this,email.text.toString(),Toast.LENGTH_SHORT).show()
                     auth.createUserWithEmailAndPassword(inputemail, inputpassword)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {

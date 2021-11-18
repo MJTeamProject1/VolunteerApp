@@ -1,6 +1,5 @@
 package com.team1.volunteerapp.Community
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
-import com.team1.volunteerapp.Favorite.FavoriteRVAdapter
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBRef
@@ -28,7 +26,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val boardDataList = mutableListOf<BoardModel>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var commRVAdapter: CommAdapter
-    var setDrawr = false
+    private var setDrawr = false
     var nickname : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +36,6 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //putExtra 데이터 받기
         nickname = intent.getStringExtra("nickname")
-
-        println("~~~~~~~~~~~~~~~~~~~~" + nickname)
 
         //Recycler view 연결
         val comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
@@ -150,12 +146,12 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.app_bar_community_list ->{
                 val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
-                if(setDrawr){
+                setDrawr = if(setDrawr){
                     layoutDrawerComm.closeDrawer(GravityCompat.START)
-                    setDrawr = false
+                    false
                 }else{
                     layoutDrawerComm.openDrawer(GravityCompat.START)
-                    setDrawr = true
+                    true
                 }
             }
         }

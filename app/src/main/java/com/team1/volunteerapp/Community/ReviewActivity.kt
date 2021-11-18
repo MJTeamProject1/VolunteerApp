@@ -1,6 +1,5 @@
 package com.team1.volunteerapp.Community
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,7 +28,7 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     private val boardDataList = mutableListOf<BoardModel>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var commRVAdapter: CommAdapter
-    var setDrawr = false
+    private var setDrawr = false
     var nickname : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +38,6 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         //putExtra 데이터 받기
         nickname = intent.getStringExtra("nickname")
-
-        println("~~~~~~~~~~~~~~~~~~~~" + nickname)
 
         //Recycler view 연결
         val comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
@@ -149,12 +146,12 @@ class ReviewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
             R.id.app_bar_community_list ->{
                 val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
-                if(setDrawr){
+                setDrawr = if(setDrawr){
                     layoutDrawerComm.closeDrawer(GravityCompat.START)
-                    setDrawr = false
+                    false
                 }else{
                     layoutDrawerComm.openDrawer(GravityCompat.START)
-                    setDrawr = true
+                    true
                 }
             }
         }

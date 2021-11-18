@@ -1,14 +1,11 @@
 package com.team1.volunteerapp.Profile
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.MenuItem
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -27,10 +24,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
-import com.team1.volunteerapp.BottomNavDrawerFragment
-import com.team1.volunteerapp.Community.CommActivity
-import com.team1.volunteerapp.Favorite.FavoritesActivity
-import com.team1.volunteerapp.HomeActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import kotlinx.android.synthetic.main.activity_home.*
@@ -38,13 +31,11 @@ import kotlinx.android.synthetic.main.activity_home.*
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var pieChart: PieChart
-    var voltime :String? = null
-    var voltitle : String? = null
-    var volgoaltime : String? = null
-    var usernickname : String? = null
-    var sido : String? = null
-    var gugun : String? = null
-    var pnumber : String? = null
+    private var voltime :String? = null
+    private var voltitle : String? = null
+    private var volgoaltime : String? = null
+    private var usernickname : String? = null
+    private var pnumber : String? = null
     var name : String? = null
     var email : String? = null
 
@@ -58,9 +49,6 @@ class ProfileActivity : AppCompatActivity() {
         val profileEmail = findViewById<TextView>(R.id.profileEmail)
         val profileName = findViewById<TextView>(R.id.profileName)
         val profileNumber = findViewById<TextView>(R.id.profileNumber)
-
-        sido = intent.getStringExtra("sido")
-        gugun = intent.getStringExtra("gugun")
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -78,10 +66,10 @@ class ProfileActivity : AppCompatActivity() {
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         //닉네임 설정
-        profileInfo.setText(usernickname)
-        profileEmail.setText(email)
-        profileName.setText(name)
-        profileNumber.setText(pnumber)
+        profileInfo.text = usernickname
+        profileEmail.text = email
+        profileName.text = name
+        profileNumber.text = pnumber
 
         val items = mutableListOf<String>()
 
@@ -111,11 +99,6 @@ class ProfileActivity : AppCompatActivity() {
         homeButton.setOnClickListener { // 홈으로 돌아가기
             fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
-//                val intent = Intent(this, HomeActivity::class.java)
-//                intent.putExtra("sido",sido)
-//                intent.putExtra("gugun",gugun)
-//                finishAffinity()
-//                startActivity(intent)
                 finish()
             }, 300)
         }
@@ -157,7 +140,7 @@ class ProfileActivity : AppCompatActivity() {
         dataEntries.add(PieEntry(goalpercent, "남은시간")) // 입력된 목표 봉사시간에서 -하기
 
         val colors: ArrayList<Int> = ArrayList() // 각 영역의 색상
-        colors.add(Color.parseColor("#4DD0E1"))
+        colors.add(Color.parseColor("#008cb2"))
         colors.add(Color.parseColor("#FFBC1A"))
 
         val dataSet = PieDataSet(dataEntries, "")
@@ -178,12 +161,9 @@ class ProfileActivity : AppCompatActivity() {
         pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
 
-
         //빈 공간에 텍스트
-        pieChart.setDrawCenterText(true);
+        pieChart.setDrawCenterText(true)
         pieChart.centerText = "봉사시간 : ${voltime}시간"
-
-
 
         pieChart.invalidate()
 
@@ -197,21 +177,19 @@ class ProfileActivity : AppCompatActivity() {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("로그아웃")
                 builder.setMessage("정말로 로그아웃 하시겠습니까?")
-                builder.setNegativeButton("취소",
-                    { dialogInterface: DialogInterface?, i: Int ->
-                        //아무런 동작도 하지 않음
-                    }
-                )
-                builder.setPositiveButton("확인",
-                    { dialogInterface: DialogInterface?, i: Int ->
-                        Firebase.auth.signOut()
-                        val intent = Intent(this, IntroActivity::class.java)
-                        finishAffinity()
-                        startActivity(intent)
-                        finish()
-                        Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                )
+                builder.setNegativeButton("취소"
+                ) { dialogInterface: DialogInterface?, i: Int ->
+                    //아무런 동작도 하지 않음
+                }
+                builder.setPositiveButton("확인"
+                ) { dialogInterface: DialogInterface?, i: Int ->
+                    Firebase.auth.signOut()
+                    val intent = Intent(this, IntroActivity::class.java)
+                    finishAffinity()
+                    startActivity(intent)
+                    finish()
+                    Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                }
                 builder.show()
                 }
             }

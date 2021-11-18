@@ -1,6 +1,5 @@
 package com.team1.volunteerapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
@@ -11,9 +10,6 @@ import android.os.Handler
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -25,8 +21,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Favorite.FavoriteModel
-import com.team1.volunteerapp.Favorite.FavoritesActivity
-import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
@@ -50,11 +44,7 @@ class AboutViewActivity : AppCompatActivity() {
     private var endtime1 : String = ""
 
     private lateinit var auth: FirebaseAuth
-    val db = FirebaseFirestore.getInstance()
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    private val items_about = mutableListOf<VolunteerModel>()
-
+    private val db = FirebaseFirestore.getInstance()
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,8 +57,6 @@ class AboutViewActivity : AppCompatActivity() {
         val volunteerTitle: TextView = findViewById(R.id.volunteerTitle)
         val volunteerDetail: TextView = findViewById(R.id.voluteerDetail)
         val applyButton: AppCompatButton = findViewById(R.id.applyButton)
-//        val callButton: AppCompatButton = findViewById(R.id.callButton)
-//        val favoriteButton = findViewById<Button>(R.id.favoriteBtn)
         val voluteerImage = findViewById<ImageView>(R.id.voluteerImage)
 
         // 기본 정보
@@ -90,13 +78,10 @@ class AboutViewActivity : AppCompatActivity() {
         val texttelno = findViewById<TextView>(R.id.texttelno)
         val textpostAdres = findViewById<TextView>(R.id.textpostAdres)
 
-
         var vol_detail: String? = null
         var vol_starttime: String? = null
         var vol_endtime: String? = null
         var vol_title: String? = null
-
-
 
         // 기본 정보
         var vol_progrmSttusSe : String? = null
@@ -119,14 +104,14 @@ class AboutViewActivity : AppCompatActivity() {
         var vol_email: String? = null
 
         volunteerDetail.setMovementMethod(ScrollingMovementMethod())
-        volunteerTitle.setText(num)
+        volunteerTitle.text = num
 
 
         // Coroutine을 이용한 API 불러오기
         val job = CoroutineScope(Dispatchers.IO).launch {
             val key: String =
                 "WbB5cwZvKLInWD4JmJjDBvuuInA6+7ufo7RHGngZH7+UEAaSVc4x5UsvdFIx4NPg+MPlSUvet1IBhzr6Ly6Diw=="
-            var url: String =
+            val url: String =
                 //지역 정보는 현재 고정 추후 수정할 예정
                 "http://openapi.1365.go.kr/openapi/service/rest/VolunteerPartcptnService/getVltrPartcptnItem?progrmRegistNo=${num}&serviceKey=$key"
             //progrmRegistNo=2780545
@@ -140,13 +125,13 @@ class AboutViewActivity : AppCompatActivity() {
 
             val list: NodeList = xml.getElementsByTagName("item")
 
-            for (i in 0..list.length - 1) {
-                var n: Node = list.item(i)
-                if (n.getNodeType() == Node.ELEMENT_NODE) {
+            for (i in 0 until list.length) {
+                val n: Node = list.item(i)
+                if (n.nodeType == Node.ELEMENT_NODE) {
                     val elem = n as Element
                     val map = mutableMapOf<String, String>()
 
-                    for (j in 0..elem.attributes.length - 1) {
+                    for (j in 0 until elem.attributes.length) {
 
                         map.putIfAbsent(
                             elem.attributes.item(j).nodeName,
@@ -187,27 +172,31 @@ class AboutViewActivity : AppCompatActivity() {
         volunteerTitle.setText(vol_title)
 
         if(vol_progrmSttusSe == "2"){
-            textprogrmSttusSe.setText("모집중")
+            textprogrmSttusSe.text = "모집중"
         } else{
-            textprogrmSttusSe.setText("모집 완료")
+            textprogrmSttusSe.text = "모집 완료"
         }
-        textmnnstNm.setText(vol_mnnstNm)
-        textnoticeBgnde.setText(vol_noticeBgnde.toString().substring(0,4) + "." + vol_noticeBgnde.toString().substring(4,6) + "." + vol_noticeBgnde.toString().substring(6,8))
-        textnoticeEndde.setText(vol_noticeEndde.toString().substring(0,4) + "." + vol_noticeEndde.toString().substring(4,6) + "." + vol_noticeEndde.toString().substring(6,8))
-        textrcritNmpr.setText(vol_rcritNmpr + "명")
-        textprogrmBgnde.setText(vol_progrmBgnde.toString().substring(0,4) + "." + vol_progrmBgnde.toString().substring(4,6) + "." + vol_progrmBgnde.toString().substring(6,8))
-        textprogrmEndde.setText(vol_progrmEndde.toString().substring(0,4) + "." + vol_progrmEndde.toString().substring(4,6) + "." + vol_progrmEndde.toString().substring(6,8))
-        textactBeginTm.setText(vol_actBeginTm + "시")
-        textactEndTm.setText(vol_actEndTm + "시")
-        textactPlace.setText(vol_actPlace)
-        textsrvcClCode.setText(vol_srvcClCode)
-        textnanmmbyNm.setText(vol_nanmmbyNm)
+        textmnnstNm.text = vol_mnnstNm
+        textnoticeBgnde.text =
+            vol_noticeBgnde.toString().substring(0,4) + "." + vol_noticeBgnde.toString().substring(4,6) + "." + vol_noticeBgnde.toString().substring(6,8)
+        textnoticeEndde.text =
+            vol_noticeEndde.toString().substring(0,4) + "." + vol_noticeEndde.toString().substring(4,6) + "." + vol_noticeEndde.toString().substring(6,8)
+        textrcritNmpr.text = vol_rcritNmpr + "명"
+        textprogrmBgnde.text =
+            vol_progrmBgnde.toString().substring(0,4) + "." + vol_progrmBgnde.toString().substring(4,6) + "." + vol_progrmBgnde.toString().substring(6,8)
+        textprogrmEndde.text =
+            vol_progrmEndde.toString().substring(0,4) + "." + vol_progrmEndde.toString().substring(4,6) + "." + vol_progrmEndde.toString().substring(6,8)
+        textactBeginTm.text = vol_actBeginTm + "시"
+        textactEndTm.text = vol_actEndTm + "시"
+        textactPlace.text = vol_actPlace
+        textsrvcClCode.text = vol_srvcClCode
+        textnanmmbyNm.text = vol_nanmmbyNm
 
-        volunteerDetail.setText(vol_detail)
+        volunteerDetail.text = vol_detail
 
-        textnanmmbyNmAdmn.setText(vol_nanmmbyNmAdmn)
-        texttelno.setText(vol_telnum)
-        textpostAdres.setText(vol_adress)
+        textnanmmbyNmAdmn.text = vol_nanmmbyNmAdmn
+        texttelno.text = vol_telnum
+        textpostAdres.text = vol_adress
 
         // 이미지 설정
         if(vol_srvcClCode?.contains("문화") == true) {
@@ -287,28 +276,6 @@ class AboutViewActivity : AppCompatActivity() {
                 }
         }
 
-//        callButton.setOnClickListener {
-//            var intent = Intent(Intent.ACTION_DIAL)
-//            intent.data = Uri.parse("tel:${vol_telnum}")
-//            startActivity(intent)
-//
-//        }
-//
-//
-//
-//        // 봉사번호를 즐겨찾기에 추가하기
-//        favoriteButton.setOnClickListener {
-//            if (num != null) {
-//
-//                FBRef.favoriteRef
-//                    .child(FBAuth.getUid())
-//                    .child(num)
-//                    .setValue(FavoriteModel(true))
-//                Toast.makeText(this, "즐겨찾기 추가완료!", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        }
-
         tel1 = vol_telnum.toString()
         if (num != null) {
             num1 = num
@@ -367,7 +334,7 @@ class AboutViewActivity : AppCompatActivity() {
 
             }
             R.id.app_bar_call -> {
-                var intent = Intent(Intent.ACTION_DIAL)
+                val intent = Intent(Intent.ACTION_DIAL)
                 intent.data = Uri.parse("tel:${tel1}")
                 startActivity(intent)
             }

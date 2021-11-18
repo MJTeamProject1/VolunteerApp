@@ -1,16 +1,13 @@
 package com.team1.volunteerapp.Favorite
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -18,16 +15,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.AboutViewActivity
-import com.team1.volunteerapp.Auth.IntroActivity
-import com.team1.volunteerapp.BottomNavDrawerFragment
-import com.team1.volunteerapp.HomeActivity
-import com.team1.volunteerapp.Profile.ProfileActivity
+import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
@@ -116,20 +108,18 @@ class FavoritesActivity : AppCompatActivity() {
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("모두 삭제")
                     builder.setMessage("정말로 모두 삭제 하시겠습니까?")
-                    builder.setNegativeButton("취소",
-                        { dialogInterface: DialogInterface?, i: Int ->
-                            //아무런 동작도 하지 않음
-                        }
-                    )
-                    builder.setPositiveButton("확인",
-                        { dialogInterface: DialogInterface?, i: Int ->
-                            FBRef.favoriteRef.child(FBAuth.getUid()).removeValue()
-                            favorite_rvAdapter.notifyDataSetChanged()
-                            finish()
-                            Toast.makeText(this, "삭제를 완료하였습니다.", Toast.LENGTH_SHORT).show()
-                        }
-                    )
-                    builder.show()
+                    builder.setNegativeButton("취소"
+                    ) { dialogInterface: DialogInterface?, i: Int ->
+                        //아무런 동작도 하지 않음
+                    }
+                builder.setPositiveButton("확인"
+                ) { dialogInterface: DialogInterface?, i: Int ->
+                    FBRef.favoriteRef.child(FBAuth.getUid()).removeValue()
+                    favorite_rvAdapter.notifyDataSetChanged()
+                    finish()
+                    Toast.makeText(this, "삭제를 완료하였습니다.", Toast.LENGTH_SHORT).show()
+                }
+                builder.show()
             }
         }
         favorite_rvAdapter.notifyDataSetChanged()

@@ -1,15 +1,11 @@
 package com.team1.volunteerapp.Community
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
-import com.team1.volunteerapp.utils.FBAuth
-
 class CommAdapter(val items: MutableList<BoardModel>) : RecyclerView.Adapter<CommAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {

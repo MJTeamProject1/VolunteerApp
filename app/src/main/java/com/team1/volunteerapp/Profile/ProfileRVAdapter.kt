@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
 
-class ProfileRVAdapter (val items : MutableList<String> ): RecyclerView.Adapter<ProfileRVAdapter.ViewHolder>(){
+class ProfileRVAdapter (private val items : MutableList<String> ): RecyclerView.Adapter<ProfileRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.profile_rv_item, parent, false)
 

@@ -3,7 +3,6 @@ package com.team1.volunteerapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
@@ -14,7 +13,7 @@ import com.team1.volunteerapp.Auth.IntroActivity
 
 class SettingActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
     var count : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,27 +38,27 @@ class SettingActivity : AppCompatActivity() {
 
         var sidodata: String? = intent.getStringExtra("userSido")
         var gugundata: String? = intent.getStringExtra("userGungu")
-        var gugunintent : String? = gugundata
+        val gugunintent : String? = gugundata
 
         // spinner 관련
-        var sido = resources.getStringArray(R.array.spinner_region)
-        var gugun1 = resources.getStringArray(R.array.spinner_region_seoul)
-        var gugun2 = resources.getStringArray(R.array.spinner_region_busan)
-        var gugun3 = resources.getStringArray(R.array.spinner_region_incheon)
-        var gugun4 = resources.getStringArray(R.array.spinner_region_daegu)
-        var gugun5 = resources.getStringArray(R.array.spinner_region_gwangju)
-        var gugun6 = resources.getStringArray(R.array.spinner_region_daejeon)
-        var gugun7 = resources.getStringArray(R.array.spinner_region_ulsan)
-        var gugun8 = resources.getStringArray(R.array.spinner_region_sejong)
-        var gugun9 = resources.getStringArray(R.array.spinner_region_gyeonggi)
-        var gugun10 = resources.getStringArray(R.array.spinner_region_gangwon)
-        var gugun11 = resources.getStringArray(R.array.spinner_region_chung_buk)
-        var gugun12 = resources.getStringArray(R.array.spinner_region_chung_nam)
-        var gugun13 = resources.getStringArray(R.array.spinner_region_gyeong_buk)
-        var gugun14 = resources.getStringArray(R.array.spinner_region_gyeong_nam)
-        var gugun15 = resources.getStringArray(R.array.spinner_region_jeon_buk)
-        var gugun16 = resources.getStringArray(R.array.spinner_region_jeon_nam)
-        var gugun17 = resources.getStringArray(R.array.spinner_region_jeju)
+        val sido = resources.getStringArray(R.array.spinner_region)
+        val gugun1 = resources.getStringArray(R.array.spinner_region_seoul)
+        val gugun2 = resources.getStringArray(R.array.spinner_region_busan)
+        val gugun3 = resources.getStringArray(R.array.spinner_region_incheon)
+        val gugun4 = resources.getStringArray(R.array.spinner_region_daegu)
+        val gugun5 = resources.getStringArray(R.array.spinner_region_gwangju)
+        val gugun6 = resources.getStringArray(R.array.spinner_region_daejeon)
+        val gugun7 = resources.getStringArray(R.array.spinner_region_ulsan)
+        val gugun8 = resources.getStringArray(R.array.spinner_region_sejong)
+        val gugun9 = resources.getStringArray(R.array.spinner_region_gyeonggi)
+        val gugun10 = resources.getStringArray(R.array.spinner_region_gangwon)
+        val gugun11 = resources.getStringArray(R.array.spinner_region_chung_buk)
+        val gugun12 = resources.getStringArray(R.array.spinner_region_chung_nam)
+        val gugun13 = resources.getStringArray(R.array.spinner_region_gyeong_buk)
+        val gugun14 = resources.getStringArray(R.array.spinner_region_gyeong_nam)
+        val gugun15 = resources.getStringArray(R.array.spinner_region_jeon_buk)
+        val gugun16 = resources.getStringArray(R.array.spinner_region_jeon_nam)
+        val gugun17 = resources.getStringArray(R.array.spinner_region_jeju)
 
 
         val sidoadapter =
@@ -259,56 +258,38 @@ class SettingActivity : AppCompatActivity() {
                 if(count > 1) {
                     if (sidodata == "서울특별시") {
                         gugundata = gugun1[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "부산광역시") {
                         gugundata = gugun2[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "대구광역시") {
                         gugundata = gugun3[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "인천광역시") {
                         gugundata = gugun4[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "광주광역시") {
                         gugundata = gugun5[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "대전광역시") {
                         gugundata = gugun6[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "울산광역시") {
                         gugundata = gugun7[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "세종특별자치시") {
                         gugundata = gugun8[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "경기도") {
                         gugundata = gugun9[p2]
-                        println("============" + gugundata)
-
                     } else if (sidodata == "강원도") {
                         gugundata = gugun10[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "충청북도") {
                         gugundata = gugun11[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "충청남도") {
                         gugundata = gugun12[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "전라북도") {
                         gugundata = gugun13[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "전라남도") {
                         gugundata = gugun14[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "경상북도") {
                         gugundata = gugun15[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "경상남도") {
                         gugundata = gugun16[p2]
-                        println("============" + gugundata)
                     } else if (sidodata == "제주특별자치도") {
                         gugundata = gugun17[p2]
-                        println("============" + gugundata)
                     }
                 }
                 else{
@@ -328,7 +309,6 @@ class SettingActivity : AppCompatActivity() {
 
             }
         }
-
 
         rectifybtn.setOnClickListener {
             var isGoToJoin = true

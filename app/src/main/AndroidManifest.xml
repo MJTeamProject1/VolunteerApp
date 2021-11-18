@@ -31,17 +31,7 @@
         <activity
             android:name=".Favorite.FavoritesActivity"
             android:exported="false" />
-        <activity
-            android:name=".LoadingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LodingActivity"
-            android:exported="false" />
         <activity android:name=".Community.CommActivity" />
-        <activity android:name=".Community.WriteCommActivity" />
-        <activity android:name=".Community.WriteReviewActivity" />
-        <activity android:name=".Community.InfoActivity" />
-        <activity android:name=".Community.InfoActivity2" />
         <activity
             android:name=".Auth.IntroActivity"
             android:exported="false" />
@@ -52,7 +42,10 @@
             android:name=".Auth.JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+                android:name=".Loading.LoadingActivity"
+                android:exported="false" />
+        <activity
+            android:name=".Loading.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,11 +60,8 @@
             android:name=".AboutViewActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Home.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -59,10 +59,10 @@ class BoardInsideActivity : AppCompatActivity() {
                     val writerUid = dataModel.uid
 
                     if(myUid.equals(writerUid)){
-                        Toast.makeText(baseContext,"작성자 본인", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(baseContext,"작성자 본인", Toast.LENGTH_SHORT).show()
                         binding.boardDelBtn.isVisible = true
                     }else{
-                        Toast.makeText(baseContext,"작성자가 아님", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(baseContext,"작성자가 아님", Toast.LENGTH_SHORT).show()
                     }
 
                 }catch (e:Exception){
