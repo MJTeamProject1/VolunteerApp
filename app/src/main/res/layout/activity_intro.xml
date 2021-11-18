@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/white"
     tools:context=".Auth.IntroActivity">
 
     <TextView
@@ -42,6 +42,7 @@
         android:layout_height="match_parent">
 
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +56,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="@font/nanumsquareround"
                 android:background="@drawable/button_background"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
@@ -65,6 +67,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="@font/nanumsquareround"
                 android:background="@drawable/button_background"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
