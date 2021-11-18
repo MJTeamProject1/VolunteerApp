@@ -260,7 +260,8 @@
                     android:orientation="horizontal">
                     <TextView
                         android:text="봉사 장소 :"
-                        style="@style/AboutText"
+                        android:textSize="14sp"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/sd6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

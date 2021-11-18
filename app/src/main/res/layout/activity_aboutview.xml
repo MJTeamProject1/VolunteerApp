@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Home.HomeActivity">
 
     <include layout="@layout/content_aboutview" />
 
@@ -17,8 +17,6 @@
         app:backgroundTint="@color/maincolor2"
         app:fabAlignmentMode="end"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-
     </com.google.android.material.bottomappbar.BottomAppBar>
 
 

@@ -67,7 +67,7 @@
 
         <EditText
             android:id="@+id/boardEditContents"
-            android:layout_width="376dp"
+            android:layout_width="match_parent"
             android:layout_height="291dp"
             android:layout_margin="20dp"
             android:gravity="start|top"
