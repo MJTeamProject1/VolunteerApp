@@ -236,12 +236,20 @@ class JoinActivity : AppCompatActivity() {
                 Toast.makeText(this,"번호를 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
+            else if(!phonenumber_db.isDigitsOnly()){
+                Toast.makeText(this,"번호에 숫자만 입력해주세요",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
             else if(nickname_db.isEmpty()){
                 Toast.makeText(this,"닉네임을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
             else if(inputpassword.length < 6){
                 Toast.makeText(this,"비밀번호를 6자리 이상 눌러주세요",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
+            else if(!settimedb.isEmpty()){
+                Toast.makeText(this,"목표 봉사 시간을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
             else if(!settimedb.isDigitsOnly()){
