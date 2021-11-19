@@ -17,6 +17,7 @@ CommActivity <--> ReviewActivity
 CommActivity <-- BoardWriteActivity
 ReviewActivity <-- BoardWriteActivity
 BoardWriteActivity <-- BoardInsideActivity
+HomeActivity <-- SettingActivity
 
 HomeActivity <..VolunteerModel
 HomeRVAdapter <..VolunteerModel
@@ -35,6 +36,32 @@ FavoriteActivity <.. FavoriteRVAdapter
 FavoriteRVAdapter +-- FavoriteRVAdapter_ViewHolder
 CommActivity <..CommAdapter
 CommAdapter +-- CommAdapter_ViewHolder
+
+AboutViewActivity --> AnimationB
+BoardWriteActivity --> AnimationB
+CommActivity --> AnimationB
+FavoriteActivity --> AnimationB
+CommActivity --> AnimationB
+HomeActivity --> AnimationB
+ProfileActivity --> AnimationB
+ReviewActivity --> AnimationB
+
+HomeActivity <-- BottomNavDrawerFragment
+FavoriteActivity <-- BottomNavDrawerFragment
+
+AboutViewActivity --> FBAuth
+BoardWriteActivity --> FBAuth
+FavoriteRVAdapter --> FBAuth
+FavoriteActivity --> FBAuth
+
+AboutViewActivity --> FBRef
+BoardWriteActivity --> FBRef
+BoardInsideActivity --> FBRef
+CommActivity --> FBRef
+FavoriteRVAdapter --> FBRef
+FavoriteActivity --> FBRef
+ReviewActivity --> FBRef
+
 
 class SplashActivity{
     -auth : FirebaseAuth
@@ -278,10 +305,6 @@ class CommAdapter_ViewHolder extends androidx.recyclerview.widget.RecyclerView.V
 }
 
 
-
-
-
-
 class ReviewActivity  implements OnNavigationItemSelectedListener{
     -boardDataList : List
     -boardKeyList : List
@@ -298,6 +321,43 @@ class ReviewActivity  implements OnNavigationItemSelectedListener{
     #onCreate(@Nullable Bundle savedInstanceState) : void
     +setNickname(@Nullable String var1) : void
     +getNickname() : String
+}
+
+class SettingActivity{
+    -auth : FirebaseAuth
+    -db : FirebaseFirestore
+    -count : int
+
+    +getCount() : void
+    +setCount(int var1) : void
+    #onCreate(@Nullable Bundle savedInstanceState) : void
+}
+
+class AnimationB {
+    -{static}OnVisibilityChangedListener addVisibilityChanged = (OnVisibilityChangedListener)(new OnVisibilityChangedListener()
+    -{static}AnimationB.Companion Companion = new AnimationB.Companion((DefaultConstructorMarker)null)
+}
+
+class FBAuth {
+    -{static}auth : FirebaseAuth
+    getUid() : String
+    getTime() : String
+}
+class FBRef {
+    -{static}auth : FirebaseAuth
+}
+
+class BottomNavDrawerFragment extends BottomSheetDialogFragment {
+   -emai
+   -phonen:String
+   -nickn:String
+   -goalt:String
+   -sidod:String
+   -gugund:String
+
+    +onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) : View
+    +onActivityCreated(@Nullable Bundle savedInstanceState : void
+    +setIntent(@Nullable String email, @Nullable String phonenumber, @Nullable String nickname, @Nullable String goaltime, @Nullable String sidodata, @Nullable String gugundata) : void
 }
 
 
