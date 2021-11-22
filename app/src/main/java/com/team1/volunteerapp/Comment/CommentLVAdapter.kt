@@ -29,9 +29,11 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>) : BaseAdapte
 
         val title = view?.findViewById<TextView>(R.id.commentrvTitle)
         val time = view?.findViewById<TextView>(R.id.commentrvTime)
+        val nicknmae = view?.findViewById<TextView>(R.id.commentrvNickName)
 
         title!!.text = commentList[position].commentTitle
         time!!.text = commentList[position].commentCreatedTime
+        nicknmae!!.text = commentList[position].commentNickname
 
         return view!!
     }

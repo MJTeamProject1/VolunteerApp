@@ -57,6 +57,7 @@ class BoardInsideActivity : AppCompatActivity() {
         getCommentData(key)
     }
 
+    // 댓글 가져오기
     fun getCommentData(key : String){
         val postListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -85,17 +86,24 @@ class BoardInsideActivity : AppCompatActivity() {
 
     }
 
+    // 댓글 DB에 넣기
     fun insertComment(key : String){
-        FBRef.commentRef
-            .child(key)
-            .push()
-            .setValue(
-                CommentModel(
-                    binding.commentArea.text.toString(),
-                    FBAuth.getTime()
+        if(binding.commentArea.text.toString() !=""){
+            FBRef.commentRef
+                .child(key)
+                .push()
+                .setValue(
+                    CommentModel(
+                        binding.commentArea.text.toString(),
+                        FBAuth.getTime(),
+                        FBAuth.getUserData(4)
+                    )
                 )
-            )
-        binding.commentArea.setText("")
+            binding.commentArea.setText("")
+        } else{
+            Toast.makeText(this,"내용을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun getBoardData(key: String, isreview: Boolean){
