@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.team1.volunteerapp.Comment.CommentLVAdapter
+import com.team1.volunteerapp.Comment.CommentModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
@@ -18,6 +20,8 @@ import java.lang.Exception
 class BoardInsideActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardInsideBinding
     private lateinit var key : String
+    private lateinit var commentAdapter: CommentLVAdapter
+    private val commentDataList = mutableListOf<CommentModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,56 @@ class BoardInsideActivity : AppCompatActivity() {
             }
 
         }
+
+        binding.commentBtn.setOnClickListener {
+            insertComment(key)
+        }
+
+        commentAdapter = CommentLVAdapter(commentDataList)
+        binding.commnetLV.adapter = commentAdapter
+
+        getCommentData(key)
+    }
+
+    fun getCommentData(key : String){
+        val postListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                commentDataList.clear()
+                
+                for(dataModel in snapshot.children){
+                    Log.d("asvv",dataModel.toString())
+
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    commentDataList.add(item!!)
+
+                }
+
+                commentAdapter.notifyDataSetChanged()
+
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        //key 값만 가져옴
+        FBRef.commentRef.child(key).addValueEventListener(postListener)
+
+    }
+
+    fun insertComment(key : String){
+        FBRef.commentRef
+            .child(key)
+            .push()
+            .setValue(
+                CommentModel(
+                    binding.commentArea.text.toString(),
+                    FBAuth.getTime()
+                )
+            )
+        binding.commentArea.setText("")
     }
 
     private fun getBoardData(key: String, isreview: Boolean){
