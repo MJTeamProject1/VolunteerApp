@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/java/com/team1/volunteerapp</OriginalElement>
+  <nodes>
+    <node x="1985.323504983388" y="248.5">com.team1.volunteerapp.utils.FBRef.Companion</node>
+    <node x="3132.875" y="619.5">com.team1.volunteerapp.Community.CommAdapter</node>
+    <node x="3408.4714839424123" y="1007.0">com.team1.volunteerapp.Profile.ProfileRVAdapter</node>
+    <node x="0.0" y="2842.0">com.team1.volunteerapp.Auth.LoginActivity</node>
+    <node x="2724.625" y="915.0">com.team1.volunteerapp.Community.ReviewActivity</node>
+    <node x="1254.0" y="1403.0">com.team1.volunteerapp.Favorite.FavoritesActivity</node>
+    <node x="2295.5318383167214" y="271.5">com.team1.volunteerapp.utils.AnimationB.Companion</node>
+    <node x="777.9353543743088" y="1426.0">com.team1.volunteerapp.Home.HomeRVAdapter</node>
+    <node x="2154.4583333333335" y="1334.0">com.team1.volunteerapp.Profile.ProfileActivity</node>
+    <node x="474.7631506090788" y="608.5">com.team1.volunteerapp.Home.VolunteerModel</node>
+    <node x="3181.060354374309" y="271.5">com.team1.volunteerapp.Community.CommAdapter.ItemClick</node>
+    <node x="3208.4901716500544" y="1449.0">com.team1.volunteerapp.Profile.ProfileRVAdapter.ViewHolder</node>
+    <node x="3167.9714839424123" y="995.5">com.team1.volunteerapp.Community.CommAdapter.CustomViewHolder</node>
+    <node x="2749.768687707642" y="202.0">com.team1.volunteerapp.Community.BoardModel</node>
+    <node x="239.4485049833877" y="949.5">com.team1.volunteerapp.utils.BottomNavDrawerFragment</node>
+    <node x="1308.9714839424123" y="995.5">com.team1.volunteerapp.Favorite.FavoriteRVAdapter</node>
+    <node x="1381.9485049833877" y="678.0">com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ItemClick</node>
+    <node x="1656.1853543743086" y="34.5">com.team1.volunteerapp.utils.FBAuth</node>
+    <node x="1985.323504983388" y="0.0">com.team1.volunteerapp.utils.FBRef</node>
+    <node x="608.0000000000001" y="1723.0">com.team1.volunteerapp.Home.HomeActivity</node>
+    <node x="1260.6853543743086" y="248.0">com.team1.volunteerapp.Favorite.FavoriteModel</node>
+    <node x="240.4485049833877" y="631.0">com.team1.volunteerapp.SettingActivity</node>
+    <node x="2780.5697674418593" y="1334.0">com.team1.volunteerapp.Community.CommActivity</node>
+    <node x="694.5000000000001" y="2365.0">com.team1.volunteerapp.Loading.LoadingActivity</node>
+    <node x="1662.6853543743086" y="260.0">com.team1.volunteerapp.utils.FBAuth.Companion</node>
+    <node x="1570.9485049833877" y="631.0">com.team1.volunteerapp.Community.BoardInsideActivity</node>
+    <node x="54.0" y="2593.0">com.team1.volunteerapp.Loading.SplashActivity</node>
+    <node x="198.15310077519234" y="11.0">com.team1.volunteerapp.Auth.JoinActivity</node>
+    <node x="1469.6853543743086" y="259.5">com.team1.volunteerapp.WebMapActivity</node>
+    <node x="1194.9485049833877" y="666.0">com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ViewHolder</node>
+    <node x="2295.5318383167214" y="34.5">com.team1.volunteerapp.utils.AnimationB</node>
+    <node x="921.9485049833877" y="972.5">com.team1.volunteerapp.Home.HomeRVAdapter.ViewHolder</node>
+    <node x="2246.7083333333335" y="631.0">com.team1.volunteerapp.Community.BoardWriteActivity</node>
+    <node x="246.65310077519234" y="259.5">com.team1.volunteerapp.Auth.IntroActivity</node>
+    <node x="890.9485049833877" y="562.0">com.team1.volunteerapp.AboutViewActivity</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.team1.volunteerapp.Loading.SplashActivity" target="com.team1.volunteerapp.Loading.LoadingActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="140.5" y="2566.0" />
+      <point x="781.0000000000001" y="2566.0" />
+      <point x="0.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Home.HomeRVAdapter" relationship="CREATE">
+      <point x="0.0" y="-294.0" />
+      <point x="781.0000000000001" y="1691.0" />
+      <point x="933.9353543743088" y="1691.0" />
+      <point x="0.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.utils.BottomNavDrawerFragment" target="com.team1.volunteerapp.SettingActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-133.0" />
+      <point x="434.9485049833877" y="883.0" />
+      <point x="326.9485049833877" y="883.0" />
+      <point x="0.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ViewHolder" target="com.team1.volunteerapp.utils.FBAuth.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-40.5" />
+      <point x="1278.4485049833877" y="530.0" />
+      <point x="1728.6853543743086" y="530.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.BoardWriteActivity" target="com.team1.volunteerapp.Community.BoardModel" relationship="CREATE">
+      <point x="70.75" y="-75.5" />
+      <point x="2458.9583333333335" y="490.0" />
+      <point x="2801.935354374309" y="490.0" />
+      <point x="-104.33333333333331" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Profile.ProfileActivity" target="com.team1.volunteerapp.Profile.ProfileRVAdapter" relationship="CREATE">
+      <point x="70.75" y="-167.5" />
+      <point x="2366.7083333333335" y="1302.0" />
+      <point x="3164.4901716500544" y="1302.0" />
+      <point x="3164.4901716500544" y="1282.0" />
+      <point x="3486.4714839424123" y="1282.0" />
+      <point x="-78.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.BoardWriteActivity" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="2388.2083333333335" y="1282.0" />
+      <point x="0.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.utils.BottomNavDrawerFragment" relationship="TO_ONE">
+      <point x="-115.33333333333331" y="-294.0" />
+      <point x="665.6666666666667" y="1701.0" />
+      <point x="425.2083333333335" y="1701.0" />
+      <point x="425.2083333333335" y="1691.0" />
+      <point x="450.93535437430864" y="1691.0" />
+      <point x="450.93535437430864" y="1312.0" />
+      <point x="337.1985049833877" y="1312.0" />
+      <point x="-97.75" y="133.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Community.CommActivity" relationship="DEPENDENCY">
+      <point x="115.33333333333331" y="-294.0" />
+      <point x="896.3333333333334" y="1701.0" />
+      <point x="2219.9583333333335" y="1701.0" />
+      <point x="2219.9583333333335" y="1691.0" />
+      <point x="2930.0697674418593" y="1691.0" />
+      <point x="0.0" y="167.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Profile.ProfileRVAdapter" target="com.team1.volunteerapp.Profile.ProfileRVAdapter.ViewHolder" relationship="CREATE">
+      <point x="-78.0" y="75.5" />
+      <point x="3486.4714839424123" y="1282.0" />
+      <point x="3164.4901716500544" y="1282.0" />
+      <point x="3164.4901716500544" y="1302.0" />
+      <point x="3250.2401716500544" y="1302.0" />
+      <point x="-41.75" y="-52.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.AboutViewActivity" target="com.team1.volunteerapp.Favorite.FavoriteModel" relationship="CREATE">
+      <point x="-70.75" y="-144.5" />
+      <point x="961.6985049833877" y="430.0" />
+      <point x="1355.1853543743086" y="430.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.utils.FBRef.Companion" target="com.team1.volunteerapp.utils.FBRef" relationship="INNER_CLASS">
+      <point x="0.0" y="-51.5" />
+      <point x="0.0" y="75.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Profile.ProfileActivity" target="com.team1.volunteerapp.Auth.IntroActivity" relationship="DEPENDENCY">
+      <point x="-70.75" y="-167.5" />
+      <point x="2225.2083333333335" y="1312.0" />
+      <point x="2099.6947674418593" y="1312.0" />
+      <point x="2099.6947674418593" y="1302.0" />
+      <point x="1909.1568383167212" y="1302.0" />
+      <point x="1909.1568383167212" y="520.0" />
+      <point x="333.15310077519234" y="520.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.BoardModel" relationship="TO_MANY">
+      <point x="0.0" y="-167.5" />
+      <point x="2930.0697674418593" y="1312.0" />
+      <point x="3077.375" y="1312.0" />
+      <point x="3077.375" y="1282.0" />
+      <point x="3072.125" y="1282.0" />
+      <point x="3072.125" y="530.0" />
+      <point x="3093.625" y="530.0" />
+      <point x="3093.625" y="480.0" />
+      <point x="3010.602021040975" y="480.0" />
+      <point x="104.33333333333326" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="-99.66666666666674" y="-167.5" />
+      <point x="2774.458333333333" y="893.0" />
+      <point x="2697.9583333333335" y="893.0" />
+      <point x="2697.9583333333335" y="873.0" />
+      <point x="2551.2083333333335" y="873.0" />
+      <point x="2551.2083333333335" y="510.0" />
+      <point x="2101.323504983388" y="510.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.BoardModel" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="3034.125" y="1282.0" />
+      <point x="3034.125" y="540.0" />
+      <point x="2936.9353543743086" y="540.0" />
+      <point x="2936.9353543743086" y="500.0" />
+      <point x="2906.268687707642" y="500.0" />
+      <point x="0.0" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.utils.BottomNavDrawerFragment" relationship="CREATE">
+      <point x="-94.33333333333326" y="-98.5" />
+      <point x="1301.1666666666665" y="1312.0" />
+      <point x="1085.7083333333335" y="1312.0" />
+      <point x="1085.7083333333335" y="1282.0" />
+      <point x="461.93535437430864" y="1282.0" />
+      <point x="461.93535437430864" y="1272.0" />
+      <point x="532.6985049833877" y="1272.0" />
+      <point x="97.75" y="133.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" relationship="CREATE">
+      <point x="-94.33333333333326" y="-98.5" />
+      <point x="1301.1666666666665" y="1312.0" />
+      <point x="1085.7083333333335" y="1312.0" />
+      <point x="1085.7083333333335" y="1302.0" />
+      <point x="1386.9714839424123" y="1302.0" />
+      <point x="-78.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.AboutViewActivity" target="com.team1.volunteerapp.WebMapActivity" relationship="DEPENDENCY">
+      <point x="70.75" y="-144.5" />
+      <point x="1103.1985049833877" y="540.0" />
+      <point x="1581.638150609079" y="540.0" />
+      <point x="1581.638150609079" y="430.0" />
+      <point x="1556.1853543743086" y="430.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="115.33333333333331" y="-294.0" />
+      <point x="896.3333333333334" y="1701.0" />
+      <point x="2219.9583333333335" y="1701.0" />
+      <point x="2219.9583333333335" y="1691.0" />
+      <point x="1863.031838316721" y="1691.0" />
+      <point x="1863.031838316721" y="500.0" />
+      <point x="2453.0318383167214" y="500.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.CommAdapter.ItemClick" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="3034.125" y="1282.0" />
+      <point x="3034.125" y="520.0" />
+      <point x="3071.875" y="520.0" />
+      <point x="3071.875" y="470.0" />
+      <point x="3209.2270210409756" y="470.0" />
+      <point x="-56.33333333333337" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ItemClick" relationship="TO_ONE">
+      <point x="39.0" y="-87.0" />
+      <point x="1503.9714839424123" y="893.0" />
+      <point x="1466.4485049833877" y="893.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ItemClick" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" relationship="INNER_CLASS">
+      <point x="-56.33333333333326" y="28.5" />
+      <point x="1410.1151716500544" y="883.0" />
+      <point x="1351.5735049833877" y="883.0" />
+      <point x="1351.5735049833877" y="893.0" />
+      <point x="1425.9714839424123" y="893.0" />
+      <point x="-39.0" y="-87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter.CustomViewHolder" target="com.team1.volunteerapp.Community.BoardModel" relationship="DEPENDENCY">
+      <point x="-66.66666666666674" y="-87.0" />
+      <point x="3201.304817275746" y="883.0" />
+      <point x="3093.125" y="883.0" />
+      <point x="3093.125" y="540.0" />
+      <point x="2936.9353543743086" y="540.0" />
+      <point x="2936.9353543743086" y="500.0" />
+      <point x="2906.268687707642" y="500.0" />
+      <point x="0.0" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter" target="com.team1.volunteerapp.Community.CommAdapter.CustomViewHolder" relationship="CREATE">
+      <point x="0.0" y="87.0" />
+      <point x="3309.875" y="873.0" />
+      <point x="3332.4714839424123" y="873.0" />
+      <point x="3332.4714839424123" y="893.0" />
+      <point x="3267.9714839424123" y="893.0" />
+      <point x="0.0" y="-87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.CommAdapter" relationship="CREATE">
+      <point x="99.66666666666669" y="-167.5" />
+      <point x="3029.736434108526" y="1292.0" />
+      <point x="3397.9714839424123" y="1292.0" />
+      <point x="3397.9714839424123" y="893.0" />
+      <point x="3332.4714839424123" y="893.0" />
+      <point x="3332.4714839424123" y="873.0" />
+      <point x="3309.875" y="873.0" />
+      <point x="0.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.CommAdapter" relationship="TO_ONE">
+      <point x="0.0" y="-167.5" />
+      <point x="2874.125" y="883.0" />
+      <point x="3082.625" y="883.0" />
+      <point x="3082.625" y="873.0" />
+      <point x="3191.875" y="873.0" />
+      <point x="-118.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter" target="com.team1.volunteerapp.Community.CommAdapter.ItemClick" relationship="DEPENDENCY">
+      <point x="-118.0" y="-87.0" />
+      <point x="3191.875" y="540.0" />
+      <point x="3093.625" y="540.0" />
+      <point x="3093.625" y="500.0" />
+      <point x="3071.875" y="500.0" />
+      <point x="3071.875" y="470.0" />
+      <point x="3209.2270210409756" y="470.0" />
+      <point x="-56.33333333333337" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Profile.ProfileActivity" relationship="DEPENDENCY">
+      <point x="115.33333333333331" y="-294.0" />
+      <point x="896.3333333333334" y="1701.0" />
+      <point x="2219.9583333333335" y="1701.0" />
+      <point x="2219.9583333333335" y="1691.0" />
+      <point x="2295.9583333333335" y="1691.0" />
+      <point x="0.0" y="167.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.CommAdapter.ItemClick" relationship="DEPENDENCY">
+      <point x="-99.66666666666674" y="-167.5" />
+      <point x="2774.458333333333" y="893.0" />
+      <point x="2697.9583333333335" y="893.0" />
+      <point x="2697.9583333333335" y="873.0" />
+      <point x="2794.125" y="873.0" />
+      <point x="2794.125" y="520.0" />
+      <point x="3071.875" y="520.0" />
+      <point x="3071.875" y="470.0" />
+      <point x="3209.2270210409756" y="470.0" />
+      <point x="-56.33333333333337" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter" target="com.team1.volunteerapp.Community.BoardModel" relationship="TO_MANY">
+      <point x="0.0" y="-87.0" />
+      <point x="3309.875" y="490.0" />
+      <point x="3093.625" y="490.0" />
+      <point x="3093.625" y="480.0" />
+      <point x="3010.602021040975" y="480.0" />
+      <point x="104.33333333333326" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Loading.SplashActivity" target="com.team1.volunteerapp.Auth.IntroActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="141.36517165005444" y="520.0" />
+      <point x="333.15310077519234" y="520.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Home.VolunteerModel" relationship="TO_MANY">
+      <point x="-115.33333333333331" y="-294.0" />
+      <point x="665.6666666666667" y="1701.0" />
+      <point x="425.2083333333335" y="1701.0" />
+      <point x="425.2083333333335" y="1691.0" />
+      <point x="228.9485049833877" y="1691.0" />
+      <point x="228.9485049833877" y="893.0" />
+      <point x="569.2120708748621" y="893.0" />
+      <point x="569.2120708748621" y="883.0" />
+      <point x="536.9298172757456" y="883.0" />
+      <point x="-124.33333333333333" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ViewHolder" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-40.5" />
+      <point x="1278.4485049833877" y="530.0" />
+      <point x="1728.6853543743086" y="530.0" />
+      <point x="1728.6853543743086" y="470.0" />
+      <point x="2101.323504983388" y="470.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="1395.5" y="1292.0" />
+      <point x="1818.4485049833877" y="1292.0" />
+      <point x="1818.4485049833877" y="500.0" />
+      <point x="2453.0318383167214" y="500.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.BoardWriteActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="-70.75" y="-75.5" />
+      <point x="2317.4583333333335" y="420.0" />
+      <point x="2101.323504983388" y="420.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.BoardWriteActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="-70.75" y="-75.5" />
+      <point x="2317.4583333333335" y="490.0" />
+      <point x="2453.0318383167214" y="490.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.BoardModel" relationship="TO_MANY">
+      <point x="0.0" y="-167.5" />
+      <point x="2874.125" y="530.0" />
+      <point x="3093.625" y="530.0" />
+      <point x="3093.625" y="480.0" />
+      <point x="3010.602021040975" y="480.0" />
+      <point x="104.33333333333326" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter" target="com.team1.volunteerapp.Home.HomeRVAdapter.ViewHolder" relationship="CREATE">
+      <point x="39.0" y="-75.5" />
+      <point x="972.9353543743088" y="1312.0" />
+      <point x="977.1985049833877" y="1312.0" />
+      <point x="-55.25" y="110.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="1395.5" y="1292.0" />
+      <point x="1184.4485049833877" y="1292.0" />
+      <point x="1184.4485049833877" y="510.0" />
+      <point x="2101.323504983388" y="510.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.CommAdapter" relationship="TO_ONE">
+      <point x="0.0" y="-167.5" />
+      <point x="2930.0697674418593" y="1312.0" />
+      <point x="3077.375" y="1312.0" />
+      <point x="3077.375" y="1282.0" />
+      <point x="3082.625" y="1282.0" />
+      <point x="3082.625" y="873.0" />
+      <point x="3191.875" y="873.0" />
+      <point x="-118.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.CommAdapter" relationship="CREATE">
+      <point x="99.66666666666674" y="-167.5" />
+      <point x="2973.791666666667" y="893.0" />
+      <point x="3332.4714839424123" y="893.0" />
+      <point x="3332.4714839424123" y="873.0" />
+      <point x="3309.875" y="873.0" />
+      <point x="0.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter" target="com.team1.volunteerapp.Home.VolunteerModel" relationship="DEPENDENCY">
+      <point x="-39.0" y="-75.5" />
+      <point x="894.9353543743088" y="1302.0" />
+      <point x="802.9485049833877" y="1302.0" />
+      <point x="802.9485049833877" y="883.0" />
+      <point x="785.5964839424121" y="883.0" />
+      <point x="124.33333333333331" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ItemClick" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="1395.5" y="1292.0" />
+      <point x="1631.4714839424123" y="1292.0" />
+      <point x="1631.4714839424123" y="893.0" />
+      <point x="1565.9298172757458" y="893.0" />
+      <point x="1565.9298172757458" y="883.0" />
+      <point x="1522.781838316721" y="883.0" />
+      <point x="56.33333333333326" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter.ViewHolder" target="com.team1.volunteerapp.AboutViewActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-110.0" />
+      <point x="0.0" y="144.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Home.VolunteerModel" relationship="CREATE">
+      <point x="0.0" y="-294.0" />
+      <point x="781.0000000000001" y="1691.0" />
+      <point x="660.3520210409755" y="1691.0" />
+      <point x="0.0" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Profile.ProfileRVAdapter.ViewHolder" target="com.team1.volunteerapp.Profile.ProfileRVAdapter" relationship="INNER_CLASS">
+      <point x="41.75" y="-52.5" />
+      <point x="3333.7401716500544" y="1312.0" />
+      <point x="3642.4714839424123" y="1312.0" />
+      <point x="78.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter.ItemClick" target="com.team1.volunteerapp.Community.CommAdapter" relationship="INNER_CLASS">
+      <point x="56.33333333333326" y="28.5" />
+      <point x="3321.893687707642" y="540.0" />
+      <point x="3427.875" y="540.0" />
+      <point x="118.0" y="-87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Auth.IntroActivity" target="com.team1.volunteerapp.Auth.JoinActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-40.5" />
+      <point x="333.15310077519234" y="176.0" />
+      <point x="284.65310077519234" y="176.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Auth.JoinActivity" target="com.team1.volunteerapp.Loading.SplashActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="64.0" />
+      <point x="284.65310077519234" y="176.0" />
+      <point x="92.0" y="176.0" />
+      <point x="92.0" y="2566.0" />
+      <point x="140.5" y="2566.0" />
+      <point x="0.0" y="-98.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Auth.IntroActivity" target="com.team1.volunteerapp.Auth.LoginActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="40.5" />
+      <point x="333.15310077519234" y="520.0" />
+      <point x="38.0" y="520.0" />
+      <point x="38.0" y="2816.0" />
+      <point x="86.5" y="2816.0" />
+      <point x="0.0" y="-52.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter.ViewHolder" target="com.team1.volunteerapp.Home.HomeRVAdapter" relationship="INNER_CLASS">
+      <point x="55.25" y="110.0" />
+      <point x="1087.6985049833877" y="1292.0" />
+      <point x="1050.9353543743086" y="1292.0" />
+      <point x="117.0" y="-75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.BoardWriteActivity" target="com.team1.volunteerapp.utils.FBAuth.Companion" relationship="DEPENDENCY">
+      <point x="-70.75" y="-75.5" />
+      <point x="2317.4583333333335" y="430.0" />
+      <point x="1728.6853543743086" y="430.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter" target="com.team1.volunteerapp.Home.VolunteerModel" relationship="TO_MANY">
+      <point x="-117.0" y="-75.5" />
+      <point x="816.9353543743088" y="1312.0" />
+      <point x="773.8520210409755" y="1312.0" />
+      <point x="773.8520210409755" y="893.0" />
+      <point x="569.2120708748621" y="893.0" />
+      <point x="569.2120708748621" y="883.0" />
+      <point x="536.9298172757456" y="883.0" />
+      <point x="-124.33333333333333" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ItemClick" relationship="DEPENDENCY">
+      <point x="117.0" y="-87.0" />
+      <point x="1581.9714839424123" y="893.0" />
+      <point x="1565.9298172757458" y="893.0" />
+      <point x="1565.9298172757458" y="883.0" />
+      <point x="1522.781838316721" y="883.0" />
+      <point x="56.33333333333326" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.utils.FBAuth.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-98.5" />
+      <point x="1395.5" y="1292.0" />
+      <point x="1184.4485049833877" y="1292.0" />
+      <point x="1184.4485049833877" y="440.0" />
+      <point x="1728.6853543743086" y="440.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.SettingActivity" target="com.team1.volunteerapp.Auth.IntroActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-75.5" />
+      <point x="326.9485049833877" y="520.0" />
+      <point x="333.15310077519234" y="520.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.AboutViewActivity" target="com.team1.volunteerapp.utils.FBAuth.Companion" relationship="DEPENDENCY">
+      <point x="70.75" y="-144.5" />
+      <point x="1103.1985049833877" y="540.0" />
+      <point x="1581.638150609079" y="540.0" />
+      <point x="1581.638150609079" y="450.0" />
+      <point x="1728.6853543743086" y="450.0" />
+      <point x="0.0" y="40.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.Community.ReviewActivity" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="2874.125" y="1282.0" />
+      <point x="0.0" y="167.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.CommActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="167.5" />
+      <point x="2874.125" y="1282.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="-99.66666666666674" y="-167.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.BoardWriteActivity" relationship="DEPENDENCY">
+      <point x="-99.66666666666674" y="-167.5" />
+      <point x="2774.458333333333" y="893.0" />
+      <point x="2697.9583333333335" y="893.0" />
+      <point x="2697.9583333333335" y="883.0" />
+      <point x="2388.2083333333335" y="883.0" />
+      <point x="0.0" y="75.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ViewHolder" relationship="CREATE">
+      <point x="-117.0" y="-87.0" />
+      <point x="1347.9714839424123" y="893.0" />
+      <point x="1236.6985049833877" y="893.0" />
+      <point x="-41.75" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Auth.LoginActivity" target="com.team1.volunteerapp.Loading.SplashActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-52.5" />
+      <point x="86.5" y="2816.0" />
+      <point x="140.5" y="2816.0" />
+      <point x="0.0" y="98.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeRVAdapter.ViewHolder" target="com.team1.volunteerapp.Home.VolunteerModel" relationship="DEPENDENCY">
+      <point x="0.0" y="-110.0" />
+      <point x="1032.4485049833877" y="893.0" />
+      <point x="802.9485049833877" y="893.0" />
+      <point x="802.9485049833877" y="883.0" />
+      <point x="785.5964839424121" y="883.0" />
+      <point x="124.33333333333331" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.Favorite.FavoritesActivity" relationship="DEPENDENCY">
+      <point x="115.33333333333331" y="-294.0" />
+      <point x="896.3333333333334" y="1701.0" />
+      <point x="2219.9583333333335" y="1701.0" />
+      <point x="2219.9583333333335" y="1691.0" />
+      <point x="1395.5" y="1691.0" />
+      <point x="0.0" y="98.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.utils.FBAuth.Companion" target="com.team1.volunteerapp.utils.FBAuth" relationship="INNER_CLASS">
+      <point x="0.0" y="-40.0" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoritesActivity" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" relationship="TO_ONE">
+      <point x="94.33333333333326" y="-98.5" />
+      <point x="1489.833333333333" y="1312.0" />
+      <point x="1542.9714839424123" y="1312.0" />
+      <point x="78.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter" target="com.team1.volunteerapp.Community.CommAdapter.ItemClick" relationship="TO_ONE">
+      <point x="0.0" y="-87.0" />
+      <point x="3309.875" y="480.0" />
+      <point x="3265.560354374309" y="480.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Profile.ProfileActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="-70.75" y="-167.5" />
+      <point x="2225.2083333333335" y="1312.0" />
+      <point x="2099.6947674418593" y="1312.0" />
+      <point x="2099.6947674418593" y="500.0" />
+      <point x="2453.0318383167214" y="500.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.Community.BoardModel" relationship="DEPENDENCY">
+      <point x="-99.66666666666674" y="-167.5" />
+      <point x="2774.458333333333" y="893.0" />
+      <point x="2697.9583333333335" y="893.0" />
+      <point x="2697.9583333333335" y="873.0" />
+      <point x="2794.125" y="873.0" />
+      <point x="2794.125" y="540.0" />
+      <point x="2936.9353543743086" y="540.0" />
+      <point x="2936.9353543743086" y="500.0" />
+      <point x="2906.268687707642" y="500.0" />
+      <point x="0.0" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter" target="com.team1.volunteerapp.Community.BoardModel" relationship="DEPENDENCY">
+      <point x="-118.0" y="-87.0" />
+      <point x="3191.875" y="540.0" />
+      <point x="3093.625" y="540.0" />
+      <point x="3093.625" y="510.0" />
+      <point x="2936.9353543743086" y="510.0" />
+      <point x="2936.9353543743086" y="500.0" />
+      <point x="2906.268687707642" y="500.0" />
+      <point x="0.0" y="98.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.ReviewActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="-99.66666666666674" y="-167.5" />
+      <point x="2774.458333333333" y="893.0" />
+      <point x="2697.9583333333335" y="893.0" />
+      <point x="2697.9583333333335" y="500.0" />
+      <point x="2453.0318383167214" y="500.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="2540.2083333333335" y="1282.0" />
+      <point x="2540.2083333333335" y="500.0" />
+      <point x="2453.0318383167214" y="500.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.AboutViewActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="70.75" y="-144.5" />
+      <point x="1103.1985049833877" y="540.0" />
+      <point x="1581.638150609079" y="540.0" />
+      <point x="1581.638150609079" y="460.0" />
+      <point x="2101.323504983388" y="460.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommAdapter.CustomViewHolder" target="com.team1.volunteerapp.Community.CommAdapter" relationship="INNER_CLASS">
+      <point x="66.66666666666674" y="-87.0" />
+      <point x="3334.6381506090793" y="883.0" />
+      <point x="3427.875" y="883.0" />
+      <point x="118.0" y="87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.AboutViewActivity" target="com.team1.volunteerapp.utils.AnimationB.Companion" relationship="DEPENDENCY">
+      <point x="70.75" y="-144.5" />
+      <point x="1103.1985049833877" y="540.0" />
+      <point x="1581.638150609079" y="540.0" />
+      <point x="1581.638150609079" y="480.0" />
+      <point x="2453.0318383167214" y="480.0" />
+      <point x="0.0" y="28.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.CommActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="-99.66666666666669" y="-167.5" />
+      <point x="2830.403100775193" y="1312.0" />
+      <point x="2601.6947674418593" y="1312.0" />
+      <point x="2601.6947674418593" y="1282.0" />
+      <point x="2236.2083333333335" y="1282.0" />
+      <point x="2236.2083333333335" y="510.0" />
+      <point x="2101.323504983388" y="510.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Loading.LoadingActivity" target="com.team1.volunteerapp.Home.HomeActivity" relationship="DEPENDENCY">
+      <point x="0.0" y="-87.0" />
+      <point x="0.0" y="294.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.utils.AnimationB.Companion" target="com.team1.volunteerapp.utils.AnimationB" relationship="INNER_CLASS">
+      <point x="0.0" y="-28.5" />
+      <point x="0.0" y="40.5" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Home.HomeActivity" target="com.team1.volunteerapp.utils.BottomNavDrawerFragment" relationship="CREATE">
+      <point x="0.0" y="-294.0" />
+      <point x="781.0000000000001" y="1691.0" />
+      <point x="461.93535437430864" y="1691.0" />
+      <point x="461.93535437430864" y="1272.0" />
+      <point x="532.6985049833877" y="1272.0" />
+      <point x="97.75" y="133.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Favorite.FavoriteRVAdapter.ViewHolder" target="com.team1.volunteerapp.Favorite.FavoriteRVAdapter" relationship="INNER_CLASS">
+      <point x="41.75" y="40.5" />
+      <point x="1320.1985049833877" y="883.0" />
+      <point x="1351.5735049833877" y="883.0" />
+      <point x="1351.5735049833877" y="893.0" />
+      <point x="1425.9714839424123" y="893.0" />
+      <point x="-39.0" y="-87.0" />
+    </edge>
+    <edge source="com.team1.volunteerapp.Community.BoardInsideActivity" target="com.team1.volunteerapp.utils.FBRef.Companion" relationship="DEPENDENCY">
+      <point x="0.0" y="-75.5" />
+      <point x="1689.4485049833877" y="510.0" />
+      <point x="2101.323504983388" y="510.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.40345466801482976" showDependencies="true" x="1928.0512794069484" y="1526.2239672528303" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

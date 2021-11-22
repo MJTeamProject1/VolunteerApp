@@ -248,7 +248,7 @@ class JoinActivity : AppCompatActivity() {
                 Toast.makeText(this,"비밀번호를 6자리 이상 눌러주세요",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
-            else if(!settimedb.isEmpty()){
+            else if(settimedb.isEmpty()){
                 Toast.makeText(this,"목표 봉사 시간을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
