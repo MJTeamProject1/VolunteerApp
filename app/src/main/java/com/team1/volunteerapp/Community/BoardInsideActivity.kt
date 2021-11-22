@@ -6,9 +6,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Comment.CommentLVAdapter
 import com.team1.volunteerapp.Comment.CommentModel
 import com.team1.volunteerapp.R
@@ -22,10 +25,12 @@ class BoardInsideActivity : AppCompatActivity() {
     private lateinit var key : String
     private lateinit var commentAdapter: CommentLVAdapter
     private val commentDataList = mutableListOf<CommentModel>()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        auth = Firebase.auth
         var isreview = false
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
 
@@ -96,7 +101,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     CommentModel(
                         binding.commentArea.text.toString(),
                         FBAuth.getTime(),
-                        FBAuth.getUserData(4)
+                        FBAuth.getUserData(4) // 닉네임 불러오기
                     )
                 )
             binding.commentArea.setText("")
