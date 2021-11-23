@@ -16,14 +16,11 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class BoardWriteActivity : AppCompatActivity() {
 
-    var nickname : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board_write)
         setSupportActionBar(bottomAppBar)
 
-        //putExtra 데이터 받기
-        nickname = intent.getStringExtra("nickname")
 
         val checkbox = findViewById<CheckBox>(R.id.checkreview)
         val writeBtn = findViewById<FloatingActionButton>(R.id.fab)
@@ -37,8 +34,10 @@ class BoardWriteActivity : AppCompatActivity() {
             val inputContents = contents.text.toString()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
-            val inputnickname = nickname.toString()
+            val inputnickname = FBAuth.getUserData(4) // Firebase가 데이터를 불러오는데 시간이 걸림 그래서 2번 실행
+            val inputnickname2 = FBAuth.getUserData(4)
             var isGoToWrite = true
+
 
             if(inputTitle.isEmpty()){
                 Toast.makeText(this,"제목을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
@@ -49,12 +48,13 @@ class BoardWriteActivity : AppCompatActivity() {
                 Toast.makeText(this,"내용을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToWrite = false
             }
+
             else{
                 if(isGoToWrite){
                     if(checkbox.isChecked){
                         FBRef.reviewRef
                             .push()
-                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname))
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname2))
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 
@@ -66,7 +66,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     else{
                         FBRef.communityRef
                             .push()
-                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname))
+                            .setValue(BoardModel(inputTitle,inputContents,uid,time,inputnickname2))
 
                         Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
 

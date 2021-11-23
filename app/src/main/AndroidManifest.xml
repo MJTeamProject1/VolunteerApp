@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.team1.volunteerapp">
+        package="com.team1.volunteerapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.VolunteerApp"
-        android:usesCleartextTraffic="true">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.VolunteerApp"
+            android:usesCleartextTraffic="true">
         <activity
-            android:name=".Community.ReviewActivity"
-            android:exported="false" />
+                android:name=".Community.BoardEditActivity"
+                android:exported="false" />
         <activity
-            android:name=".Community.BoardWriteActivity"
-            android:exported="false" />
+                android:name=".Community.ReviewActivity"
+                android:exported="false" />
         <activity
-            android:name=".Community.BoardInsideActivity"
-            android:exported="false" />
+                android:name=".Community.BoardWriteActivity"
+                android:exported="false" />
         <activity
-            android:name=".WebMapActivity"
-            android:exported="true" />
+                android:name=".Community.BoardInsideActivity"
+                android:exported="false" />
         <activity
-            android:name=".SettingActivity"
-            android:exported="true" />
+                android:name=".WebMapActivity"
+                android:exported="true" />
         <activity
-            android:name=".Favorite.FavoritesActivity"
-            android:exported="false" />
+                android:name=".SettingActivity"
+                android:exported="true" />
+        <activity
+                android:name=".Favorite.FavoritesActivity"
+                android:exported="false" />
         <activity android:name=".Community.CommActivity" />
         <activity
-            android:name=".Auth.IntroActivity"
-            android:exported="false" />
+                android:name=".Auth.IntroActivity"
+                android:exported="false" />
         <activity
-            android:name=".Auth.LoginActivity"
-            android:exported="false" />
+                android:name=".Auth.LoginActivity"
+                android:exported="false" />
         <activity
-            android:name=".Auth.JoinActivity"
-            android:exported="false" />
+                android:name=".Auth.JoinActivity"
+                android:exported="false" />
         <activity
                 android:name=".Loading.LoadingActivity"
                 android:exported="false" />
         <activity
-            android:name=".Loading.SplashActivity"
-            android:exported="true">
+                android:name=".Loading.SplashActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,18 +57,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Profile.ProfileActivity"
-            android:exported="false" />
+                android:name=".Profile.ProfileActivity"
+                android:exported="false" />
         <activity
-            android:name=".AboutViewActivity"
-            android:exported="false" />
+                android:name=".AboutViewActivity"
+                android:exported="false" />
         <activity
-            android:name=".Home.HomeActivity"
-            android:exported="false" />
+                android:name=".Home.HomeActivity"
+                android:exported="false" />
 
         <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

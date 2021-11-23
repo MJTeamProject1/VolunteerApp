@@ -4,10 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import com.team1.volunteerapp.Favorite.FavoriteRVAdapter
 import com.team1.volunteerapp.R
 
 class CommentLVAdapter(val commentList : MutableList<CommentModel>) : BaseAdapter() {
+
+    interface ItemClick{
+        fun onClick(view:View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     override fun getCount(): Int {
         return commentList.size
     }
@@ -30,6 +38,7 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>) : BaseAdapte
         val title = view?.findViewById<TextView>(R.id.commentrvTitle)
         val time = view?.findViewById<TextView>(R.id.commentrvTime)
         val nicknmae = view?.findViewById<TextView>(R.id.commentrvNickName)
+        val thurmup = view?.findViewById<ImageView>(R.id.commentThumbBtn)
 
         title!!.text = commentList[position].commentTitle
         time!!.text = commentList[position].commentCreatedTime

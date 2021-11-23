@@ -27,15 +27,12 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val boardKeyList = mutableListOf<String>()
     private lateinit var commRVAdapter: CommAdapter
     private var setDrawr = false
-    var nickname : String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
         setSupportActionBar(bottomAppBar)
-
-        //putExtra 데이터 받기
-        nickname = intent.getStringExtra("nickname")
 
         //Recycler view 연결
         val comm_rv = findViewById<RecyclerView>(R.id.rvComm2)
@@ -66,7 +63,6 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
                 val intent = Intent(this, BoardWriteActivity::class.java)
-                intent.putExtra("nickname", nickname)
                 startActivity(intent)
             }, 300)
 
@@ -114,7 +110,6 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.review -> {
                 fab.hide(AnimationB.addVisibilityChanged)
                 Handler().postDelayed({
-                    intentr.putExtra("nickname", nickname)
                     startActivity(intentr)
                     finish()
                 }, 150)
