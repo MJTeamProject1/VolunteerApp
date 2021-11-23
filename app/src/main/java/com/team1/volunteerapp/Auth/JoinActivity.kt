@@ -213,7 +213,7 @@ class JoinActivity : AppCompatActivity() {
                 "sidodata" to sidodatadb,
                 "gugundata" to gugundatadb,
                 "timedata" to settimedb,
-                "uid" to auth.uid.toString()
+                "uid" to auth.uid.toString(),
             )
 
             if(inputemail.isEmpty()){

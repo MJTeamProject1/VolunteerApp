@@ -1,7 +1,9 @@
 package com.team1.volunteerapp
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,15 +13,22 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.team1.volunteerapp.Auth.IntroActivity
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.content_profile.*
+import java.net.URI
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class SettingActivity : AppCompatActivity() {
     val OPEN_GALLERY = 1
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
-    var count : Int = 0
+    var count: Int = 0
+    lateinit var uri: Uri
+    var useemail : String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +44,8 @@ class SettingActivity : AppCompatActivity() {
         val spinner2 = findViewById<Spinner>(R.id.spinner2_rectify)
         val goaltime = findViewById<EditText>(R.id.volRectifyTimeArea)
         var editprofileimage = findViewById<ImageView>(R.id.editprofileimage)
-
-        email.setText(intent.getStringExtra("userEmail"))
+        useemail = intent.getStringExtra("userEmail")
+        email.setText(useemail)
         phonenumber.setText(intent.getStringExtra("userPhone"))
         nickname.setText(intent.getStringExtra("userNickname"))
         goaltime.setText(intent.getStringExtra("userGoal"))
@@ -44,7 +53,7 @@ class SettingActivity : AppCompatActivity() {
 
         var sidodata: String? = intent.getStringExtra("userSido")
         var gugundata: String? = intent.getStringExtra("userGungu")
-        val gugunintent : String? = gugundata
+        val gugunintent: String? = gugundata
 
         // spinner 관련
         val sido = resources.getStringArray(R.array.spinner_region)
@@ -261,7 +270,7 @@ class SettingActivity : AppCompatActivity() {
 
         spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, id: Long) {
-                if(count > 1) {
+                if (count > 1) {
                     if (sidodata == "서울특별시") {
                         gugundata = gugun1[p2]
                     } else if (sidodata == "부산광역시") {
@@ -297,10 +306,9 @@ class SettingActivity : AppCompatActivity() {
                     } else if (sidodata == "제주특별자치도") {
                         gugundata = gugun17[p2]
                     }
-                }
-                else{
-                    for(i in 0..spinner2.count){
-                        if(gugunintent == spinner2.getItemAtPosition(i)){
+                } else {
+                    for (i in 0..spinner2.count) {
+                        if (gugunintent == spinner2.getItemAtPosition(i)) {
                             spinner2.setSelection(i)
                             break
                         }
@@ -316,7 +324,7 @@ class SettingActivity : AppCompatActivity() {
             }
         }
 
-        editprofileimage.setOnClickListener{
+        editprofileimage.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, OPEN_GALLERY)
@@ -337,7 +345,7 @@ class SettingActivity : AppCompatActivity() {
                 "nickname" to nickname_db,
                 "sidodata" to sidodatadb,
                 "gugundata" to gugundatadb,
-                "timedata" to settimedb
+                "timedata" to settimedb,
             )
 
 
@@ -348,7 +356,12 @@ class SettingActivity : AppCompatActivity() {
                 Toast.makeText(this, "닉네임을 입력하지 않았습니다", Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             } else {
+                uploadImage()
                 if (isGoToJoin) {
+                    val progressDialog = ProgressDialog(this)
+                    progressDialog.setMessage("프로필 수정중 ...")
+                    progressDialog.setCancelable(false)
+                    progressDialog.show()
                     //Toast.makeText(this,email.text.toString(),Toast.LENGTH_SHORT).show()
                     db.collection("UserData")
                         .get()
@@ -362,8 +375,11 @@ class SettingActivity : AppCompatActivity() {
                                     finishAffinity()
                                     startActivity(intent)
                                     finish()
-                                    Toast.makeText(this, "변경완료!", Toast.LENGTH_SHORT).show()
                                 }
+                            }
+                            if (progressDialog.isShowing) {
+                                progressDialog.dismiss()
+                                Toast.makeText(this, "변경완료!", Toast.LENGTH_SHORT).show()
                             }
                         }
                 }
@@ -371,17 +387,29 @@ class SettingActivity : AppCompatActivity() {
         }
     }
 
+    private fun uploadImage() {
+
+        val storage = FirebaseStorage.getInstance().getReference("images/${useemail}")
+        storage.putFile(uri).addOnSuccessListener {
+            Toast.makeText(this, "프로필변경완료!", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+
+        }
+
+    }
+
     //갤러리 사진 가져오기
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            when(requestCode){
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
                 OPEN_GALLERY -> {
-                    try{
-                        var uri = data?.data
+                    try {
+                        uri = data?.data!!
                         Log.d("Profile", uri.toString())
                         editprofileimage.setImageURI(uri)
-                    }catch (e:Exception){}
+                    } catch (e: Exception) {
+                    }
                 }
             }
         }

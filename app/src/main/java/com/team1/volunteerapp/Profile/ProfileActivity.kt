@@ -1,9 +1,13 @@
 package com.team1.volunteerapp.Profile
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -28,14 +32,17 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.SettingActivity
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.passwordcheck.view.*
+import java.io.File
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -48,8 +55,10 @@ class ProfileActivity : AppCompatActivity() {
     private var user_sido : String? = null
     private var user_gugun : String? = null
     private var user_pass : String? = null
+    private var user_img : String? = null
     var name : String? = null
     var email : String? = null
+    var bit : Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +88,22 @@ class ProfileActivity : AppCompatActivity() {
         user_sido = intent.getStringExtra("usido")
         user_gugun = intent.getStringExtra("ugungu")
         user_pass = intent.getStringExtra("pass")
+        user_img = intent.getStringExtra("useimage")
         pieChart = findViewById(R.id.PieChartMyVolune)
+
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("프로필 로딩중...")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+        val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
+        val localfile = File.createTempFile("tempImage", "jpg")
+        storageref.getFile(localfile).addOnSuccessListener {
+            if (progressDialog.isShowing){
+                progressDialog.dismiss()
+            }
+            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+            profileImage.setImageBitmap(bitmap)
+        }
 
         //닉네임 설정
         profileInfo.text = usernickname
@@ -120,7 +144,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
-            //TODO 이미지 변경 버튼, 세팅 버튼을 선택하는 화면 띄우기
             Log.d("Profile", "프로필 버튼 클릭")
             val mdialogview = LayoutInflater.from(this).inflate(R.layout.passwordcheck, null)
             val mBuilder = AlertDialog.Builder(this)
@@ -131,7 +154,7 @@ class ProfileActivity : AppCompatActivity() {
             mdialogview.dialogCheckBtn.setOnClickListener {
                 Log.d("aa", user_pass.toString())
                 Log.d("bb", mdialogview.passCheckArea.text.toString())
-                if(mdialogview.passCheckArea.text.toString() == user_pass.toString()){
+                if(mdialogview.passCheckArea.text.toString() == user_pass.toString()) {
                     val intent = Intent(this, SettingActivity::class.java)
                     intent.putExtra("userEmail", email)
                     intent.putExtra("userPhone", pnumber)
@@ -139,6 +162,7 @@ class ProfileActivity : AppCompatActivity() {
                     intent.putExtra("userGoal", volgoaltime)
                     intent.putExtra("userSido", user_sido)
                     intent.putExtra("userGungu", user_gugun)
+                    mAlertDialog.dismiss()
                     startActivity(intent)
                 }
                 else{

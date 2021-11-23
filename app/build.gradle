@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation "io.grpc:grpc-okhttp:1.32.2"
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
     
 
     //PieChart 관련

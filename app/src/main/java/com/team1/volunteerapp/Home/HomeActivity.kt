@@ -23,7 +23,6 @@ import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
-import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -73,6 +72,8 @@ class HomeActivity : AppCompatActivity() {
         gugun = intent.getStringExtra("gugun")
 
 
+
+
         // RecyclerView 데이터 삽입할 배열 선언
         val stringArray = Array(10) { item -> "" }
         val stringArray2 = Array(10) { item -> "" }
@@ -80,7 +81,6 @@ class HomeActivity : AppCompatActivity() {
         val stringArray4 = Array(10) { item -> "" }
         val stringArray5 = Array(10) { item -> "" }
         val stringArray6 = Array(10) { item -> "" }
-
 
         // Coroutine을 이용한 API 불러오기
         // 지역 정보를 통한 봉사 정보 불러오기
