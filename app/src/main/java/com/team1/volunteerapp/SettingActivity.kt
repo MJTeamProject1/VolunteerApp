@@ -1,8 +1,10 @@
 package com.team1.volunteerapp
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
@@ -10,8 +12,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
+import kotlinx.android.synthetic.main.activity_setting.*
+import kotlinx.android.synthetic.main.content_profile.*
 
 class SettingActivity : AppCompatActivity() {
+    val OPEN_GALLERY = 1
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
     var count : Int = 0
@@ -29,6 +34,7 @@ class SettingActivity : AppCompatActivity() {
         val spinner1 = findViewById<Spinner>(R.id.spinner1_rectify)
         val spinner2 = findViewById<Spinner>(R.id.spinner2_rectify)
         val goaltime = findViewById<EditText>(R.id.volRectifyTimeArea)
+        var editprofileimage = findViewById<ImageView>(R.id.editprofileimage)
 
         email.setText(intent.getStringExtra("userEmail"))
         phonenumber.setText(intent.getStringExtra("userPhone"))
@@ -310,6 +316,14 @@ class SettingActivity : AppCompatActivity() {
             }
         }
 
+        editprofileimage.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, OPEN_GALLERY)
+        }
+
+
+
         rectifybtn.setOnClickListener {
             var isGoToJoin = true
             val phonenumber_db = phonenumber.text.toString()
@@ -352,6 +366,22 @@ class SettingActivity : AppCompatActivity() {
                                 }
                             }
                         }
+                }
+            }
+        }
+    }
+
+    //갤러리 사진 가져오기
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            when(requestCode){
+                OPEN_GALLERY -> {
+                    try{
+                        var uri = data?.data
+                        Log.d("Profile", uri.toString())
+                        editprofileimage.setImageURI(uri)
+                    }catch (e:Exception){}
                 }
             }
         }

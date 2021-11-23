@@ -39,7 +39,6 @@ import kotlinx.android.synthetic.main.passwordcheck.view.*
 
 class ProfileActivity : AppCompatActivity() {
 
-    val OPEN_GALLERY = 1
     private lateinit var pieChart: PieChart
     private var voltime :String? = null
     private var voltitle : String? = null
@@ -144,25 +143,6 @@ class ProfileActivity : AppCompatActivity() {
                 }
                 else{
                     Toast.makeText(this,"비밀번호를 올바르게 입력해주세요.",Toast.LENGTH_SHORT).show()
-                }
-            }
-//            val intent = Intent(Intent.ACTION_PICK)
-//            intent.type = "image/*"
-//            startActivityForResult(intent, OPEN_GALLERY)
-        }
-    }
-
-    //갤러리 사진 가져오기
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            when(requestCode){
-                OPEN_GALLERY -> {
-                    try{
-                        var uri = data?.data
-                        Log.d("Profile", uri.toString())
-                        profileImage.setImageURI(uri)
-                    }catch (e:Exception){}
                 }
             }
         }

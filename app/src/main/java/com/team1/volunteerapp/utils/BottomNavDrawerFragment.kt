@@ -28,16 +28,6 @@ class BottomNavDrawerFragment : BottomSheetDialogFragment() {
         navigationView.setNavigationItemSelectedListener {
             dismiss()
             when (it.itemId) {
-                R.id.nav1 -> {
-                    val intent = Intent(activity, SettingActivity::class.java)
-                    intent.putExtra("userEmail", emai)
-                    intent.putExtra("userPhone", phonen)
-                    intent.putExtra("userNickname", nickn)
-                    intent.putExtra("userGoal", goalt)
-                    intent.putExtra("userSido", sidod)
-                    intent.putExtra("userGungu", gugund)
-                    startActivity(intent)
-                }
                 R.id.nav2 -> {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.1365.go.kr/vols/main.do"))
                     startActivity(intent)
