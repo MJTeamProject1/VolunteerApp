@@ -1,24 +1,20 @@
 package com.team1.volunteerapp.Profile
 
-import android.Manifest
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,9 +30,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.SettingActivity
 import com.team1.volunteerapp.utils.AnimationB
+import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_profile.*
+import kotlinx.android.synthetic.main.passwordcheck.view.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -47,6 +46,9 @@ class ProfileActivity : AppCompatActivity() {
     private var volgoaltime : String? = null
     private var usernickname : String? = null
     private var pnumber : String? = null
+    private var user_sido : String? = null
+    private var user_gugun : String? = null
+    private var user_pass : String? = null
     var name : String? = null
     var email : String? = null
 
@@ -75,6 +77,9 @@ class ProfileActivity : AppCompatActivity() {
         pnumber = intent.getStringExtra("phone")
         name = intent.getStringExtra("username")
         email = intent.getStringExtra("email")
+        user_sido = intent.getStringExtra("usido")
+        user_gugun = intent.getStringExtra("ugungu")
+        user_pass = intent.getStringExtra("pass")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         //닉네임 설정
@@ -118,12 +123,36 @@ class ProfileActivity : AppCompatActivity() {
         profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
             //TODO 이미지 변경 버튼, 세팅 버튼을 선택하는 화면 띄우기
             Log.d("Profile", "프로필 버튼 클릭")
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, OPEN_GALLERY)
+            val mdialogview = LayoutInflater.from(this).inflate(R.layout.passwordcheck, null)
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(mdialogview)
+                .setTitle("비밀번호 확인")
+            mdialogview.emailCheckArea.setText(email)
+            val  mAlertDialog = mBuilder.show()
+            mdialogview.dialogCheckBtn.setOnClickListener {
+                Log.d("aa", user_pass.toString())
+                Log.d("bb", mdialogview.passCheckArea.text.toString())
+                if(mdialogview.passCheckArea.text.toString() == user_pass.toString()){
+                    val intent = Intent(this, SettingActivity::class.java)
+                    intent.putExtra("userEmail", email)
+                    intent.putExtra("userPhone", pnumber)
+                    intent.putExtra("userNickname", usernickname)
+                    intent.putExtra("userGoal", volgoaltime)
+                    intent.putExtra("userSido", user_sido)
+                    intent.putExtra("userGungu", user_gugun)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this,"비밀번호를 올바르게 입력해주세요.",Toast.LENGTH_SHORT).show()
+                }
+            }
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, OPEN_GALLERY)
         }
     }
 
+    //갤러리 사진 가져오기
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
@@ -131,17 +160,13 @@ class ProfileActivity : AppCompatActivity() {
                 OPEN_GALLERY -> {
                     try{
                         var uri = data?.data
+                        Log.d("Profile", uri.toString())
                         profileImage.setImageURI(uri)
                     }catch (e:Exception){}
                 }
             }
         }
     }
-
-
-
-
-
 
     //Pie Chart 생성
     private fun initPieChart() {
@@ -202,7 +227,12 @@ class ProfileActivity : AppCompatActivity() {
 
         //빈 공간에 텍스트
         pieChart.setDrawCenterText(true)
-        pieChart.centerText = "봉사시간 : ${voltime}시간"
+        if(voltime == ""){
+            pieChart.centerText = "봉사시간 : 0시간"
+        }
+        else{
+            pieChart.centerText = "봉사시간 : ${voltime}시간"
+        }
 
         pieChart.invalidate()
 

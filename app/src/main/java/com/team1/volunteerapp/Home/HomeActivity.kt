@@ -23,6 +23,7 @@ import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
+import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
     private var vol_title: String? = null
     private var vol_goaltime: String? = null
     private var vol_user: String? = null
+    private var user_pass: String? = null
     private var sido : String? = null
     private var gugun : String? = null
     private var vol_name : String? = null
@@ -248,6 +250,9 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["phonenumber"] != null) {
                             user_phone = doc["phonenumber"].toString()
                         }
+                        if (doc["passworld"] != null) {
+                            user_pass = doc["passworld"].toString()
+                        }
                     }
                 }
             }
@@ -291,6 +296,9 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("username", vol_name)
                 intent.putExtra("email", user_email)
                 intent.putExtra("phone", user_phone)
+                intent.putExtra("usido", user_sido)
+                intent.putExtra("pass", user_pass)
+                intent.putExtra("ugungu", user_gugun)
 
                 Handler().postDelayed({
                     startActivity(intent)

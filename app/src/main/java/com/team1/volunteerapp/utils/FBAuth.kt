@@ -25,6 +25,7 @@ class FBAuth {
         private var user_sido: String? = null
         private var user_gugun: String? = null
         private var user_phone: String? = null
+        private var user_password: String? = null
 
 
         private lateinit var auth: FirebaseAuth
@@ -78,6 +79,9 @@ class FBAuth {
                                         if (doc["phonenumber"] != null) {
                                             user_phone = doc["phonenumber"].toString()
                                         }
+                                        if (doc["passworld"] != null) {
+                                            user_password = doc["passworld"].toString()
+                                        }
                                     }
                                 }
                             }
@@ -100,6 +104,7 @@ class FBAuth {
                 7-> resultData = user_sido.toString()
                 8-> resultData = user_gugun.toString()
                 9-> resultData = user_phone.toString()
+                10-> resultData = user_password.toString()
             }
 
             Log.d("1231231231 ",resultData)
