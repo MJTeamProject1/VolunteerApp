@@ -5,7 +5,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -49,6 +51,7 @@ class ProfileActivity : AppCompatActivity() {
         val profileEmail = findViewById<TextView>(R.id.profileEmail)
         val profileName = findViewById<TextView>(R.id.profileName)
         val profileNumber = findViewById<TextView>(R.id.profileNumber)
+        val profileImage = findViewById<ImageView>(R.id.profileImage)
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -102,6 +105,11 @@ class ProfileActivity : AppCompatActivity() {
                 finish()
             }, 300)
         }
+
+        profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
+            //TODO 이미지 변경 버튼, 세팅 버튼을 선택하는 화면 띄우기
+            Log.d("Profile", "프로필 버튼 클릭")
+        }
     }
 
 
@@ -127,6 +135,7 @@ class ProfileActivity : AppCompatActivity() {
         val dataEntries = ArrayList<PieEntry>()
         if(voltime == ""){
             dataEntries.add(PieEntry(0f, "봉사시간"))
+            goalpercent = 100 - timepercent
         }
         else{
             timepercent = (voltime.toString().toFloat() / volgoaltime.toString().toFloat() * 100)
