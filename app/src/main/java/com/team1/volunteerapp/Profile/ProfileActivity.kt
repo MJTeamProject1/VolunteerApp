@@ -1,17 +1,24 @@
 package com.team1.volunteerapp.Profile
 
+import android.Manifest
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,9 +36,11 @@ import com.team1.volunteerapp.Auth.IntroActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.content_profile.*
 
 class ProfileActivity : AppCompatActivity() {
 
+    val OPEN_GALLERY = 1
     private lateinit var pieChart: PieChart
     private var voltime :String? = null
     private var voltitle : String? = null
@@ -109,8 +118,29 @@ class ProfileActivity : AppCompatActivity() {
         profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
             //TODO 이미지 변경 버튼, 세팅 버튼을 선택하는 화면 띄우기
             Log.d("Profile", "프로필 버튼 클릭")
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, OPEN_GALLERY)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            when(requestCode){
+                OPEN_GALLERY -> {
+                    try{
+                        var uri = data?.data
+                        profileImage.setImageURI(uri)
+                    }catch (e:Exception){}
+                }
+            }
+        }
+    }
+
+
+
+
 
 
     //Pie Chart 생성
