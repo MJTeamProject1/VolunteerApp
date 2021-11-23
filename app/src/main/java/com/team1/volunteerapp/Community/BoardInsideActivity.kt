@@ -57,9 +57,19 @@ class BoardInsideActivity : AppCompatActivity() {
             insertComment(key)
         }
 
+        var thumbicon = false
         // 추천 버튼
         binding.boardThumbBtn.setOnClickListener {
-            writeNewPost(key,count+1)
+            if(!thumbicon){
+                writeNewPost(key,count+1)
+                binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)
+                thumbicon = true
+            }else{
+                writeNewPost(key,count-1)
+                binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
+                thumbicon = false
+            }
+
         }
 
         // listview 연결
