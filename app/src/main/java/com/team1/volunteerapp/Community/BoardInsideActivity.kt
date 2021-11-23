@@ -33,6 +33,7 @@ class BoardInsideActivity : AppCompatActivity() {
     private val commentDataList = mutableListOf<CommentModel>()
     private lateinit var auth: FirebaseAuth
 
+    private var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,6 +44,7 @@ class BoardInsideActivity : AppCompatActivity() {
         key = intent.getStringExtra("key").toString()
         isreview = intent.getBooleanExtra("review",false)
 
+        // 글 가져오기
         getBoardData(key,isreview)
 
         // 수정 버튼
@@ -53,6 +55,11 @@ class BoardInsideActivity : AppCompatActivity() {
         // 댓글 버튼
         binding.commentBtn.setOnClickListener {
             insertComment(key)
+        }
+
+        // 추천 버튼
+        binding.boardThumbBtn.setOnClickListener {
+            writeNewPost(key,count+1)
         }
 
         // listview 연결
@@ -69,6 +76,18 @@ class BoardInsideActivity : AppCompatActivity() {
 
         }
     }
+    private fun writeNewPost(key:String, thumbint: Int) {
+
+//        val post = BoardModel(thumbint)
+//        val postValues = post.toMap()
+        val postValues = thumbint
+
+        val childUpdates = hashMapOf<String, Any>(
+            "$key/thumbint" to postValues,
+        )
+        FBRef.communityRef.updateChildren(childUpdates)
+    }
+
 
     // 글 수정 삭제 다이얼로그
     private fun showDialog(isreview: Boolean){
@@ -160,7 +179,8 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.uidArea.text = dataModel!!.nickname
                     binding.contentArea.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
-
+                    binding.boardThumbInt.text = dataModel!!.thumbint.toString()
+                    count = dataModel!!.thumbint
                     val myUid = FBAuth.getUid()
                     val writerUid = dataModel.uid
 
