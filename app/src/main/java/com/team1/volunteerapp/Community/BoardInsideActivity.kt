@@ -114,7 +114,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     commentDataList.add(item!!)
 
                 }
-
+                commentDataList.reverse()
                 commentAdapter.notifyDataSetChanged()
 
             }
