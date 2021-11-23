@@ -7,6 +7,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -40,7 +41,7 @@ class FBAuth {
             return dateFormat
         }
 
-        val await = run{
+        private val await = run{
                 GlobalScope.launch {
                     launch {
                         auth = Firebase.auth
@@ -82,10 +83,12 @@ class FBAuth {
                             }
                     }
                 }
+
             }
 
         fun getUserData(num : Int) : String {
             print(await)
+
             var resultData = ""
             when(num){
                 1-> resultData = vol_time.toString()

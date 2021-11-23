@@ -1,9 +1,14 @@
 package com.team1.volunteerapp.Community
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +23,7 @@ import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
+import kotlinx.android.synthetic.main.board_dialog.*
 import java.lang.Exception
 
 class BoardInsideActivity : AppCompatActivity() {
@@ -39,7 +45,47 @@ class BoardInsideActivity : AppCompatActivity() {
 
         getBoardData(key,isreview)
 
-        binding.boardDelBtn.setOnClickListener {
+        // 수정 버튼
+        binding.boardSettingBtn.setOnClickListener {
+            showDialog(isreview)
+        }
+
+        // 댓글 버튼
+        binding.commentBtn.setOnClickListener {
+            insertComment(key)
+        }
+
+        // listview 연결
+        commentAdapter = CommentLVAdapter(commentDataList)
+        binding.commnetLV.adapter = commentAdapter
+
+        // 댓글 가져오기
+        getCommentData(key)
+
+        commentAdapter.itemClick = object : CommentLVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                Log.d("asvv",commentDataList[position].toString())
+            }
+
+        }
+    }
+
+    // 글 수정 삭제 다이얼로그
+    private fun showDialog(isreview: Boolean){
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.board_dialog, null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("게시글 수정/삭제")
+
+        val alertDialog = mBuilder.show()
+        alertDialog.findViewById<Button>(R.id.BoardEditBtn)?.setOnClickListener {
+            val intent = Intent(this,BoardEditActivity::class.java)
+            intent.putExtra("key",key)
+            intent.putExtra("review",isreview)
+            startActivity(intent)
+        }
+
+        alertDialog.findViewById<Button>(R.id.BoardDelBtn)?.setOnClickListener {
             if(isreview){
                 FBRef.reviewRef.child(key).removeValue()
                 Toast.makeText(this,"삭제 완료", Toast.LENGTH_SHORT).show()
@@ -52,18 +98,10 @@ class BoardInsideActivity : AppCompatActivity() {
 
         }
 
-        binding.commentBtn.setOnClickListener {
-            insertComment(key)
-        }
-
-        commentAdapter = CommentLVAdapter(commentDataList)
-        binding.commnetLV.adapter = commentAdapter
-
-        getCommentData(key)
     }
 
     // 댓글 가져오기
-    fun getCommentData(key : String){
+    private fun getCommentData(key : String){
         val postListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -79,7 +117,6 @@ class BoardInsideActivity : AppCompatActivity() {
 
                 commentAdapter.notifyDataSetChanged()
 
-
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -91,8 +128,9 @@ class BoardInsideActivity : AppCompatActivity() {
 
     }
 
+
     // 댓글 DB에 넣기
-    fun insertComment(key : String){
+    private fun insertComment(key : String){
         if(binding.commentArea.text.toString() !=""){
             FBRef.commentRef
                 .child(key)
@@ -111,6 +149,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
     }
 
+    // 작성 글 가져오기
     private fun getBoardData(key: String, isreview: Boolean){
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -127,7 +166,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
                     if(myUid.equals(writerUid)){
                         //Toast.makeText(baseContext,"작성자 본인", Toast.LENGTH_SHORT).show()
-                        binding.boardDelBtn.isVisible = true
+                        binding.boardSettingBtn.isVisible = true
                     }else{
                         //Toast.makeText(baseContext,"작성자가 아님", Toast.LENGTH_SHORT).show()
                     }
