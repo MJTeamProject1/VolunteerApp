@@ -8,7 +8,8 @@ data class BoardModel(
     val uid: String = "",
     val time: String = "",
     val nickname: String = "",
-    val thumbint : Int = 0
+    val thumbint : Int = 0,
+    val thumblist : String = ""
 ){
     @Exclude
     fun toMap() : Map<String, Any> {
@@ -18,7 +19,8 @@ data class BoardModel(
             "uid" to uid,
             "time" to time,
             "nickname" to nickname,
-            "thumbint" to thumbint
+            "thumbint" to thumbint,
+            "thumblist" to thumblist
         )
     }
 }

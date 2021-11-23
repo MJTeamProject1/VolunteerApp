@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Comment.CommentLVAdapter
 import com.team1.volunteerapp.Comment.CommentModel
+import com.team1.volunteerapp.Favorite.FavoriteModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
@@ -32,8 +33,9 @@ class BoardInsideActivity : AppCompatActivity() {
     private lateinit var commentAdapter: CommentLVAdapter
     private val commentDataList = mutableListOf<CommentModel>()
     private lateinit var auth: FirebaseAuth
-
+    private var thumbicon = false
     private var count = 0
+    private var uidlist =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,17 +59,15 @@ class BoardInsideActivity : AppCompatActivity() {
             insertComment(key)
         }
 
-        var thumbicon = false
+
         // 추천 버튼
+
         binding.boardThumbBtn.setOnClickListener {
             if(!thumbicon){
-                writeNewPost(key,count+1)
-                binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)
-                thumbicon = true
+                writeNewPost(key,count+1, FBAuth.getUid())
             }else{
-                writeNewPost(key,count-1)
-                binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
-                thumbicon = false
+                writeNewPost(key,count-1, FBAuth.getUid())
+
             }
 
         }
@@ -86,16 +86,34 @@ class BoardInsideActivity : AppCompatActivity() {
 
         }
     }
-    private fun writeNewPost(key:String, thumbint: Int) {
 
-//        val post = BoardModel(thumbint)
-//        val postValues = post.toMap()
+    // 추천 기능
+    private fun writeNewPost(key:String, thumbint: Int, uid : String) {
         val postValues = thumbint
+        val checkUid = uidlist.contains(uid)
+        if(!checkUid){
+            uidlist = "$uidlist@$uid"
+            val childUpdates = hashMapOf<String, Any>(
+                "$key/thumbint" to postValues,
+                "$key/thumblist" to uidlist
+            )
 
-        val childUpdates = hashMapOf<String, Any>(
-            "$key/thumbint" to postValues,
-        )
-        FBRef.communityRef.updateChildren(childUpdates)
+            binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)
+            thumbicon = true
+
+            FBRef.communityRef.updateChildren(childUpdates)
+        }
+        else{
+            var removeUidList = uidlist.removeSuffix("@$uid")
+            val childUpdates = hashMapOf<String, Any>(
+                "$key/thumbint" to postValues,
+                "$key/thumblist" to removeUidList
+            )
+
+            binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
+            thumbicon = false
+            FBRef.communityRef.updateChildren(childUpdates)
+        }
     }
 
 
@@ -191,6 +209,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.timeArea.text = dataModel!!.time
                     binding.boardThumbInt.text = dataModel!!.thumbint.toString()
                     count = dataModel!!.thumbint
+                    uidlist = dataModel.thumblist
                     val myUid = FBAuth.getUid()
                     val writerUid = dataModel.uid
 
@@ -201,6 +220,13 @@ class BoardInsideActivity : AppCompatActivity() {
                         //Toast.makeText(baseContext,"작성자가 아님", Toast.LENGTH_SHORT).show()
                     }
 
+                    // 아이콘 불러오기
+                    thumbicon = uidlist.contains(FBAuth.getUid())
+                    if(thumbicon){
+                        binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)}
+                    else{
+                        binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
+                    }
                 }catch (e:Exception){
                     Log.d("asdf","삭제완료")
                 }
