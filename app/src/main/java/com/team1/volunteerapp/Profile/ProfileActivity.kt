@@ -104,6 +104,12 @@ class ProfileActivity : AppCompatActivity() {
             val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
             profileImage.setImageBitmap(bitmap)
         }
+        // 이미지를 등록 안했을 때
+        storageref.getFile(localfile).addOnFailureListener{
+            if (progressDialog.isShowing){
+                progressDialog.dismiss()
+            }
+        }
 
         //닉네임 설정
         profileInfo.text = usernickname
