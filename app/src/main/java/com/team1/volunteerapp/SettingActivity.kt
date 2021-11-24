@@ -56,7 +56,7 @@ class SettingActivity : AppCompatActivity() {
         val localfile = File.createTempFile("tempImage", "jpg")
         storageref.getFile(localfile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-            profileImage.setImageBitmap(bitmap)
+            editprofileimage.setImageBitmap(bitmap)
         }
 
 
