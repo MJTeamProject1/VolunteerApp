@@ -3,6 +3,7 @@ package com.team1.volunteerapp
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.team1.volunteerapp.Auth.IntroActivity
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.content_profile.*
+import java.io.File
 import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
@@ -49,6 +51,13 @@ class SettingActivity : AppCompatActivity() {
         phonenumber.setText(intent.getStringExtra("userPhone"))
         nickname.setText(intent.getStringExtra("userNickname"))
         goaltime.setText(intent.getStringExtra("userGoal"))
+
+        val storageref = FirebaseStorage.getInstance().reference.child("images/${useemail}")
+        val localfile = File.createTempFile("tempImage", "jpg")
+        storageref.getFile(localfile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+            profileImage.setImageBitmap(bitmap)
+        }
 
 
         var sidodata: String? = intent.getStringExtra("userSido")

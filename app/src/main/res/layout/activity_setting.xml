@@ -37,6 +37,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints">
         </de.hdodenhof.circleimageview.CircleImageView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@color/hablack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="변경"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/editprofileimage"
+                app:layout_constraintStart_toStartOf="@+id/editprofileimage"
+                app:layout_constraintBottom_toBottomOf="@+id/editprofileimage"
+                app:layout_constraintTop_toTopOf="@+id/editprofileimage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
