@@ -6,6 +6,7 @@ data class CommentModel(
     val commentTitle: String = "",
     val commentCreatedTime: String = "",
     val commentNickname: String = "",
+    val commentUid : String = "",
     val commentThumbInt : Int = 0
 ){
     @Exclude
@@ -14,6 +15,7 @@ data class CommentModel(
             "commentTitle" to commentTitle,
             "commentCreatedTime" to commentCreatedTime,
             "commentNickname" to commentNickname,
+            "commentUid" to commentUid,
             "commentThumbInt" to commentThumbInt
         )
     }

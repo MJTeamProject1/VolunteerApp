@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -19,13 +18,14 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Comment.CommentLVAdapter
 import com.team1.volunteerapp.Comment.CommentModel
-import com.team1.volunteerapp.Favorite.FavoriteModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.databinding.ActivityBoardInsideBinding
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
-import kotlinx.android.synthetic.main.board_dialog.*
 import java.lang.Exception
+import android.widget.AdapterView.OnItemClickListener
+import kotlinx.android.synthetic.main.comment_list_item.view.*
+
 
 class BoardInsideActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardInsideBinding
@@ -79,12 +79,22 @@ class BoardInsideActivity : AppCompatActivity() {
         // 댓글 가져오기
         getCommentData(key)
 
-        commentAdapter.itemClick = object : CommentLVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                Log.d("asvv",commentDataList[position].toString())
-            }
+//        binding.commnetLV.setOnClickListener {
+//            val item = parent.getItemAtPosition(position) as commentDataList
+//        }
 
-        }
+        binding.commnetLV.onItemClickListener =
+            OnItemClickListener { a_parent, a_view, a_position, a_id ->
+                val item = commentAdapter.getItem(a_position)
+                Log.d("asvv",item.toString())
+            }
+//        commentAdapter.itemClick = object : CommentLVAdapter.ItemClick{
+//            override fun onClick(view: View, position: Int) {
+//                Log.d("asvv",commentDataList[position].toString())
+//                Log.d("asvvv", position.toString())
+//            }
+//
+//        }
     }
 
     // 추천 기능
@@ -155,12 +165,17 @@ class BoardInsideActivity : AppCompatActivity() {
                 commentDataList.clear()
                 
                 for(dataModel in snapshot.children){
-                    Log.d("asvv",dataModel.toString())
+                    Log.d("asvvv",dataModel.toString())
 
                     val item = dataModel.getValue(CommentModel::class.java)
                     commentDataList.add(item!!)
 
+
+                    if(FBAuth.getUid() == item.commentUid) {
+                        Log.d("asvvv", item.commentNickname)
+                    }
                 }
+
                 commentDataList.reverse()
                 commentAdapter.notifyDataSetChanged()
 
@@ -186,7 +201,8 @@ class BoardInsideActivity : AppCompatActivity() {
                     CommentModel(
                         binding.commentArea.text.toString(),
                         FBAuth.getTime(),
-                        FBAuth.getUserData(4) // 닉네임 불러오기
+                        FBAuth.getUserData(4), // 닉네임 불러오기
+                        FBAuth.getUid()
                     )
                 )
             binding.commentArea.setText("")
