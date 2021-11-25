@@ -114,7 +114,7 @@ class BoardInsideActivity : AppCompatActivity() {
             FBRef.communityRef.updateChildren(childUpdates)
         }
         else{
-            var removeUidList = uidlist.removeSuffix("@$uid")
+            var removeUidList = uidlist.replace("@$uid","")
             val childUpdates = hashMapOf<String, Any>(
                 "$key/thumbint" to postValues,
                 "$key/thumblist" to removeUidList
@@ -239,9 +239,12 @@ class BoardInsideActivity : AppCompatActivity() {
                     // 아이콘 불러오기
                     thumbicon = uidlist.contains(FBAuth.getUid())
                     if(thumbicon){
-                        binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)}
+                        binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)
+                        thumbicon = true
+                    }
                     else{
                         binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
+                        thumbicon = false
                     }
                 }catch (e:Exception){
                     Log.d("asdf","삭제완료")
