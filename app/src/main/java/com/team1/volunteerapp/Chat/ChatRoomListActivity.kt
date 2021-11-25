@@ -64,6 +64,8 @@ class ChatRoomListActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                chatRoomList_items.clear()
+
                 for(dataModel in snapshot.children){
                     try {
                         val item = dataModel.getValue(ChatRoomInfoModel::class.java)
@@ -77,6 +79,8 @@ class ChatRoomListActivity : AppCompatActivity() {
                     }
 
                 }
+                chatRoomList_items.reverse()
+                chatRoomList_Key.reverse()
                 chatRoomList_rvAdapter.notifyDataSetChanged()
             }
 
