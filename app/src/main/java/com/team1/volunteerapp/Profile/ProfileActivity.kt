@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -42,6 +43,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.passwordcheck.view.*
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class ProfileActivity : AppCompatActivity() {
@@ -88,28 +90,32 @@ class ProfileActivity : AppCompatActivity() {
         user_sido = intent.getStringExtra("usido")
         user_gugun = intent.getStringExtra("ugungu")
         user_pass = intent.getStringExtra("pass")
-        user_img = intent.getStringExtra("useimage")
+        user_img = intent.getStringExtra("proImage")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("프로필 로딩중...")
-        progressDialog.setCancelable(false)
-        progressDialog.show()
-        val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
-        val localfile = File.createTempFile("tempImage", "jpg")
-        storageref.getFile(localfile).addOnSuccessListener {
-            if (progressDialog.isShowing){
-                progressDialog.dismiss()
-            }
-            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-            profileImage.setImageBitmap(bitmap)
-        }
-        // 이미지를 등록 안했을 때
-        storageref.getFile(localfile).addOnFailureListener{
-            if (progressDialog.isShowing){
-                progressDialog.dismiss()
-            }
-        }
+        val bitmap = FBAuth.getUserImage()
+        profileImage.setImageBitmap(bitmap)
+
+
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("프로필 로딩중...")
+//        progressDialog.setCancelable(false)
+//        progressDialog.show()
+//        val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
+//        val localfile = File.createTempFile("tempImage", "jpg")
+//        storageref.getFile(localfile).addOnSuccessListener {
+//            if (progressDialog.isShowing){
+//                progressDialog.dismiss()
+//            }
+//            val bitmap = FBAuth.getUserImage()
+//            profileImage.setImageBitmap(bitmap)
+//        }
+//        // 이미지를 등록 안했을 때
+//        storageref.getFile(localfile).addOnFailureListener{
+//            if (progressDialog.isShowing){
+//                progressDialog.dismiss()
+//            }
+//        }
 
         //닉네임 설정
         profileInfo.text = usernickname

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.team1.volunteerapp.Auth.IntroActivity
+import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.content_profile.*
 import java.io.File
@@ -52,12 +53,7 @@ class SettingActivity : AppCompatActivity() {
         nickname.setText(intent.getStringExtra("userNickname"))
         goaltime.setText(intent.getStringExtra("userGoal"))
 
-        val storageref = FirebaseStorage.getInstance().reference.child("images/${useemail}")
-        val localfile = File.createTempFile("tempImage", "jpg")
-        storageref.getFile(localfile).addOnSuccessListener {
-            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-            editprofileimage.setImageBitmap(bitmap)
-        }
+        editprofileimage.setImageBitmap(FBAuth.getUserImage())
 
 
         var sidodata: String? = intent.getStringExtra("userSido")
