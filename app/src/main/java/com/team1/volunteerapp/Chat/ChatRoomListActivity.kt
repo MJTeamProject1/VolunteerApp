@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -22,6 +24,7 @@ import java.util.*
 
 class ChatRoomListActivity : AppCompatActivity() {
     val chatRoomList_items = mutableListOf<ChatRoomInfoModel>()
+    val chatRoomList_Key = mutableListOf<String>()
     lateinit var chatRoomList_rvAdapter : ChatRoomListRVAdapter
     private val uidKey = FBAuth.getUid()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +51,15 @@ class ChatRoomListActivity : AppCompatActivity() {
             chatRoomList_rvAdapter.notifyDataSetChanged()
         }
 
+        chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(chatRoomList_rv.context, ChatRoomInfoActivity::class.java)
+                intent.putExtra("roomKey", chatRoomList_Key[position].toString())
+                ContextCompat.startActivity(chatRoomList_rv.context, intent, null)
+            }
+
+        }
+
     }
 
     private fun getChatRoomListData(){
@@ -60,6 +72,7 @@ class ChatRoomListActivity : AppCompatActivity() {
                         Log.d("asdfasdfa", item.toString())
                         if (item != null) {
                             chatRoomList_items.add(item)
+                            chatRoomList_Key.add(dataModel.key.toString())
                         }
                     }catch (e : Exception){
                         Log.d("asdfasdfa", e.toString())

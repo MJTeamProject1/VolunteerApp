@@ -1,11 +1,15 @@
 package com.team1.volunteerapp.Chat
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
+import kotlinx.coroutines.withContext
 
 class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : RecyclerView.Adapter<ChatRoomListRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatRoomListRVAdapter.ViewHolder {
@@ -35,12 +39,11 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        var chatTitile = itemView.findViewById<TextView>(R.id.chatListRvTitle)
-        var chatSubTitile = itemView.findViewById<TextView>(R.id.chatListRvContents)
-        var chatCreateUser = itemView.findViewById<TextView>(R.id.chatListRvUser)
-
+        private val chatTitile: TextView = itemView.findViewById(R.id.chatListRvTitle)
+        private val chatSubTitile: TextView = itemView.findViewById(R.id.chatListRvContents)
+        private val chatCreateUser: TextView = itemView.findViewById(R.id.chatListRvUser)
+        private val chatjoinBtn : Button = itemView.findViewById(R.id.chatListRvBtn)
         fun bindItems(item: ChatRoomInfoModel){
-
 
             chatTitile.text = item.chatInfo?.chatRoomTitle
             chatSubTitile.text = item.chatInfo?.chatRoomSubTitle

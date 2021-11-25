@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import androidx.annotation.RequiresApi
+import com.team1.volunteerapp.Chat.ChatRoomListActivity
 import com.team1.volunteerapp.Home.HomeActivity
 import com.team1.volunteerapp.R
 import kotlinx.coroutines.CoroutineScope
@@ -69,7 +70,7 @@ class LoadingActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            val Intent = Intent(this, HomeActivity::class.java)
+            val Intent = Intent(this, ChatRoomListActivity::class.java)
             Intent.putExtra("sido",sidocode)
             Intent.putExtra("gugun",guguncode)
             startActivity(Intent)
