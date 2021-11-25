@@ -16,13 +16,24 @@ import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ChatInsideActivity : AppCompatActivity() {
     val chatData = mutableListOf<ChatModel>()
+
+    //메세지를 보낸 시간
+    val time = System.currentTimeMillis()
+    val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
+    val curTime = dateFormat.format(Date(time)).toString()
+
     lateinit var chat_rvAdapter : ChatInsideRVAdater
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_inside)
+
+
+
 
         // RecyclerView 연결
         val chat_rv = findViewById<RecyclerView>(R.id.mRecyclerViewChat)
@@ -65,7 +76,7 @@ class ChatInsideActivity : AppCompatActivity() {
                         FBAuth.getUserData(4),
                         FBAuth.getUid(),
                         inputText,
-                        FBAuth.getTime()
+                        curTime
                     )
                 )
         }
