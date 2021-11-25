@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="@color/maincolor2"
-        app:navigationIcon="@drawable/baseline_home_white_24"
+        app:navigationIcon="@drawable/baseline_menu_white_24dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 

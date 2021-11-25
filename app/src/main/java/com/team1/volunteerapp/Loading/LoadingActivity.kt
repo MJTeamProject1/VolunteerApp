@@ -70,7 +70,7 @@ class LoadingActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            val Intent = Intent(this, ChatRoomListActivity::class.java)
+            val Intent = Intent(this, HomeActivity::class.java)
             Intent.putExtra("sido",sidocode)
             Intent.putExtra("gugun",guguncode)
             startActivity(Intent)

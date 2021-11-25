@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
+import com.team1.volunteerapp.Chat.ChatRoomListActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBRef
@@ -101,6 +102,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {// 네비게이션 뷰 아이템 클릭시
         val intentr = Intent(this, ReviewActivity::class.java)
+        val intentChat = Intent(this, ChatRoomListActivity::class.java)
 
         when(item.itemId)
         {
@@ -111,6 +113,13 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fab.hide(AnimationB.addVisibilityChanged)
                 Handler().postDelayed({
                     startActivity(intentr)
+                    finish()
+                }, 150)
+            }
+            R.id.chat ->{
+                fab.hide(AnimationB.addVisibilityChanged)
+                Handler().postDelayed({
+                    startActivity(intentChat)
                     finish()
                 }, 150)
             }
@@ -134,12 +143,6 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> { // 홈으로 돌아가기
-                fab.hide(AnimationB.addVisibilityChanged)
-                Handler().postDelayed({
-                    finish()
-                }, 300)
-            }
-            R.id.app_bar_community_list ->{
                 val layoutDrawerComm = findViewById<DrawerLayout>(R.id.layout_drawer_comm)
                 setDrawr = if(setDrawr){
                     layoutDrawerComm.closeDrawer(GravityCompat.START)
@@ -148,6 +151,12 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     layoutDrawerComm.openDrawer(GravityCompat.START)
                     true
                 }
+            }
+            R.id.app_bar_community_list ->{
+                fab.hide(AnimationB.addVisibilityChanged)
+                Handler().postDelayed({
+                    finish()
+                }, 300)
             }
         }
         return true
