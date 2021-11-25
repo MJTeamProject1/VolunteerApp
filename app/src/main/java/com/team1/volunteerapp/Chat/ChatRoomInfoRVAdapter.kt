@@ -20,6 +20,7 @@ class ChatRoomInfoRVAdapter(val items : MutableList<ChatJoinUserModel>) : Recycl
 
     override fun getItemCount(): Int {
         return items.size
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

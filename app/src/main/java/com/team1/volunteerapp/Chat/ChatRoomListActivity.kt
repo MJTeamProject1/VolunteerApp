@@ -39,16 +39,14 @@ class ChatRoomListActivity : AppCompatActivity() {
         chatRoomList_rv.layoutManager = LinearLayoutManager(this)
 
         // 데이터 가져오기
-        chatRoomList_items.clear()
         getChatRoomListData()
 
         val addBtn = findViewById<Button>(R.id.chatListAddBtn)
         addBtn.setOnClickListener {
 
             val Intent = Intent(this, ChatRoomMakerActivity::class.java)
-            chatRoomList_items.clear()
-            chatRoomList_rvAdapter.notifyDataSetChanged()
             startActivity(Intent)
+            chatRoomList_rvAdapter.notifyDataSetChanged()
         }
 
         chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick{

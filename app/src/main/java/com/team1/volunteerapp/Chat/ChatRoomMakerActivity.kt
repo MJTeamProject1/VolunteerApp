@@ -1,5 +1,6 @@
 package com.team1.volunteerapp.Chat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,6 +26,8 @@ class ChatRoomMakerActivity : AppCompatActivity() {
 
             inputChatRoomListData(inputTitle, inputContent)
             Toast.makeText(this, "생성 완료", Toast.LENGTH_SHORT).show()
+            val Intent = Intent(this, ChatRoomListActivity::class.java)
+            startActivity(Intent)
             finish()
         }
     }

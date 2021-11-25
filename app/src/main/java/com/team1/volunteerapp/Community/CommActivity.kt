@@ -51,7 +51,7 @@ class CommActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        // DB에서 데이터 받아오기기
+        // DB에서 데이터 받아오기
         getFBBoardData()
 
         val naviViewComm = findViewById<NavigationView>(R.id.naviViewComm)

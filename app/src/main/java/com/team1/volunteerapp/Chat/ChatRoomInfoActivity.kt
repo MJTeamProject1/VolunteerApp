@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -27,6 +28,7 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         // 그룹 고유 키 값 가져오기
         val roomKey = intent.getStringExtra("roomKey")
 
+        //Recycler view 연결
         val chatRoomInfo_rv = findViewById<RecyclerView>(R.id.chatRoomInfoJoinRV)
 
         chatUserJoinInfo_rvAdapter = ChatRoomInfoRVAdapter(userData)
@@ -41,6 +43,7 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         val groupJoinBtn = findViewById<Button>(R.id.chatRoomJoinBtn)
         groupJoinBtn.setOnClickListener {
             joinGroupUserData(roomKey!!)
+            chatUserJoinInfo_rvAdapter.notifyDataSetChanged()
         }
     }
 
@@ -98,8 +101,10 @@ class ChatRoomInfoActivity : AppCompatActivity() {
                         FBAuth.getUserData(4)
                     )
                 )
+
         }else{
-            Log.d("==========dfaasdf","asdfasdf")
+            Toast.makeText(this,"이미 가입된 그룹입니다.",Toast.LENGTH_SHORT).show()
+            finish()
         }
 
     }
