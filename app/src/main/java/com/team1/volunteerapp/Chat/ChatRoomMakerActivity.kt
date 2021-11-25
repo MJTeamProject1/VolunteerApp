@@ -10,7 +10,6 @@ import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 
 class ChatRoomMakerActivity : AppCompatActivity() {
-    private val uidKey = FBAuth.getUid()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_maker)
@@ -35,10 +34,10 @@ class ChatRoomMakerActivity : AppCompatActivity() {
             .push()
             .setValue(
                 ChatRoomInfoModel(
-                    ChatJoinUserModel(
-                        FBAuth.getUid(),
-                        FBAuth.getUserData(4)
-                    ),
+//                    ChatJoinUserModel(
+//                        FBAuth.getUid(),
+//                        FBAuth.getUserData(4)
+//                    ),
                     ChatRoomListModel(
                         0,
                         2,

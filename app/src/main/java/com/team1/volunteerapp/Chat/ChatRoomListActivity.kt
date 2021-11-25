@@ -46,9 +46,9 @@ class ChatRoomListActivity : AppCompatActivity() {
         addBtn.setOnClickListener {
 
             val Intent = Intent(this, ChatRoomMakerActivity::class.java)
-            startActivity(Intent)
             chatRoomList_items.clear()
             chatRoomList_rvAdapter.notifyDataSetChanged()
+            startActivity(Intent)
         }
 
         chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick{
