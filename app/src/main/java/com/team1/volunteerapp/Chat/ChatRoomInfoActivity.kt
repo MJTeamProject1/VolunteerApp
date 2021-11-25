@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -31,14 +33,12 @@ class ChatRoomInfoActivity : AppCompatActivity() {
 
         //Recycler view 연결
         val chatRoomInfo_rv = findViewById<RecyclerView>(R.id.chatRoomInfoJoinRV)
+        chatUserJoinInfo_rvAdapter = ChatRoomInfoRVAdapter(userData)
+        chatRoomInfo_rv.adapter = chatUserJoinInfo_rvAdapter
+        chatRoomInfo_rv.layoutManager = GridLayoutManager(this,2)
 
         // 그룹 정보 가져오기
         getGroupInfo(roomKey!!)
-
-        chatUserJoinInfo_rvAdapter = ChatRoomInfoRVAdapter(userData)
-        chatRoomInfo_rv.adapter = chatUserJoinInfo_rvAdapter
-        chatRoomInfo_rv.layoutManager = LinearLayoutManager(this)
-
 
         // 그룹 가입 버튼 눌렀을 시
         val groupJoinBtn = findViewById<Button>(R.id.chatRoomJoinBtn)

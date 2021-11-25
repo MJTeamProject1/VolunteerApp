@@ -54,7 +54,7 @@
             android:textSize="10sp"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="55dp" />
+            android:layout_marginTop="53dp" />
 
     <TextView
             android:id="@+id/chatRvNickName"
