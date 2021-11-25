@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -17,16 +19,25 @@ import java.lang.Exception
 class ChatRoomInfoActivity : AppCompatActivity() {
     val userData = mutableListOf<ChatJoinUserModel>()
     val userDataCheck = mutableListOf<String>()
+    lateinit var chatUserJoinInfo_rvAdapter : ChatRoomInfoRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_info)
 
+        // 그룹 고유 키 값 가져오기
         val roomKey = intent.getStringExtra("roomKey")
 
+        val chatRoomInfo_rv = findViewById<RecyclerView>(R.id.chatRoomInfoJoinRV)
 
+        chatUserJoinInfo_rvAdapter = ChatRoomInfoRVAdapter(userData)
+        chatRoomInfo_rv.adapter = chatUserJoinInfo_rvAdapter
+        chatRoomInfo_rv.layoutManager = LinearLayoutManager(this)
+
+        // 그룹 정보 가져오기
         getGroupInfo(roomKey!!)
 
 
+        // 그룹 가입 버튼 눌렀을 시
         val groupJoinBtn = findViewById<Button>(R.id.chatRoomJoinBtn)
         groupJoinBtn.setOnClickListener {
             joinGroupUserData(roomKey!!)
