@@ -17,6 +17,9 @@
             android:theme="@style/Theme.VolunteerApp"
             android:usesCleartextTraffic="true">
         <activity
+                android:name=".Profile.CalenderActivity"
+                android:exported="true" />
+        <activity
                 android:name=".Chat.ChatInsideActivity"
                 android:exported="false" />
         <activity

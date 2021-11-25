@@ -73,6 +73,7 @@ class ProfileActivity : AppCompatActivity() {
         val profileName = findViewById<TextView>(R.id.profileName)
         val profileNumber = findViewById<TextView>(R.id.profileNumber)
         val profileImage = findViewById<ImageView>(R.id.profileImage)
+        val calenderImage = findViewById<ImageView>(R.id.user_calender)
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -95,27 +96,6 @@ class ProfileActivity : AppCompatActivity() {
 
         val bitmap = FBAuth.getUserImage()
         profileImage.setImageBitmap(bitmap)
-
-
-//        val progressDialog = ProgressDialog(this)
-//        progressDialog.setMessage("프로필 로딩중...")
-//        progressDialog.setCancelable(false)
-//        progressDialog.show()
-//        val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
-//        val localfile = File.createTempFile("tempImage", "jpg")
-//        storageref.getFile(localfile).addOnSuccessListener {
-//            if (progressDialog.isShowing){
-//                progressDialog.dismiss()
-//            }
-//            val bitmap = FBAuth.getUserImage()
-//            profileImage.setImageBitmap(bitmap)
-//        }
-//        // 이미지를 등록 안했을 때
-//        storageref.getFile(localfile).addOnFailureListener{
-//            if (progressDialog.isShowing){
-//                progressDialog.dismiss()
-//            }
-//        }
 
         //닉네임 설정
         profileInfo.text = usernickname
@@ -147,6 +127,11 @@ class ProfileActivity : AppCompatActivity() {
             DividerItemDecoration(profile_rv.context, LinearLayoutManager(this).orientation)
 
         profile_rv.addItemDecoration(dividerItemDecoration)
+
+        calenderImage.setOnClickListener {
+            val intent = Intent(this, CalenderActivity::class.java)
+            startActivity(intent)
+        }
 
         homeButton.setOnClickListener { // 홈으로 돌아가기
             fab.hide(AnimationB.addVisibilityChanged)
