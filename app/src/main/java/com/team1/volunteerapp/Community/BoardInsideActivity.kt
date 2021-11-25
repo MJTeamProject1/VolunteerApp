@@ -64,9 +64,9 @@ class BoardInsideActivity : AppCompatActivity() {
 
         binding.boardThumbBtn.setOnClickListener {
             if(!thumbicon){
-                writeNewPost(key,count+1, FBAuth.getUid())
+                writeNewPost(key,count+1, FBAuth.getUid(),isreview)
             }else{
-                writeNewPost(key,count-1, FBAuth.getUid())
+                writeNewPost(key,count-1, FBAuth.getUid(),isreview)
 
             }
 
@@ -98,7 +98,7 @@ class BoardInsideActivity : AppCompatActivity() {
     }
 
     // 추천 기능
-    private fun writeNewPost(key:String, thumbint: Int, uid : String) {
+    private fun writeNewPost(key:String, thumbint: Int, uid : String, isreview: Boolean) {
         val postValues = thumbint
         val checkUid = uidlist.contains(uid)
         if(!checkUid){
@@ -110,8 +110,12 @@ class BoardInsideActivity : AppCompatActivity() {
 
             binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_black_24)
             thumbicon = true
+            if(isreview){
+                FBRef.reviewRef.updateChildren(childUpdates)
+            }else{
+                FBRef.communityRef.updateChildren(childUpdates)
+            }
 
-            FBRef.communityRef.updateChildren(childUpdates)
         }
         else{
             var removeUidList = uidlist.replace("@$uid","")
@@ -122,7 +126,11 @@ class BoardInsideActivity : AppCompatActivity() {
 
             binding.boardThumbBtn.setImageResource(R.drawable.baseline_thumb_up_off_alt_black_24)
             thumbicon = false
-            FBRef.communityRef.updateChildren(childUpdates)
+            if(isreview){
+                FBRef.reviewRef.updateChildren(childUpdates)
+            }else{
+                FBRef.communityRef.updateChildren(childUpdates)
+            }
         }
     }
 
