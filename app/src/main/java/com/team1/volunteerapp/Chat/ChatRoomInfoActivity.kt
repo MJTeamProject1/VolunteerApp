@@ -75,6 +75,7 @@ class ChatRoomInfoActivity : AppCompatActivity() {
 
         val postListener2 = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                userData.clear()
                 for(dataModel2 in snapshot.children){
                     val item = dataModel2.getValue(ChatJoinUserModel::class.java)
 //                    Log.d("======asd=====", item.toString())
