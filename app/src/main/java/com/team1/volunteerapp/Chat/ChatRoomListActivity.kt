@@ -31,10 +31,9 @@ class ChatRoomListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_list)
 
+        // RecyclerView 연결
         val chatRoomList_rv = findViewById<RecyclerView>(R.id.mRecyclerViewChatRoomList)
-
         chatRoomList_rvAdapter = ChatRoomListRVAdapter(chatRoomList_items)
-
         chatRoomList_rv.adapter = chatRoomList_rvAdapter
         chatRoomList_rv.layoutManager = LinearLayoutManager(this)
 

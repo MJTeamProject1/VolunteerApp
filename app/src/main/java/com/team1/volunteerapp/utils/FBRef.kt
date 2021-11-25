@@ -12,5 +12,6 @@ class FBRef {
         val reviewRef = database.getReference("community_review_list")
         val commentRef = database.getReference("comment_list")
         val chatRoomListRef = database.getReference("chatroom_list")
+        val chatRef = database.getReference("chat")
     }
 }

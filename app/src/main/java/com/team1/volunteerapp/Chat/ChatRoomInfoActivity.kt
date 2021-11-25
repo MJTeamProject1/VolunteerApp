@@ -45,6 +45,14 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         groupJoinBtn.setOnClickListener {
             joinGroupUserData(roomKey!!)
         }
+
+        // 그룹 채팅 입장 버튼
+        val groupChatBtn = findViewById<Button>(R.id.chatJoinBtn)
+        groupChatBtn.setOnClickListener {
+            val intent  = Intent(this, ChatInsideActivity::class.java)
+            intent.putExtra("roomKey", roomKey)
+            startActivity(intent)
+        }
     }
 
     private fun getGroupInfo(roomKey : String){
