@@ -16,7 +16,6 @@
         android:layout_gravity="bottom"
         app:backgroundTint="@color/maincolor2"
         app:fabAlignmentMode="end"
-        app:navigationIcon="@drawable/baseline_logout_white_24dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 

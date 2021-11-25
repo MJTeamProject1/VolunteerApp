@@ -13,6 +13,7 @@ import android.os.Handler
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
@@ -73,7 +74,7 @@ class ProfileActivity : AppCompatActivity() {
         val profileName = findViewById<TextView>(R.id.profileName)
         val profileNumber = findViewById<TextView>(R.id.profileNumber)
         val profileImage = findViewById<ImageView>(R.id.profileImage)
-        val calenderImage = findViewById<ImageView>(R.id.user_calender)
+//        val calenderImage = findViewById<ImageView>(R.id.user_calender)
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -128,10 +129,9 @@ class ProfileActivity : AppCompatActivity() {
 
         profile_rv.addItemDecoration(dividerItemDecoration)
 
-        calenderImage.setOnClickListener {
-            val intent = Intent(this, CalenderActivity::class.java)
-            startActivity(intent)
-        }
+//        calenderImage.setOnClickListener {
+//
+//        }
 
         homeButton.setOnClickListener { // 홈으로 돌아가기
             fab.hide(AnimationB.addVisibilityChanged)
@@ -142,30 +142,7 @@ class ProfileActivity : AppCompatActivity() {
 
         profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
             Log.d("Profile", "프로필 버튼 클릭")
-            val mdialogview = LayoutInflater.from(this).inflate(R.layout.passwordcheck, null)
-            val mBuilder = AlertDialog.Builder(this)
-                .setView(mdialogview)
-                .setTitle("비밀번호 확인")
-            mdialogview.emailCheckArea.setText(email)
-            val  mAlertDialog = mBuilder.show()
-            mdialogview.dialogCheckBtn.setOnClickListener {
-                Log.d("aa", user_pass.toString())
-                Log.d("bb", mdialogview.passCheckArea.text.toString())
-                if(mdialogview.passCheckArea.text.toString() == user_pass.toString()) {
-                    val intent = Intent(this, SettingActivity::class.java)
-                    intent.putExtra("userEmail", email)
-                    intent.putExtra("userPhone", pnumber)
-                    intent.putExtra("userNickname", usernickname)
-                    intent.putExtra("userGoal", volgoaltime)
-                    intent.putExtra("userSido", user_sido)
-                    intent.putExtra("userGungu", user_gugun)
-                    mAlertDialog.dismiss()
-                    startActivity(intent)
-                }
-                else{
-                    Toast.makeText(this,"비밀번호를 올바르게 입력해주세요.",Toast.LENGTH_SHORT).show()
-                }
-            }
+
         }
     }
 
@@ -238,12 +215,51 @@ class ProfileActivity : AppCompatActivity() {
         pieChart.invalidate()
 
     }
+    // 화면 아래 메뉴 바
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.navigation_menu_profile, menu)
+        return true
+    }
 
     //bottom bar
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
+
+                }
+            R.id.app_bar_calender->{
+                //캘린더 클릭 시
+                val intent = Intent(this, CalenderActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.app_bar_setting ->{
+                val mdialogview = LayoutInflater.from(this).inflate(R.layout.passwordcheck, null)
+                val mBuilder = AlertDialog.Builder(this)
+                    .setView(mdialogview)
+                    .setTitle("비밀번호 확인")
+                mdialogview.emailCheckArea.setText(email)
+                val  mAlertDialog = mBuilder.show()
+                mdialogview.dialogCheckBtn.setOnClickListener {
+                    Log.d("aa", user_pass.toString())
+                    Log.d("bb", mdialogview.passCheckArea.text.toString())
+                    if(mdialogview.passCheckArea.text.toString() == user_pass.toString()) {
+                        val intent = Intent(this, SettingActivity::class.java)
+                        intent.putExtra("userEmail", email)
+                        intent.putExtra("userPhone", pnumber)
+                        intent.putExtra("userNickname", usernickname)
+                        intent.putExtra("userGoal", volgoaltime)
+                        intent.putExtra("userSido", user_sido)
+                        intent.putExtra("userGungu", user_gugun)
+                        mAlertDialog.dismiss()
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this,"비밀번호를 올바르게 입력해주세요.",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            R.id.app_bar_loggout ->{
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("로그아웃")
                 builder.setMessage("정말로 로그아웃 하시겠습니까?")
@@ -261,8 +277,8 @@ class ProfileActivity : AppCompatActivity() {
                     Toast.makeText(this, "로그아웃에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 }
                 builder.show()
-                }
             }
+        }
 
         return true
     }
