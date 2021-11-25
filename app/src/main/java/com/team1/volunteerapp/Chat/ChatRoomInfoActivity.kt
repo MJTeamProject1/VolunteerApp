@@ -1,5 +1,6 @@
 package com.team1.volunteerapp.Chat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,19 +32,18 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         //Recycler view 연결
         val chatRoomInfo_rv = findViewById<RecyclerView>(R.id.chatRoomInfoJoinRV)
 
+        // 그룹 정보 가져오기
+        getGroupInfo(roomKey!!)
+
         chatUserJoinInfo_rvAdapter = ChatRoomInfoRVAdapter(userData)
         chatRoomInfo_rv.adapter = chatUserJoinInfo_rvAdapter
         chatRoomInfo_rv.layoutManager = LinearLayoutManager(this)
-
-        // 그룹 정보 가져오기
-        getGroupInfo(roomKey!!)
 
 
         // 그룹 가입 버튼 눌렀을 시
         val groupJoinBtn = findViewById<Button>(R.id.chatRoomJoinBtn)
         groupJoinBtn.setOnClickListener {
             joinGroupUserData(roomKey!!)
-            chatUserJoinInfo_rvAdapter.notifyDataSetChanged()
         }
     }
 
@@ -76,7 +76,7 @@ class ChatRoomInfoActivity : AppCompatActivity() {
                     userData.add(item!!)
                     userDataCheck.add(item.uid)
                 }
-
+                chatUserJoinInfo_rvAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {

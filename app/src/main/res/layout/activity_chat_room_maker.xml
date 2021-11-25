@@ -61,7 +61,7 @@
 
                 <EditText
                         android:id="@+id/ChatRoomTitle"
-                        android:text="입력해주세요"
+                        android:text=""
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"/>
             <EditText
                     android:id="@+id/ChatRoomSubTitle"
-                    android:text="내용 입력"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
         </LinearLayout>

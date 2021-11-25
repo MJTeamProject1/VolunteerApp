@@ -17,22 +17,35 @@ class ChatRoomMakerActivity : AppCompatActivity() {
 
         val addBtn = findViewById<Button>(R.id.chatRoomCreateBtn)
         addBtn.setOnClickListener {
-
+            var isGoToJoin = true
             val title = findViewById<EditText>(R.id.ChatRoomTitle)
             val content = findViewById<EditText>(R.id.ChatRoomSubTitle)
 
             val inputTitle = title.text.toString()
             val inputContent = content.text.toString()
 
-            inputChatRoomListData(inputTitle, inputContent)
-            Toast.makeText(this, "생성 완료", Toast.LENGTH_SHORT).show()
-            val Intent = Intent(this, ChatRoomListActivity::class.java)
-            startActivity(Intent)
-            finish()
+            if(inputTitle.isEmpty()){
+                Toast.makeText(this,"그룹 명을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+            else if(inputContent.isEmpty()){
+                Toast.makeText(this,"내용을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+            else{
+                if(isGoToJoin){
+                    inputChatRoomListData(inputTitle, inputContent)
+                    Toast.makeText(this, "생성 완료", Toast.LENGTH_SHORT).show()
+                    val Intent = Intent(this, ChatRoomListActivity::class.java)
+                    startActivity(Intent)
+                    finish()
+                }
+            }
         }
     }
 
     private fun inputChatRoomListData(title : String, content : String){
+
         FBRef.chatRoomListRef
             .push()
             .setValue(
