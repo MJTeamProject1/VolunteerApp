@@ -31,6 +31,7 @@ class FBAuth {
         private var user_gugun: String? = null
         private var user_phone: String? = null
         private var user_password: String? = null
+        private var user_image: Bitmap? = null
 
 
         private lateinit var auth: FirebaseAuth
@@ -94,6 +95,18 @@ class FBAuth {
                 }
 
             }
+
+        fun runImage(email : String?){
+            val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
+            val localfile = File.createTempFile("tempImage", "jpg")
+            storageref.getFile(localfile).addOnSuccessListener {
+                user_image = BitmapFactory.decodeFile(localfile.absolutePath)
+            }
+        }
+
+        fun getUserImage() : Bitmap?{
+            return  user_image
+        }
 
 
         fun getUserData(num : Int) : String {

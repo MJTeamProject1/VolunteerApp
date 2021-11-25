@@ -23,6 +23,7 @@ import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
+import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -255,6 +256,7 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 }
+                FBAuth.runImage(user_email)
             }
     }
 
