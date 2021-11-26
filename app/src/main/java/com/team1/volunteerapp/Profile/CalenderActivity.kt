@@ -1,22 +1,27 @@
 package com.team1.volunteerapp.Profile
 
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class CalenderActivity : AppCompatActivity() {
     private var userdate :String? = null
     private var title :String? = null
     private var times :String? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calender)
@@ -29,6 +34,10 @@ class CalenderActivity : AppCompatActivity() {
         val applyend = findViewById<TextView>(R.id.mRV_itemText_end)
         val nowdate = findViewById<TextView>(R.id.calendardate)
 
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
+        val formatted = current.format(formatter)
+
         userdate = intent.getStringExtra("user_date")
         title = intent.getStringExtra("date_title")
         times = intent.getStringExtra("applywhen")
@@ -37,6 +46,8 @@ class CalenderActivity : AppCompatActivity() {
         var titlearr = title.toString().split("@")
         val datearry = userdate.toString().split("@")
         val timesarr = times.toString().split("@")
+
+        nowdate.setText(formatted)
 
         calendarview.setOnDateChangeListener { view, year, month, dayOfMonth ->
             count = 0
