@@ -1,19 +1,24 @@
 package com.team1.volunteerapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
+import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,6 +34,9 @@ import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.applycalendar.*
+import kotlinx.android.synthetic.main.applycalendar.view.*
+import kotlinx.android.synthetic.main.passwordcheck.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,6 +58,7 @@ class AboutViewActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
 
+    @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -262,52 +271,88 @@ class AboutViewActivity : AppCompatActivity() {
         }
 
         applyButton.setOnClickListener {
-            db.collection("UserData")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (doc in result) {
-                        if (doc["uid"] == auth.uid.toString()) {
-                            val num =
-                                vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
-                            var time = "${vol_starttime}${vol_endtime}"
-                            if(vol_starttime.toString().toInt() < 10 && vol_endtime.toString().toInt() < 0){
-                                time = "0${vol_starttime}0${vol_endtime}"
-                            }
-                            else if(vol_starttime.toString().toInt() < 10){
-                                time ="0${vol_starttime}${vol_endtime}"
-                            }
-                            else if(vol_endtime.toString().toInt() < 10){
-                                time ="${vol_starttime}0${vol_endtime}"
-                            }
-                            else{
-                                time ="${vol_starttime}${vol_endtime}"
-                            }
+            val mdialogview = LayoutInflater.from(this).inflate(R.layout.applycalendar, null)
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(mdialogview)
+                .setTitle("신청 일자 선택")
+            val  mAlertDialog = mBuilder.show()
 
-                            val userauth: HashMap<String, Any> = hashMapOf(
-                                "vol_time" to num,
-                                "vol_title" to vol_title.toString(),
-                                "vol_applyDate" to vol_progrmBgnde.toString(),
-                                "whentime" to time
-                            )
+            val mincalendar = Calendar.getInstance()
+            val maxcalendar = Calendar.getInstance()
 
-                            if (doc["vol_time"] != null) {
-                                userauth["vol_time"] = doc["vol_time"].toString().toInt() + num
-                            }
-                            if (doc["vol_title"] != null) {
-                                userauth["vol_title"] = vol_title.toString() + "@${doc["vol_title"].toString()}"
-                            }
-                            if (doc["vol_applyDate"] != null) {
-                                userauth["vol_applyDate"] = vol_progrmBgnde.toString() + "@${doc["vol_applyDate"].toString()}"
-                            }
-                            if (doc["whentime"] != null) {
-                                userauth["whentime"] = time + "@${doc["whentime"].toString()}"
-                            }
-                            db.collection("UserData").document(doc.id.toString())
-                                .update(userauth)
-                            Toast.makeText(this, "신청완료!", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
+            mincalendar.set(
+                vol_progrmBgnde.toString().substring(0,4).toInt(),
+                vol_progrmBgnde.toString().substring(4,6).toInt(),
+                vol_progrmBgnde.toString().substring(6,8).toInt()
+            )
+
+            maxcalendar.set(
+                vol_progrmEndde.toString().substring(0,4).toInt(),
+                vol_progrmEndde.toString().substring(4,6).toInt(),
+                vol_progrmEndde.toString().substring(6,8).toInt()
+            )
+
+            mAlertDialog.calendarApply.minDate = mincalendar.timeInMillis
+            mAlertDialog.calendarApply.maxDate = maxcalendar.timeInMillis
+
+            mAlertDialog.dialogApplyBtn.setOnClickListener {
+
+
+            //            db.collection("UserData")
+//                .get()
+//                .addOnSuccessListener { result ->
+//                    for (doc in result) {
+//                        if (doc["uid"] == auth.uid.toString()) {
+//                            val num =
+//                                vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
+//                            var time = "${vol_starttime}${vol_endtime}"
+//                            if(vol_starttime.toString().toInt() < 10 && vol_endtime.toString().toInt() < 0){
+//                                time = "0${vol_starttime}0${vol_endtime}"
+//                            }
+//                            else if(vol_starttime.toString().toInt() < 10){
+//                                time ="0${vol_starttime}${vol_endtime}"
+//                            }
+//                            else if(vol_endtime.toString().toInt() < 10){
+//                                time ="${vol_starttime}0${vol_endtime}"
+//                            }
+//                            else{
+//                                time ="${vol_starttime}${vol_endtime}"
+//                            }
+//
+//                            val userauth: HashMap<String, Any> = hashMapOf(
+//                                "vol_time" to num,
+//                                "vol_title" to vol_title.toString(),
+//                                "vol_applyDate" to vol_progrmBgnde.toString(),
+//                                "whentime" to time
+//                            )
+//
+//                            if (doc["vol_time"] != null) {
+//                                userauth["vol_time"] = doc["vol_time"].toString().toInt() + num
+//                            }
+//                            if (doc["vol_title"] != null) {
+//                                userauth["vol_title"] = vol_title.toString() + "@${doc["vol_title"].toString()}"
+//                            }
+//                            if (doc["vol_applyDate"] != null) {
+//                                userauth["vol_applyDate"] = vol_progrmBgnde.toString() + "@${doc["vol_applyDate"].toString()}"
+//                            }
+//                            if (doc["whentime"] != null) {
+//                                userauth["whentime"] = time + "@${doc["whentime"].toString()}"
+//                            }
+//                            db.collection("UserData").document(doc.id.toString())
+//                                .update(userauth)
+//                            Toast.makeText(this, "신청완료!", Toast.LENGTH_SHORT).show()
+//                            //TODO 캘린더 달력이 다이어로그형식 떠야한다
+//                            //TODO 안되는 날짜는 빗금 or 회색
+//                            //TODO 신청할 시 같은 날짜에 봉사가 있는지 판별
+//                        }
+//                    }
+//                }
+            }
+
+            mdialogview.dialogCancleBtn.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+
         }
 
         tel1 = vol_telnum.toString()
@@ -318,6 +363,7 @@ class AboutViewActivity : AppCompatActivity() {
         starttime1 = vol_starttime.toString()
         endtime1 = vol_endtime.toString()
     }
+
 
     // 화면 아래 메뉴 바
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
