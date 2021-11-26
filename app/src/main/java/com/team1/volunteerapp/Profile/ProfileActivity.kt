@@ -59,9 +59,10 @@ class ProfileActivity : AppCompatActivity() {
     private var user_gugun : String? = null
     private var user_pass : String? = null
     private var user_img : String? = null
+    private var whentime : String? = null
+    private var user_date : String? = null
     var name : String? = null
     var email : String? = null
-    var bit : Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +75,6 @@ class ProfileActivity : AppCompatActivity() {
         val profileName = findViewById<TextView>(R.id.profileName)
         val profileNumber = findViewById<TextView>(R.id.profileNumber)
         val profileImage = findViewById<ImageView>(R.id.profileImage)
-//        val calenderImage = findViewById<ImageView>(R.id.user_calender)
 
         if(intent.hasExtra("time") && intent.hasExtra("title")){
             voltime = intent.getStringExtra("time")
@@ -93,6 +93,8 @@ class ProfileActivity : AppCompatActivity() {
         user_gugun = intent.getStringExtra("ugungu")
         user_pass = intent.getStringExtra("pass")
         user_img = intent.getStringExtra("proImage")
+        user_date = intent.getStringExtra("date")
+        whentime = intent.getStringExtra("applywhen")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
         val bitmap = FBAuth.getUserImage()
@@ -129,10 +131,6 @@ class ProfileActivity : AppCompatActivity() {
 
         profile_rv.addItemDecoration(dividerItemDecoration)
 
-//        calenderImage.setOnClickListener {
-//
-//        }
-
         homeButton.setOnClickListener { // 홈으로 돌아가기
             fab.hide(AnimationB.addVisibilityChanged)
             Handler().postDelayed({
@@ -142,7 +140,6 @@ class ProfileActivity : AppCompatActivity() {
 
         profileImage.setOnClickListener{ // 이미지 버튼을 클릭시
             Log.d("Profile", "프로필 버튼 클릭")
-
         }
     }
 
@@ -230,6 +227,9 @@ class ProfileActivity : AppCompatActivity() {
             R.id.app_bar_calender->{
                 //캘린더 클릭 시
                 val intent = Intent(this, CalenderActivity::class.java)
+                intent.putExtra("user_date", user_date)
+                intent.putExtra("date_title", voltitle)
+                intent.putExtra("applywhen",whentime)
                 startActivity(intent)
             }
             R.id.app_bar_setting ->{
