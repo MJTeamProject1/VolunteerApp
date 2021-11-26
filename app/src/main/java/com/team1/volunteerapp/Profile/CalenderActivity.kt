@@ -38,6 +38,11 @@ class CalenderActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일")
         val formatted = current.format(formatter)
 
+        val current2 = LocalDateTime.now()
+        val formatter2 = DateTimeFormatter.ISO_DATE
+        val formatted2 = current.format(formatter2)
+        val nowdatearr = formatted2.split("-")
+
         userdate = intent.getStringExtra("user_date")
         title = intent.getStringExtra("date_title")
         times = intent.getStringExtra("applywhen")
@@ -47,7 +52,24 @@ class CalenderActivity : AppCompatActivity() {
         val datearry = userdate.toString().split("@")
         val timesarr = times.toString().split("@")
 
+
         nowdate.setText(formatted)
+
+        if(userdate != ""){
+            for(i in datearry){
+                if((i.substring(0,4) == nowdatearr[0].toString()) && (i.substring(4,6) == nowdatearr[1].toString()) && (i.substring(6,8) == nowdatearr[2].toString())){
+                    infoview.visibility = View.VISIBLE
+                    applytitle.text = titlearr[count]
+                    applystart.text = timesarr[count].substring(0,2)
+                    applyend.text = timesarr[count].substring(2,4)
+                    break
+                }
+                else{
+                    infoview.visibility = View.INVISIBLE
+                }
+                count++
+            }
+        }
 
         calendarview.setOnDateChangeListener { view, year, month, dayOfMonth ->
             count = 0
@@ -82,7 +104,6 @@ class CalenderActivity : AppCompatActivity() {
                     count++
                 }
             }
-            //TODO 날짜가 일치한다면 리스트에 추가 후 보여주기
         }
 
     }
