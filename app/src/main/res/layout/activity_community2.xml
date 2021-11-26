@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:background="#ff0"
                 android:fitsSystemWindows="true"
-                android:layout_height="410dp"
+                android:layout_height="310dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="?attr/colorPrimary">
 
@@ -35,7 +35,7 @@
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0dp"
                     app:layout_collapseMode="pin"
                     android:layout_gravity="top"
                     android:layout_marginBottom="?attr/actionBarSize" />
