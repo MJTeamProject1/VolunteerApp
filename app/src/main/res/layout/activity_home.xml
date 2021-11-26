@@ -72,7 +72,7 @@
                 android:layout_gravity="bottom|right"
                 android:backgroundTint="@color/maincolor2"
                 android:visibility="invisible"
-                app:srcCompat="@drawable/ic_baseline_rate_review_24"
+                app:srcCompat="@drawable/ic_baseline_favorite_24"
                 android:id="@+id/floatingActionButton3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

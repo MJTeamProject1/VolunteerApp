@@ -91,10 +91,6 @@ class HomeActivity : AppCompatActivity() {
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
 
-
-
-
-
         // 하단 바
         val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
         val bottomBarBackground = bottomAppBar.background as MaterialShapeDrawable
@@ -238,7 +234,7 @@ class HomeActivity : AppCompatActivity() {
                 val intent = Intent(this, CommunityActivity::class.java)
                 intent.putExtra("nickname", vol_user)
                 startActivity(intent)
-            }, 150)
+            }, 250)
         }
         floatingActionButton2.setOnClickListener {
             fab.hide(AnimationB.addVisibilityChanged)
@@ -247,16 +243,15 @@ class HomeActivity : AppCompatActivity() {
                 val intent = Intent(this, ChatRoomListActivity::class.java)
                 intent.putExtra("nickname", vol_user)
                 startActivity(intent)
-            }, 150)
+            }, 250)
         }
         floatingActionButton3.setOnClickListener {
             fab.hide(AnimationB.addVisibilityChanged)
-            onAddButtonClicked()
+            if(clicked){onAddButtonClicked()}
+            val intent = Intent(this, FavoritesActivity::class.java)
             Handler().postDelayed({
-                val intent = Intent(this, CommunityActivity::class.java)
-                intent.putExtra("nickname", vol_user)
                 startActivity(intent)
-            }, 150)
+            }, 250)
         }
 
         
@@ -427,14 +422,14 @@ class HomeActivity : AppCompatActivity() {
                 }, 300)
 
             }
-            R.id.app_bar_fav -> {
-                fab.hide(AnimationB.addVisibilityChanged)
-                if(clicked){onAddButtonClicked()}
-                val intent = Intent(this, FavoritesActivity::class.java)
-                Handler().postDelayed({
-                    startActivity(intent)
-                }, 450)
-            }
+//            R.id.app_bar_fav -> {
+//                fab.hide(AnimationB.addVisibilityChanged)
+//                if(clicked){onAddButtonClicked()}
+//                val intent = Intent(this, FavoritesActivity::class.java)
+//                Handler().postDelayed({
+//                    startActivity(intent)
+//                }, 450)
+//            }
         }
         return true
     }
