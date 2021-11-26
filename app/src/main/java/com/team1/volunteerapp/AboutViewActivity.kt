@@ -257,9 +257,25 @@ class AboutViewActivity : AppCompatActivity() {
                         if (doc["uid"] == auth.uid.toString()) {
                             val num =
                                 vol_endtime.toString().toInt() - vol_starttime.toString().toInt()
+                            var time = "${vol_starttime}${vol_endtime}"
+                            if(vol_starttime.toString().toInt() < 10 && vol_endtime.toString().toInt() < 0){
+                                time = "0${vol_starttime}0${vol_endtime}"
+                            }
+                            else if(vol_starttime.toString().toInt() < 10){
+                                time ="0${vol_starttime}${vol_endtime}"
+                            }
+                            else if(vol_endtime.toString().toInt() < 10){
+                                time ="${vol_starttime}0${vol_endtime}"
+                            }
+                            else{
+                                time ="${vol_starttime}${vol_endtime}"
+                            }
+
                             val userauth: HashMap<String, Any> = hashMapOf(
                                 "vol_time" to num,
-                                "vol_title" to vol_title.toString()
+                                "vol_title" to vol_title.toString(),
+                                "vol_applyDate" to vol_progrmBgnde.toString(),
+                                "whentime" to time
                             )
 
                             if (doc["vol_time"] != null) {
@@ -267,6 +283,12 @@ class AboutViewActivity : AppCompatActivity() {
                             }
                             if (doc["vol_title"] != null) {
                                 userauth["vol_title"] = vol_title.toString() + "@${doc["vol_title"].toString()}"
+                            }
+                            if (doc["vol_applyDate"] != null) {
+                                userauth["vol_applyDate"] = vol_progrmBgnde.toString() + "@${doc["vol_applyDate"].toString()}"
+                            }
+                            if (doc["whentime"] != null) {
+                                userauth["whentime"] = time + "@${doc["whentime"].toString()}"
                             }
                             db.collection("UserData").document(doc.id.toString())
                                 .update(userauth)

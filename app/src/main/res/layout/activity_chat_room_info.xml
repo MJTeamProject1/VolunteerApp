@@ -54,68 +54,89 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+
                 <TextView
-                        android:text="그룹 이름 : "
+                        android:fontFamily="@font/binggrae"
+                        android:textSize="15sp"
+                        android:layout_margin="10dp"
+                        android:text="그룹 이름 :"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 <TextView
                         android:id="@+id/ChatRoomTitle"
                         android:text=""
                         android:textSize="20sp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <TextView
-                    android:text="내용"
+                    android:text="정보"
+                    android:fontFamily="@font/binggrae"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
             <TextView
                     android:id="@+id/ChatRoomSubTitle"
+                    android:fontFamily="@font/binggrae"
+                    android:layout_margin="13dp"
+                    android:background="@drawable/communitybox"
                     android:textSize="20sp"
+                    android:padding="10dp"
                     android:text=""
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"/>
+                    android:layout_height="200dp" />
+
             <TextView
                     android:text="참여중인 사용자"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/binggrae"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/chatRoomInfoJoinRV"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
             <Button
                     android:id="@+id/chatRoomJoinBtn"
                     android:layout_weight="1"
                     android:layout_margin="4dp"
                     android:text="그룹 가입하기"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             <Button
                     android:id="@+id/chatJoinBtn"
                     android:layout_weight="1"
                     android:layout_margin="4dp"
                     android:text="채팅 입장하기"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
         </LinearLayout>
 
 

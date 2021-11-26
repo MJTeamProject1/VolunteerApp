@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/app_bar_calender"
+            android:icon="@drawable/baseline_edit_calendar_white_24"
+            android:title="favorite"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/app_bar_setting"
+            android:icon="@drawable/baseline_settings_white_24"
+            android:title="favorite"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/app_bar_loggout"
+            android:icon="@drawable/baseline_logout_white_18"
+            android:title="profile"
+            app:showAsAction="ifRoom"/>
+
+
+
+</menu>

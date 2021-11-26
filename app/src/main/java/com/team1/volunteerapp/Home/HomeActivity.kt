@@ -55,6 +55,8 @@ class HomeActivity : AppCompatActivity() {
     private var gugun : String? = null
     private var vol_name : String? = null
     private var vol_srvcClCode : String? = null
+    private var vol_date : String? = null
+    private var whentime : String? = null
     //뒤로가기 연속 클릭 대기 시간
     private var mBackWait:Long = 0
 
@@ -254,6 +256,12 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["passworld"] != null) {
                             user_pass = doc["passworld"].toString()
                         }
+                        if (doc["vol_applyDate"] != null) {
+                            vol_date = doc["vol_applyDate"].toString()
+                        }
+                        if (doc["whentime"] != null) {
+                            whentime = doc["whentime"].toString()
+                        }
                     }
                 }
                 FBAuth.runImage(user_email)
@@ -293,6 +301,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 intent.putExtra("time", vol_time.toString())
                 intent.putExtra("title", vol_title)
+                intent.putExtra("date", vol_date)
                 intent.putExtra("goaltime", vol_goaltime)
                 intent.putExtra("nickname", vol_user)
                 intent.putExtra("username", vol_name)
@@ -301,6 +310,7 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("usido", user_sido)
                 intent.putExtra("pass", user_pass)
                 intent.putExtra("ugungu", user_gugun)
+                intent.putExtra("applywhen", whentime)
 
                 Handler().postDelayed({
                     startActivity(intent)

@@ -44,9 +44,13 @@ class ChatInsideRVAdater (val items : MutableList<ChatModel>): RecyclerView.Adap
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val chatText : TextView = itemView.findViewById(R.id.chatRvText)
+        private val chatUser : TextView = itemView.findViewById(R.id.chatRvNickName)
+        private val chatTime : TextView = itemView.findViewById(R.id.chatRvTime)
 
         fun bindItems(item :ChatModel){
             chatText.text = item.text
+            chatUser.text = item.user
+            chatTime.text = item.time
         }
     }
 }
