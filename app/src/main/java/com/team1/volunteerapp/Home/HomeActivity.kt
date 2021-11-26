@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +24,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.Chat.ChatRoomListActivity
 import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.Community.CommActivity
+import com.team1.volunteerapp.Community.ReviewActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
@@ -67,16 +72,27 @@ class HomeActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
 
+    // 애니메이션션
+    private val rotateOpen : Animation by lazy { AnimationUtils.loadAnimation(this,R.anim.rotate_open)}
+    private val rotateClose : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.rotate_close)}
+    private val fromBottom : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.from_bottom_anim)}
+    private val toBottom : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.to_bottom_anim)}
+    private var clicked = false
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(bottomAppBar)
-
+        setVisibility(true)
         auth = Firebase.auth
 
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
+
+
+
+
 
         // 하단 바
         val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
@@ -209,20 +225,97 @@ class HomeActivity : AppCompatActivity() {
 
 
         // 커뮤니티 버튼
-        val testCommunityBtn = findViewById<FloatingActionButton>(R.id.fab)
-        testCommunityBtn.setOnClickListener {
+        val addBtn = findViewById<FloatingActionButton>(R.id.fab)
+        addBtn.setOnClickListener {
+            onAddButtonClicked()
+        }
+
+        floatingActionButton.setOnClickListener {
             fab.hide(AnimationB.addVisibilityChanged)
+            onAddButtonClicked()
             Handler().postDelayed({
                 val intent = Intent(this, CommActivity::class.java)
                 intent.putExtra("nickname", vol_user)
                 startActivity(intent)
             }, 150)
         }
+        floatingActionButton2.setOnClickListener {
+            fab.hide(AnimationB.addVisibilityChanged)
+            onAddButtonClicked()
+            Handler().postDelayed({
+                val intent = Intent(this, ChatRoomListActivity::class.java)
+                intent.putExtra("nickname", vol_user)
+                startActivity(intent)
+            }, 150)
+        }
+        floatingActionButton3.setOnClickListener {
+            fab.hide(AnimationB.addVisibilityChanged)
+            onAddButtonClicked()
+            Handler().postDelayed({
+                val intent = Intent(this, ReviewActivity::class.java)
+                intent.putExtra("nickname", vol_user)
+                startActivity(intent)
+            }, 150)
+        }
+
+        
+    }
+
+    private fun onAddButtonClicked() {
+        setVisibility(clicked)
+        setAnimation(clicked)
+        setClickable(clicked)
+        clicked = !clicked
+
+    }
+
+    private fun setVisibility(clicked: Boolean) {
+        if(!clicked){
+            floatingActionButton.visibility = View.VISIBLE
+            floatingActionButton2.visibility = View.VISIBLE
+            floatingActionButton3.visibility = View.VISIBLE
+        }else{
+            floatingActionButton.visibility = View.INVISIBLE
+            floatingActionButton2.visibility = View.INVISIBLE
+            floatingActionButton3.visibility = View.INVISIBLE
+        }
+
+    }
+
+    private fun setAnimation(clicked: Boolean) {
+        if(!clicked){
+            floatingActionButton.startAnimation(fromBottom)
+            floatingActionButton2.startAnimation(fromBottom)
+            floatingActionButton3.startAnimation(fromBottom)
+            fab.startAnimation(rotateOpen)
+        }
+        else{
+            floatingActionButton.startAnimation(toBottom)
+            floatingActionButton2.startAnimation(toBottom)
+            floatingActionButton3.startAnimation(toBottom)
+            fab.startAnimation(rotateClose)
+        }
+
+    }
+
+    private fun setClickable(clicked: Boolean) {
+        if(!clicked){
+            floatingActionButton.isClickable = true
+            floatingActionButton2.isClickable = true
+            floatingActionButton3.isClickable = true
+        }
+        else{
+            floatingActionButton.isClickable = false
+            floatingActionButton2.isClickable = false
+            floatingActionButton3.isClickable = false
+        }
+
     }
 
     override fun onStart() {
         // 애니메이션 작동
         super.onStart()
+        clicked = false
         Handler().postDelayed({
             fab.show()
         }, 450)
@@ -303,6 +396,7 @@ class HomeActivity : AppCompatActivity() {
 
             R.id.app_bar_profile -> {
                 fab.hide(AnimationB.addVisibilityChanged)
+                if(clicked){onAddButtonClicked()}
                 val intent = Intent(this, ProfileActivity::class.java)
                 if(vol_time == null){
                     vol_time = ""
@@ -330,13 +424,13 @@ class HomeActivity : AppCompatActivity() {
             }
             R.id.app_bar_fav -> {
                 fab.hide(AnimationB.addVisibilityChanged)
+                if(clicked){onAddButtonClicked()}
                 val intent = Intent(this, FavoritesActivity::class.java)
                 Handler().postDelayed({
                     startActivity(intent)
-                }, 300)
+                }, 450)
             }
         }
         return true
     }
-
 }
