@@ -27,6 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Chat.ChatRoomListActivity
 import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.Community.CommActivity
+import com.team1.volunteerapp.Community.CommunityActivity
 import com.team1.volunteerapp.Community.ReviewActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
@@ -234,7 +235,7 @@ class HomeActivity : AppCompatActivity() {
             fab.hide(AnimationB.addVisibilityChanged)
             onAddButtonClicked()
             Handler().postDelayed({
-                val intent = Intent(this, CommActivity::class.java)
+                val intent = Intent(this, CommunityActivity::class.java)
                 intent.putExtra("nickname", vol_user)
                 startActivity(intent)
             }, 150)
@@ -252,7 +253,7 @@ class HomeActivity : AppCompatActivity() {
             fab.hide(AnimationB.addVisibilityChanged)
             onAddButtonClicked()
             Handler().postDelayed({
-                val intent = Intent(this, ReviewActivity::class.java)
+                val intent = Intent(this, CommunityActivity::class.java)
                 intent.putExtra("nickname", vol_user)
                 startActivity(intent)
             }, 150)
@@ -261,6 +262,7 @@ class HomeActivity : AppCompatActivity() {
         
     }
 
+    // 중앙 버튼 클릭 시
     private fun onAddButtonClicked() {
         setVisibility(clicked)
         setAnimation(clicked)
@@ -269,6 +271,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    // 중앙 버튼 보이는 거 설정
     private fun setVisibility(clicked: Boolean) {
         if(!clicked){
             floatingActionButton.visibility = View.VISIBLE
@@ -282,6 +285,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    // 중앙 버튼 애니메이션
     private fun setAnimation(clicked: Boolean) {
         if(!clicked){
             floatingActionButton.startAnimation(fromBottom)
@@ -298,6 +302,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    // 중앙 버튼 클릭 활성화
     private fun setClickable(clicked: Boolean) {
         if(!clicked){
             floatingActionButton.isClickable = true

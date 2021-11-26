@@ -102,7 +102,6 @@ class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : Recycler
 
         init {
             itemView.setOnClickListener {
-
                 val intent = Intent(itemView.context, AboutViewActivity::class.java)
                 intent.putExtra("num", vol_num.text.toString())
                 ContextCompat.startActivity(itemView.context, intent, null)
