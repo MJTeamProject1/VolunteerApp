@@ -13,6 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
     <style name="AuthEditText" parent="android:Widget.EditText">
@@ -27,4 +28,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/nanumsquareround</item>
+    </style>
 </resources>

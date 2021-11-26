@@ -46,7 +46,11 @@ class CommunityActivity : AppCompatActivity() {
         viewPager2.adapter = PostActivityStateAdapter(this)
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
-            tab.text = "Tab $position"
+            if(position == 1){
+                tab.text = "후기"
+            }else{
+                tab.text = "자유 게시판"
+            }
         }.attach()
 
         var initTransitionY = tabLayout.translationY

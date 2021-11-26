@@ -50,7 +50,7 @@
                     app:tabIndicatorColor="#F57C00"
                     android:translationY="-60dp"
                     app:tabIndicatorHeight="4dp"
-                    app:tabMode="scrollable"
+                    app:tabMode="fixed"
                     app:tabSelectedTextColor="#F5F5F5"
                     app:tabTextColor="#FFE0B2" />
 
