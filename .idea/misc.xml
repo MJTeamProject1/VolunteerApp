@@ -4,7 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/border.xml" value="0.5697916666666667" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_access_alarm_24.xml" value="0.34322916666666664" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.34322916666666664" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_comment_24.xml" value="0.5697916666666667" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.34322916666666664" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_emoji_emotions_24.xml" value="0.34322916666666664" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.34322916666666664" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.34322916666666664" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/aboutview_rv_item.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_aboutview.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_board_edit.xml" value="0.22" />
@@ -21,6 +27,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_intro.xml" value="0.2669706180344478" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_join.xml" value="0.253125" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_login.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_main.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_profile.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_rev_info.xml" value="0.5489583333333333" />
@@ -45,7 +52,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_favorite.xml" value="0.15020263424518743" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_profile.xml" value="0.2669706180344478" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_review.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_review.xml" value="0.18" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.35054347826086957" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_bottom_nav_drawer.xml" value="0.3473731884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.33" />

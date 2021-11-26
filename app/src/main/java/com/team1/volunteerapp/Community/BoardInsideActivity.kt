@@ -46,6 +46,7 @@ class BoardInsideActivity : AppCompatActivity() {
         key = intent.getStringExtra("key").toString()
         isreview = intent.getBooleanExtra("review",false)
 
+
         // 글 가져오기
         getBoardData(key,isreview)
 

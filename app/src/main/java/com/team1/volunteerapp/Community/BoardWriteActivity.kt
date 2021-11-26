@@ -7,7 +7,11 @@ import android.view.MenuItem
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.RelativeCornerSize
+import com.google.android.material.shape.RoundedCornerTreatment
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
@@ -21,11 +25,20 @@ class BoardWriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_board_write)
         setSupportActionBar(bottomAppBar)
 
+        // 하단 바
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+        val bottomBarBackground = bottomAppBar.background as MaterialShapeDrawable
+        bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
+            .toBuilder()
+            .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(RelativeCornerSize(0.4f))
+            .setTopLeftCorner(RoundedCornerTreatment()).setTopLeftCornerSize(RelativeCornerSize(0.4f))
+            .build()
 
+        // 후기 선택 시
         val checkbox = findViewById<CheckBox>(R.id.checkreview)
-        val writeBtn = findViewById<FloatingActionButton>(R.id.fab)
-
         checkbox.setOnCheckedChangeListener { buttonView, isChecked ->   }
+
+        val writeBtn = findViewById<FloatingActionButton>(R.id.fab)
         writeBtn.setOnClickListener {
             val title = findViewById<EditText>(R.id.boardEditTitle)
             val contents = findViewById<EditText>(R.id.boardEditContents)
