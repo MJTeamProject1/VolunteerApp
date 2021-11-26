@@ -360,6 +360,13 @@ class AboutViewActivity : AppCompatActivity() {
                             }
 
                             apply_date = "${apply_year}${apply_month}${apply_day}"
+                            if(doc["vol_applyDate"].toString().contains(apply_date.toString())){
+                                if(progressDialog.isShowing){
+                                    progressDialog.dismiss()
+                                }
+                                Toast.makeText(this, "이미 해당 날짜에 봉사가 있습니다.", Toast.LENGTH_SHORT).show()
+                                break
+                            }
 
                             val userauth: HashMap<String, Any> = hashMapOf(
                                 "vol_time" to num,
@@ -382,7 +389,7 @@ class AboutViewActivity : AppCompatActivity() {
                             }
                             db.collection("UserData").document(doc.id.toString())
                                 .update(userauth)
-                            Toast.makeText(this, "신청완료!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "담당자 승인 후 알림을 보내드리겠습니다.", Toast.LENGTH_SHORT).show()
                             if(progressDialog.isShowing){
                                 progressDialog.dismiss()
                             }
