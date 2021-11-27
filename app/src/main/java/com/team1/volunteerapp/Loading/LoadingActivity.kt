@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import androidx.annotation.RequiresApi
-import com.team1.volunteerapp.Community.CommunityActivity
 import com.team1.volunteerapp.Home.HomeActivity
 import com.team1.volunteerapp.R
 import kotlinx.coroutines.CoroutineScope

@@ -10,4 +10,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="maincolor">#FFBC1A</color>
     <color name="maincolor2">#F69110</color>
+    <color name="background1">#F6F6F6</color>
+    <color name="background2">#FFF2E2</color>
+    <color name="rv1">#FEC775</color>
+    <color name="rv2">#FFDCAA</color>
+
 </resources>

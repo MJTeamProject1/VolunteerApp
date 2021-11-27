@@ -2,20 +2,29 @@ package com.team1.volunteerapp.Home
 
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -43,7 +52,12 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
+import kotlin.collections.ArrayList
 
 
 class HomeActivity : AppCompatActivity() {
@@ -80,6 +94,8 @@ class HomeActivity : AppCompatActivity() {
     private val fromBottom : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.from_bottom_anim)}
     private val toBottom : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.to_bottom_anim)}
     private var clicked = false
+    private var nickHome = ""
+    private lateinit var pieChart: PieChart
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,6 +107,43 @@ class HomeActivity : AppCompatActivity() {
 
         sido = intent.getStringExtra("sido")
         gugun = intent.getStringExtra("gugun")
+
+        // 메인 첫 번째 카드
+        today()
+        val firstcard = findViewById<CardView>(R.id.firstCard)
+        firstcard.setOnClickListener {
+
+            fab.hide(AnimationB.addVisibilityChanged)
+            if(clicked){onAddButtonClicked()}
+            val intent = Intent(this, ProfileActivity::class.java)
+            if(vol_time == null){
+                vol_time = ""
+            }
+            if(vol_title == null){
+                vol_title = ""
+            }
+            intent.putExtra("time", vol_time.toString())
+            intent.putExtra("title", vol_title)
+            intent.putExtra("date", vol_date)
+            intent.putExtra("goaltime", vol_goaltime)
+            intent.putExtra("nickname", vol_user)
+            intent.putExtra("username", vol_name)
+            intent.putExtra("email", user_email)
+            intent.putExtra("phone", user_phone)
+            intent.putExtra("usido", user_sido)
+            intent.putExtra("pass", user_pass)
+            intent.putExtra("ugungu", user_gugun)
+            intent.putExtra("applywhen", whentime)
+
+            Handler().postDelayed({
+                startActivity(intent)
+            }, 300)
+
+        }
+
+
+        // 그래프
+        pieChart = findViewById(R.id.PieChartMyVolune22)
 
         // 하단 바
         val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
@@ -221,6 +274,7 @@ class HomeActivity : AppCompatActivity() {
 
         home_rv.adapter = home_rvAdapter
         home_rv.layoutManager = LinearLayoutManager(this)
+//        home_rv.layoutManager = GridLayoutManager(this,2)
 
 
         // 커뮤니티 버튼
@@ -355,6 +409,8 @@ class HomeActivity : AppCompatActivity() {
                         }
                         if (doc["nickname"] != null) {
                             vol_user = doc["nickname"].toString()
+                            nickHome = vol_user as String
+                            setNick()
                         }
                         if (doc["email"] != null) {
                             user_email = doc["email"].toString()
@@ -367,6 +423,9 @@ class HomeActivity : AppCompatActivity() {
                         }
                         if (doc["gugundata"] != null) {
                             user_gugun = doc["gugundata"].toString()
+
+                            val gugunText = findViewById<TextView>(R.id.gugun)
+                            gugunText.setText(user_gugun)
                         }
                         if (doc["phonenumber"] != null) {
                             user_phone = doc["phonenumber"].toString()
@@ -380,10 +439,22 @@ class HomeActivity : AppCompatActivity() {
                         if (doc["whentime"] != null) {
                             whentime = doc["whentime"].toString()
                         }
+
+                        initPieChart()
+                        setDataToPieChart(vol_time,vol_goaltime)
+
+
                     }
+
                 }
                 FBAuth.runImage(user_email)
+
             }
+    }
+
+    private fun setNick() {
+        val homeNick = findViewById<TextView>(R.id.homeNickText)
+        homeNick.text = nickHome
     }
 
     override fun onBackPressed() {
@@ -436,15 +507,91 @@ class HomeActivity : AppCompatActivity() {
                 }, 300)
 
             }
-//            R.id.app_bar_fav -> {
-//                fab.hide(AnimationB.addVisibilityChanged)
-//                if(clicked){onAddButtonClicked()}
-//                val intent = Intent(this, FavoritesActivity::class.java)
-//                Handler().postDelayed({
-//                    startActivity(intent)
-//                }, 450)
-//            }
         }
         return true
+    }
+
+    //Pie Chart 생성
+    private fun initPieChart() {
+        pieChart.setUsePercentValues(true)
+        pieChart.description.text = ""
+        //hollow pie chart
+        pieChart.isDrawHoleEnabled = false
+        pieChart.setTouchEnabled(false)
+        pieChart.setDrawEntryLabels(false)
+        //adding padding
+        pieChart.isRotationEnabled = false
+        pieChart.legend.orientation = Legend.LegendOrientation.VERTICAL
+        pieChart.legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+        pieChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        pieChart.legend.setDrawInside(false)
+        pieChart.legend.isWordWrapEnabled = true
+
+
+    }
+
+    private fun setDataToPieChart(voltime: String?, volgoaltime: String?) {
+        var timepercent : Float = 0F
+        var goalpercent : Float = 0F
+        pieChart.setUsePercentValues(true)
+        val dataEntries = ArrayList<PieEntry>()
+        if(voltime == ""){
+            dataEntries.add(PieEntry(0f, "봉사시간"))
+            goalpercent = 100 - timepercent
+        }
+        else{
+            timepercent = (voltime.toString().toFloat() / volgoaltime.toString().toFloat() * 100)
+            goalpercent = 100 - timepercent
+            if(goalpercent < 0){
+                timepercent = 100F
+                goalpercent = 0F
+            }
+            dataEntries.add(PieEntry(timepercent, "봉사시간"))
+        }
+        dataEntries.add(PieEntry(goalpercent, "남은시간")) // 입력된 목표 봉사시간에서 -하기
+
+        val colors: ArrayList<Int> = ArrayList() // 각 영역의 색상
+        colors.add(Color.parseColor("#096def"))
+        colors.add(Color.parseColor("#F69110"))
+
+        val dataSet = PieDataSet(dataEntries, "")
+        val data = PieData(dataSet)
+
+        // %로 설정
+        data.setValueFormatter(PercentFormatter())
+        dataSet.sliceSpace = 3f
+        dataSet.colors = colors
+        pieChart.data = data
+        data.setValueTextSize(0f)
+        pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+        pieChart.animateY(1400, Easing.EaseInOutQuad)
+
+        //가운데 빈 공간
+        pieChart.holeRadius = 58f
+        pieChart.transparentCircleRadius = 61f
+        pieChart.isDrawHoleEnabled = true
+        pieChart.setHoleColor(Color.WHITE)
+
+        //빈 공간에 텍스트
+//        pieChart.setDrawCenterText(true)
+//        if(voltime == ""){
+//            pieChart.centerText = "봉사시간 : 0시간"
+//        }
+//        else{
+//            pieChart.centerText = "봉사시간 : ${voltime}시간"
+//        }
+
+        pieChart.invalidate()
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun today(){
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("MM월 dd일(E)")
+        val formatted = current.format(formatter)
+
+        val today = findViewById<TextView>(R.id.today)
+        today.text = formatted
     }
 }

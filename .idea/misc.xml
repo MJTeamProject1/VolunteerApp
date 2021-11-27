@@ -54,7 +54,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_boardwrite.xml" value="0.2669706180344478" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_community.xml" value="0.29438405797101447" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_favorite.xml" value="0.15020263424518743" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.35054347826086957" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_home.xml" value="0.5" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_profile.xml" value="0.2669706180344478" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/content_review.xml" value="0.18" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/favorite_rv_item.xml" value="0.35054347826086957" />
@@ -63,7 +63,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_community.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_post_list_plain.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_review.xml" value="0.32708333333333334" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.33" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.5" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/bottom_nav_drawer_menu.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navi_menu.xml" value="0.3302083333333333" />

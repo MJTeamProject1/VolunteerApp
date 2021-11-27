@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="5dp">
+    android:layout_margin="20dp"
+    android:backgroundTint="@color/rv2"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp">
 
     <RelativeLayout
             android:orientation="vertical"
@@ -21,17 +22,19 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/mRV_itemText_home"
-            android:layout_width="357dp"
-            android:layout_height="70dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="70dp"
-            android:fontFamily="@font/sd4"
-            android:text="봉사제목"
-            android:textSize="18sp" />
+                android:id="@+id/mRV_itemText_home"
+                android:layout_width="262dp"
+                android:layout_height="66dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="69dp"
+                android:fontFamily="@font/nanumsquareround"
+                android:text="봉사제목"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp" />
 
         <TextView
                 android:id="@+id/mRV_itemText_home2"
@@ -39,20 +42,21 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="13dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="42dp"
+                android:layout_marginBottom="37dp"
+                android:fontFamily="@font/nanumsquareround"
                 android:text="봉사지역 정보"
-                android:textSize="16sp" />
+                android:textSize="13sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="348dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="113dp">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="120dp">
 
             <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +64,7 @@
                     android:layout_margin="5dp"
                     android:fontFamily="@font/sd6"
                     android:text="시작일 :"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
             <TextView
                     android:id="@+id/mRV_itemText_home3"
@@ -69,15 +73,15 @@
                     android:layout_margin="5dp"
                     android:fontFamily="@font/sd5"
                     android:text="봉사 시작일"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/sd6"
-                    android:text="  종료일 :"
-                    android:textSize="15sp" />
+                    android:text="      종료일 :"
+                    android:textSize="14sp" />
 
             <TextView
                     android:id="@+id/mRV_itemText_home4"
@@ -86,7 +90,7 @@
                     android:layout_margin="5dp"
                     android:fontFamily="@font/sd5"
                     android:text="봉사 종료일"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
             <TextView
                     android:id="@+id/vol_num"
@@ -97,14 +101,14 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageView
-            android:id="@+id/image_vol"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="14dp"
-            android:src="@drawable/vv" />
+                android:id="@+id/image_vol"
+                android:layout_width="66dp"
+                android:layout_height="61dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/vv" />
 
 
     </RelativeLayout>
