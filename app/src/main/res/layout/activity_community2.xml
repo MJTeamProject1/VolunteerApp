@@ -17,7 +17,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbar"
                 android:layout_width="match_parent"
-                android:background="#ff0"
+                android:background="@color/white"
                 android:fitsSystemWindows="true"
                 android:layout_height="310dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:fitsSystemWindows="true"
                     android:layout_height="match_parent"
-                    android:background="@drawable/header"
+                    android:background="@drawable/board"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
@@ -50,9 +50,9 @@
                     app:tabIndicatorColor="#F57C00"
                     android:translationY="-60dp"
                     app:tabIndicatorHeight="4dp"
-                    app:tabMode="fixed"
-                    app:tabSelectedTextColor="#F5F5F5"
-                    app:tabTextColor="#FFE0B2" />
+                    app:tabMode="auto"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabTextColor="#999999" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
