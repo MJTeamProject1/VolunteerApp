@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -24,11 +25,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.team1.volunteerapp.AboutViewActivity
 import com.team1.volunteerapp.Chat.ChatRoomListActivity
+import com.team1.volunteerapp.Community.*
 import com.team1.volunteerapp.utils.BottomNavDrawerFragment
-import com.team1.volunteerapp.Community.CommActivity
-import com.team1.volunteerapp.Community.CommunityActivity
-import com.team1.volunteerapp.Community.ReviewActivity
 import com.team1.volunteerapp.Favorite.FavoritesActivity
 import com.team1.volunteerapp.Profile.ProfileActivity
 import com.team1.volunteerapp.R
@@ -73,6 +73,7 @@ class HomeActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     private val items_home = mutableListOf<VolunteerModel>()
 
+    private val volNumberKeyList = Array(10){ item -> "" }
     // 애니메이션션
     private val rotateOpen : Animation by lazy { AnimationUtils.loadAnimation(this,R.anim.rotate_open)}
     private val rotateClose : Animation by lazy {AnimationUtils.loadAnimation(this,R.anim.rotate_close)}
@@ -192,6 +193,7 @@ class HomeActivity : AppCompatActivity() {
                     stringArray3.set(i, vol_start)
                     stringArray4.set(i, vol_end)
                     stringArray5.set(i, vol_num)
+                    volNumberKeyList.set(i,vol_num)
                     vol_srvcClCode?.let { stringArray6.set(i, it) }
                     println("==========="+ vol_srvcClCode)
                 }
@@ -254,7 +256,19 @@ class HomeActivity : AppCompatActivity() {
             }, 250)
         }
 
-        
+
+        home_rvAdapter.itemClick = object : HomeRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                //눌렀을때 어떻게 할지
+                fab.hide(AnimationB.addVisibilityChanged)
+                if(clicked){onAddButtonClicked()}
+                val intent = Intent(view.context,AboutViewActivity::class.java)
+                intent.putExtra("num", volNumberKeyList[position])
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 150)
+            }
+        }
     }
 
     // 중앙 버튼 클릭 시

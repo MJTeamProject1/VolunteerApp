@@ -1,18 +1,14 @@
 package com.team1.volunteerapp.Home
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.team1.volunteerapp.AboutViewActivity
 import com.team1.volunteerapp.R
 
 class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : RecyclerView.Adapter<HomeRVAdapter.ViewHolder>(){
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.home_rv_item, parent, false)
@@ -23,14 +19,15 @@ class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         // 클릭 시
-        /*
         if(itemClick != null){
             holder.itemView.setOnClickListener { view->
-                val intent = Intent(holder.itemView?.context, AboutViewActivity::class.java)
-                ContextCompat.startActivity(holder.itemView.context, intent, null)
-            }
-        }*/
+//                val intent = Intent(holder.itemView?.context, AboutViewActivity::class.java)
+//                intent.putExtra("num", vol_num2)
+//                ContextCompat.startActivity(holder.itemView.context, intent, null)
 
+                itemClick?.onClick(view, position)
+            }
+        }
         holder.bindItems(items[position])
     }
 
@@ -39,10 +36,12 @@ class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : Recycler
     }
 
     // itemClick 인터페이스
-//    interface ItemClick{
-//        fun onClick(view : View, position: Int)
-//    }
-//    var itemClick : ItemClick? = null
+    interface ItemClick{
+        fun onClick(view: View, position: Int)
+
+
+    }
+    var itemClick : ItemClick? = null
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -100,13 +99,14 @@ class HomeRVAdapter (private val items : MutableList<VolunteerModel>) : Recycler
 
         }
 
-        init {
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, AboutViewActivity::class.java)
-                intent.putExtra("num", vol_num.text.toString())
-                ContextCompat.startActivity(itemView.context, intent, null)
-            }
-        }
+//        init {
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, AboutViewActivity::class.java)
+//                intent.putExtra("num", vol_num.text.toString())
+//                ContextCompat.startActivity(itemView.context, intent, null)
+//
+//            }
+//        }
     }
 
 }
