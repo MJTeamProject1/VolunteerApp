@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.team1.volunteerapp.R
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -101,6 +102,9 @@ class FBAuth {
             val localfile = File.createTempFile("tempImage", "jpg")
             storageref.getFile(localfile).addOnSuccessListener {
                 user_image = BitmapFactory.decodeFile(localfile.absolutePath)
+            }
+            storageref.getFile(localfile).addOnCanceledListener {
+
             }
         }
 

@@ -97,9 +97,39 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                <ImageView
+                        android:src="@drawable/prestige"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"/>
+                <TextView
+                        android:text="그룹장 : "
+                        android:textSize="17sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/binggrae"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                 <TextView
-                        android:text="참여중인 사용자"
+                        android:id="@+id/groupMaster"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="17sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/binggrae"
+                        android:text="닉네임"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:text="그룹 맴버"
+                        android:textSize="15sp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/binggrae"
@@ -108,6 +138,7 @@
                 <TextView
                         android:id="@+id/groupCountInfo"
                         android:layout_marginLeft="10dp"
+                        android:textSize="15sp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/binggrae"
                         android:text="0명"

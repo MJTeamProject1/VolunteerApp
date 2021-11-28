@@ -7,7 +7,8 @@ data class ChatRoomListModel(
     val chatRoomMaxUnit : Int = 2,
     val chatRoomTitle : String = "",
     val chatRoomSubTitle : String = "",
-    val chatRoomMakerUid : String = ""
+    val chatRoomMakerUid : String = "",
+    val chatRoomMakerNickName : String = ""
 ){
     @Exclude
     fun toMap() : Map<String, Any> {
@@ -16,7 +17,8 @@ data class ChatRoomListModel(
             "chatRoomMaxUnit" to chatRoomMaxUnit,
             "chatRoomTitle" to chatRoomTitle,
             "chatRoomSubTitle" to chatRoomSubTitle,
-            "chatRoomMakerUid" to chatRoomMakerUid
+            "chatRoomMakerUid" to chatRoomMakerUid,
+            "chatRoomMakerNickName" to chatRoomMakerNickName
         )
     }
 }

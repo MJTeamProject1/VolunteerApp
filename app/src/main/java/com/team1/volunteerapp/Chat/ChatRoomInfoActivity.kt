@@ -50,9 +50,13 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         // 그룹 채팅 입장 버튼
         val groupChatBtn = findViewById<Button>(R.id.chatJoinBtn)
         groupChatBtn.setOnClickListener {
-            val intent  = Intent(this, ChatInsideActivity::class.java)
-            intent.putExtra("roomKey", roomKey)
-            startActivity(intent)
+            if(userDataCheck.contains(FBAuth.getUid())){
+                val intent  = Intent(this, ChatInsideActivity::class.java)
+                intent.putExtra("roomKey", roomKey)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this,"그룹 가입을 먼저 해주세요", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -61,14 +65,18 @@ class ChatRoomInfoActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dataModel = snapshot.getValue(ChatRoomInfoModel::class.java)
 
-                var title = findViewById<TextView>(R.id.ChatRoomTitle)
-                var content = findViewById<TextView>(R.id.ChatRoomSubTitle)
-                var groupCountInfo = findViewById<TextView>(R.id.groupCountInfo)
+                val title = findViewById<TextView>(R.id.ChatRoomTitle)
+                val content = findViewById<TextView>(R.id.ChatRoomSubTitle)
+                val groupCountInfo = findViewById<TextView>(R.id.groupCountInfo)
+                val groupMaster = findViewById<TextView>(R.id.groupMaster)
 
                 title.text = dataModel?.chatInfo?.chatRoomTitle
                 content.text = dataModel?.chatInfo?.chatRoomSubTitle
                 groupCountInfo.text = dataModel?.chatInfo?.chatRoomMaxUnit.toString()+"명"
                 updateGroupCount = dataModel?.chatInfo?.chatRoomMaxUnit!!
+                groupMaster.text = dataModel?.chatInfo?.chatRoomMakerNickName
+
+                userDataCheck.add(dataModel?.chatInfo.chatRoomMakerUid)
 
             }
 

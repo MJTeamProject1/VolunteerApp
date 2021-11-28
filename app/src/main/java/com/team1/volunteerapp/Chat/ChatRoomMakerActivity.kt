@@ -1,8 +1,10 @@
 package com.team1.volunteerapp.Chat
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -63,7 +65,6 @@ class ChatRoomMakerActivity : AppCompatActivity() {
             else{
                 if(isGoToJoin){
                     inputChatRoomListData(inputTitle, inputContent)
-                    Toast.makeText(this, "생성 완료", Toast.LENGTH_SHORT).show()
                     val Intent = Intent(this, ChatRoomListActivity::class.java)
                     startActivity(Intent)
                     finish()
@@ -84,13 +85,16 @@ class ChatRoomMakerActivity : AppCompatActivity() {
 //                    ),
                     ChatRoomListModel(
                         radioSelect,
-                        0,
+                        1,
                         title,
                         content,
+                        FBAuth.getUid(),
                         FBAuth.getUserData(4))
                 )
             )
     }
+
+
 
     inner class RadioListener : RadioGroup.OnCheckedChangeListener {
         override fun onCheckedChanged(p0: RadioGroup?, p1: Int) { // p1 사용자가 선택한 라디오 버튼의 아이디값
