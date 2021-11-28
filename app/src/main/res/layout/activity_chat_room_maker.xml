@@ -56,6 +56,9 @@
 
                 <TextView
                         android:text="그룹 이름 : "
+                        android:fontFamily="@font/nanumsquareround"
+                        android:layout_marginStart="15dp"
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -68,15 +71,65 @@
             </LinearLayout>
 
             <TextView
-                    android:text="내용"
+                    android:text="그룹 설명"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             <EditText
                     android:id="@+id/ChatRoomSubTitle"
                     android:text=""
+                    android:background="@drawable/communitybox"
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
+            <TextView
+                    android:text="봉사 성향"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/nanumsquareround"
+                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                    android:id="@+id/radioGroupVol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:id="@+id/radio1"
+                        android:text="사랑 "
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <RadioButton
+                        android:id="@+id/radio2"
+                        android:text="열정 "
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/radio3"
+                        android:text="끈기 "
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/radio4"
+                        android:text="희망 "
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            </RadioGroup>
         </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -42,7 +42,7 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
         private val chatTitile: TextView = itemView.findViewById(R.id.chatListRvTitle)
         private val chatSubTitile: TextView = itemView.findViewById(R.id.chatListRvContents)
         private val chatCreateUser: TextView = itemView.findViewById(R.id.chatListRvUser)
-        private val chatjoinBtn : Button = itemView.findViewById(R.id.chatListRvBtn)
+        private val chatCount : TextView = itemView.findViewById(R.id.chatCount)
         fun bindItems(item: ChatRoomInfoModel){
 
             chatTitile.text = item.chatInfo?.chatRoomTitle

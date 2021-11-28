@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
+import kotlinx.android.synthetic.main.activity_chat_room_maker.*
 
 class ChatRoomMakerActivity : AppCompatActivity() {
+    private var radioSelect = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_maker)
@@ -23,6 +26,31 @@ class ChatRoomMakerActivity : AppCompatActivity() {
 
             val inputTitle = title.text.toString()
             val inputContent = content.text.toString()
+
+
+            // 안됨 고쳐야 됨
+            radioGroupVol.setOnCheckedChangeListener { group, checkedId ->
+                when(checkedId){
+                    R.id.radio1 -> {
+                        radioSelect = 1
+                        Toast.makeText(this,"asdf",Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.radio2 -> {
+                        radioSelect = 2
+                        Toast.makeText(this,"asdf22",Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.radio3 -> {
+                        radioSelect = 3
+                        Toast.makeText(this,"asdf33",Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.radio4 -> {
+                        radioSelect = 4
+                        Toast.makeText(this,"asdf44",Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+
 
             if(inputTitle.isEmpty()){
                 Toast.makeText(this,"그룹 명을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
@@ -55,12 +83,26 @@ class ChatRoomMakerActivity : AppCompatActivity() {
 //                        FBAuth.getUserData(4)
 //                    ),
                     ChatRoomListModel(
+                        radioSelect,
                         0,
-                        2,
                         title,
                         content,
                         FBAuth.getUserData(4))
                 )
             )
+    }
+
+    inner class RadioListener : RadioGroup.OnCheckedChangeListener {
+        override fun onCheckedChanged(p0: RadioGroup?, p1: Int) { // p1 사용자가 선택한 라디오 버튼의 아이디값
+            when (p0?.id) {
+                R.id.radioGroupVol ->
+                    when(p1){
+                        R.id.radio1 -> { radioSelect = 1 }
+                        R.id.radio2 -> { radioSelect = 2 }
+                        R.id.radio3 -> { radioSelect = 3 }
+                        R.id.radio4 -> { radioSelect = 4 }
+                    }
+                }
+        }
     }
 }
