@@ -49,8 +49,8 @@ class FBAuth {
             return dateFormat
         }
 
-        private val await = run{
-                GlobalScope.launch {
+
+       fun load() = GlobalScope.launch {
                     launch {
                         auth = Firebase.auth
                         db.collection("UserData")
@@ -95,7 +95,7 @@ class FBAuth {
                     }
                 }
 
-            }
+
 
         fun runImage(email : String?){
             val storageref = FirebaseStorage.getInstance().reference.child("images/${email}")
@@ -114,7 +114,7 @@ class FBAuth {
 
 
         fun getUserData(num : Int) : String {
-            print(await)
+            load()
 
             var resultData = ""
             when(num){

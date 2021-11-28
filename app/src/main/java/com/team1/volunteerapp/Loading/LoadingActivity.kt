@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.content.Intent
 import android.os.Build
 import android.os.Handler
+import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.team1.volunteerapp.Home.HomeActivity
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.FBAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,6 +69,9 @@ class LoadingActivity : AppCompatActivity() {
         runBlocking {
             job.join() //suspend에서만 작동하기때문에 runblocking안에 넣는다
             //join() 함수가 끝날때까지 runblocking이 지속
+        }
+        FBAuth.load().run {
+            Log.d("init", FBAuth.getUserData(4))
         }
 
         Handler().postDelayed({
