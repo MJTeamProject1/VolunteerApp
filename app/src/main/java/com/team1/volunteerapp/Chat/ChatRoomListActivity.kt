@@ -3,7 +3,9 @@ package com.team1.volunteerapp.Chat
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -11,14 +13,17 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.team1.volunteerapp.Comment.CommentModel
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
+import kotlinx.android.synthetic.main.activity_community2.*
 import java.lang.Exception
 import java.util.*
 
@@ -30,6 +35,7 @@ class ChatRoomListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_list)
+        setSupportActionBar(bottomAppBar)
 
         // RecyclerView 연결
         val chatRoomList_rv = findViewById<RecyclerView>(R.id.mRecyclerViewChatRoomList)
@@ -40,7 +46,7 @@ class ChatRoomListActivity : AppCompatActivity() {
         // 데이터 가져오기
         getChatRoomListData()
 
-        val addBtn = findViewById<Button>(R.id.chatListAddBtn)
+        val addBtn = findViewById<FloatingActionButton>(R.id.fab)
         addBtn.setOnClickListener {
 
             val Intent = Intent(this, ChatRoomMakerActivity::class.java)
@@ -93,4 +99,18 @@ class ChatRoomListActivity : AppCompatActivity() {
     }
 
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> { // 홈으로 돌아가기
+                fab.hide(AnimationB.addVisibilityChanged)
+                Handler().postDelayed({
+                    finish()
+                }, 300)
+            }
+            R.id.app_bar_community_list ->{
+
+            }
+        }
+        return true
+    }
 }

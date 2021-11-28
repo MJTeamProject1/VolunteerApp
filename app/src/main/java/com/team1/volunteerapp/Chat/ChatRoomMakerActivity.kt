@@ -9,10 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_chat_room_maker.*
+import kotlinx.android.synthetic.main.content_chatroom_maker.*
 
 class ChatRoomMakerActivity : AppCompatActivity() {
     private var radioSelect = 1
@@ -20,39 +22,33 @@ class ChatRoomMakerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_maker)
 
-        val addBtn = findViewById<Button>(R.id.chatRoomCreateBtn)
+
+        // 이미지 설정
+        radioGroupVol.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.radio1 -> {
+                    radioSelect = 1
+                }
+                R.id.radio2 -> {
+                    radioSelect = 2
+                }
+                R.id.radio3 -> {
+                    radioSelect = 3
+                }
+                R.id.radio4 -> {
+                    radioSelect = 4
+                }
+
+            }
+        }
+
+        val addBtn = findViewById<FloatingActionButton>(R.id.fab)
         addBtn.setOnClickListener {
             var isGoToJoin = true
             val title = findViewById<EditText>(R.id.ChatRoomTitle)
             val content = findViewById<EditText>(R.id.ChatRoomSubTitle)
-
             val inputTitle = title.text.toString()
             val inputContent = content.text.toString()
-
-
-            // 안됨 고쳐야 됨
-            radioGroupVol.setOnCheckedChangeListener { group, checkedId ->
-                when(checkedId){
-                    R.id.radio1 -> {
-                        radioSelect = 1
-                        Toast.makeText(this,"asdf",Toast.LENGTH_SHORT).show()
-                    }
-                    R.id.radio2 -> {
-                        radioSelect = 2
-                        Toast.makeText(this,"asdf22",Toast.LENGTH_SHORT).show()
-                    }
-                    R.id.radio3 -> {
-                        radioSelect = 3
-                        Toast.makeText(this,"asdf33",Toast.LENGTH_SHORT).show()
-                    }
-                    R.id.radio4 -> {
-                        radioSelect = 4
-                        Toast.makeText(this,"asdf44",Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-            }
-
 
             if(inputTitle.isEmpty()){
                 Toast.makeText(this,"그룹 명을 입력하지 않았습니다",Toast.LENGTH_SHORT).show()
@@ -65,8 +61,6 @@ class ChatRoomMakerActivity : AppCompatActivity() {
             else{
                 if(isGoToJoin){
                     inputChatRoomListData(inputTitle, inputContent)
-                    val Intent = Intent(this, ChatRoomListActivity::class.java)
-                    startActivity(Intent)
                     finish()
                 }
             }

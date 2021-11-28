@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
@@ -43,12 +44,21 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
         private val chatSubTitile: TextView = itemView.findViewById(R.id.chatListRvContents)
         private val chatCreateUser: TextView = itemView.findViewById(R.id.chatListRvUser)
         private val chatCount : TextView = itemView.findViewById(R.id.chatCount)
+        private val chatImg : ImageView = itemView.findViewById(R.id.imageView)
         fun bindItems(item: ChatRoomInfoModel){
-
             chatTitile.text = item.chatInfo?.chatRoomTitle
             chatSubTitile.text = item.chatInfo?.chatRoomSubTitle
             chatCreateUser.text = item.chatInfo?.chatRoomMakerNickName
             chatCount.text = item.chatInfo?.chatRoomMaxUnit.toString() + "명"
+
+            var imaNumber = item.chatInfo?.chatRoomNumber
+            when(imaNumber){
+                1-> chatImg.setImageResource(R.drawable.love)
+                2-> chatImg.setImageResource(R.drawable.fist)
+                3-> chatImg.setImageResource(R.drawable.savenature)
+                4-> chatImg.setImageResource(R.drawable.dove)
+
+            }
         }
 
     }
