@@ -93,13 +93,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
 
-            <TextView
-                    android:text="참여중인 사용자"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/binggrae"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:text="참여중인 사용자"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/binggrae"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                <TextView
+                        android:id="@+id/groupCountInfo"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/binggrae"
+                        android:text="0명"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/chatRoomInfoJoinRV"

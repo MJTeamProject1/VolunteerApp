@@ -48,7 +48,7 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
             chatTitile.text = item.chatInfo?.chatRoomTitle
             chatSubTitile.text = item.chatInfo?.chatRoomSubTitle
             chatCreateUser.text = item.chatInfo?.chatRoomMakerUid
-
+            chatCount.text = item.chatInfo?.chatRoomMaxUnit.toString() + "명"
         }
 
     }

@@ -23,6 +23,7 @@ import java.lang.Exception
 class ChatRoomInfoActivity : AppCompatActivity() {
     val userData = mutableListOf<ChatJoinUserModel>()
     val userDataCheck = mutableListOf<String>()
+    var updateGroupCount = 0
     lateinit var chatUserJoinInfo_rvAdapter : ChatRoomInfoRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,9 +63,12 @@ class ChatRoomInfoActivity : AppCompatActivity() {
 
                 var title = findViewById<TextView>(R.id.ChatRoomTitle)
                 var content = findViewById<TextView>(R.id.ChatRoomSubTitle)
+                var groupCountInfo = findViewById<TextView>(R.id.groupCountInfo)
 
                 title.text = dataModel?.chatInfo?.chatRoomTitle
                 content.text = dataModel?.chatInfo?.chatRoomSubTitle
+                groupCountInfo.text = dataModel?.chatInfo?.chatRoomMaxUnit.toString()+"명"
+                updateGroupCount = dataModel?.chatInfo?.chatRoomMaxUnit!!
 
             }
 
@@ -110,6 +114,14 @@ class ChatRoomInfoActivity : AppCompatActivity() {
                         FBAuth.getUserData(4)
                     )
                 )
+
+
+
+            val childUpdates = hashMapOf<String, Any>(
+                "$roomKey/chatInfo/chatRoomMaxUnit" to updateGroupCount+1
+            )
+
+            FBRef.chatRoomListRef.updateChildren(childUpdates)
 
         }else{
             Toast.makeText(this,"이미 가입된 그룹입니다.",Toast.LENGTH_SHORT).show()
