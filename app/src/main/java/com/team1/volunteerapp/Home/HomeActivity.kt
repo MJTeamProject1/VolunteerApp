@@ -570,7 +570,7 @@ class HomeActivity : AppCompatActivity() {
         pieChart.holeRadius = 58f
         pieChart.transparentCircleRadius = 61f
         pieChart.isDrawHoleEnabled = true
-        pieChart.setHoleColor(Color.WHITE)
+        pieChart.setHoleColor(-0x002670) // 중앙 색상 변경
 
         //빈 공간에 텍스트
 //        pieChart.setDrawCenterText(true)

@@ -5,23 +5,27 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/rv2"
+        app:cardCornerRadius="12dp"
         app:cardElevation="8dp">
     <LinearLayout
         android:id="@+id/LinearTextOut"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
         android:layout_height="60dp">
 
         <TextView
-            android:id="@+id/mRV_itemText_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Item Text"
-            android:textSize="15sp" />
+                android:id="@+id/mRV_itemText_profile"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Item Text"
+                android:textSize="15sp" />
 
     </LinearLayout>
 

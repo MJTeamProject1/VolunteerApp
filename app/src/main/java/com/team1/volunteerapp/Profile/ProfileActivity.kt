@@ -50,6 +50,10 @@ import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.passwordcheck.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
+import android.graphics.Typeface
+
+
+
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -211,18 +215,23 @@ class ProfileActivity : AppCompatActivity() {
         pieChart.holeRadius = 58f
         pieChart.transparentCircleRadius = 61f
         pieChart.isDrawHoleEnabled = true
-        pieChart.setHoleColor(Color.WHITE)
+        pieChart.setHoleColor(0xFFD98F) // 중앙 색상 변경
 
         //빈 공간에 텍스트
         pieChart.setDrawCenterText(true)
         if(voltime == ""){
-            pieChart.centerText = "봉사시간 : 0시간"
+            val voltimeset = findViewById<TextView>(R.id.voltimeset)
+            voltimeset.text = 0.toString()
+//            pieChart.centerText = "봉사시간 : 0시간"
         }
         else{
-            pieChart.centerText = "봉사시간 : ${voltime}시간"
+            val voltimeset = findViewById<TextView>(R.id.voltimeset)
+            voltimeset.text = voltime.toString()
+//            pieChart.centerText = "봉사시간 : ${voltime}시간"
         }
 
         pieChart.invalidate()
+
 
     }
     // 화면 아래 메뉴 바

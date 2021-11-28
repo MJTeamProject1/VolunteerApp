@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:fitsSystemWindows="true"
                     android:layout_height="match_parent"
-                    android:background="@drawable/board"
+                    android:background="@drawable/aa34"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
@@ -61,13 +62,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/constraintLayout"
+            android:background="@color/background2"
             app:behavior_overlapTop="60dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager2"
                 android:layout_width="match_parent"
-                android:background="#fff"
+                android:background="@color/background2"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_height="match_parent" />
