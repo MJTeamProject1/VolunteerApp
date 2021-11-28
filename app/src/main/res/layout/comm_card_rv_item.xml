@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     app:cardCornerRadius="18dp"
+        android:backgroundTint="@color/rv2"
     app:cardElevation="8dp">
 
 
@@ -41,38 +42,47 @@
         </LinearLayout>
 
         <TextView
-                android:id="@+id/rvTime"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:text="시간"
-                android:textSize="13sp"
-                android:fontFamily="@font/nanumsquareround" />
-
-        <TextView
-                android:id="@+id/rvNickName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:text="uid"
-                android:textSize="10sp"
-                android:fontFamily="@font/nanumsquareround" />
-
-        <TextView
                 android:id="@+id/rvContents"
                 android:layout_width="354dp"
-                android:layout_height="31dp"
+                android:layout_height="30sp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:text="내용"
                 android:textSize="20sp"
                 android:fontFamily="@font/nanumsquareround" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <TextView
+                    android:id="@+id/rvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="시간"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/nanumsquareround" />
+
+            <TextView
+                    android:id="@+id/rvNickName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="uid"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/nanumsquareround" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
