@@ -14,6 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.RelativeCornerSize
+import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -24,6 +27,9 @@ import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_community2.*
+import kotlinx.android.synthetic.main.activity_community2.bottomAppBar
+import kotlinx.android.synthetic.main.activity_community2.fab
+import kotlinx.android.synthetic.main.activity_home.*
 import java.lang.Exception
 import java.util.*
 
@@ -36,6 +42,14 @@ class ChatRoomListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_list)
         setSupportActionBar(bottomAppBar)
+
+        // 하단 바
+        val bottomBarBackground = bottomAppBar.background as MaterialShapeDrawable
+        bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
+            .toBuilder()
+            .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(RelativeCornerSize(0.4f))
+            .setTopLeftCorner(RoundedCornerTreatment()).setTopLeftCornerSize(RelativeCornerSize(0.4f))
+            .build()
 
         // RecyclerView 연결
         val chatRoomList_rv = findViewById<RecyclerView>(R.id.mRecyclerViewChatRoomList)
@@ -56,9 +70,12 @@ class ChatRoomListActivity : AppCompatActivity() {
 
         chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
+                fab.hide(AnimationB.addVisibilityChanged)
                 val intent = Intent(chatRoomList_rv.context, ChatRoomInfoActivity::class.java)
                 intent.putExtra("roomKey", chatRoomList_Key[position].toString())
-                ContextCompat.startActivity(chatRoomList_rv.context, intent, null)
+                Handler().postDelayed({
+                    ContextCompat.startActivity(chatRoomList_rv.context, intent, null)
+                },150)
             }
 
         }
@@ -112,5 +129,13 @@ class ChatRoomListActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
     }
 }
