@@ -53,7 +53,7 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
 
             var imaNumber = item.chatInfo?.chatRoomNumber
             when(imaNumber){
-                1-> chatImg.setImageResource(R.drawable.love)
+                1-> chatImg.setImageResource(R.drawable.cooperation)
                 2-> chatImg.setImageResource(R.drawable.fist)
                 3-> chatImg.setImageResource(R.drawable.savenature)
                 4-> chatImg.setImageResource(R.drawable.dove)
