@@ -1,4 +1,4 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
 data class ChatRoomInfoModel(
 //    val chatJoinUser: ChatJoinUserModel? = null,

@@ -1,15 +1,13 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,18 +17,13 @@ import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.team1.volunteerapp.Comment.CommentModel
-import com.team1.volunteerapp.Profile.ProfileActivity
+import com.team1.volunteerapp.Chat.ChatInsideActivity
+import com.team1.volunteerapp.Chat.ChatJoinUserModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
-import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
-import kotlinx.android.synthetic.main.activity_chat_room_info.*
 import kotlinx.android.synthetic.main.activity_chat_room_info.fab
-import kotlinx.android.synthetic.main.activity_community2.*
-import kotlinx.android.synthetic.main.activity_home.*
-import java.lang.Exception
 
 class ChatRoomInfoActivity : AppCompatActivity() {
     val userData = mutableListOf<ChatJoinUserModel>()

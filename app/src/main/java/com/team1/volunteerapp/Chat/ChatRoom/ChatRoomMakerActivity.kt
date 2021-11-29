@@ -1,19 +1,19 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
-import android.app.ProgressDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.os.Handler
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.team1.volunteerapp.R
+import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
-import kotlinx.android.synthetic.main.activity_chat_room_maker.*
+import kotlinx.android.synthetic.main.activity_chat_room_maker.fab
 import kotlinx.android.synthetic.main.content_chatroom_maker.*
 
 class ChatRoomMakerActivity : AppCompatActivity() {
@@ -21,24 +21,17 @@ class ChatRoomMakerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room_maker)
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+        setSupportActionBar(bottomAppBar)
 
 
         // 이미지 설정
         radioGroupVol.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
-                R.id.radio1 -> {
-                    radioSelect = 1
-                }
-                R.id.radio2 -> {
-                    radioSelect = 2
-                }
-                R.id.radio3 -> {
-                    radioSelect = 3
-                }
-                R.id.radio4 -> {
-                    radioSelect = 4
-                }
-
+                R.id.radio1 -> radioSelect = 1
+                R.id.radio2 -> radioSelect = 2
+                R.id.radio3 -> radioSelect = 3
+                R.id.radio4 -> radioSelect = 4
             }
         }
 
@@ -88,7 +81,17 @@ class ChatRoomMakerActivity : AppCompatActivity() {
             )
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> { // 홈으로 돌아가기
+                fab.hide(AnimationB.addVisibilityChanged)
+                Handler().postDelayed({
+                    finish()
+                }, 300)
+            }
+        }
+        return true
+    }
 
     inner class RadioListener : RadioGroup.OnCheckedChangeListener {
         override fun onCheckedChanged(p0: RadioGroup?, p1: Int) { // p1 사용자가 선택한 라디오 버튼의 아이디값

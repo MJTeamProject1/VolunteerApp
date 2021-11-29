@@ -1,4 +1,4 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
 import com.google.firebase.database.Exclude
 

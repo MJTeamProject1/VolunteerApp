@@ -22,7 +22,7 @@ import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.team1.volunteerapp.Chat.ChatRoomListActivity
+import com.team1.volunteerapp.Chat.ChatRoom.ChatRoomListActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBRef

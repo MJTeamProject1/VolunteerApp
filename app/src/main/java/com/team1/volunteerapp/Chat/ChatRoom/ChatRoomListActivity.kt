@@ -1,4 +1,4 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,6 @@ import android.os.Handler
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,18 +17,13 @@ import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
-import com.team1.volunteerapp.Comment.CommentModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
-import kotlinx.android.synthetic.main.activity_community2.*
 import kotlinx.android.synthetic.main.activity_community2.bottomAppBar
 import kotlinx.android.synthetic.main.activity_community2.fab
-import kotlinx.android.synthetic.main.activity_home.*
 import java.lang.Exception
-import java.util.*
 
 class ChatRoomListActivity : AppCompatActivity() {
     val chatRoomList_items = mutableListOf<ChatRoomInfoModel>()
@@ -62,13 +54,15 @@ class ChatRoomListActivity : AppCompatActivity() {
 
         val addBtn = findViewById<FloatingActionButton>(R.id.fab)
         addBtn.setOnClickListener {
-
+            fab.hide(AnimationB.addVisibilityChanged)
             val Intent = Intent(this, ChatRoomMakerActivity::class.java)
-            startActivity(Intent)
+            Handler().postDelayed({
+                startActivity(Intent)
+            }, 150)
             chatRoomList_rvAdapter.notifyDataSetChanged()
         }
 
-        chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick{
+        chatRoomList_rvAdapter.itemClick = object : ChatRoomListRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 fab.hide(AnimationB.addVisibilityChanged)
                 val intent = Intent(chatRoomList_rv.context, ChatRoomInfoActivity::class.java)

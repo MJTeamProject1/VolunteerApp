@@ -134,10 +134,10 @@
 
             <TextView
                     android:id="@+id/ChatRoomSubTitle"
-                    android:fontFamily="@font/binggrae"
+                    android:fontFamily="@font/nanumsquareround"
                     android:layout_margin="15dp"
                     android:background="@drawable/communitybox"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:padding="10dp"
                     android:text="정보가 없습니다."
                     android:layout_width="match_parent"

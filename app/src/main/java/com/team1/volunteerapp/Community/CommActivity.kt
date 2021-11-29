@@ -20,7 +20,7 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.database.*
-import com.team1.volunteerapp.Chat.ChatRoomListActivity
+import com.team1.volunteerapp.Chat.ChatRoom.ChatRoomListActivity
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBRef

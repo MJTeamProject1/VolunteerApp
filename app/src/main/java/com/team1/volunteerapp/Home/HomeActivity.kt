@@ -35,7 +35,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.AboutViewActivity
-import com.team1.volunteerapp.Chat.ChatRoomListActivity
+import com.team1.volunteerapp.Chat.ChatRoom.ChatRoomListActivity
 import com.team1.volunteerapp.Community.*
 import com.team1.volunteerapp.utils.BottomNavDrawerFragment
 import com.team1.volunteerapp.Favorite.FavoritesActivity
@@ -52,10 +52,8 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
-import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.collections.ArrayList
 

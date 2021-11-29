@@ -7,20 +7,55 @@
         android:layout_height="match_parent"
         tools:context=".Community.BoardWriteActivity">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:fontFamily="@font/nanumsquareround"
-            android:gravity="center"
-            android:text="글 작성"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/sd7"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="게시글"
+                    android:textSize="30sp"
+                    android:textColor="#FFC674"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.371"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.8" />
+
+            <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/sd7"
+                    android:gravity="center"
+                    android:text="작성"
+                    android:textSize="30sp"
+                    android:textColor="#242221"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.8"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintHorizontal_bias="0.103" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tvReviewTitle"
@@ -93,6 +128,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardEditContents" />
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

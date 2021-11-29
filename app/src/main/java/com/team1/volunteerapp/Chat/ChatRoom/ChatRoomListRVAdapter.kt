@@ -1,19 +1,15 @@
-package com.team1.volunteerapp.Chat
+package com.team1.volunteerapp.Chat.ChatRoom
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.volunteerapp.R
-import kotlinx.coroutines.withContext
 
 class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : RecyclerView.Adapter<ChatRoomListRVAdapter.ViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatRoomListRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view1 = LayoutInflater.from(parent.context).inflate(R.layout.chatroomlist_rv_item, parent, false)
 
         return ViewHolder(view1)
@@ -24,7 +20,7 @@ class ChatRoomListRVAdapter(val items : MutableList<ChatRoomInfoModel>) : Recycl
     }
     var itemClick : ItemClick? = null
 
-    override fun onBindViewHolder(holder: ChatRoomListRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(itemClick != null){
             holder.itemView.setOnClickListener{v->
                 itemClick?.onClick(v, position)

@@ -35,13 +35,13 @@
                 android:name=".Chat.ChatInsideActivity"
                 android:exported="false" />
         <activity
-                android:name=".Chat.ChatRoomInfoActivity"
+                android:name=".Chat.ChatRoom.ChatRoomInfoActivity"
                 android:exported="false" />
         <activity
-                android:name=".Chat.ChatRoomMakerActivity"
+                android:name=".Chat.ChatRoom.ChatRoomMakerActivity"
                 android:exported="false" />
         <activity
-                android:name=".Chat.ChatRoomListActivity"
+                android:name=".Chat.ChatRoom.ChatRoomListActivity"
                 android:exported="false" />
         <activity
                 android:name=".Community.BoardEditActivity"

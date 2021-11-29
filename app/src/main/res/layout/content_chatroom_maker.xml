@@ -4,16 +4,33 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/sd7"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="그룹"
+                android:textSize="30sp"
+                android:textColor="#FFC674"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.371"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.8" />
 
         <TextView
                 android:id="@+id/textView2"
@@ -21,14 +38,15 @@
                 android:layout_height="40dp"
                 android:fontFamily="@font/sd7"
                 android:gravity="center"
-                android:text="그룹 만들기"
-                android:textSize="25sp"
+                android:text="만들기"
+                android:textSize="30sp"
+                android:textColor="#242221"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
+                app:layout_constraintVertical_bias="0.8"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="0.103" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -37,8 +55,8 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="65dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             app:layout_constraintVertical_bias="0"
@@ -52,12 +70,13 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="19dp"
+                    android:layout_marginTop="15dp">
 
                 <TextView
                         android:text="그룹 이름 : "
-                        android:fontFamily="@font/nanumsquareround"
-                        android:layout_marginStart="15dp"
                         android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -72,7 +91,8 @@
 
             <TextView
                     android:text="그룹 설명"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="19dp"
                     android:layout_marginTop="25dp"
                     android:textSize="20sp"
                     android:layout_width="match_parent"
@@ -81,14 +101,14 @@
                     android:id="@+id/ChatRoomSubTitle"
                     android:text=""
                     android:background="@drawable/communitybox"
-                    android:layout_margin="10dp"
+                    android:layout_margin="19dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
             <TextView
                     android:text="봉사 성향"
                     android:textSize="20sp"
                     android:fontFamily="@font/nanumsquareround"
-                    android:layout_margin="15dp"
+                    android:layout_margin="19dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -104,6 +124,7 @@
                         android:text="사랑 "
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -133,12 +154,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
