@@ -64,7 +64,7 @@
             <TextView
                     android:id="@+id/chatListRvContents"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="33dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"

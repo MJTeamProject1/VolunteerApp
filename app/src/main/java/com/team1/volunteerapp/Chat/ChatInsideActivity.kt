@@ -64,7 +64,7 @@ class ChatInsideActivity : AppCompatActivity() {
         }
     }
 
-
+    // 채팅 입력
     private fun insertChat(roomKey: String?, inputText : String){
         val inputText2 = findViewById<EditText>(R.id.chatEdit)
         if (roomKey != null) {
@@ -84,6 +84,7 @@ class ChatInsideActivity : AppCompatActivity() {
         inputText2.setText("")
     }
 
+    // 채팅 읽기
     private fun readChat(roomKey: String){
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
