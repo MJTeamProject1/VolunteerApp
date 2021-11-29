@@ -114,8 +114,13 @@ class ProfileActivity : AppCompatActivity() {
         whentime = intent.getStringExtra("applywhen")
         pieChart = findViewById(R.id.PieChartMyVolune)
 
-        val bitmap = FBAuth.getUserImage()
-        profileImage.setImageBitmap(bitmap)
+        if(FBAuth.getUserImage() == null){
+            //기본 이미지
+        }
+        else{
+            val bitmap = FBAuth.getUserImage()
+            profileImage.setImageBitmap(bitmap)
+        }
 
         //닉네임 설정
         profileInfo.text = usernickname
