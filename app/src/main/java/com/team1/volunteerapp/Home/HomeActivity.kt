@@ -533,7 +533,7 @@ class HomeActivity : AppCompatActivity() {
         var goalpercent : Float = 0F
         pieChart.setUsePercentValues(true)
         val dataEntries = ArrayList<PieEntry>()
-        if(voltime == ""){
+        if(voltime == null){
             dataEntries.add(PieEntry(0f, "봉사시간"))
             goalpercent = 100 - timepercent
         }
