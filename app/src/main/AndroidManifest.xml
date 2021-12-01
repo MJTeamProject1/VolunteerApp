@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         package="com.team1.volunteerapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -100,15 +99,6 @@
         <meta-data
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts" />
-
-        <service android:name=".MyFirebaseMessagingService"
-                android:enabled="true"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
     </application>
-
 
 </manifest>
