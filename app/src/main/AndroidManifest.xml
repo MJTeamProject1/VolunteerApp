@@ -5,8 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
             android:allowBackup="true"
@@ -16,6 +18,15 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.VolunteerApp"
             android:usesCleartextTraffic="true">
+        <receiver
+                android:name=".Alarm"
+                android:enabled="true"
+                android:exported="true"></receiver>
+        <receiver
+                android:name=".AlarmReceiver"
+                android:enabled="true"
+                android:exported="true" />
+
         <activity
                 android:name=".Community.CommunityActivity"
                 android:exported="false" />

@@ -1,7 +1,8 @@
 package com.team1.volunteerapp
 
 import android.annotation.SuppressLint
-import android.app.ProgressDialog
+import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
 import android.icu.util.Calendar
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -37,7 +37,6 @@ import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.applycalendar.*
 import kotlinx.android.synthetic.main.applycalendar.view.*
-import kotlinx.android.synthetic.main.passwordcheck.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,6 +45,7 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
+import java.lang.Math.ceil
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
@@ -72,6 +72,8 @@ class AboutViewActivity : AppCompatActivity() {
     var vol_title: String? = null
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var alarmManager: AlarmManager
+    private lateinit var pendingIntent: PendingIntent
     private val db = FirebaseFirestore.getInstance()
 
     @SuppressLint("ClickableViewAccessibility", "NewApi")
@@ -80,6 +82,7 @@ class AboutViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutview)
         setSupportActionBar(bottomAppBar)
+        createNotificatuinChannel()
         auth = Firebase.auth
 
         val num = intent.getStringExtra("num")
@@ -393,6 +396,7 @@ class AboutViewActivity : AppCompatActivity() {
                             db.collection("UserData").document(doc.id.toString())
                                 .update(userauth)
                             Toast.makeText(this, "담당자 승인 후 알림을 보내드리겠습니다.", Toast.LENGTH_SHORT).show()
+                            setAlarm()
                             if(progressDialog.isShowing){
                                 progressDialog.dismiss()
                             }
@@ -552,10 +556,12 @@ class AboutViewActivity : AppCompatActivity() {
                                         "담당자 승인 후 알림을 보내드리겠습니다.",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    // 담당자 승인 예시 알림
+                                    setAlarm()
+
                                     if (progressDialog.isShowing) {
                                         progressDialog.dismiss()
                                     }
-                                    //TODO 신청할 시 같은 날짜에 봉사가 있는지 판별
                                 }
                             }
                         }
@@ -584,5 +590,49 @@ class AboutViewActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setAlarm(){
+        // 담당자 승인 예시 알림
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ISO_DATE
+        val formatted = current.format(formatter)
+        val datesarr = formatted.split("-")
+        val current2 = LocalDateTime.now()
+        val formatter2 = DateTimeFormatter.ISO_TIME
+        val formatted2 = current2.format(formatter2)
+        val datesarr2 = formatted2.split(":")
+
+        val cal = Calendar.getInstance()
+        cal[Calendar.MINUTE] = datesarr2[1].toInt() + 1
+        cal[Calendar.SECOND] = 0
+        cal[Calendar.MILLISECOND] = 0
+
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, Alarm::class.java)
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            cal.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
+    }
+
+    fun createNotificatuinChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name : CharSequence = "foxandroidReminderChannel"
+            val description = "Channel For Alarm Manager"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("foxandroid", name, importance)
+            channel.description = description
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+
+            notificationManager.createNotificationChannel(channel)
+
+        }
     }
 }
