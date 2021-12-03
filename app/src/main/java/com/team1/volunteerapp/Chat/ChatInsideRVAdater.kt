@@ -67,6 +67,8 @@ class ChatInsideRVAdater(
             chatText.text = item.text
             chatUser.text = item.user
             chatTime.text = item.time
+            val readCount = item.readusercount
+//            chatReadCount.text = item.readusercount
 
             val postListener = object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -81,7 +83,7 @@ class ChatInsideRVAdater(
                             }
                             Log.d("BBBBBB", chatuserCount.toString())
                             Log.d("BBBBBB00", chatCount.toString())
-                            chatReadCount.text = (chatuserCount-chatCount).toString()
+                            chatReadCount.text = (chatuserCount-readCount).toString()
 //                            chatReadCount.text = (chatuserCount - list[0]).toString()
                         }
 

@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.team1.volunteerapp.Chat.ChatRoom.ChatRoomListModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
@@ -135,8 +136,24 @@ class ChatInsideActivity : AppCompatActivity() {
                         val item4 = dataModel.child("readUser").childrenCount
                         chatCount.add(item4.toInt())
                         Log.d("chatchatchatchatchatchatchatchat", item4.toString())
+
+                        val item33 = dataModel.getValue(ChatRoomListModel::class.java)
+                        val item44 = item33?.chatRoomMaxUnit
+                        Log.d("outoutoutout", item44.toString())
+                        // 채팅 읽은 사람 수 업데이트
+                        val childUpdate2 = hashMapOf<String,Any>(
+                            "readusercount" to item4.toInt()
+                        )
+                        if (item2 != null) {
+                            FBRef.chatRef.child(roomKey).child(item2).updateChildren(childUpdate2)
+                        }
+
+
+
+
                     }catch (e : Exception){
                         Log.d("chatchat", e.toString())
+
                     }
                 }
 
@@ -155,6 +172,17 @@ class ChatInsideActivity : AppCompatActivity() {
 
         }
 
+        val postListener2 = object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        }
+        FBRef.chatRoomListRef.child(roomKey).addValueEventListener(postListener2)
         // 뒤로가기 눌렀을 때 valueEvent 제거
         databaseRef = FBRef.chatRef.child(roomKey)
         valueEvent = databaseRef.addValueEventListener(postListener)
