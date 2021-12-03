@@ -17,7 +17,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_board_edit.xml" value="0.22" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_board_inside.xml" value="0.4405837387074357" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_board_write.xml" value="0.33" />
-        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_chat_inside.xml" value="0.25" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_chat_inside.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_chat_room_info.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_chat_room_list.xml" value="0.5" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/activity_chat_room_maker.xml" value="0.33" />
@@ -68,6 +68,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_post_list_plain.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/fragment_review.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/home_rv_item.xml" value="0.5" />
+        <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/passwordcheck.xml" value="0.17654508611955422" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/layout/profile_rv_item.xml" value="0.33" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/bottom_nav_drawer_menu.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/H/Documents/GitHub/VolunteerApp/app/src/main/res/menu/navi_menu.xml" value="0.3302083333333333" />

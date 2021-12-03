@@ -24,6 +24,7 @@ import com.team1.volunteerapp.utils.AnimationB
 import com.team1.volunteerapp.utils.FBAuth
 import com.team1.volunteerapp.utils.FBRef
 import kotlinx.android.synthetic.main.activity_chat_room_info.fab
+import kotlinx.android.synthetic.main.activity_community2.*
 
 class ChatRoomInfoActivity : AppCompatActivity() {
     val userData = mutableListOf<ChatJoinUserModel>()
@@ -62,9 +63,12 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         val groupChatBtn = findViewById<FloatingActionButton>(R.id.fab)
         groupChatBtn.setOnClickListener {
             if(userDataCheck.contains(FBAuth.getUid())){
+                fab.hide(AnimationB.addVisibilityChanged)
                 val intent  = Intent(this, ChatInsideActivity::class.java)
                 intent.putExtra("roomKey", roomKey)
-                startActivity(intent)
+                Handler().postDelayed({
+                    startActivity(intent)
+                }, 300)
             }else{
                 Toast.makeText(this,"그룹 가입을 먼저 해주세요", Toast.LENGTH_SHORT).show()
             }
@@ -182,5 +186,11 @@ class ChatRoomInfoActivity : AppCompatActivity() {
         }
         return true
     }
-
+    override fun onStart() {
+        // 애니메이션 작동
+        super.onStart()
+        Handler().postDelayed({
+            fab.show()
+        }, 450)
+    }
 }

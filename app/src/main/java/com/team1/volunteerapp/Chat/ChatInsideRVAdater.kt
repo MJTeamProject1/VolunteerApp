@@ -68,7 +68,6 @@ class ChatInsideRVAdater(
             chatUser.text = item.user
             chatTime.text = item.time
             val readCount = item.readusercount
-//            chatReadCount.text = item.readusercount
 
             val postListener = object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -84,25 +83,8 @@ class ChatInsideRVAdater(
                             Log.d("BBBBBB", chatuserCount.toString())
                             Log.d("BBBBBB00", chatCount.toString())
                             chatReadCount.text = (chatuserCount-readCount).toString()
-//                            chatReadCount.text = (chatuserCount - list[0]).toString()
                         }
 
-//                        val item3 = dataModel.getValue(ChatModel::class.java)
-//                        val item4 = dataModel.child("readUser").childrenCount
-//                        val item5 = dataModel.value
-//                        Log.d("RVRVRVRVRV", item3.toString())
-//                        Log.d("RVRVRVRVRVRV", item4.toString())
-//                        var c = 0
-//                        if (item5.toString().contains("readUser")){
-//                            c += 1
-//                            Log.d("RVRVRVRVRVRVRVRV", item5.toString())
-//                        }
-//                        Log.d("fffff", c.toString())
-//                        list.add(item4.toInt())
-//                        if(list.contains(0)){
-//                            list.clear()
-//                        }
-//                        Log.d("121321321", list.size.toString())
                     }
                 }
 
@@ -118,28 +100,4 @@ class ChatInsideRVAdater(
             }
         }
     }
-
-    fun ABC(roomKey: String?){}
-
-//    fun ABC(roomKey: String){
-//        val postListener = object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                for(dataModel in snapshot.children){
-//                    val item = dataModel.getValue(ChatRoomListModel::class.java)
-//                    val item2 = item?.chatRoomMaxUnit
-//                    Log.d("RVRVRV", item2.toString())
-//                    if (item2 != null) {
-//                        chatList.add(item2)
-//                        chatuserCount = item2
-//                    }
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        }
-//        FBRef.chatRoomListRef.child(roomKey).addValueEventListener(postListener)
-//    }
 }

@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,6 +69,11 @@ class ChatInsideActivity : AppCompatActivity() {
                 }
             },100)
         }
+        val backBtn = findViewById<ImageView>(R.id.chatBack)
+        backBtn.setOnClickListener {
+            databaseRef.removeEventListener(valueEvent)
+            finish()
+        }
     }
 
     // 채팅 입력
@@ -107,10 +113,6 @@ class ChatInsideActivity : AppCompatActivity() {
                     try {
                         val item = dataModel.getValue(ChatModel::class.java)
                         val item2 = dataModel.key
-//                        val item3 =
-//                        if (item3 != null) {
-//                            Log.d("chatread",item3.readuser)
-//                        }
 
                         if (item != null) {
                             Log.d("chatchatchatchat", item.text)
@@ -131,7 +133,6 @@ class ChatInsideActivity : AppCompatActivity() {
                         }
 
 
-
                         // 채팅 읽은 사람 수
                         val item4 = dataModel.child("readUser").childrenCount
                         chatCount.add(item4.toInt())
@@ -147,8 +148,6 @@ class ChatInsideActivity : AppCompatActivity() {
                         if (item2 != null) {
                             FBRef.chatRef.child(roomKey).child(item2).updateChildren(childUpdate2)
                         }
-
-
 
 
                     }catch (e : Exception){
