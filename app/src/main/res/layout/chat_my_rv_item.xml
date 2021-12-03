@@ -46,6 +46,18 @@
     </LinearLayout>
 
     <TextView
+            android:id="@+id/chatRVReadCount"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:fontFamily="@font/binggrae"
+            android:text="1"
+            android:textColor="@color/maincolor2"
+            android:textSize="10sp"
+
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="33dp" />
+    <TextView
             android:id="@+id/chatRvTime"
             android:layout_width="wrap_content"
             android:layout_height="25sp"
