@@ -9,8 +9,7 @@ data class ChatModel (
     val uid : String = "",
     val text : String = "",
     val time: String = "",
-    val readuser : ChatReadModel? = null,
-    val readusercount : Int = 0,
+    val readuser : ChatReadModel? = null
 ){
     @Exclude
     fun toMap() : Map<String, Any?> {
