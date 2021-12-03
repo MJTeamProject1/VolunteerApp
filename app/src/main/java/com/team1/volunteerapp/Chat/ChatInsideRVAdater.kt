@@ -83,6 +83,11 @@ class ChatInsideRVAdater(
                             Log.d("BBBBBB", chatuserCount.toString())
                             Log.d("BBBBBB00", chatCount.toString())
                             chatReadCount.text = (chatuserCount-readCount).toString()
+                            if((chatuserCount-readCount) == 0){
+                                chatReadCount.visibility = View.INVISIBLE
+                            }else{
+                                chatReadCount.visibility = View.VISIBLE
+                            }
                         }
 
                     }
@@ -96,7 +101,6 @@ class ChatInsideRVAdater(
 
             if (roomKey != null) {
                 FBRef.chatRoomListRef.child(roomKey).addValueEventListener(postListener)
-                FBRef.chatRef.child(roomKey).addValueEventListener(postListener)
             }
         }
     }
