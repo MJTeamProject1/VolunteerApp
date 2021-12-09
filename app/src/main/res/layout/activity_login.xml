@@ -38,7 +38,7 @@
             android:layout_marginTop="124dp">
 
         <LinearLayout
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -71,13 +71,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/filledTextField2"
-
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="32dp"
+                    app:endIconMode="password_toggle"
                     android:hint="Password">
 
                 <!--this is the actual edit text which takes the input-->
