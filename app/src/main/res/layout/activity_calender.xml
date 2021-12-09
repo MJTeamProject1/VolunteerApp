@@ -20,14 +20,15 @@
             android:textSize="25sp"
             android:layout_margin="10dp" />
 
-    <CalendarView
+    <sun.bob.mcalendarview.MCalendarView
             android:id="@+id/calenderview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calTitle"
-            android:layout_margin="10dp"></CalendarView>
+            android:layout_margin="10dp">
+    </sun.bob.mcalendarview.MCalendarView>
 
     <TextView
             android:id="@+id/calendardate"
