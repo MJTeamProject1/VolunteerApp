@@ -594,11 +594,7 @@ class AboutViewActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun setAlarm(){
-        // 담당자 승인 예시 알림
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ISO_DATE
-        val formatted = current.format(formatter)
-        val datesarr = formatted.split("-")
+        // 담당자 승인 알림
         val current2 = LocalDateTime.now()
         val formatter2 = DateTimeFormatter.ISO_TIME
         val formatted2 = current2.format(formatter2)
