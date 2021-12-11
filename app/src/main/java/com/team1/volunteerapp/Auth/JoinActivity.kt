@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.Loading.SplashActivity
 
@@ -273,6 +274,17 @@ class JoinActivity : AppCompatActivity() {
                                     .addOnFailureListener { e ->
                                         Log.w("TAGMESSAGE", "Error adding document", e)
                                     }
+                                var pushToken: String? = null
+                                var uid = FirebaseAuth.getInstance().currentUser!!.uid
+                                var map = mutableMapOf<String, Any>()
+                                FirebaseMessaging.getInstance().token.addOnCompleteListener {
+                                    if(it.isComplete){
+                                        pushToken = it.result.toString()
+                                        map["pushtoken"] = pushToken!!
+                                        FirebaseFirestore.getInstance().collection("pushtokens").document(uid!!).set(map)
+                                    }
+                                }
+
                                 val Intent = Intent(this, SplashActivity::class.java)
                                 // 기존 엑티비티를 다 날림
                                 finishAffinity()

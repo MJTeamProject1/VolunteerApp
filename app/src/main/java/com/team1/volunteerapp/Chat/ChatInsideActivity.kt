@@ -35,6 +35,9 @@ class ChatInsideActivity : AppCompatActivity() {
     val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
     val curTime = dateFormat.format(Date(time)).toString()
 
+    //다른 유저들 정보
+    val userUidlist = mutableListOf<String>()
+
     lateinit var chat_rvAdapter : ChatInsideRVAdater
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,11 @@ class ChatInsideActivity : AppCompatActivity() {
 
         // 그룹 고유 키 값 가져오기
         val roomKey = intent.getStringExtra("roomKey")
+        val usercount = intent.getIntExtra("count", 0)
+        for(i in 0 until usercount){
+            userUidlist.add(intent.getStringExtra("${i}useruid")!!)
+        }
+
 
 
         // RecyclerView 연결
@@ -78,8 +86,10 @@ class ChatInsideActivity : AppCompatActivity() {
 
     // 채팅 입력
     private fun insertChat(roomKey: String?, inputText : String){
+        var fcmpush = FCMPush()
         val inputText2 = findViewById<EditText>(R.id.chatEdit)
         if (roomKey != null) {
+
             FBRef.chatRef
                 .child(roomKey)
                 .push()
@@ -91,6 +101,10 @@ class ChatInsideActivity : AppCompatActivity() {
                         curTime
                     )
                 )
+            //푸시를 받을 유저의 UID가 담긴 destinationUid 값을 넣어준후 fcmPush클래스의 sendMessage 메소드 호출
+            for(uid in userUidlist){
+                fcmpush.sendMessage("${uid}", "${FBAuth.getUserData(4)}", "${inputText}")
+            }
         }
 
         inputText2.setText("")

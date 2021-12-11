@@ -66,6 +66,12 @@ class ChatRoomInfoActivity : AppCompatActivity() {
                 fab.hide(AnimationB.addVisibilityChanged)
                 val intent  = Intent(this, ChatInsideActivity::class.java)
                 intent.putExtra("roomKey", roomKey)
+                var count = 0
+                for(useruid in userDataCheck){
+                    intent.putExtra("${count}useruid", useruid)
+                    count++
+                }
+                intent.putExtra("count", count)
                 Handler().postDelayed({
                     startActivity(intent)
                 }, 300)

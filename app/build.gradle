@@ -70,6 +70,7 @@ dependencies {
     implementation "io.grpc:grpc-okhttp:1.32.2"
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
     
 
     //PieChart 관련
@@ -87,6 +88,11 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation "com.android.support:support-compat:28.0.0"
+
+    //Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 
 
 }
