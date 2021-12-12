@@ -52,6 +52,7 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
+import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
@@ -439,7 +440,13 @@ class HomeActivity : AppCompatActivity() {
                         }
 
                         initPieChart()
-                        setDataToPieChart(vol_time,vol_goaltime)
+                        try {
+                            setDataToPieChart(vol_time,vol_goaltime)
+                        }catch (e : Exception){
+                            val v = "0"
+                            setDataToPieChart(v,vol_goaltime)
+                        }
+
 
 
                     }
