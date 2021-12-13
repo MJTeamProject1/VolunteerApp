@@ -77,6 +77,11 @@ class CalenderActivity : AppCompatActivity() {
 
         nowdate.setText(formatted)
 
+        if(userdate != "" && userdate != null){
+            for(i in datearry){
+                calendarview.unMarkDate(DateData(i.substring(0,4).toInt(), i.substring(4,6).toInt(),i.substring(6,8).toInt()))
+            }
+        }
         if((userdate != "") && (userdate != null)){
             for(i in datearry){
                 if((i.substring(0,4) == nowdatearr[0].toString()) && (i.substring(4,6) == nowdatearr[1].toString()) && (i.substring(6,8) == nowdatearr[2].toString())){
@@ -92,7 +97,6 @@ class CalenderActivity : AppCompatActivity() {
                 count++
             }
         }
-        //TODO 같은 날짜에 두 개 이상의 하이라이트 주기 불가능 그러므로 맞춰서 해야한다..
         //신청된 날짜 강조 표시
         if(userdate != "" && userdate != null){
             for(i in datearry){
