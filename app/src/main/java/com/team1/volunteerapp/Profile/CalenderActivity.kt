@@ -39,6 +39,8 @@ class CalenderActivity : AppCompatActivity() {
     private var oldyday: Int? = null
 
     private var flags : Boolean = true
+    private var mBackWait:Long = 0
+    lateinit var calendarview : MCalendarView
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +49,7 @@ class CalenderActivity : AppCompatActivity() {
 
 
         var count = 0
-        val calendarview = findViewById<MCalendarView>(R.id.calenderview)
+        calendarview = findViewById<MCalendarView>(R.id.calenderview)
         val infoview = findViewById<RelativeLayout>(R.id.infoview)
         val applytitle = findViewById<TextView>(R.id.mRV_itemText_title)
         val applystart = findViewById<TextView>(R.id.mRV_itemText_start)
@@ -199,5 +201,10 @@ class CalenderActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onBackPressed() {
+        calendarview.unMarkDate(oldyear!!, oldmonth!!, oldyday!!)
+        finish()
     }
 }
