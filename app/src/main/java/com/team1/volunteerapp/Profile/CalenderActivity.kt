@@ -75,7 +75,7 @@ class CalenderActivity : AppCompatActivity() {
 
         nowdate.setText(formatted)
 
-        if(userdate != ""){
+        if((userdate != "") && (userdate != null)){
             for(i in datearry){
                 if((i.substring(0,4) == nowdatearr[0].toString()) && (i.substring(4,6) == nowdatearr[1].toString()) && (i.substring(6,8) == nowdatearr[2].toString())){
                     infoview.visibility = View.VISIBLE
@@ -92,7 +92,7 @@ class CalenderActivity : AppCompatActivity() {
         }
         //TODO 같은 날짜에 두 개 이상의 하이라이트 주기 불가능 그러므로 맞춰서 해야한다..
         //신청된 날짜 강조 표시
-        if(userdate != ""){
+        if(userdate != "" && userdate != null){
             for(i in datearry){
                 if((i.substring(0,4) == nowdatearr[0].toString()) && (i.substring(4,6) == nowdatearr[1].toString()) && (i.substring(6,8) == nowdatearr[2].toString())){
                     //만약 오늘 날짜에 강조 표시가 생겨야 한다면 skip
@@ -116,7 +116,7 @@ class CalenderActivity : AppCompatActivity() {
                 if(oldyear != null){
                     calendarview.unMarkDate(oldyear!!, oldmonth!!, oldyday!!)
                     //만약 이미 디자인이 있었던 날짜 였다면 다시 추가
-                    if(userdate != ""){
+                    if(userdate != "" && userdate != null){
                         for(i in datearry){
                             //강조된 날짜 다시 표시
                             if((i.substring(0,4).toInt() == oldyear) && (i.substring(4,6).toInt() == oldmonth) && (i.substring(6,8).toInt() == oldyday)){
@@ -129,7 +129,7 @@ class CalenderActivity : AppCompatActivity() {
                 }
 
                 //만약 선택한 날짜에 디자인이 있는 날짜라면 지우고 다시쓰기 활성화
-                if(userdate != ""){
+                if(userdate != "" && userdate != null){
                     for(i in datearry){
                         if((i.substring(0,4).toInt() == date.year) && (i.substring(4,6).toInt() == date.month) && (i.substring(6,8).toInt() == date.day)){
                             flags = true
@@ -161,7 +161,7 @@ class CalenderActivity : AppCompatActivity() {
                 count = 0
                 Log.d("calendar", "바뀜${date.year}년${date.month}월${date.day}일")
                 nowdate.setText("${date.year}년 ${date.month}월 ${date.day}일")
-                if(userdate != ""){
+                if(userdate != "" && userdate != null){
                     for(i in datearry){
                         if(date.day < 10){
                             if((i.substring(0,4) == date.year.toString()) && (i.substring(4,6) == date.month.toString()) && (i.substring(6,8) == "0${date.day}")){
