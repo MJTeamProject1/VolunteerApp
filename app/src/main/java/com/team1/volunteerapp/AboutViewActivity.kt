@@ -601,9 +601,6 @@ class AboutViewActivity : AppCompatActivity() {
         val datesarr2 = formatted2.split(":")
 
         val cal = Calendar.getInstance()
-        cal[Calendar.MINUTE] = datesarr2[1].toInt() + 1
-        cal[Calendar.SECOND] = 0
-        cal[Calendar.MILLISECOND] = 0
 
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, Alarm::class.java)
