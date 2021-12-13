@@ -11,10 +11,12 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.team1.volunteerapp.Chat.ChatRoom.ChatRoomListModel
 import com.team1.volunteerapp.R
 import com.team1.volunteerapp.utils.FBAuth
@@ -45,6 +47,8 @@ class ChatInsideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_inside)
+
+        auth = Firebase.auth
 
         // 그룹 고유 키 값 가져오기
         val roomKey = intent.getStringExtra("roomKey")
