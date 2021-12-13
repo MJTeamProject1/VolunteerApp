@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -34,6 +35,8 @@ class ChatInsideActivity : AppCompatActivity() {
     val time = System.currentTimeMillis()
     val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
     val curTime = dateFormat.format(Date(time)).toString()
+
+    private lateinit var auth: FirebaseAuth
 
     //다른 유저들 정보
     val userUidlist = mutableListOf<String>()
@@ -103,7 +106,13 @@ class ChatInsideActivity : AppCompatActivity() {
                 )
             //푸시를 받을 유저의 UID가 담긴 destinationUid 값을 넣어준후 fcmPush클래스의 sendMessage 메소드 호출
             for(uid in userUidlist){
-                fcmpush.sendMessage("${uid}", "${FBAuth.getUserData(4)}", "${inputText}")
+                if(uid == auth.uid.toString()){
+                    continue
+                }
+                else{
+                    fcmpush.sendMessage("${uid}", "${FBAuth.getUserData(4)}", "${inputText}")
+                }
+
             }
         }
 
