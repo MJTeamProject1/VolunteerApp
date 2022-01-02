@@ -229,6 +229,10 @@ class JoinActivity : AppCompatActivity() {
                 Toast.makeText(this,"비밀번호 확인을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
             }
+            else if(!(password_check_db.equals(inputpassword))){
+                Toast.makeText(this,"비밀번호 확인을 다시 해주십시오",Toast.LENGTH_LONG).show()
+                isGoToJoin = false
+            }
             else if(username_db.isEmpty()){
                 Toast.makeText(this,"이름을 입력하지 않았습니다",Toast.LENGTH_LONG).show()
                 isGoToJoin = false
